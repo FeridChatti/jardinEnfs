@@ -3,8 +3,9 @@ package esprit.tn;
 
 import static com.codename1.ui.CN.*;
 
+import Forms.AjouterEnfant;
 import Forms.ConsulterClub;
-import Forms.ListeEnfant;
+
 import com.codename1.ui.*;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
@@ -56,9 +57,9 @@ public class MyApplication {
         Form hi = new Form("Hi World", BoxLayout.y());
         hi.add(new Label("Hi World"));
         Button b=new Button("ajouter enfant");
-        b.addActionListener(e->new ListeEnfant(current).show());
+        b.addActionListener(e->new AjouterEnfant(current).show());
         Button consulterLesClubs=new Button("Consulter les clubs");
-        b.addActionListener(e->new ListeEnfant().show());
+        b.addActionListener(e->new AjouterEnfant().show());
         consulterLesClubs.addActionListener(e->new ConsulterClub().show());
         hi.add(b);
         hi.add(consulterLesClubs);
