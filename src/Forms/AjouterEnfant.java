@@ -75,4 +75,8 @@ public class AjouterEnfant extends Form {
     }
 
 
+
+    public AjouterEnfant() {
+
+    }
 }
