@@ -14,9 +14,9 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class ListeEnfant extends Form {
+public class AjouterEnfant extends Form {
 
-    public ListeEnfant (Form prev){
+    public AjouterEnfant(Form prev){
 
         getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK,e->prev.showBack());
         setTitle("Ajouter Enfant");
@@ -30,7 +30,7 @@ public class ListeEnfant extends Form {
 
         Picker datePicker = new Picker();
         Date lt = Date.from(Instant.now());
-        datePicker.setEndDate(lt);
+
 
 
 
