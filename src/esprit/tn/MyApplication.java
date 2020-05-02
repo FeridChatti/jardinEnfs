@@ -5,6 +5,7 @@ import static com.codename1.ui.CN.*;
 
 import Forms.AjouterAbonnement;
 import Forms.AjouterEnfant;
+import Forms.ConsulterClub;
 import com.codename1.ui.*;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
@@ -55,12 +56,15 @@ public class MyApplication {
         hi.add(new Label("Hi World"));
         Button b=new Button("ajouter enfant");
         b.addActionListener(e->new AjouterEnfant(fo).show());
-
+        Button consulterLesClubs=new Button("Consulter les clubs");
         Button bs=new Button("ajouter abonnement");
         bs.addActionListener(s->new AjouterAbonnement().show());
+        consulterLesClubs.addActionListener(e->new ConsulterClub(fo).show());
         hi.addAll(b,bs);
-
+        hi.add(consulterLesClubs);
         hi.show();
+
+
     }
 
     public void stop() {
