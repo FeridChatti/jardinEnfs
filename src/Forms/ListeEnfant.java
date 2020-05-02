@@ -74,4 +74,7 @@ public class ListeEnfant extends Form {
     }
 
 
+    public ListeEnfant() {
+
+    }
 }

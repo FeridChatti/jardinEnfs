@@ -3,6 +3,7 @@ package esprit.tn;
 
 import static com.codename1.ui.CN.*;
 
+import Forms.ConsulterClub;
 import Forms.ListeEnfant;
 import com.codename1.ui.*;
 import com.codename1.ui.plaf.UIManager;
@@ -56,7 +57,11 @@ public class MyApplication {
         hi.add(new Label("Hi World"));
         Button b=new Button("ajouter enfant");
         b.addActionListener(e->new ListeEnfant(current).show());
+        Button consulterLesClubs=new Button("Consulter les clubs");
+        b.addActionListener(e->new ListeEnfant().show());
+        consulterLesClubs.addActionListener(e->new ConsulterClub().show());
         hi.add(b);
+        hi.add(consulterLesClubs);
         hi.show();
     }
 
