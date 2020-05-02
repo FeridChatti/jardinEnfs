@@ -57,7 +57,7 @@ public class MyApplication {
         b.addActionListener(e->new AjouterEnfant(fo).show());
 
         Button bs=new Button("ajouter abonnement");
-        bs.addActionListener(s->new AjouterAbonnement().show());
+        bs.addActionListener(s->new AjouterAbonnement(fo).show());
         hi.addAll(b,bs);
 
         hi.show();
