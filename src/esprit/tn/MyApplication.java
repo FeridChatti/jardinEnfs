@@ -23,6 +23,7 @@ public class MyApplication {
     private Resources theme;
 
     public void init(Object context) {
+
         // use two network threads instead of one
         updateNetworkThreadCount(2);
 
@@ -50,10 +51,11 @@ public class MyApplication {
             current.show();
             return;
         }
+
         Form hi = new Form("Hi World", BoxLayout.y());
         hi.add(new Label("Hi World"));
         Button b=new Button("ajouter enfant");
-        b.addActionListener(e->new ListeEnfant().show());
+        b.addActionListener(e->new ListeEnfant(current).show());
         hi.add(b);
         hi.show();
     }
