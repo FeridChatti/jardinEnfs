@@ -9,6 +9,7 @@ import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.spinner.Picker;
+import esprit.tn.MyApplication;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -16,9 +17,9 @@ import java.util.Date;
 
 public class AjouterEnfant extends Form {
 
-    public AjouterEnfant(Form prev){
+    public AjouterEnfant(MyApplication prev){
 
-        getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK,e->prev.showBack());
+        getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK,e->prev.start());
         setTitle("Ajouter Enfant");
         setLayout(BoxLayout.y());
         TextField nom= new TextField("","Nom");
