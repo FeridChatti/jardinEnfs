@@ -23,7 +23,7 @@ public class Enfant {
     private String prenom;
 
 
-    private Date datenaiss;
+    private String datenaiss;
 
 
     private String sexe;
@@ -52,7 +52,7 @@ public class Enfant {
         return prenom;
     }
 
-    public Date getDatenaiss() {
+    public String getDatenaiss() {
         return datenaiss;
     }
 
@@ -88,7 +88,7 @@ public class Enfant {
         this.prenom = prenom;
     }
 
-    public void setDatenaiss(Date datenaiss) {
+    public void setDatenaiss(String datenaiss) {
         this.datenaiss = datenaiss;
     }
 
@@ -113,12 +113,12 @@ public class Enfant {
     }
 
 
-    public Enfant(int id, String nom, String prenom, Date datenaiss, String sexe) {
+    public Enfant(int id, String nom, String prenom,String sexe,String datenaiss) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        this.datenaiss = datenaiss;
         this.sexe = sexe;
+        this.datenaiss = datenaiss;
     }
 
     public Enfant() {

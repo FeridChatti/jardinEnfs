@@ -2,14 +2,13 @@ package esprit.tn;
 
 
 import static com.codename1.ui.CN.*;
-import com.codename1.ui.Display;
-import com.codename1.ui.Form;
-import com.codename1.ui.Dialog;
-import com.codename1.ui.Label;
+
+import Forms.ListeEnfant;
+import com.codename1.ui.*;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.io.Log;
-import com.codename1.ui.Toolbar;
+
 import java.io.IOException;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.io.NetworkEvent;
@@ -24,6 +23,7 @@ public class MyApplication {
     private Resources theme;
 
     public void init(Object context) {
+
         // use two network threads instead of one
         updateNetworkThreadCount(2);
 
@@ -51,8 +51,12 @@ public class MyApplication {
             current.show();
             return;
         }
+
         Form hi = new Form("Hi World", BoxLayout.y());
         hi.add(new Label("Hi World"));
+        Button b=new Button("ajouter enfant");
+        b.addActionListener(e->new ListeEnfant(current).show());
+        hi.add(b);
         hi.show();
     }
 
