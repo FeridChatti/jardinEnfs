@@ -218,6 +218,10 @@ public class Jardin {
         this.etat = etat;
     }
 
+    public Jardin() {
+
+    }
+
     public Jardin(int id, String name, String description,
                   String numtel, float tarif, String adresse, String etat) {
         super();
