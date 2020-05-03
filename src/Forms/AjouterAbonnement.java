@@ -2,7 +2,7 @@ package Forms;
 
 import Entities.Abonnement;
 import Entities.Enfant;
-import Services.AbonnementService;
+
 import Services.EnfantService;
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.*;
@@ -36,16 +36,16 @@ public class AjouterAbonnement extends Form {
         Label mont=new Label("Montant:");
         mont.getAllStyles().setFgColor(ColorUtil.GRAY);
         ComboBox<Enfant> enfant = new ComboBox();
-        for (int i=0;i< EnfantService.getInstance().ListEnfants("4").size();i++){
-        enfant.addItem(EnfantService.getInstance().ListEnfants("4").get(i));
+        for (int i=0;i< EnfantService.getInstance().ListEnfants("8").size();i++){
+        enfant.addItem(EnfantService.getInstance().ListEnfants("8").get(i));
         }
 
         ComboBox types = new ComboBox();
         types.addItem("bus");
         types.addItem("normal");
         TextField montant= new TextField("","Montant");
-        for (int i=0;i< EnfantService.getInstance().Montant("1").size();i++){
-            montant.setText(String.valueOf(EnfantService.getInstance().Montant("1").get(0).getTarif()));
+        for (int i=0;i< EnfantService.getInstance().Montant("8").size();i++){
+            montant.setText(String.valueOf(EnfantService.getInstance().Montant("8").get(0).getTarif()));
         }
 
         montant.setEnabled(false);
@@ -59,9 +59,9 @@ public class AjouterAbonnement extends Form {
                 String se=types.getSelectedItem().toString();
                 Abonnement abonne=new Abonnement(text,se,"attente",montant.getText(),enfant.getSelectedItem());
 
-                if(AbonnementService.getInstance().AjouterAbonnement(abonne)){
+              /*  if(AbonnementService.getInstance().AjouterAbonnement(abonne)){
                     Dialog.show("Succes","Ajout réussi",new Command("OK"));
-                }
+                }*/
 
             }
         });

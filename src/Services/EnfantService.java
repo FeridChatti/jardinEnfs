@@ -13,6 +13,9 @@ import java.util.Map;
 public class EnfantService {
 
 public static EnfantService instance=null;
+
+
+
 private ConnectionRequest req;
 public boolean resultOk;
 public ArrayList <Enfant> enfants;
@@ -21,6 +24,7 @@ public ArrayList <Enfant> enfants;
 private EnfantService(){
     req=new ConnectionRequest();
 }
+
 public static EnfantService getInstance(){
     if(instance==null){
         instance=new EnfantService();

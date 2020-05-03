@@ -3,10 +3,18 @@ package esprit.tn;
 
 import static com.codename1.ui.CN.*;
 
+import Entities.User;
 import Forms.AjouterAbonnement;
 import Forms.AjouterEnfant;
 import Forms.ConsulterClub;
+import Forms.User.Login;
+import com.codename1.io.AccessToken;
+import com.codename1.social.LoginCallback;
 import com.codename1.ui.*;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.layouts.BorderLayout;
+import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.io.Log;
@@ -23,7 +31,12 @@ import java.net.URISyntaxException;
 public class MyApplication {
     public MyApplication fo;
     private Form current;
+    public static User authenticated;
+
+
     private Resources theme;
+
+    private Login login;
 
     public void init(Object context) {
         fo=this;
@@ -50,33 +63,15 @@ public class MyApplication {
     }
     
     public void start() {
-        if(current != null){
-            current.show();
-            return;
-        }
-
-        Form hi = new Form("Hi World", BoxLayout.y());
-        hi.add(new Label("Hi World"));
-        Button b=new Button("ajouter enfant");
-        b.addActionListener(e->new AjouterEnfant(fo).show());
-
-        Button bs=new Button("ajouter abonnement");
-        bs.addActionListener(s->new AjouterAbonnement(fo).show());
-
-        Button consulterClubs=new Button("Consulter Clubs");
-        bs.addActionListener(s-> {
-            try {
-                new ConsulterClub(fo).show();
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        hi.addAll(b,bs);
-
-        hi.show();
+        Login login=new Login(fo,theme);
+        //login.show();
     }
+
+
+
+
+
+
 
     public void stop() {
         current = getCurrentForm();
