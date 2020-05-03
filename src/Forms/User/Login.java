@@ -1,7 +1,11 @@
 package Forms.User;
 
+import Entities.Abonnement;
+import Entities.User;
 import Forms.AjouterAbonnement;
 import Forms.ConsulterClub;
+import Services.AbonnementService;
+import Services.UserService;
 import com.codename1.io.AccessToken;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
@@ -19,6 +23,7 @@ public class Login extends Form {
     private String name;
     private String imageURL;
     private Form loginForm;
+    UserService su=new UserService();
 
     public Login (MyApplication prev,Resources theme){
         loginForm = new Form("Sign in ");
@@ -55,12 +60,23 @@ public class Login extends Form {
                 else if(performsign(username.getText(),pass.getText())) {
 
                     lb.setVisible(true);
+                    center.refreshTheme();
+                    su.parseuser(username.getText());
+                    //you should test the role of the authenticaed user and redirect them depending of their roles
+                    AjouterAbonnement cc=new AjouterAbonnement(prev);
+                    cc.show();
+
+
 
 
 
 
 
                     System.out.println("login success");
+                }else {
+                    lb.setText("failed login");
+                    lb.setVisible(true);
+                    center.refreshTheme();
                 }
             }
         });
@@ -78,7 +94,11 @@ public class Login extends Form {
 
 public boolean performsign(String username, String password){
 
+
+
+        if(su.login(username,password).contains("Success"))
         return true;
+        else return false;
 }
 
 }

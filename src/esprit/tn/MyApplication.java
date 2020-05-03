@@ -31,7 +31,7 @@ import java.net.URISyntaxException;
 public class MyApplication {
     public MyApplication fo;
     private Form current;
-    public static User authenticated;
+    public static User authenticated=new User();
 
 
     private Resources theme;
