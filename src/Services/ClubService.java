@@ -3,8 +3,6 @@ package Services;
 import Entities.Club;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
-import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
-import sun.security.pkcs11.P11Util;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,8 +34,8 @@ public class ClubService {
 
         for (Map<String,Object> obj : list){
             Club c = new Club();
-           // int id = Integer.parseInt(obj.get("id").toString());
-            c.setId(Integer.parseInt(obj.get("id").toString()));
+           float id = Float.parseFloat((obj.get("id").toString()));
+            c.setId((int)id);
             c.setName(obj.get("name").toString());
             c.setDescription(obj.get("description").toString());
             clubs.add(c);
