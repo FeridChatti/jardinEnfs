@@ -12,26 +12,29 @@ import com.codename1.ui.layouts.BoxLayout;
 import esprit.tn.MyApplication;
 
 public class AccueilParent extends Form {
-    Form fo;
+Form fo;
+public AccueilParent()
+{fo=this;
+setLayout(BoxLayout.y());
 
-    public AccueilParent() {
-        fo = this;
-        setLayout(BoxLayout.y());
+    Button b=new Button("ajouter enfant");
+    b.addActionListener(e->new AjouterEnfant(fo).show());
 
-        Button b = new Button("ajouter enfant");
-        b.addActionListener(e -> new AjouterEnfant(fo).show());
+    Button bs=new Button("ajouter abonnement");
+    bs.addActionListener(s->new AjouterAbonnement(fo).show());
+    Button bse=new Button("consulter enfants");
+    bse.addActionListener(s->new ConsulterEnfant(fo).show());
 
-        Button bs = new Button("ajouter abonnement");
-        bs.addActionListener(s -> new AjouterAbonnement(fo).show());
+    Button bt=new Button("Consulter Activité");
+    bt.addActionListener(s->new ConsulterActivite(fo).show());
+    Button btnmyrem = new Button("remarques des enfants");
+    btnmyrem.addActionListener(s -> new ConsulterRemarques(fo).show());
 
-        Button bt = new Button("ajouter");
-        bt.addActionListener(s -> new ConsulterActivite(fo).show());
 
 
-        Button btnmyrem = new Button("remarques des enfants");
-        btnmyrem.addActionListener(s -> new ConsulterRemarques(fo).show());
-        addAll(b, bs, bt,btnmyrem);
 
-    }
+    addAll(b,bs,bse,bt,btnmyrem);
+
+}
 
 }

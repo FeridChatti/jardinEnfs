@@ -1,14 +1,8 @@
 package Forms.User;
 
-import Entities.Abonnement;
-import Entities.User;
 import Forms.Accueils.AccueilParent;
 import Forms.Accueils.AccueilResponsable;
-import Forms.AjouterAbonnement;
-import Forms.ConsulterClub;
-import Services.AbonnementService;
 import Services.UserService;
-import com.codename1.io.AccessToken;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -17,9 +11,6 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
 import esprit.tn.MyApplication;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
 
 public class Login extends Form {
     private String name;
