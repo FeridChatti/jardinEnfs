@@ -2,6 +2,8 @@ package Forms.User;
 
 import Entities.Abonnement;
 import Entities.User;
+import Forms.Accueils.AccueilParent;
+import Forms.Accueils.AccueilResponsable;
 import Forms.AjouterAbonnement;
 import Forms.ConsulterClub;
 import Services.AbonnementService;
@@ -63,8 +65,14 @@ public class Login extends Form {
                     center.refreshTheme();
                     su.parseuser(username.getText());
                     //you should test the role of the authenticaed user and redirect them depending of their roles
-                    AjouterAbonnement cc=new AjouterAbonnement(prev);
-                    cc.show();
+                   switch (MyApplication.authenticated.getType()){
+                       case "P": AccueilParent cc=new AccueilParent();
+                                 cc.show();
+                                  break;
+                       case "R" :
+                           AccueilResponsable ac=new AccueilResponsable();
+                           ac.show();
+                   }
 
 
 

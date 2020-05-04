@@ -21,10 +21,10 @@ import java.util.Date;
 
 public class AjouterAbonnement extends Form {
     Form current;
-    public AjouterAbonnement(MyApplication prev) {
+    public AjouterAbonnement(Form prev) {
         current=this;
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.start());
-     /*   Button b=new Button("ajouter enfant");
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
+       /* Button b=new Button("ajouter enfant");
         b.addActionListener(e->new AjouterEnfant(current).show());
         add(b);*/
         setTitle("Ajouter Abonnement");

@@ -8,13 +8,7 @@ import Forms.AjouterAbonnement;
 import Forms.AjouterEnfant;
 import Forms.ConsulterClub;
 import Forms.User.Login;
-import com.codename1.io.AccessToken;
-import com.codename1.social.LoginCallback;
 import com.codename1.ui.*;
-import com.codename1.ui.events.ActionEvent;
-import com.codename1.ui.events.ActionListener;
-import com.codename1.ui.layouts.BorderLayout;
-import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.io.Log;
@@ -31,13 +25,8 @@ import java.net.URISyntaxException;
 public class MyApplication {
     public MyApplication fo;
     private Form current;
-    public static User authenticated=new User();
-
-
     private Resources theme;
-
-    private Login login;
-
+    public static User authenticated=new User();
     public void init(Object context) {
         fo=this;
         // use two network threads instead of one
@@ -63,15 +52,25 @@ public class MyApplication {
     }
     
     public void start() {
-        Login login=new Login(fo,theme);
-        //login.show();
+        if(current != null){
+            current.show();
+            return;
+        }
+    Login login=new Login(fo,theme);
+
+
+      /*  Button consulterClubs=new Button("Consulter Clubs");
+        bs.addActionListener(s-> {
+            try {
+                new ConsulterClub(fo).show();
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });*/
+
     }
-
-
-
-
-
-
 
     public void stop() {
         current = getCurrentForm();
