@@ -1,4 +1,4 @@
-package Forms;
+package Forms.Enfants;
 
 import Entities.Enfant;
 import Services.EnfantService;
@@ -17,9 +17,9 @@ import java.util.Date;
 
 public class AjouterEnfant extends Form {
 
-    public AjouterEnfant(MyApplication prev){
+    public AjouterEnfant(Form prev){
 
-        getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK,e->prev.start());
+        getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK,e->prev.showBack());
         setTitle("Ajouter Enfant");
         setLayout(BoxLayout.y());
         TextField nom= new TextField("","Nom");

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<resource majorVersion="1" minorVersion="11" useXmlUI="false">
-    <image name="17 Transformers 3.jpg"  />
-    <image name="64524_488227391238765_109878622_n.jpg"  />
+<resource majorVersion="1" minorVersion="10" useXmlUI="false">
     <image name="back-command.png" type="multi"  />
     <image name="border.png"  />
     <image name="Button.borderBottom_3.png" type="multi"  />
@@ -40,6 +38,7 @@
     <image name="Dialog.borderTopR_1.png" type="multi"  />
     <image name="img_bgr_side_bar_title.png"  />
     <image name="img_bgr_tile.png"  />
+    <image name="kgpng.png"  />
     <image name="Menu.borderBottom_1.png" type="multi"  />
     <image name="Menu.borderBottomL_1.png" type="multi"  />
     <image name="Menu.borderBottomR_1.png" type="multi"  />

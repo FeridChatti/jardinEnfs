@@ -17,10 +17,9 @@ public class ConsulterActivite extends Form {
 
 
 
-    public ConsulterActivite(MyApplication prev){
+    public ConsulterActivite(Form prev){
         setTitle("La Liste des Activités");
         fo = this;
-
 
         Label choix  = new Label("veuillez choisir l'activité");
         add(choix);
@@ -63,7 +62,7 @@ public class ConsulterActivite extends Form {
 
 
 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.start());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
 
 
 
