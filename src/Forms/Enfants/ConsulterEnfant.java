@@ -1,14 +1,13 @@
-package Forms;
+package Forms.Enfants;
 
 import Services.EnfantService;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
-import esprit.tn.MyApplication;
 
 public class ConsulterEnfant extends Form {
-    public ConsulterEnfant(MyApplication prev){
+    public ConsulterEnfant(Form prev){
         Form th=this;
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.start());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
         setTitle("Consulter enfants");
         Container detail = new Container(BoxLayout.y());
         add(detail);

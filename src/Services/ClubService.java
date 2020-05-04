@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ClubService {
-/*
+
     public static ClubService instance=null;
     private ConnectionRequest req;
     public boolean resultOk;
@@ -64,5 +64,5 @@ public class ClubService {
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
 return clubs;
-    }*/
+    }
 }
