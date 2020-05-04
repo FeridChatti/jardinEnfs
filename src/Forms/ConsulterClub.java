@@ -7,15 +7,19 @@ import com.codename1.components.SpanLabel;
 import com.codename1.io.File;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.util.Resources;
 import esprit.tn.MyApplication;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import static com.codename1.ui.Image.createImage;
+
 
 public class ConsulterClub extends Form {
+    private Resources theme;
 
-   /* public ConsulterClub(MyApplication prev) throws URISyntaxException, IOException {
+    public ConsulterClub(MyApplication prev)  {
 
         setTitle("Liste des clubs");
 
@@ -27,16 +31,15 @@ public class ConsulterClub extends Form {
         for(int i=0; i<ClubService.getInstance().getAllclubs().size(); i++){
             Label lbName = new Label(ClubService.getInstance().getAllclubs().get(i).getName());
             Label lbDescription = new Label(ClubService.getInstance().getAllclubs().get(i).getDescription());
-
-            Image im = Image.createImage(ClubService.getInstance().getAllclubs().get(i).getPhoto());
-            ImageViewer image = new ImageViewer(im);
+       //    ImageViewer image = new ImageViewer(theme.getImage("17 Transformers 3.jpg"));
 
 
 
-            add(image);
-            holder.add(image);
+          //  add(image);
+            //holder.add(image);
             detail.add(lbName);
             detail.add(lbDescription);
+
 
 
 
@@ -44,5 +47,5 @@ public class ConsulterClub extends Form {
 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.start());
 
-    }*/
+    }
 }
