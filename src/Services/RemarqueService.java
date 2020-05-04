@@ -58,6 +58,27 @@ public class RemarqueService {
         return remarques;
     }
 
+    public ArrayList<Remarque> tutremarques(){
+        String Url="http://127.0.0.1:8000/Api/listmyrem/"+authenticated.getId();
+        req.setUrl(Url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                try {
+                    remarques=ParseMyRemarques(new String (req.getResponseData()));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+
+        return remarques;
+    }
+
 
 
     public  ArrayList<Remarque> ParseRemarques(String json) throws ParseException {
@@ -94,5 +115,37 @@ public class RemarqueService {
         return remarques;
     }
 
+    public  ArrayList<Remarque> ParseMyRemarques(String json) throws ParseException {
+        remarques=new ArrayList<>();
+        JSONParser j= new JSONParser();
+        Map<String,Object> ListremarktJson= null;
+        try {
+            ListremarktJson = j.parseJSON(new CharArrayReader(json.toCharArray()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        List<Map<String,Object>> list=(List <Map<String,Object>>) ListremarktJson.get("root");
+        for(Map<String,Object> obj:list){
+            Remarque e =new Remarque();
+            float t= Float.parseFloat(obj.get("id").toString());
+            e.setId((int)t);
+            Map<String,Object> m = (Map<String, Object>) obj.get("date");
 
+            String str = m.get("date").toString();
+
+
+            float idab = Float.parseFloat((obj.get("ab_id").toString()));
+            String g = str.substring(0,10);
+            e.setDate(str);
+            e.setAbid((int)idab);
+            e.setDescription(obj.get("description").toString());
+            e.setEnfant(obj.get("enfantnom").toString()+" "+obj.get("enfantprenom").toString());
+            e.setNomtut(obj.get("parnom").toString()+" "+obj.get("parprenom").toString());
+
+
+
+            remarques.add(e);
+        }
+        return remarques;
+    }
 }
