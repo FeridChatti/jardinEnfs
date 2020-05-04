@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 
 public class ConsulterClub extends Form {
 
-    public ConsulterClub(MyApplication prev) throws URISyntaxException, IOException {
+   /* public ConsulterClub(MyApplication prev) throws URISyntaxException, IOException {
 
         setTitle("Liste des clubs");
 
@@ -44,5 +44,5 @@ public class ConsulterClub extends Form {
 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.start());
 
-    }
+    }*/
 }

@@ -6,6 +6,7 @@ import static com.codename1.ui.CN.*;
 import Forms.AjouterAbonnement;
 import Forms.AjouterEnfant;
 import Forms.ConsulterClub;
+import Forms.ConsulterEnfant;
 import com.codename1.ui.*;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
@@ -62,8 +63,10 @@ public class MyApplication {
 
         Button bs=new Button("ajouter abonnement");
         bs.addActionListener(s->new AjouterAbonnement(fo).show());
+        Button bv=new Button("Consulter enfants");
+        bv.addActionListener(s->new ConsulterEnfant(fo).show());
 
-        Button consulterClubs=new Button("Consulter Clubs");
+      /* Button consulterClubs=new Button("Consulter Clubs");
         bs.addActionListener(s-> {
             try {
                 new ConsulterClub(fo).show();
@@ -72,8 +75,8 @@ public class MyApplication {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        });
-        hi.addAll(b,bs);
+        });*/
+        hi.addAll(b,bs,bv);
 
         hi.show();
     }
