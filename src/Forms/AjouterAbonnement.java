@@ -41,22 +41,36 @@ public class AjouterAbonnement extends Form {
         }
 
         ComboBox types = new ComboBox();
-        types.addItem("bus");
         types.addItem("normal");
+        types.addItem("bus");
         TextField montant= new TextField("","Montant");
         for (int i=0;i< EnfantService.getInstance().Montant("1").size();i++){
-            montant.setText(String.valueOf(EnfantService.getInstance().Montant("1").get(0).getTarif()));
-        }
+            montant.setText(String.valueOf(EnfantService.getInstance().Montant("1").get(0).getTarif()));}
+
+         types.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent evt) {
+                 if(types.getSelectedItem().toString().equals("normal")){
+                     for (int i=0;i< EnfantService.getInstance().Montant("1").size();i++){
+                         montant.setText(String.valueOf(EnfantService.getInstance().Montant("1").get(0).getTarif()));
+                     }
+                 }
+                 else if (types.getSelectedItem().toString().equals("bus")){
+                     montant.setText(String.valueOf(EnfantService.getInstance().Montant("1").get(0).getTarif()+50));
+                 }
+             }
+         });
 
         montant.setEnabled(false);
         Button bt=new Button("Ajouter");
-
+      //  String mount=String.valueOf(mnt);
         bt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 Date lt = Date.from(Instant.now());
                 String text = lt.toString();
                 String se=types.getSelectedItem().toString();
+
                 Abonnement abonne=new Abonnement(text,se,"attente",montant.getText(),enfant.getSelectedItem());
 
                 if(AbonnementService.getInstance().AjouterAbonnement(abonne)){

@@ -77,6 +77,12 @@ enfants=new ArrayList<>();
         e.setId((int)t);
         e.setNom(obj.get("nom").toString());
         e.setPrenom(obj.get("prenom").toString());
+        Map<String,Object> m = (Map<String, Object>) obj.get("naiss");
+        String str = m.get("date").toString();
+        String g = str.substring(0,10);
+        e.setDatenaiss(g);
+        float tf=Float.parseFloat(obj.get("id").toString());
+        e.setId((int)tf);
         enfants.add(e);
 
     }
