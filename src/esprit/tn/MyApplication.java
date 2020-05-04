@@ -5,6 +5,7 @@ import static com.codename1.ui.CN.*;
 
 import Forms.AjouterAbonnement;
 import Forms.AjouterEnfant;
+import Forms.ConsulterActivite;
 import Forms.ConsulterClub;
 import com.codename1.ui.*;
 import com.codename1.ui.plaf.UIManager;
@@ -64,17 +65,17 @@ public class MyApplication {
         bs.addActionListener(s->new AjouterAbonnement(fo).show());
 
         Button consulterClubs=new Button("Consulter Clubs");
-        bs.addActionListener(s-> {
-            try {
-                new ConsulterClub(fo).show();
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        hi.addAll(b,bs);
+        consulterClubs.addActionListener(s->
+                new ConsulterClub(fo).show());
 
+
+
+        Button consulterActivites=new Button("Consulter Les activités");
+        consulterActivites.addActionListener(s->
+                new ConsulterActivite(fo).show());
+        hi.addAll(b,bs);
+        hi.add(consulterClubs);
+        hi.add(consulterActivites);
         hi.show();
     }
 
