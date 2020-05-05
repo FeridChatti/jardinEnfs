@@ -148,4 +148,26 @@ public class RemarqueService {
         }
         return remarques;
     }
+
+
+
+
+    public Boolean ajouterremarques(int tutid,int abid,String desc){
+        String url="http://127.0.0.1:8000/Api/addrem";
+        req.setUrl(url);
+        req.addArgument("tut", String.valueOf(tutid));
+        req.addArgument("abo", String.valueOf(abid));
+        req.addArgument("descr", desc);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk=new String (req.getResponseData()).contains("success");
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+    }
+
+
 }
