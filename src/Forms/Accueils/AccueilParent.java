@@ -21,14 +21,15 @@ setLayout(BoxLayout.y());
     bs.addActionListener(s->new AjouterAbonnement(fo).show());
     Button bse=new Button("consulter enfants");
     bse.addActionListener(s->new ConsulterEnfant(fo).show());
-
+    Button bts=new Button("Consulter Les Clubs");
+    bts.addActionListener(s->new ConsulterClub(fo).show());
     Button bt=new Button("Consulter Activité");
     bt.addActionListener(s->new ConsulterActivite(fo).show());
 
 
 
 
-    addAll(b,bs,bse,bt);
+    addAll(b,bs,bse,bts,bt);
 
 }
 

@@ -1,7 +1,9 @@
 package Forms;
 
 import Entities.Activite;
+import Entities.Enfant;
 import Services.ActiviteService;
+import Services.EnfantService;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
 
@@ -13,8 +15,10 @@ public class ParticiperActivite extends Form {
         setTitle("Participation");
 
         Label lbId = new Label(id);
-        lbId.isHidden(true);
+        lbId.setHidden(true);
         add(lbId);
+
+
 
         ArrayList<Activite> l = ActiviteService.getInstance().getActivite(lbId.getText());
 
@@ -22,14 +26,20 @@ public class ParticiperActivite extends Form {
 
             Label lbName = new Label(l.get(i).getTypeact());
             Label lbDescription = new Label(l.get(i).getDetailles());
-          //  Label date = new Label(l.get(i).getDate());
-
-
-
+            Label date = new Label(l.get(i).getDate());
+            Label club = new Label(l.get(i).getClub().getName());
             add(lbName);
             add(lbDescription);
-          //  add(date);
+            add(date);
+            add(club);
         }
+        for(int i = 0; i< EnfantService.getInstance().ListEnfants("1").size(); i++) {
+
+            ComboBox<String> lbenfant = new ComboBox<String>(EnfantService.getInstance().ListEnfants("1").get(i).getPrenom());
+            add(lbenfant);
+        }
+
+
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
 
     }

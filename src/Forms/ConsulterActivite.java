@@ -1,5 +1,6 @@
 package Forms;
 
+import Entities.Activite;
 import Services.ActiviteService;
 import Services.ClubService;
 import com.codename1.components.ToastBar;
@@ -10,34 +11,38 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.Style;
 import esprit.tn.MyApplication;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ConsulterActivite extends Form {
-     Form fo ;
+
 
 
 
     public ConsulterActivite(Form prev){
         setTitle("La Liste des Activités");
-        fo = this;
+        Form fo = this;
 
         Label choix  = new Label("veuillez choisir l'activité");
-        add(choix);
+
 
         Container detail = new Container(BoxLayout.y());
         add(detail);
-        for(int i = 0; i< ActiviteService.getInstance().getAllActivites().size(); i++){
+        detail.add(choix);
+
+        ArrayList<Activite> l = ActiviteService.getInstance().getAllActivites();
+        for(int i = 0; i< l.size(); i++){
 
 
-            String id = String.valueOf(ActiviteService.getInstance().getAllActivites().get(i).getId());
+            String id = String.valueOf(l.get(i).getId());
             Label lbID = new Label(id);
             lbID.isHidden(true);
             Label lbnom = new Label("Nom :");
-            Label lbName = new Label(ActiviteService.getInstance().getAllActivites().get(i).getTypeact());
+            Label lbName = new Label(l.get(i).getTypeact());
             //Label lbDescription = new Label(ActiviteService.getInstance().getAllActivites().get(i).getDetailles());
 
             Label lbdate = new Label("Date :");
-            Label date = new Label(ActiviteService.getInstance().getAllActivites().get(i).getDate());
+            Label date = new Label(l.get(i).getDate());
 
             lbName.addPointerReleasedListener(e->{
               if(  Dialog.show("Participer à cette activité","Vous avez choisi :"+lbName.getText(),"Oui","Non")){

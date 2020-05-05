@@ -55,7 +55,7 @@ public class ActiviteService {
     }
 
     public ArrayList<Activite> getAllActivites(){
-        String url="http://127.0.0.1:8000/web/listeact";
+        String url="http://127.0.0.1:8000/dorra/webS/listeact";
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -86,6 +86,9 @@ public class ActiviteService {
             c.setId((int)id);
             c.setTypeact(obj.get("typeact").toString());
             c.setDetailles(obj.get("detailles").toString());
+            Club a = new Club();
+            a.setName(obj.get("name").toString());
+            c.setClub(a);
            /* Map<String,Object> m = (Map<String, Object>) obj.get("Date");
             String str = m.get("date").toString();
             String g = str.substring(0,10);
@@ -97,7 +100,7 @@ public class ActiviteService {
     }
 
     public ArrayList<Activite> getActivite(String id){
-        String url="http://127.0.0.1:8000/web/showA/"+id;
+        String url="http://127.0.0.1:8000/dorra/webS/showA/"+id;
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
