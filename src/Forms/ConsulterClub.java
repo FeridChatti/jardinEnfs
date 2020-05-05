@@ -12,6 +12,7 @@ import esprit.tn.MyApplication;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 import static com.codename1.ui.Image.createImage;
 
@@ -19,8 +20,10 @@ import static com.codename1.ui.Image.createImage;
 public class ConsulterClub extends Form {
     private Resources theme;
 
-    public ConsulterClub(MyApplication prev)  {
 
+    public ConsulterClub(Form prev)  {
+
+        Form fo= this;
         setTitle("Liste des clubs");
 
       Container holder = new Container(BoxLayout.x());
@@ -28,9 +31,10 @@ public class ConsulterClub extends Form {
         Container detail = new Container(BoxLayout.y());
         add(detail);
 
-        for(int i=0; i<ClubService.getInstance().getAllclubs().size(); i++){
-            Label lbName = new Label(ClubService.getInstance().getAllclubs().get(i).getName());
-            Label lbDescription = new Label(ClubService.getInstance().getAllclubs().get(i).getDescription());
+        ArrayList<Club> l = ClubService.getInstance().getAllclubs();
+        for(int i=0; i<l.size(); i++){
+            Label lbName = new Label(l.get(i).getName());
+            Label lbDescription = new Label(l.get(i).getDescription());
        //    ImageViewer image = new ImageViewer(theme.getImage("17 Transformers 3.jpg"));
 
 
@@ -45,7 +49,7 @@ public class ConsulterClub extends Form {
 
         }
 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.start());
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
 
     }
 }

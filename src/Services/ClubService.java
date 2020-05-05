@@ -47,7 +47,7 @@ public class ClubService {
     }
 
     public ArrayList<Club> getAllclubs(){
-        String url="http://127.0.0.1:8000/web/listeclub";
+        String url="http://127.0.0.1:8000/dorra/webS/listeclub";
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override

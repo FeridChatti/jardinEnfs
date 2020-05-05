@@ -1,20 +1,19 @@
 package Forms.Remarques;
 
 import Entities.Remarque;
-import Forms.ParticiperActivite;
-import Services.ActiviteService;
 import Services.RemarqueService;
 import com.codename1.components.SpanLabel;
-import com.codename1.ui.*;
+import com.codename1.ui.Container;
+import com.codename1.ui.FontImage;
+import com.codename1.ui.Form;
+import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
-import com.codename1.ui.util.Resources;
-import esprit.tn.MyApplication;
 
 import java.util.ArrayList;
 
-public class ConsulterRemarques extends Form {
+public class TuteurRemarques extends Form {
 
-    public ConsulterRemarques(Form prev){
+    public TuteurRemarques (Form prev){
         setTitle("La Liste des remarques");
         Form form = this;
 
@@ -22,7 +21,7 @@ public class ConsulterRemarques extends Form {
 
         Container detail = new Container(BoxLayout.y());
         add(detail);
-        ArrayList<Remarque>  rmk= RemarqueService.getInstance().mesremarques();
+        ArrayList<Remarque> rmk= RemarqueService.getInstance().tutremarques();
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
 
         for(int i = 0; i<rmk.size(); i++){
@@ -34,18 +33,18 @@ public class ConsulterRemarques extends Form {
             SpanLabel lbnom = new SpanLabel("Enfant  :"+rmk.get(i).getEnfant());
 
 
-            SpanLabel lbtut = new SpanLabel("Tuteur  :"+rmk.get(i).getNomtut());
+            SpanLabel lbtut = new SpanLabel("Parent  :"+rmk.get(i).getNomtut());
 
 
             SpanLabel lbdate = new SpanLabel("Date :"+rmk.get(i).getDate());
-           SpanLabel lbDescription=new SpanLabel("description: "+rmk.get(i).getDescription());
+            SpanLabel lbDescription=new SpanLabel("description: "+rmk.get(i).getDescription());
 
 
 
             detail.add(lbnom);
 
 
-           detail.add(lbtut);
+            detail.add(lbtut);
 
             detail.add(lbDescription);
             detail.add(lbdate);
@@ -65,6 +64,4 @@ public class ConsulterRemarques extends Form {
 
 
     }
-
-
 }
