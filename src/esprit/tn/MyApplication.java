@@ -19,6 +19,7 @@ public class MyApplication {
     private Form current;
     private Resources theme;
     public static User authenticated=new User();
+
     public void init(Object context) {
         fo=this;
         // use two network threads instead of one

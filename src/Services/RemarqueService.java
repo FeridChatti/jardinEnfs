@@ -1,6 +1,7 @@
 package Services;
 
 import Entities.Chauffeur;
+import Entities.Enfant;
 import Entities.Remarque;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
@@ -168,6 +169,38 @@ public class RemarqueService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOk;
     }
+
+
+
+
+    public ArrayList<Enfant> enfants=new ArrayList<>();
+
+    public ArrayList<Enfant> ListEnfants (String idjar){
+
+
+
+        String Url="http://127.0.0.1:8000/webservices/listeenfjardin/"+idjar;
+        req.setUrl(Url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                enfants=EnfantService.getInstance().ParseEnfant(new String (req.getResponseData()));
+                req.removeResponseListener(this);
+
+
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+
+        return enfants;
+    }
+
+
+
+
+
 
 
 }

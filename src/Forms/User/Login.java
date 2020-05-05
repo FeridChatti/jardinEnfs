@@ -2,6 +2,7 @@ package Forms.User;
 
 import Forms.Accueils.AccueilParent;
 import Forms.Accueils.AccueilResponsable;
+import Forms.Accueils.AccueilTuteur;
 import Services.UserService;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
@@ -63,6 +64,9 @@ public class Login extends Form {
                        case "R" :
                            AccueilResponsable ac=new AccueilResponsable();
                            ac.show();
+                       case "T" :
+                           AccueilTuteur at=new AccueilTuteur();
+                           at.show();
                    }
 
 
