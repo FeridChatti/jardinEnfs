@@ -1,7 +1,6 @@
 package Services;
 
-import Entities.Activite;
-import Entities.Club;
+import Entities.*;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
 
@@ -115,5 +114,20 @@ public class ActiviteService {
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         return activite;
+    }
+
+    public Boolean AjouterParticiper(PartActivite p){
+        String url="http://127.0.0.1:8000/dorra/webS/participer/"+p.getId()+"/"+p.getEnfant().getId()+"/"+p.getDate();
+        req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk=req.getResponseCode()==200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+
     }
 }
