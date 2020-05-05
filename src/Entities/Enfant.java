@@ -13,6 +13,7 @@ import java.util.Collection;
  */
 public class Enfant {
 
+    private int idabo;
 
     private int id;
 
@@ -112,8 +113,15 @@ public class Enfant {
         this.participerActivite = participerActivite;
     }
 
+    public int getIdabo() {
+        return idabo;
+    }
 
-    public Enfant(int id, String nom, String prenom,String sexe,String datenaiss) {
+    public void setIdabo(int idabo) {
+        this.idabo = idabo;
+    }
+
+    public Enfant(int id, String nom, String prenom, String sexe, String datenaiss) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
