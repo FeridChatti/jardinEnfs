@@ -16,6 +16,7 @@ public static EnfantService instance=null;
 private ConnectionRequest req;
 public boolean resultOk;
 public ArrayList <Enfant> enfants;
+    public Enfant enf;
     public ArrayList <Jardin> montant;
 
 private EnfantService(){
@@ -41,6 +42,51 @@ public Boolean AjouterEnfant(Enfant e){
     return resultOk;
 
 }
+
+    public Boolean ModifierEnfant(Enfant e){
+        String url="http://127.0.0.1:8000/webservices/modifenf/"+e.getId()+"/"+e.getNom()+"/"+e.getPrenom()+"/"+e.getSexe()+"/"+e.getDatenaiss();
+        req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk=req.getResponseCode()==200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+
+    }
+
+
+
+
+
+
+    public Enfant getEnfants (String idp){
+        String Url="http://127.0.0.1:8000/webservices/getenfa/"+idp;
+        req.setUrl(Url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                enf=ParseEnfant(new String (req.getResponseData())).get(0);
+                req.removeResponseListener(this);
+
+
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+
+        return enf;
+    }
+
+
+
+
+
+
 public ArrayList<Enfant> ListEnfants (String idp){
     String Url="http://127.0.0.1:8000/webservices/listeenf/"+idp;
     req.setUrl(Url);
@@ -77,6 +123,7 @@ enfants=new ArrayList<>();
         e.setId((int)t);
         e.setNom(obj.get("nom").toString());
         e.setPrenom(obj.get("prenom").toString());
+        e.setSexe(obj.get("sexe").toString());
         Map<String,Object> m = (Map<String, Object>) obj.get("naiss");
         String str = m.get("date").toString();
         String g = str.substring(0,10);

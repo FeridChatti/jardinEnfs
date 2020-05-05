@@ -1,6 +1,8 @@
 package Forms.Enfants;
 
+import Entities.Enfant;
 import Services.EnfantService;
+import com.codename1.l10n.ParseException;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
 
@@ -14,17 +16,21 @@ public class ConsulterEnfant extends Form {
 
 
         for(int i = 0; i< EnfantService.getInstance().ListEnfants("4").size(); i++){
-
-            Label lbName = new Label(EnfantService.getInstance().ListEnfants("4").get(i).getNom()+" "+EnfantService.getInstance().ListEnfants("4").get(i).getPrenom());
+           Enfant enf=EnfantService.getInstance().ListEnfants("4").get(i);
+            Label lbName = new Label(enf.getNom()+" "+enf.getPrenom());
            // Label lbprenom = new Label(EnfantService.getInstance().ListEnfants("4").get(i).getPrenom());
-            Label date = new Label(EnfantService.getInstance().ListEnfants("4").get(i).getDatenaiss());
-            Label ids=new Label(String.valueOf(EnfantService.getInstance().ListEnfants("4").get(i).getId()));
+            Label date = new Label(enf.getDatenaiss());
+            Label ids=new Label(String.valueOf(enf.getId()));
             ids.setHidden(true);
          //   lbName.setLeadComponent(lbName);
 
             lbName.addPointerPressedListener(e->{
                 Dialog.show("Modifier cet Enfant?","Vous avez choisi :"+ids.getText(),"Oui","Non");
-                new ModifierEnfant(th,ids.getText()).show();
+                try {
+                    new ModifierEnfant(th,ids.getText()).show();
+                } catch (ParseException parseException) {
+                    parseException.printStackTrace();
+                }
             });
 
             detail.add(lbName);
