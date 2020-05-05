@@ -1,20 +1,24 @@
 package Forms.Accueils;
 
 import Forms.Sami.AjouterTrajet;
+import Forms.Sami.ConsulterTrajet;
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
 import com.codename1.ui.layouts.BoxLayout;
 
 public class AccueilResponsable extends Form {
-  Form fo;
+ public static   Form fo;
+
     public AccueilResponsable()
     {fo=this;
         setLayout(BoxLayout.y());
 
-        Button b=new Button("Ajouter un trajet");
-        b.addActionListener(e->new AjouterTrajet(fo).show());
+        Button cs=new Button("Consulter les trajets");
+        cs.addActionListener(e->new ConsulterTrajet(fo));
 
-addAll(b);
+
+        addAll(cs);
+
     }
 
 }

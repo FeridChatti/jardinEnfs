@@ -1,5 +1,6 @@
 package Services;
 
+import Entities.Chauffeur;
 import Entities.Enfant;
 
 import Entities.Trajet;
@@ -31,8 +32,25 @@ public class TrajetService {
         return instance;
     }
 
-    public ArrayList<Trajet> ListeTrajets (String idp) {
+    public ArrayList<Trajet> ListeTrajetsParChauffeur (String idp) {
         String Url="http://127.0.0.1:8000/Sami/api/listpar/"+idp;
+        req.setUrl(Url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                trajets=ParseTrajet(new String (req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+
+        return trajets;
+    }
+
+    public ArrayList<Trajet> ListeTrajets (String idj) {
+        String Url="http://127.0.0.1:8000/Sami/api/listtrajets/"+idj;
         req.setUrl(Url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -103,7 +121,12 @@ public class TrajetService {
             e.setId((int)t);
             e.setHeure(obj.get("heure").toString());
             e.setAdresse(obj.get("adresse").toString());
-            trajets.add(e);
+            if(obj.get("chauffeur_id").toString()!=null)
+            {
+                Chauffeur chauffeur=ChauffeurService.getInstance().getChauffeur((int)((double)obj.get("chauffeur_id")));
+                e.setChauffeur(chauffeur);
+                trajets.add(e);
+        }
         }
         return trajets;
     }
