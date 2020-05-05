@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ChauffeurService {
     public ArrayList <Chauffeur> chauffeurs;
@@ -44,6 +45,11 @@ public class ChauffeurService {
         return chauffeurs;
     }
 
+    public Chauffeur getChauffeur(int id) {chauffeurs=ListeChauffeursJardin(4+"");
+     Chauffeur ch= (Chauffeur) chauffeurs.stream().filter(e->e.getId()==id).collect(Collectors.toList()).get(0);
+
+     return ch;
+    }
     public ArrayList<Chauffeur> ParseChauffeurs(String json)  {
         chauffeurs=new ArrayList<>();
         JSONParser j= new JSONParser();

@@ -2,6 +2,7 @@ package Forms.Sami;
 
 import Entities.Chauffeur;
 import Entities.Trajet;
+import Forms.Accueils.AccueilResponsable;
 import Services.ChauffeurService;
 import Services.TrajetService;
 import com.codename1.ui.*;
@@ -34,9 +35,10 @@ public class AjouterTrajet extends Form {
       Trajet tr=new Trajet(ch.getId(),ad,hr);
 
       String response=TrajetService.getInstance().AjouterTrajet(tr);
-if(response.trim().equals("true"))
-      Dialog.show("Ajout éffectué","Vous avez ajouter un trajet pour le chauffeur : "+ ch.getNom(),new Command("OK"));
-
+if(response.trim().equals("true")) {
+    Dialog.show("Ajout éffectué", "Vous avez ajouter un trajet pour le chauffeur : " + ch.getNom(), new Command("OK"));
+     new ConsulterTrajet(AccueilResponsable.fo);
+}
   });
     }
 }

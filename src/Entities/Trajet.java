@@ -60,7 +60,7 @@ public class Trajet {
 
     @Override
     public String toString() {
-        return "{" + "id=" + id + ", adresse=" + adresse + ", heure=" + heure + ", chauffeur=" + chauffeur + '}';
+        return "";
     }
 
 
