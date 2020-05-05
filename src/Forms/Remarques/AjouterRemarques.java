@@ -25,7 +25,9 @@ public class AjouterRemarques extends Form {
         TextField descr= new TextField("","Votre remarque");
 
         ComboBox<Enfant> enfant = new ComboBox();
-        ArrayList<Enfant> enflist=RemarqueService.getInstance().ListEnfants("2");
+
+
+        ArrayList<Enfant> enflist=RemarqueService.getInstance().ListEnfants(authenticated.getId());
         for (int i = 0; i< enflist.size(); i++){
             enfant.addItem(enflist.get(i));
         }
@@ -55,6 +57,7 @@ public class AjouterRemarques extends Form {
 
                             if(RemarqueService.getInstance().ajouterremarques(authenticated.getId(),e.getIdabo(),descr.getText())){
                                 Dialog.show("Succes","Ajout réussi",new Command("OK"));
+                                prev.showBack();
                             }}}
 
 
