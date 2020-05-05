@@ -42,6 +42,22 @@ public Boolean AjouterEnfant(Enfant e){
     return resultOk;
 
 }
+    public Boolean SupprimerEnfant(String id){
+        String url="http://127.0.0.1:8000/webservices/deleteenf/"+id;
+        req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk=req.getResponseCode()==200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+
+    }
+
+
 
     public Boolean ModifierEnfant(Enfant e){
         String url="http://127.0.0.1:8000/webservices/modifenf/"+e.getId()+"/"+e.getNom()+"/"+e.getPrenom()+"/"+e.getSexe()+"/"+e.getDatenaiss();
