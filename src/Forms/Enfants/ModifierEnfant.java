@@ -46,6 +46,7 @@ public class ModifierEnfant extends Form {
             sexe.setEnabled(false);
            Button md=new Button("Modifier");
         Button supp=new Button("Supprimer");
+        Date dte = Date.from(Instant.now());
 
         String se=sexe.getSelectedItem().toString();
         String text = dt.getValue().toString();
@@ -66,26 +67,49 @@ public class ModifierEnfant extends Form {
                         public void actionPerformed(ActionEvent evt) {
 
                                 Dialog.show("Modifier cet Enfant?",null,"Oui","Non");
-                                int idenf=Integer.valueOf(id);
-                                Enfant e= new Enfant(idenf,t.getText(),re.getText(),se,text);
 
-                               boolean f= EnfantService.getInstance().ModifierEnfant(e);
-                                if(f){
-                            Dialog.show("Succés","Enfant modifié avec succés","Oui",null);
-                                    new ConsulterEnfant(prev).show();
-                        }
-                                else{
-                                    Dialog.show("Erreur","Erreur","Oui",null);
+                                int idenf=Integer.valueOf(id);
+                            if((t.getText().length()==0)||(re.getText().length()==0)){
+                                Dialog.show("Erreur","Veuillez indiquez les champs",new Command("OK"));
+                            }
+
+                              else {
+                                if (t.getText().matches("[a-zA-Z]*") && re.getText().matches("[a-zA-Z]*")) {
+                                    if (dte.compareTo(dt.getDate()) < 0) {
+                                        Dialog.show("Erreur", "Date non valide", new Command("OK"));
+                                    }
+                                    else{
+
+                                    Enfant e = new Enfant(idenf, t.getText(), re.getText(), se, text);
+
+                                    boolean f = EnfantService.getInstance().ModifierEnfant(e);
+                                    if (f) {
+                                        Dialog.show("Succés", "Enfant modifié avec succés", "Oui", null);
+                                        new ConsulterEnfant(prev).show();
+                                    } else {
+                                        Dialog.show("Erreur", "Erreur", "Oui", null);
+                                    }
+
+
                                 }
 
 
-                        }
+                            }}}
                     });
 
                     }
 
                 }
             });
+
+        supp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                Dialog.show("Alert","Voulez vous supprimer cet enfant?","Oui","Non");
+                EnfantService.getInstance().SupprimerEnfant(id);
+                new ConsulterEnfant(prev).show();
+            }
+        });
 
 
 
