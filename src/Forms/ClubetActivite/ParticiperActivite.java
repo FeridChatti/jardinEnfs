@@ -1,10 +1,10 @@
-package Forms;
+package Forms.ClubetActivite;
 
 import Entities.Activite;
-import Entities.Enfant;
-import Entities.PartActivite;
+import Forms.ClubetActivite.ConsulterActivite;
 import Services.ActiviteService;
 import Services.EnfantService;
+import com.codename1.components.ToastBar;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -15,13 +15,16 @@ import java.util.ArrayList;
 public class ParticiperActivite extends Form {
 
     String ide ;
-    Label lbName = new Label();
-    Label lbDescription = new Label();
-    Label date = new Label();
-    Label club = new Label();
+    Label lbName ;
+    Label lbDescription ;
+    Label date ;
+    Label club ;
+    int ida ;
 
     public ParticiperActivite(Form prev, String id){
+        Form fo = this;
         setTitle("Participation");
+        setLayout(BoxLayout.y());
 
         Label lbId = new Label(id);
         lbId.setHidden(true);
@@ -33,43 +36,41 @@ public class ParticiperActivite extends Form {
 
         for(int i = 0; i< l.size(); i++){
 
-             lbName = new Label(l.get(i).getTypeact());
-             lbDescription = new Label(l.get(i).getDetailles());
-             date = new Label(l.get(i).getDate());
-             club = new Label(l.get(i).getClub().getName());
+             lbName = new Label("nom :"+l.get(i).getTypeact());
+             lbDescription = new Label("detail : " + l.get(i).getDetailles());
+             date = new Label("Date :"+l.get(i).getDate());
+
+             club = new Label("Club de l'activité : "+l.get(i).getClub().getName());
             add(lbName);
             add(lbDescription);
             add(date);
             add(club);
         }
+
         for(int i = 0; i< EnfantService.getInstance().ListEnfants("1").size(); i++) {
 
             ComboBox<String> lbenfant = new ComboBox<String>(EnfantService.getInstance().ListEnfants("1").get(i).getNom());
+
             add(lbenfant);
             ide = String.valueOf(EnfantService.getInstance().ListEnfants("1").get(i).getId());
+
+            lbenfant.addActionListener(e -> ToastBar.showMessage("You picked " + lbenfant.getSelectedItem(), FontImage.MATERIAL_INFO));
+
         }
 
-        Button Participer=new Button("Participer");
-        Participer.addActionListener(new ActionListener() {
+        Button participer=new Button("Participer");
+        participer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
 
+                ida=Integer.parseInt(lbId.getText()) ;
+                int idep = Integer.parseInt(ide);
 
+                String datea = date.getText();
 
-
-                Activite ac = new Activite();
-                ac.setId(Integer.parseInt(lbId.getText()));
-
-                Enfant e = new Enfant();
-                e.setId(Integer.parseInt(ide));
-
-                PartActivite p = new PartActivite();
-                p.setDate(date.getText());
-                p.setActivite(ac);
-                p.setEnfant(e);
-
-                if (ActiviteService.getInstance().AjouterParticiper(p)) {
+                if (ActiviteService.getInstance().AjouterParticiper(ida,idep,datea)) {
                     Dialog.show("Succes", "Ajout réussi", new Command("OK"));
+                    new ConsulterActivite(fo).show();
                 } else {
                     Dialog.show("Erreur", "erreuuur", new Command("OK"));
                 }
@@ -77,6 +78,8 @@ public class ParticiperActivite extends Form {
 
         });
 
+
+add(participer);
 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
 
