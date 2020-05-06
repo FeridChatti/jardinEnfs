@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<resource majorVersion="1" minorVersion="10" useXmlUI="false">
+<resource majorVersion="1" minorVersion="11" useXmlUI="false">
     <image name="back-command.png" type="multi"  />
     <image name="border.png"  />
     <image name="Button.borderBottom_3.png" type="multi"  />
@@ -466,11 +466,12 @@
         <font key="MultiLine1.sel#font" type="ttf" face="0" style="1" size="16" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="4.0" />
         <val key="MultiLine1.sel#transparency" value="0" />
         <val key="MultiLine1.transparency" value="0" />
-        <val key="MultiLine2.fgColor" value="33cc" />
+        <val key="MultiLine2.fgColor" value="ff6666" />
         <font key="MultiLine2.font" type="ttf" face="0" style="1" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="MultiLine2.press#fgColor" value="33cc" />
         <font key="MultiLine2.press#font" type="ttf" face="0" style="1" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="MultiLine2.press#transparency" value="0" />
+        <val key="MultiLine2.sel#derive" value="MultiLine2" />
         <val key="MultiLine2.sel#fgColor" value="33cc" />
         <font key="MultiLine2.sel#font" type="ttf" face="0" style="1" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="MultiLine2.sel#transparency" value="0" />
@@ -485,7 +486,7 @@
         <val key="MultiLine3.sel#transparency" value="0" />
         <val key="MultiLine3.transparency" value="0" />
         <val key="MultiLine4.fgColor" value="666666" />
-        <font key="MultiLine4.font" type="ttf" face="0" style="0" size="8" name="native:ItalicLight" family="native:ItalicLight" sizeSettings="3" actualSize="2.0" />
+        <font key="MultiLine4.font" type="ttf" face="0" style="1" size="16" name="native:MainRegular" family="native:MainRegular" sizeSettings="0" actualSize="2.0" />
         <val key="MultiLine4.press#fgColor" value="666666" />
         <font key="MultiLine4.press#font" type="ttf" face="0" style="0" size="8" name="native:ItalicLight" family="native:ItalicLight" sizeSettings="3" actualSize="2.0" />
         <val key="MultiLine4.press#transparency" value="0" />
