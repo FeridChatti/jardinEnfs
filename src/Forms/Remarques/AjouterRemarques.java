@@ -2,6 +2,7 @@ package Forms.Remarques;
 
 import Entities.Enfant;
 import Services.EnfantService;
+import Services.RemarqueService;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -9,24 +10,30 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.spinner.Picker;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+
+import static esprit.tn.MyApplication.authenticated;
 
 public class AjouterRemarques extends Form {
 
     public AjouterRemarques(Form prev){
 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
-        setTitle("Ajouter Enfant");
+        setTitle("Ajouter Remarques");
         setLayout(BoxLayout.y());
-        TextField nom= new TextField("","Nom");
-        TextField prenom= new TextField("","Prenom");
-        ComboBox sexe= new ComboBox();
-        sexe.addItem("Homme");
-        sexe.addItem("Femme");
-        String se=sexe.getSelectedItem().toString();
+        TextField descr= new TextField("","Votre remarque");
 
-        Picker datePicker = new Picker();
-        Date lt = Date.from(Instant.now());
+        ComboBox<Enfant> enfant = new ComboBox();
+
+
+        ArrayList<Enfant> enflist=RemarqueService.getInstance().ListEnfants(authenticated.getId());
+        for (int i = 0; i< enflist.size(); i++){
+            enfant.addItem(enflist.get(i));
+        }
+
+
+
 
 
 
@@ -38,32 +45,27 @@ public class AjouterRemarques extends Form {
         aj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if((nom.getText().length()==0)||(prenom.getText().length()==0)){
-                    Dialog.show("Erreur","Veuillez indiquez les champs",new Command("OK"));
+                if((descr.getText().length()==0)){
+                    Dialog.show("Erreur","Veuillez indiquez la remarque",new Command("OK"));
                 }
 
                 else{
-                    if(nom.getText().matches("[a-zA-Z]*")&& prenom.getText().matches("[a-zA-Z]*")){
-                        if(lt.compareTo(datePicker.getDate())<0){
-                            Dialog.show("Erreur","Date non valide",new Command("OK"));
-                        }
-                        else{
-                            String text = datePicker.getValue().toString();
 
-                            Enfant e=new Enfant(50,nom.getText(),prenom.getText(),se,text);
 
-                            if(EnfantService.getInstance().AjouterEnfant(e)){
+
+                            Enfant e=enfant.getSelectedItem();
+
+                            if(RemarqueService.getInstance().ajouterremarques(authenticated.getId(),e.getIdabo(),descr.getText())){
                                 Dialog.show("Succes","Ajout réussi",new Command("OK"));
+                                prev.showBack();
                             }}}
 
-                    else{
-                        Dialog.show("Erreur","Veuillez indiquez un nom ou prenom valide",new Command("OK"));
-                    }
-                }
+
+
 
             }
-        });
-        addAll(nom,prenom,sexe,datePicker,aj);
+        );
+        addAll(descr,enfant,aj);
 
 
     }

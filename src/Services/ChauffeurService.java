@@ -44,7 +44,10 @@ public class ChauffeurService {
 
         return chauffeurs;
     }
-
+public String modifierChauffeur(Chauffeur chauffeur)
+{
+    return "true";
+}
     public Chauffeur getChauffeur(int id) {chauffeurs=ListeChauffeursJardin(4+"");
      Chauffeur ch= (Chauffeur) chauffeurs.stream().filter(e->e.getId()==id).collect(Collectors.toList()).get(0);
 
@@ -67,7 +70,7 @@ public class ChauffeurService {
             e.setCin(obj.get("cin").toString());
             e.setNom(obj.get("nom").toString());
             e.setSexe(obj.get("sexe").toString());
-            e.setTel(obj.get("nom").toString());
+            e.setTel(obj.get("tel").toString());
             e.setEmail(obj.get("email").toString());
             e.setUsername(obj.get("username").toString());
 
