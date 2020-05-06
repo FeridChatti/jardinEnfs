@@ -28,16 +28,8 @@ public class AjouterEnfant extends Form {
         sexe.addItem("Homme");
         sexe.addItem("Femme");
         String se=sexe.getSelectedItem().toString();
-
         Picker datePicker = new Picker();
         Date lt = Date.from(Instant.now());
-
-
-
-
-
-
-
         Button aj=new Button("Ajouter");
         aj.addActionListener(new ActionListener() {
             @Override

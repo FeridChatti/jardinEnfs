@@ -16,7 +16,6 @@ public class AccueilResponsable extends Form {
         Button cs=new Button("Consulter les trajets");
         cs.addActionListener(e->new ConsulterTrajet(fo));
 
-
         addAll(cs);
 
     }
