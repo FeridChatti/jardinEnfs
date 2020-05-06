@@ -2,20 +2,14 @@ package Forms.Sami;
 
 import Entities.Trajet;
 import Forms.Accueils.AccueilResponsable;
-import Forms.ParticiperActivite;
-import Services.ActiviteService;
-import Services.ChauffeurService;
 import Services.TrajetService;
 import com.codename1.ui.*;
-import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
-import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.list.MultiList;
-import esprit.tn.MyApplication;
 
 
 import java.util.ArrayList;
