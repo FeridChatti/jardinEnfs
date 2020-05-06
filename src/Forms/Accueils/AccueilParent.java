@@ -3,6 +3,8 @@ package Forms.Accueils;
 import Forms.*;
 import Forms.Abonnements.AjouterAbonnement;
 
+import Forms.ClubetActivite.ConsulterActivite;
+import Forms.ClubetActivite.ConsulterClub;
 import Forms.Abonnements.ConsulterAbonnement;
 import Forms.ConsulterActivite;
 import Forms.Enfants.AjouterEnfant;
@@ -39,7 +41,7 @@ setLayout(BoxLayout.y());
         btnmyrem.addActionListener(s -> new ConsulterRemarques(fo).show());
 
 
-        addAll(b, bs,ca, bse, bts,bt, btnmyrem);
+        addAll(b, bs, bse, bts,bt, btnmyrem);
 
 }
 

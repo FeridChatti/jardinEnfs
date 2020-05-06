@@ -1,14 +1,10 @@
 package Forms.Remarques;
 
 import Entities.Remarque;
-import Forms.ParticiperActivite;
-import Services.ActiviteService;
 import Services.RemarqueService;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
-import com.codename1.ui.util.Resources;
-import esprit.tn.MyApplication;
 
 import java.util.ArrayList;
 

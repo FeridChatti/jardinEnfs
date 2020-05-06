@@ -16,6 +16,7 @@ public class ActiviteService {
     public boolean resultOk;
     public ArrayList<Activite> activites;
     public ArrayList<Activite> activite;
+    public ArrayList<PartActivite> participants;
 
     private ActiviteService(){
         req=new ConnectionRequest();
@@ -88,10 +89,10 @@ public class ActiviteService {
             Club a = new Club();
             a.setName(obj.get("name").toString());
             c.setClub(a);
-           /* Map<String,Object> m = (Map<String, Object>) obj.get("Date");
+            Map<String,Object> m = (Map<String, Object>) obj.get("Date");
             String str = m.get("date").toString();
             String g = str.substring(0,10);
-            c.setDate(g);*/
+            c.setDate(g);
             activite.add(c);
         }
         return activite;
@@ -116,8 +117,8 @@ public class ActiviteService {
         return activite;
     }
 
-    public Boolean AjouterParticiper(PartActivite p){
-        String url="http://127.0.0.1:8000/dorra/webS/participer/"+p.getId()+"/"+p.getEnfant().getId()+"/"+p.getDate();
+    public Boolean AjouterParticiper(int ida, int ide, String date){
+        String url="http://127.0.0.1:8000/dorra/webS/partact/"+ida+"/"+ide+"/"+date;
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -129,5 +130,54 @@ public class ActiviteService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOk;
 
+    }
+
+
+    public ArrayList<PartActivite> ParsePArt(String jsontext) throws IOException {
+        participants = new ArrayList<PartActivite>();
+        JSONParser j = new JSONParser();
+        Map<String,Object> actListJson = j.parseJSON(new CharArrayReader(jsontext.toCharArray()));
+        List<Map<String,Object>> list = (List<Map<String, Object>>)actListJson.get("root");
+
+        for (Map<String,Object> obj : list){
+            PartActivite c = new PartActivite();
+//            float id = Float.parseFloat((obj.get("id").toString()));
+  //          c.setId((int)id);
+            Enfant e = new Enfant();
+            e.setNom(obj.get("nom").toString());
+            c.setEnfant(e);
+            Activite a = new Activite();
+            a.setTypeact(obj.get("typeact").toString());
+            c.setActivite(a);
+            Map<String,Object> m = (Map<String, Object>) obj.get("date");
+            String str = m.get("date").toString();
+            String g = str.substring(0,10);
+            c.setDate(g);
+            participants.add(c);
+
+        }
+
+        return participants;
+
+    }
+
+    public ArrayList<PartActivite> ListeParticipants(){
+        String url="http://127.0.0.1:8000/dorra/webS/listePart";
+        req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                try {
+                    participants = ParsePArt(new String(req.getResponseData()));
+                    req.removeResponseListener(this);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return participants;
     }
 }
