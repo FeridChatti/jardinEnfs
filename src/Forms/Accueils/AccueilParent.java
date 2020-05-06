@@ -3,6 +3,7 @@ package Forms.Accueils;
 import Forms.*;
 import Forms.Abonnements.AjouterAbonnement;
 
+import Forms.Abonnements.ConsulterAbonnement;
 import Forms.ConsulterActivite;
 import Forms.Enfants.AjouterEnfant;
 import Forms.Enfants.ConsulterEnfant;
@@ -25,6 +26,8 @@ setLayout(BoxLayout.y());
 
         Button bs = new Button("ajouter abonnement");
         bs.addActionListener(s -> new AjouterAbonnement(fo).show());
+        Button ca = new Button("consulter abonnement");
+         ca.addActionListener(s -> new ConsulterAbonnement(fo).show());
         Button bse = new Button("consulter enfants");
         bse.addActionListener(s -> new ConsulterEnfant(fo).show());
 
@@ -36,7 +39,7 @@ setLayout(BoxLayout.y());
         btnmyrem.addActionListener(s -> new ConsulterRemarques(fo).show());
 
 
-        addAll(b, bs, bse, bts,bt, btnmyrem);
+        addAll(b, bs,ca, bse, bts,bt, btnmyrem);
 
 }
 

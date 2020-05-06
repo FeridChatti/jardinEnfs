@@ -67,6 +67,7 @@ public class ModifierEnfant extends Form {
                         public void actionPerformed(ActionEvent evt) {
 
                                 Dialog.show("Modifier cet Enfant?",null,"Oui","Non");
+
                                 int idenf=Integer.valueOf(id);
                             if((t.getText().length()==0)||(re.getText().length()==0)){
                                 Dialog.show("Erreur","Veuillez indiquez les champs",new Command("OK"));
