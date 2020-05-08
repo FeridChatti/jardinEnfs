@@ -27,21 +27,15 @@ public class Evenement {
 
     private Collection<Participer> participation;
 
-    public Evenement(int id, String titre, String date, String description, String image, Categorie categorie) {
+    public Evenement(int id, String titre, String date, String description, Categorie categorie) {
         this.id = id;
         this.titre = titre;
         this.date = date;
         this.description = description;
-        this.image = image;
         this.categorie = categorie;
     }
 
-    public Evenement(String titre, String date, String description, String image) {
-        this.titre = titre;
-        this.date = date;
-        this.description = description;
-        this.image = image;
-    }
+
 
     public Evenement() {
     }
