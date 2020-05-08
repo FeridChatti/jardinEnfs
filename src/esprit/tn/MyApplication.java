@@ -17,7 +17,7 @@ import com.codename1.io.Log;
 public class MyApplication {
     public MyApplication fo;
     private Form current;
-    private Resources theme;
+    public static Resources theme;
     public static User authenticated=new User();
 
     public void init(Object context) {

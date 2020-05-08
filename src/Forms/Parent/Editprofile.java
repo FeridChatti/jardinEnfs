@@ -45,116 +45,120 @@ public class Editprofile extends Form {
 
         Label passwordlbl = new Label("Password");
         TextField passwordtf = new TextField();
-
+        passwordtf.setConstraint(TextField.PASSWORD);
         Button modifier = new Button("Modifier");
 
         modifier.addActionListener(e -> {
+
+        while (true){
 
 
             if (nomtf.getText().matches("[a-zA-Z]*") && nomtf.getText().length() != 0) {
 
                 p.setNom(nomtf.getText());
-                fl = true;
+
 
             } else {
                 Dialog.show("Erreur", "le champ nom invalide", new Command("OK"));
                 fl = false;
+                break;
             }
             if (prenomtf.getText().matches("[a-zA-Z]*") && prenomtf.getText().length() != 0) {
 
                 p.setPrenom(prenomtf.getText());
-                fl = true;
+
 
             } else {
                 Dialog.show("Erreur", "le champ prenom invalide", new Command("OK"));
-                fl = false;
+                fl = false;break;
             }
 
             if (!usernametf.getText().equals(authenticated.getUsername()) || !emailtf.getText().equals(authenticated.getEmail())) {
 
 
-                if (usernametf.getText().equals(authenticated.getUsername())) {
-                    fl = true;
-                } else if (usernametf.getText().matches("[a-zA-Z0-9]*") && usernametf.getText().length() != 0) {
+                if (!usernametf.getText().equals(authenticated.getUsername())) {
 
-                    if (!ParentService.getInstance().checkusername(usernametf.getText())) {
-                        p.setUsername(usernametf.getText());
-                        fl = true;
+                    if (usernametf.getText().matches("[a-zA-Z0-9]*") && usernametf.getText().length() != 0) {
+
+                        if (!ParentService.getInstance().checkusername(usernametf.getText())) {
+                            p.setUsername(usernametf.getText());
+
+                        } else {
+                            Dialog.show("Erreur", "username  exit", new Command("OK"));
+                            fl = false;break;
+
+                        }
+
+
                     } else {
-                        Dialog.show("Erreur", "username  exit", new Command("OK"));
-                        fl = false;
+                        Dialog.show("Erreur", "le champ username invalide", new Command("OK"));
+                        fl = false;break;
                     }
-
-
-                } else {
-                    Dialog.show("Erreur", "le champ username invalide", new Command("OK"));
-                    fl = false;
                 }
 
+                if (!emailtf.getText().equals(authenticated.getEmail())) {
 
-                if (emailtf.getText().equals(authenticated.getEmail())) {
 
-                    fl = true;
+                    if (emailtf.getText().matches("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}")
+                            && emailtf.getText().length() != 0) {
 
-                } else if (emailtf.getText().matches("^[\\\\w!#$%&’*+/=?`{|}~^-]+(?:\\\\.[\\\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,6}$")
-                        && emailtf.getText().length() != 0) {
+                        if (!ParentService.getInstance().checkuseremail(emailtf.getText())) {
+                            p.setEmail(emailtf.getText());
 
-                    if (!ParentService.getInstance().checkuseremail(emailtf.getText())) {
-                        p.setEmail(emailtf.getText());
 
-                        fl = true;
+                        } else {
+                            Dialog.show("Erreur", "email  exit", new Command("OK"));
+                            fl = false;break;
+
+                        }
                     } else {
-                        Dialog.show("Erreur", "email  exit", new Command("OK"));
-                        fl = false;
-
-                    }
-                } else{
                         Dialog.show("Erreur", "le champ email invalide", new Command("OK"));
-                        fl = false;
+                        fl = false;break;
                     }
 
 
-
-
+                }
             }
 
             if (numteltf.getText().matches("[0-9]*") && numteltf.getText().length() == 8) {
 
                 p.setNumtel(numteltf.getText());
-                fl = true;
+
 
             } else {
                 Dialog.show("Erreur", "le champ numtel invalide", new Command("OK"));
-                fl = false;
+                fl = false;break;
             }
             if (adressetf.getText().matches("^[a-zA-Z0-9]+$") && adressetf.getText().length() != 0) {
 
                 p.setAdresse(adressetf.getText());
-                fl = true;
+
 
             } else {
                 Dialog.show("Erreur", "le champ adresse invalide", new Command("OK"));
-                fl = false;
+                fl = false;break;
             }
 
             if (passwordtf.getText().matches("^[a-zA-Z0-9]+$") && passwordtf.getText().length() >= 5) {
 
                 p.setPassword(passwordtf.getText());
-                fl = false;
+
 
             } else if (passwordtf.getText().length() > 0) {
                 Dialog.show("Erreur", "le champ password invalide doit etre >=5 caractere", new Command("OK"));
-                fl = false;
+                fl = false;break;
             }
 
             if (fl) {
                 Boolean flag = ParentService.getInstance().Updateparent(p.getUsername(), p.getEmail(), p.getPassword(), p.getNom(), p.getPrenom(), p.getNumtel(), p.getAdresse());
                 if (flag) {
                     Dialog.show("Succes", "Votre profile a été modfifié avec succés", new Command("OK"));
-                    prev.showBack();
-                }
-            }
 
+                    prev.showBack();
+                    break;
+                }
+            }else{break;}
+        }
         });
 
 

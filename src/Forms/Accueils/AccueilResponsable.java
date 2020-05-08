@@ -1,5 +1,6 @@
 package Forms.Accueils;
 
+import Forms.ClubetActivite.ListeParticipation;
 import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
 import com.codename1.ui.Button;

@@ -92,7 +92,7 @@ public class ParentService {
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         //return p;
-        return !json.contains("Exist");
+        return json.contains("Exist");
 
     }
 
@@ -125,7 +125,7 @@ public class ParentService {
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
         //return p;
-        return !json.contains("Exist");
+        return json.contains("Exist");
 
     }
 

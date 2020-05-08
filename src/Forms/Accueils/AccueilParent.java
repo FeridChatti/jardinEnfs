@@ -6,6 +6,7 @@ import Forms.ClubetActivite.ConsulterActivite;
 import Forms.ClubetActivite.ConsulterClub;
 import Forms.Enfants.AjouterEnfant;
 import Forms.Enfants.ConsulterEnfant;
+import Forms.Parent.Chat;
 import Forms.Parent.Editprofile;
 import Forms.Parent.SendReclam;
 import Forms.Remarques.ConsulterRemarques;
@@ -31,6 +32,10 @@ setLayout(BoxLayout.y());
     bts.addActionListener(s->new ConsulterClub(fo).show());
         Button bt = new Button("Consulter Activité");
         bt.addActionListener(s -> new ConsulterActivite(fo).show());
+
+
+
+
         Button btnmyrem = new Button("remarques des enfants");
         btnmyrem.addActionListener(s -> new ConsulterRemarques(fo).show());
 
@@ -40,8 +45,10 @@ setLayout(BoxLayout.y());
 
     Button btnprofile = new Button("Modifier profile");
     btnprofile.addActionListener(s -> new Editprofile(fo).show());
+    Button btnchat = new Button("Contacter Jardin");
+    btnchat.addActionListener(s -> new Chat(fo).show());
 
-    addAll(b, bs, bse, bts, bt, btnmyrem,btnreclam,btnprofile);
+    addAll(b, bs, bse, bts, bt, btnmyrem,btnreclam,btnprofile,btnchat);
 
 }
 
