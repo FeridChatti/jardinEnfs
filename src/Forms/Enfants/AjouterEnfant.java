@@ -1,6 +1,7 @@
 package Forms.Enfants;
 
 import Entities.Enfant;
+import Forms.Accueils.AccueilParent;
 import Services.EnfantService;
 import com.codename1.l10n.DateFormat;
 import com.codename1.l10n.SimpleDateFormat;
@@ -50,6 +51,7 @@ public class AjouterEnfant extends Form {
 
                 if(EnfantService.getInstance().AjouterEnfant(e)){
                     Dialog.show("Succes","Ajout réussi",new Command("OK"));
+                    new ConsulterEnfant(new AccueilParent()).show();
                 }}}
 
                 else{

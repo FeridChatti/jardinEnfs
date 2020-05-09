@@ -6,10 +6,10 @@ import Forms.Abonnements.AjouterAbonnement;
 import Forms.ClubetActivite.ConsulterActivite;
 import Forms.ClubetActivite.ConsulterClub;
 import Forms.Abonnements.ConsulterAbonnement;
-import Forms.ConsulterActivite;
+
 import Forms.Enfants.AjouterEnfant;
 import Forms.Enfants.ConsulterEnfant;
-import Forms.ParticiperActivite;
+
 import Forms.Remarques.ConsulterRemarques;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
@@ -28,10 +28,10 @@ setLayout(BoxLayout.y());
 
         Button bs = new Button("ajouter abonnement");
         bs.addActionListener(s -> new AjouterAbonnement(fo).show());
-        Button ca = new Button("consulter abonnement");
-         ca.addActionListener(s -> new ConsulterAbonnement(fo).show());
         Button bse = new Button("consulter enfants");
         bse.addActionListener(s -> new ConsulterEnfant(fo).show());
+    Button cna = new Button("consulter abonnements");
+    cna.addActionListener(s -> new ConsulterAbonnement(fo).show());
 
     Button bts=new Button("Consulter Les Clubs");
     bts.addActionListener(s->new ConsulterClub(fo).show());
@@ -41,7 +41,7 @@ setLayout(BoxLayout.y());
         btnmyrem.addActionListener(s -> new ConsulterRemarques(fo).show());
 
 
-        addAll(b, bs, bse, bts,bt, btnmyrem);
+        addAll(b, bs, bse,cna, bts,bt, btnmyrem);
 
 }
 

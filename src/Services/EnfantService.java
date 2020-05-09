@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static esprit.tn.MyApplication.authenticated;
+
 public class EnfantService {
 
 public static EnfantService instance=null;
@@ -29,7 +31,7 @@ public static EnfantService getInstance(){
     return instance;
 }
 public Boolean AjouterEnfant(Enfant e){
-    String url="http://127.0.0.1:8000/webservices/ajoutenf/4"+"/"+e.getNom()+"/"+e.getPrenom()+"/"+e.getSexe()+"/"+e.getDatenaiss();
+    String url="http://127.0.0.1:8000/webservices/ajoutenf/"+authenticated.getId()+"/"+e.getNom()+"/"+e.getPrenom()+"/"+e.getSexe()+"/"+e.getDatenaiss();
     req.setUrl(url);
     req.addResponseListener(new ActionListener<NetworkEvent>() {
         @Override

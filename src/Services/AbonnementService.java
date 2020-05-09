@@ -94,6 +94,61 @@ public class AbonnementService {
     }
 
 
+    public ArrayList<Abonnement> ListAbonnementResp (String idp){
+        String Url="http://127.0.0.1:8000/webservices/listeabojardin/"+idp;
+        req.setUrl(Url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                abonnements=ParseAbonnementResp(new String (req.getResponseData()));
+                req.removeResponseListener(this);
+
+
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+
+        return abonnements;
+    }
+
+
+    public ArrayList<Abonnement> ParseAbonnementResp(String json)  {
+        abonnements=new ArrayList<>();
+        JSONParser j= new JSONParser();
+        Map<String,Object> ListEnfantJson= null;
+        try {
+            ListEnfantJson = j.parseJSON(new CharArrayReader(json.toCharArray()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        List<Map<String,Object>> list=(List <Map<String,Object>>) ListEnfantJson.get("root");
+        for(Map<String,Object> obj:list){
+            Abonnement e =new Abonnement();
+            Enfant enf=new Enfant();
+            enf.setNom(obj.get("nom").toString());
+            enf.setPrenom(obj.get("prenom").toString());
+            float t= Float.parseFloat(obj.get("id").toString());
+            e.setId((int)t);
+            e.setEnfant(enf);
+
+            e.setType(obj.get("type").toString());
+            e.setEtat(obj.get("etat").toString());
+            Map<String,Object> m = (Map<String, Object>) obj.get("dateab");
+            String str = m.get("date").toString();
+            String g = str.substring(0,10);
+            e.setDate(g);
+
+
+            abonnements.add(e);
+
+        }
+        return abonnements;
+    }
+
+
+
     public ArrayList<Abonnement> ParseAbonnement(String json)  {
         abonnements=new ArrayList<>();
         JSONParser j= new JSONParser();
