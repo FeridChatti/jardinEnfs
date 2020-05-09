@@ -57,7 +57,7 @@ setLayout(BoxLayout.y());
     btnchat.addActionListener(s -> new Chat(fo).show());
 
     addAll(b, bs, bse, bts, bt, btnmyrem,btnreclam,btnprofile,btnchat,bss);
-        addAll(b, bs, bse,cna, bts,bt, btnmyrem);
+       // addAll(b, bs, bse,cna, bts,bt, btnmyrem);
 
 }
 
