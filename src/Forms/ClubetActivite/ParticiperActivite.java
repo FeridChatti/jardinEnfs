@@ -1,6 +1,7 @@
 package Forms.ClubetActivite;
 
 import Entities.Activite;
+import Entities.PartActivite;
 import Forms.ClubetActivite.ConsulterActivite;
 import Services.ActiviteService;
 import Services.EnfantService;
@@ -36,22 +37,27 @@ public class ParticiperActivite extends Form {
 
         for(int i = 0; i< l.size(); i++){
 
-             lbName = new Label("nom :"+l.get(i).getTypeact());
-             lbDescription = new Label("detail : " + l.get(i).getDetailles());
-             date = new Label("Date :"+l.get(i).getDate());
+            Label lbn = new Label("Nom de l'activité :");
+             lbName = new Label(l.get(i).getTypeact());
+             Label lbd = new Label("Détail :");
+             lbDescription = new Label( l.get(i).getDetailles());
+             Label lbde = new Label("Date :");
+             date = new Label(l.get(i).getDate());
 
-             club = new Label("Club de l'activité : "+l.get(i).getClub().getName());
-            add(lbName);
-            add(lbDescription);
-            add(date);
-            add(club);
+             Label lbc = new Label("Club de l'activité :");
+             club = new Label(l.get(i).getClub().getName());
+            addAll(lbn,lbName);
+            addAll(lbd,lbDescription);
+            addAll(lbde,date);
+            addAll(lbc,club);
         }
 
+        Label lbe = new Label("L'enfant qui va participer :");
         for(int i = 0; i< EnfantService.getInstance().ListEnfants("1").size(); i++) {
 
             ComboBox<String> lbenfant = new ComboBox<String>(EnfantService.getInstance().ListEnfants("1").get(i).getNom());
 
-            add(lbenfant);
+            addAll(lbe,lbenfant);
             ide = String.valueOf(EnfantService.getInstance().ListEnfants("1").get(i).getId());
 
             lbenfant.addActionListener(e -> ToastBar.showMessage("You picked " + lbenfant.getSelectedItem(), FontImage.MATERIAL_INFO));
@@ -63,6 +69,10 @@ public class ParticiperActivite extends Form {
             @Override
             public void actionPerformed(ActionEvent evt) {
 
+               ArrayList<PartActivite> v = ActiviteService.getInstance().verification(ide,id);
+
+                if(v.isEmpty()){
+
                 ida=Integer.parseInt(lbId.getText()) ;
                 int idep = Integer.parseInt(ide);
 
@@ -73,6 +83,9 @@ public class ParticiperActivite extends Form {
                     new ConsulterActivite(fo).show();
                 } else {
                     Dialog.show("Erreur", "erreuuur", new Command("OK"));
+                }
+            }else{
+                    Dialog.show("Erreur", "existe déjà dans la liste", new Command("OK"));
                 }
             }
 

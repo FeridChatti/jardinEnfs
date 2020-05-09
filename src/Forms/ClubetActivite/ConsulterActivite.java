@@ -22,6 +22,7 @@ public class ConsulterActivite extends Form {
 
         Form fo = this;
         setLayout(BoxLayout.y());
+
         setTitle("Liste des Activités");
 
 /*
