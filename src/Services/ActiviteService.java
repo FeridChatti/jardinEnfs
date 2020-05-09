@@ -18,6 +18,8 @@ public class ActiviteService {
     public ArrayList<Activite> activite;
     public ArrayList<PartActivite> participants;
 
+    public ArrayList<PartActivite> verif;
+
     private ActiviteService(){
         req=new ConnectionRequest();
     }
@@ -180,4 +182,54 @@ public class ActiviteService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return participants;
     }
+
+    public ArrayList<PartActivite> ParseVerif(String jsontext) throws IOException {
+        verif = new ArrayList<PartActivite>();
+        JSONParser j = new JSONParser();
+        Map<String,Object> actListJson = j.parseJSON(new CharArrayReader(jsontext.toCharArray()));
+        List<Map<String,Object>> list = (List<Map<String, Object>>)actListJson.get("root");
+
+        for (Map<String,Object> obj : list){
+            PartActivite c = new PartActivite();
+//            float id = Float.parseFloat((obj.get("id").toString()));
+            //          c.setId((int)id);
+            Enfant e = new Enfant();
+            float id = Float.parseFloat((obj.get("d").toString()));
+            e.setId((int) id);
+            c.setEnfant(e);
+            Activite a = new Activite();
+            float ida = Float.parseFloat((obj.get("id").toString()));
+            a.setId((int)ida);
+            c.setActivite(a);
+            Map<String,Object> m = (Map<String, Object>) obj.get("date");
+            String str = m.get("date").toString();
+            String g = str.substring(0,10);
+            c.setDate(g);
+            verif.add(c);
+
+        }
+
+        return verif;
+
+    }
+    public ArrayList<PartActivite> verification(String id, String ida){
+        String url="http://127.0.0.1:8000/dorra/webS/verif/"+id+"/"+ida;
+        req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                try {
+                    verif = ParseVerif(new String(req.getResponseData()));
+                    req.removeResponseListener(this);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return verif;
+
+    }
+
+
 }
