@@ -10,6 +10,7 @@ import Forms.Parent.Chat;
 import Forms.Parent.Editprofile;
 import Forms.Parent.SendReclam;
 import Forms.Remarques.ConsulterRemarques;
+import Forms.raed.AfficheJArdin;
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
 import com.codename1.ui.layouts.BoxLayout;
@@ -22,6 +23,9 @@ setLayout(BoxLayout.y());
 
     Button b=new Button("ajouter enfant");
     b.addActionListener(e->new AjouterEnfant(fo).show());
+
+    Button bss= new Button("consulter jardin");
+    bss.addActionListener(s -> new AfficheJArdin(fo).show());
 
         Button bs = new Button("ajouter abonnement");
         bs.addActionListener(s -> new AjouterAbonnement(fo).show());
@@ -48,7 +52,7 @@ setLayout(BoxLayout.y());
     Button btnchat = new Button("Contacter Jardin");
     btnchat.addActionListener(s -> new Chat(fo).show());
 
-    addAll(b, bs, bse, bts, bt, btnmyrem,btnreclam,btnprofile,btnchat);
+    addAll(b, bs, bse, bts, bt, btnmyrem,btnreclam,btnprofile,btnchat,bss);
 
 }
 
