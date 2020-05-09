@@ -48,6 +48,10 @@ public class Parents extends User {
         this.adresse = adresse;
         this.sexe = sexe;
     }
+    public Parents() {
+
+    }
+
 
     public int getNbenfant() {
         return nbenfant;
