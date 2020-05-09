@@ -45,14 +45,14 @@ public class AjouterEvenement extends Form {
                 }
 
                 else{
-                    if(titre.getText().matches("[a-zA-Z]*")&& description.getText().matches("[a-zA-Z]*")){
+                    if(titre.getText().matches("[a-zA-Z]*")){
                         if(lt.compareTo(datePicker.getDate())<0){
                             Dialog.show("Erreur","Date non valide",new Command("OK"));
                         }
                         else{
-                            String text = datePicker.getValue().toString();
+                            String text = datePicker.getDate().toString();
 
-                            Evenement e=new Evenement(8,titre.getText(),text,description.getText(),c.getSelectedItem());
+                            Evenement e=new Evenement(8,titre.getText(),text ,description.getText(),c.getSelectedItem());
 
                             if(EvenementService.getInstance().AjouterEvenement(e)){
                                 Dialog.show("Succes","Ajout réussi",new Command("OK"));
