@@ -462,7 +462,6 @@
         <val key="MenuButton.transparency" value="0" />
         <val key="MonthView.margin" value="0.0,0.0,0.0,0.0" />
         <val key="MonthView.padding" value="0.0,0.0,0.0,0.0" />
-        <val key="MultiButton.bgColor" value="5bc8fb" />
         <val key="MultiButton.press#transparency" value="0" />
         <val key="MultiButton.sel#transparency" value="0" />
         <val key="MultiButton.transparency" value="255" />
