@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static esprit.tn.MyApplication.authenticated;
+
 public class ConsulterEnfant extends Form {
     String enl="";
     public ConsulterEnfant(Form prev){
@@ -33,7 +35,7 @@ public class ConsulterEnfant extends Form {
 
 
         //add(detail);
-        ArrayList<Enfant>enfa=EnfantService.getInstance().ListEnfants("4");
+        ArrayList<Enfant>enfa=EnfantService.getInstance().ListEnfants(String.valueOf(authenticated.getId()));
         ArrayList<Map<String, Object>> data = new ArrayList<>();
         for(Enfant enf:enfa){
 

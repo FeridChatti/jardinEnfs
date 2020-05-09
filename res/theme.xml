@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<resource majorVersion="1" minorVersion="11" useXmlUI="false">
+<resource majorVersion="1" minorVersion="10" useXmlUI="false">
+    <image name="alexandra.jpg"  />
     <image name="back-command.png" type="multi"  />
     <image name="border.png"  />
     <image name="Button.borderBottom_3.png" type="multi"  />
@@ -23,6 +24,8 @@
     <image name="Button.press#borderTopR_1.png" type="multi"  />
     <image name="cal_left_arrow.png" type="multi"  />
     <image name="cal_right_arrow.png" type="multi"  />
+    <image name="chat-bubble-left.png"  />
+    <image name="chat-bubble-right.png"  />
     <image name="Check-Box_Normal.png" type="multi"  />
     <image name="Check-Box_Press.png" type="multi"  />
     <image name="combo.png" type="multi"  />
@@ -50,12 +53,15 @@
     <image name="Menu.borderTopR_1.png" type="multi"  />
     <image name="Radio_btn_Normal.png" type="multi"  />
     <image name="Radio_btn_Press.png" type="multi"  />
+    <image name="rounded-border.png"  />
+    <image name="rounded-mask.png"  />
     <image name="Slider.borderTop_2.png_veryHigh.png" type="multi"  />
     <image name="Slider.borderTop_2.png_veryHigh_FULL.png" type="multi"  />
     <image name="Slider.borderTopL_2.png_veryHigh.png" type="multi"  />
     <image name="Slider.borderTopL_2.png_veryHigh_FULL.png" type="multi"  />
     <image name="Slider.borderTopR_2.png_veryHigh.png" type="multi"  />
     <image name="Slider.borderTopR_2.png_veryHigh_FULL.png" type="multi"  />
+    <image name="social-chat-tutorial-image-top.jpg"  />
     <image name="switch_mask.png" type="multi"  />
     <image name="switch_off.png" type="multi"  />
     <image name="switch_on.png" type="multi"  />
@@ -392,6 +398,8 @@
         <font key="Label.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="Label.sel#transparency" value="0" />
         <val key="Label.transparency" value="0" />
+        <font key="LargeIconFont.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="4.0" />
+        <val key="LargeIconFont.transparency" value="255" />
         <val key="List.bgColor" value="ffffff" />
         <val key="List.margin" value="0.0,0.0,0.0,0.0" />
         <val key="List.padding" value="0.0,0.0,0.0,0.0" />
@@ -456,7 +464,7 @@
         <val key="MonthView.padding" value="0.0,0.0,0.0,0.0" />
         <val key="MultiButton.press#transparency" value="0" />
         <val key="MultiButton.sel#transparency" value="0" />
-        <val key="MultiButton.transparency" value="0" />
+        <val key="MultiButton.transparency" value="255" />
         <val key="MultiLine1.fgColor" value="0" />
         <font key="MultiLine1.font" type="ttf" face="0" style="1" size="16" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="4.0" />
         <val key="MultiLine1.press#fgColor" value="0" />
@@ -706,14 +714,8 @@
         <val key="Title.fgColor" value="ffffff" />
         <font key="Title.font" type="ttf" face="0" style="0" size="0" name="native:MainBold" family="native:MainBold" sizeSettings="3" actualSize="3.5" />
         <val key="Title.transparency" value="0" />
-        <val key="TitleArea.bgColor" value="486666" />
-        <gradient key="TitleArea.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
-        <val key="TitleArea.bgType" value="0" />
+        <val key="TitleArea.bgColor" value="5bc8fb" />
         <border key="TitleArea.border" type="empty" />
-        <val key="TitleArea.fgColor" value="0" />
-        <val key="TitleArea.margin" value="0.0,0.0,0.0,0.0" />
-        <val key="TitleArea.padUnit" value="2,0,2,0" />
-        <val key="TitleArea.padding" value="1.0,1.0,0.0,0.0" />
         <val key="TitleArea.transparency" value="255" />
         <gradient key="TitleCommand.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="TitleCommand.bgType" value="0" />
@@ -746,6 +748,9 @@
         <font key="ToastBarMessage.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="ToastBarMessage.padUnit" value="2,2,2,2" />
         <val key="ToastBarMessage.padding" value="2.0,2.0,1.0,1.0" />
+        <val key="UserImage.bgImage" value="rounded-border.png" />
+        <val key="UserImage.bgType" value="34" />
+        <val key="UserImage.transparency" value="0" />
         <val key="bgColor" value="ffffff" />
         <border key="border" type="empty" />
         <val key="fgColor" value="0" />
@@ -754,4 +759,13 @@
         <border key="sel#border" type="empty" />
         <val key="transparency" value="0" />
     </theme>
+    <image name="TitleArea.borderBottom_1.png" type="multi"  />
+    <image name="TitleArea.borderBottomL_1.png" type="multi"  />
+    <image name="TitleArea.borderBottomR_1.png" type="multi"  />
+    <image name="TitleArea.borderCenter_1.png" type="multi"  />
+    <image name="TitleArea.borderLeft_1.png" type="multi"  />
+    <image name="TitleArea.borderRight_1.png" type="multi"  />
+    <image name="TitleArea.borderTop_1.png" type="multi"  />
+    <image name="TitleArea.borderTopL_1.png" type="multi"  />
+    <image name="TitleArea.borderTopR_1.png" type="multi"  />
 </resource>
