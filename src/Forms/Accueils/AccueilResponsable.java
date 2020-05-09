@@ -1,5 +1,7 @@
 package Forms.Accueils;
 
+import Forms.ClubetActivite.ListeParticipation;
+import Forms.Evenement.AjouterEvenement;
 import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
 import com.codename1.ui.Button;
@@ -18,8 +20,13 @@ public class AccueilResponsable extends Form {
         Button participer=new Button("Consulter les participations");
         participer.addActionListener(e->new ListeParticipation(fo));
 
+        Button ajev=new Button("Ajouter evenement");
+        ajev.addActionListener(e->new AjouterEvenement(fo).show());
 
-        addAll(cs,participer);
+
+
+
+        addAll(cs,participer,ajev);
 
     }
 

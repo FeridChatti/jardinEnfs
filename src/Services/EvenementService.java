@@ -30,7 +30,7 @@ public class EvenementService {
 
     }
     public ArrayList<Evenement> ListeEvenementJardin (String idj) {
-        String Url="http://http://127.0.0.1:8000/eveapi/Api/listevents/"+idj;
+        String Url="http://127.0.0.1:8000/eveapi/Api/listevents/"+idj;
         req.setUrl(Url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -76,7 +76,7 @@ public class EvenementService {
     }
 
     public Boolean AjouterEvenement(Evenement e){
-        String url="http://127.0.0.1:8000/eveapi/Api/ajoutevent/2"+"/"+e.getTitre()+"/"+e.getDescription()+"/"+e.getImage()+"/"+e.getDate();
+        String url="http://127.0.0.1:8000/eveapi/Api/ajoutevent/2"+"/"+e.getTitre()+"/"+e.getDescription()+"/"+e.getDate()+"/"+e.getCategorie().getId();
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
