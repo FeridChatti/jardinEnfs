@@ -51,13 +51,13 @@ public class JardinService {
     public ArrayList<Jardin> ParseJardin (String json){
         jardin = new ArrayList<>();
        JSONParser j= new JSONParser();
-        Map<String, Object> ListJArdinJson = null;
+        Map<String, Object> jardjson = null;
         try {
-            ListJArdinJson = j.parseJSON(new CharArrayReader(json.toCharArray()));
+            jardjson = j.parseJSON(new CharArrayReader(json.toCharArray()));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        List<Map<String, Object>> list = (List<Map<String, Object>>) ListJArdinJson.get("root");;
+        List<Map<String, Object>> list = (List<Map<String, Object>>) jardjson.get("root");;
         for (Map<String, Object> obj : list) {
             Jardin e = new Jardin();
             float t = Float.parseFloat(obj.get("id").toString());
