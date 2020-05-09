@@ -18,6 +18,7 @@ public class Messages {
 
 
     private String msg;
+    private String jarname;
 
 
     private Jardin jardin;
@@ -36,6 +37,14 @@ public class Messages {
         this.jardin = jardin;
         this.parent = parent;
         this.sender = sender;
+    }
+
+    public String getJarname() {
+        return jarname;
+    }
+
+    public void setJarname(String jarname) {
+        this.jarname = jarname;
     }
 
     public int getId() {
