@@ -6,11 +6,15 @@ import Forms.Abonnements.AjouterAbonnement;
 import Forms.ClubetActivite.ConsulterActivite;
 import Forms.ClubetActivite.ConsulterClub;
 import Forms.Abonnements.ConsulterAbonnement;
-//import Forms.ConsulterActivite;
+
 import Forms.Enfants.AjouterEnfant;
 import Forms.Enfants.ConsulterEnfant;
-//import Forms.ParticiperActivite;
+import Forms.Parent.Chat;
+import Forms.Parent.Editprofile;
+import Forms.Parent.SendReclam;
+
 import Forms.Remarques.ConsulterRemarques;
+import Forms.raed.AfficheJArdin;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.Form;
@@ -25,6 +29,9 @@ setLayout(BoxLayout.y());
 
     Button b=new Button("ajouter enfant");
     b.addActionListener(e->new AjouterEnfant(fo).show());
+
+    Button bss= new Button("consulter jardin");
+    bss.addActionListener(s -> new AfficheJArdin(fo).show());
 
         Button bs = new Button("ajouter abonnement");
         bs.addActionListener(s -> new AjouterAbonnement(fo).show());
@@ -41,7 +48,16 @@ setLayout(BoxLayout.y());
         btnmyrem.addActionListener(s -> new ConsulterRemarques(fo).show());
 
 
-        addAll(b, bs, bse, bts,bt, btnmyrem);
+    Button btnreclam = new Button("Envoyer une réclamation");
+    btnreclam.addActionListener(s -> new SendReclam(fo).show());
+
+    Button btnprofile = new Button("Modifier profile");
+    btnprofile.addActionListener(s -> new Editprofile(fo).show());
+    Button btnchat = new Button("Contacter Jardin");
+    btnchat.addActionListener(s -> new Chat(fo).show());
+
+    addAll(b, bs, bse, bts, bt, btnmyrem,btnreclam,btnprofile,btnchat,bss);
+       // addAll(b, bs, bse,cna, bts,bt, btnmyrem);
 
 }
 

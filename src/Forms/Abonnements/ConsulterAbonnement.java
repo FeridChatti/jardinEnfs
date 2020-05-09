@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static esprit.tn.MyApplication.authenticated;
+
 public class ConsulterAbonnement extends Form {
 String enl="";
 String nmepre="";
@@ -34,7 +36,7 @@ public ConsulterAbonnement(Form prev){
 
 
     //add(detail);
-    ArrayList<Abonnement> abonnem= AbonnementService.getInstance().ListAbonnement("4");
+    ArrayList<Abonnement> abonnem= AbonnementService.getInstance().ListAbonnement(String.valueOf(authenticated.getId()));
     ArrayList<Map<String, Object>> data = new ArrayList<>();
     for(Abonnement abon:abonnem){
 
