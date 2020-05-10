@@ -5,6 +5,7 @@ import Forms.ClubetActivite.ListeParticipation;
 import Forms.Evenement.AjouterEvenement;
 import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
+import Forms.raed.AfficheJardinRespo;
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
 import com.codename1.ui.layouts.BoxLayout;
@@ -15,6 +16,8 @@ public class AccueilResponsable extends Form {
     public AccueilResponsable()
     {fo=this;
         setLayout(BoxLayout.y());
+        Button bJ=new Button("Consulter Vos Jardin");
+        bJ.addActionListener(e->new AfficheJardinRespo(fo));
 
         Button cs=new Button("Consulter les trajets");
         cs.addActionListener(e->new ConsulterTrajet(fo));
@@ -30,7 +33,7 @@ public class AccueilResponsable extends Form {
 
 
 
-        addAll(cs,participer,abonnement,ajev);
+        addAll(bJ,cs,participer,abonnement,ajev);
 
 
 
