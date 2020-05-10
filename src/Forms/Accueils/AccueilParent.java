@@ -13,6 +13,7 @@ import Forms.Evenement.ConsulterEvenement;
 import Forms.Evenement.consulterListeEvent;
 import Forms.Parent.Chat;
 import Forms.Parent.Editprofile;
+import Forms.Parent.JardList;
 import Forms.Parent.SendReclam;
 
 import Forms.Remarques.ConsulterRemarques;
@@ -66,7 +67,7 @@ public class AccueilParent extends BaseForm {
         Button btnprofile = new Button("Modifier profile");
         btnprofile.addActionListener(s -> new Editprofile(fo).show());
         Button btnchat = new Button("Contacter Jardin");
-        btnchat.addActionListener(s -> new Chat(fo).show());
+        btnchat.addActionListener(s -> new JardList(fo).show());
 
         Button btList = new Button("Liste des événements");
         btList.addActionListener(s -> new consulterListeEvent(fo).show());
