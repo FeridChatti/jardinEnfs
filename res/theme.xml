@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resource majorVersion="1" minorVersion="10" useXmlUI="false">
+    <image name="a.jpg"  />
+    <image name="aa.jpg"  />
+    <image name="aaa.jpg"  />
+    <image name="about-img-1.jpg"  />
+    <image name="activation-background.jpg"  />
     <image name="alexandra.jpg"  />
+    <image name="ann.jpg"  />
+    <image name="avatar5.png"  />
+    <image name="b.jpg"  />
     <image name="back-command.png" type="multi"  />
+    <image name="bb.jpg"  />
+    <image name="bc.jpg"  />
     <image name="border.png"  />
     <image name="Button.borderBottom_3.png" type="multi"  />
     <image name="Button.borderBottomL_3.png" type="multi"  />
@@ -24,12 +34,15 @@
     <image name="Button.press#borderTopR_1.png" type="multi"  />
     <image name="cal_left_arrow.png" type="multi"  />
     <image name="cal_right_arrow.png" type="multi"  />
+    <image name="cc.jpg"  />
     <image name="chat-bubble-left.png"  />
     <image name="chat-bubble-right.png"  />
     <image name="Check-Box_Normal.png" type="multi"  />
     <image name="Check-Box_Press.png" type="multi"  />
     <image name="combo.png" type="multi"  />
     <image name="ComboBox.borderBottom_1.png" type="multi"  />
+    <image name="Conciergerie.JPG"  />
+    <image name="confirmation-background.jpg"  />
     <image name="Dialog.borderBottom_1.png" type="multi"  />
     <image name="Dialog.borderBottomL_1.png" type="multi"  />
     <image name="Dialog.borderBottomR_1.png" type="multi"  />
@@ -39,8 +52,16 @@
     <image name="Dialog.borderTop_1.png" type="multi"  />
     <image name="Dialog.borderTopL_1.png" type="multi"  />
     <image name="Dialog.borderTopR_1.png" type="multi"  />
+    <image name="dog.jpg"  />
+    <image name="down-arrow.png"  />
+    <image name="electricte.JPG"  />
+    <image name="fixitnoir.png"  />
+    <image name="Grand-m&#xe9;nage.jpg"  />
+    <image name="home1.jpg"  />
+    <image name="home2.jpg"  />
     <image name="img_bgr_side_bar_title.png"  />
     <image name="img_bgr_tile.png"  />
+    <image name="jardinage1.png"  />
     <image name="kgpng.png"  />
     <image name="Menu.borderBottom_1.png" type="multi"  />
     <image name="Menu.borderBottomL_1.png" type="multi"  />
@@ -51,10 +72,20 @@
     <image name="Menu.borderTop_1.png" type="multi"  />
     <image name="Menu.borderTopL_1.png" type="multi"  />
     <image name="Menu.borderTopR_1.png" type="multi"  />
+    <image name="news-item-1.jpg"  />
+    <image name="news-item-2.jpg"  />
+    <image name="news-item-3.jpg"  />
+    <image name="news-item-4.jpg"  />
+    <image name="news-item.jpg"  />
+    <image name="Peinture.jpg"  />
+    <image name="Plomberie.JPG"  />
+    <image name="profile-background.jpg"  />
     <image name="Radio_btn_Normal.png" type="multi"  />
     <image name="Radio_btn_Press.png" type="multi"  />
     <image name="rounded-border.png"  />
     <image name="rounded-mask.png"  />
+    <image name="signin-background.jpg"  />
+    <image name="signup-background.jpg"  />
     <image name="Slider.borderTop_2.png_veryHigh.png" type="multi"  />
     <image name="Slider.borderTop_2.png_veryHigh_FULL.png" type="multi"  />
     <image name="Slider.borderTopL_2.png_veryHigh.png" type="multi"  />
@@ -112,13 +143,13 @@
         <val key="@switchOnImage" value="switch_on.png" />
         <val key="@tabPlacementInt" value="0" />
         <val key="Button.align" value="4" />
-        <border key="Button.border" type="round" roundBorderColor="16777215" opacity="255" strokeColor="3948660" strokeOpacity="255" strokeThickness="5.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
-        <val key="Button.fgColor" value="3c4074" />
+        <border key="Button.border" type="image" i1="Button.borderTop_3.png" i2="Button.borderBottom_3.png" i3="Button.borderLeft_3.png" i4="Button.borderRight_3.png" i5="Button.borderTopL_3.png" i6="Button.borderTopR_3.png" i7="Button.borderBottomL_3.png" i8="Button.borderBottomR_3.png" i9="Button.borderCenter_3.png" />
+        <val key="Button.fgColor" value="0" />
         <font key="Button.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="Button.marUnit" value="2,2,2,2" />
-        <val key="Button.margin" value="3.0,3.0,2.0,2.0" />
+        <val key="Button.margin" value="1.0,1.0,1.0,1.0" />
         <val key="Button.padUnit" value="2,2,2,2" />
-        <val key="Button.padding" value="2.0,2.0,2.0,2.0" />
+        <val key="Button.padding" value="1.0,1.0,1.0,1.0" />
         <val key="Button.press#align" value="4" />
         <gradient key="Button.press#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Button.press#bgType" value="0" />
@@ -141,6 +172,7 @@
         <val key="Button.sel#padUnit" value="2,2,2,2" />
         <val key="Button.sel#padding" value="1.0,1.0,1.0,1.0" />
         <val key="Button.sel#transparency" value="0" />
+        <val key="Button.transparency" value="0" />
         <val key="CalendarDate.bgColor" value="486666" />
         <val key="CalendarDate.fgColor" value="0" />
         <val key="CalendarDate.margin" value="0.0,0.0,0.0,0.0" />
@@ -308,6 +340,7 @@
         <val key="CommandList.sel#padding" value="0.0,0.0,0.0,0.0" />
         <val key="CommandList.sel#transparency" value="0" />
         <val key="CommandList.transparency" value="0" />
+        <val key="Container.align" value="4" />
         <gradient key="Container.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Container.bgType" value="0" />
         <val key="Container.press#derive" value="Container" />
@@ -386,6 +419,9 @@
         <val key="Form.transparency" value="255" />
         <val key="ImageViewer.margin" value="0.0,0.0,0.0,0.0" />
         <val key="ImageViewer.padding" value="0.0,0.0,0.0,0.0" />
+        <val key="LINK.fgColor" value="ffffff" />
+        <font key="LINK.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.5" />
+        <val key="LINK.transparency" value="0" />
         <val key="Label.fgColor" value="0" />
         <font key="Label.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="Label.press#fgColor" value="0" />
@@ -423,6 +459,12 @@
         <val key="ListRenderer.transparency" value="0" />
         <border key="ListRendererFocus.border" type="empty" />
         <val key="ListRendererFocus.transparency" value="0" />
+        <val key="LogoLabel.align" value="4" />
+        <val key="LogoLabel.fgColor" value="ffffff" />
+        <font key="LogoLabel.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="3.0" />
+        <val key="LogoLabel.padUnit" value="2,0,2,0" />
+        <val key="LogoLabel.padding" value="3.0,24.0,0.0,0.0" />
+        <val key="LogoLabel.transparency" value="0" />
         <gradient key="Menu.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Menu.bgType" value="0" />
         <border key="Menu.border" type="image" i1="Menu.borderTop_1.png" i2="Menu.borderBottom_1.png" i3="Menu.borderLeft_1.png" i4="Menu.borderRight_1.png" i5="Menu.borderTopL_1.png" i6="Menu.borderTopR_1.png" i7="Menu.borderBottomL_1.png" i8="Menu.borderBottomR_1.png" i9="Menu.borderCenter_1.png" />
@@ -592,6 +634,22 @@
         <val key="SideNavigationPanel.margin" value="0.0,0.0,0.0,0.0" />
         <val key="SideNavigationPanel.padding" value="0.0,0.0,0.0,0.0" />
         <val key="SideNavigationPanel.transparency" value="255" />
+        <val key="SignIn.bgImage" value="about-img-1.jpg" />
+        <val key="SignIn.bgType" value="33" />
+        <val key="SignIn.padUnit" value="0,0,2,0" />
+        <val key="SignIn.padding" value="0.0,3.0,0.0,0.0" />
+        <val key="SignIn.transparency" value="255" />
+        <val key="SignInBtn.align" value="4" />
+        <border key="SignInBtn.border" type="round" roundBorderColor="3948660" opacity="255" strokeColor="3948660" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <val key="SignInBtn.derive" value="Button" />
+        <val key="SignInBtn.fgColor" value="ffffff" />
+        <font key="SignInBtn.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
+        <val key="SignInBtn.marUnit" value="2,2,2,2" />
+        <val key="SignInBtn.margin" value="3.0,3.0,2.0,2.0" />
+        <val key="SignInBtn.padUnit" value="2,2,2,2" />
+        <val key="SignInBtn.padding" value="2.0,2.0,2.0,2.0" />
+        <border key="SignInBtn.press#border" type="round" roundBorderColor="3948660" opacity="255" strokeColor="3948660" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <val key="SignInBtn.press#derive" value="Button.sel" />
         <gradient key="Slider.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Slider.bgType" value="0" />
         <border key="Slider.border" type="imageH" i1="Slider.borderTopL_2.png_veryHigh.png" i2="Slider.borderTopR_2.png_veryHigh.png" i3="Slider.borderTop_2.png_veryHigh.png" />
@@ -756,6 +814,7 @@
         <border key="sel#border" type="empty" />
         <val key="transparency" value="0" />
     </theme>
+    <image name="timeline-background.jpg"  />
     <image name="TitleArea.borderBottom_1.png" type="multi"  />
     <image name="TitleArea.borderBottomL_1.png" type="multi"  />
     <image name="TitleArea.borderBottomR_1.png" type="multi"  />
@@ -765,4 +824,6 @@
     <image name="TitleArea.borderTop_1.png" type="multi"  />
     <image name="TitleArea.borderTopL_1.png" type="multi"  />
     <image name="TitleArea.borderTopR_1.png" type="multi"  />
+    <image name="troc.jpg"  />
+    <image name="welcome-background.jpg"  />
 </resource>

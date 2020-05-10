@@ -14,19 +14,28 @@ import Forms.Parent.Editprofile;
 import Forms.Parent.SendReclam;
 
 import Forms.Remarques.ConsulterRemarques;
+import Forms.User.BaseForm;
 import Forms.raed.AfficheJArdin;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.Form;
+import com.codename1.ui.Toolbar;
 import com.codename1.ui.layouts.BoxLayout;
 import esprit.tn.MyApplication;
 
-public class AccueilParent extends Form {
+public class AccueilParent extends BaseForm {
     Form fo;
 
     public AccueilParent() {
         fo = this;
         setLayout(BoxLayout.y());
+        Toolbar tb = new Toolbar(true);
+        setToolbar(tb);
+        getTitleArea().setUIID("Container");
+        setTitle("Parent");
+        getContentPane().setScrollVisible(false);
+
+        super.addSideMenu();
 
         Button b = new Button("ajouter enfant");
         b.addActionListener(e -> new AjouterEnfant(fo).show());

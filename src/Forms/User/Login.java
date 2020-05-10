@@ -21,6 +21,10 @@ public class Login extends Form {
     UserService su=new UserService();
 
     public Login (MyApplication prev,Resources theme){
+
+
+
+
         loginForm = new Form("Sign in ");
         loginForm.setLayout(new BorderLayout());
         Container center = new Container(new BoxLayout(BoxLayout.Y_AXIS));
