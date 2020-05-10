@@ -44,23 +44,6 @@ public class AfficheJArdin extends Form {
 
         DefaultListModel<Map<String, Object>> model = new DefaultListModel<>(data);
         MultiList ml = new MultiList(model);
-        ml.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                Map<String, Object> t = (HashMap) ml.getSelectedItem();
-                enl=(String)t.get("id");
-                Dialog.show("Modifier cet Jardin?","Veuillez selectionez un choix","Oui","Non");
-
-                try {
-                    new ModifierEnfant(th,enl).show();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-        });
-
         add(ml);
 
     }

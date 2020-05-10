@@ -23,7 +23,7 @@ public class AfficheJardinRespo  extends Form {
         Form th=this;
 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
-        setTitle("Affiche Jardin");
+        setTitle("Affiche Jardin Responsable");
         setLayout(BoxLayout.y());
 
         int mm = Display.getInstance().convertToPixels(3);
@@ -33,12 +33,12 @@ public class AfficheJardinRespo  extends Form {
         Image icon2 = URLImage.createToStorage(placeholder, "icon2", "http://www.vippng.com/png/detail/35-352335_baby-boy-icon-png-icone-enfant-png.png");
 
 
-        //add(detail);
+
         ArrayList<Jardin> jar= JardinService.getInstance().ListJardin();
         ArrayList<Map<String, Object>> data = new ArrayList<>();
         for(Jardin jard:jar){
 
-            data.add(createListEntry(jard.getName()+" "+jard.getDescription(),jard.getNumtel(),jard.getId(),jard.getAdresse(),jard.getTarif(),icon2));
+            data.add(createListEntry(jard.getName()+" "+jard.getDescription(),jard.getNumtel(),jard.getAdresse(),jard.getTarif(),icon2));
 
         }
 
@@ -65,13 +65,15 @@ public class AfficheJardinRespo  extends Form {
 
     }
 
-    private Map<String, Object> createListEntry(String s, String numtel, int id, String adresse, float tarif, Image icon2) {
+
+
+    private Map<String, Object> createListEntry(String s, String numtel, String adresse, float tarif, Image icon2) {
         Map<String, Object> entry = new HashMap<>();
         entry.put("Line1", s);
-        entry.put("Line3", numtel);
-        entry.put("Line4",String.valueOf(id));
-        entry.put("Line5", adresse);
-        entry.put("Line6",String.valueOf(tarif));
+        entry.put("Line2", numtel);
+        entry.put("Line3", adresse);
+        entry.put("Line4",String.valueOf(tarif));
+
         entry.put("icon",icon2);
         return entry;
     }

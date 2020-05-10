@@ -19,8 +19,8 @@ public class AccueilResponsable extends Form {
     public AccueilResponsable()
     {fo=this;
         setLayout(BoxLayout.y());
-        Button bJ=new Button("Consulter Vos Jardin");
-        bJ.addActionListener(e->new AfficheJardinRespo(fo));
+        Button bj=new Button("Consulter Vos Jardin");
+        bj.addActionListener(e->new AfficheJardinRespo(fo));
 
         Button cs=new Button("Consulter les trajets");
         cs.addActionListener(e->new ConsulterTrajet(fo));
@@ -36,7 +36,7 @@ public class AccueilResponsable extends Form {
 
 
 
-        addAll(bJ,cs,participer,abonnement,ajev);
+        addAll(cs,participer,abonnement,ajev,bj);
 
 
 
