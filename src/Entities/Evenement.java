@@ -35,7 +35,9 @@ public class Evenement {
         this.categorie = categorie;
     }
 
-
+    public Evenement(String titre) {
+        this.titre = titre;
+    }
 
     public Evenement() {
     }

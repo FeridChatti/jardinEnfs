@@ -9,6 +9,8 @@ import Forms.Abonnements.ConsulterAbonnement;
 
 import Forms.Enfants.AjouterEnfant;
 import Forms.Enfants.ConsulterEnfant;
+import Forms.Evenement.ConsulterEvenement;
+import Forms.Evenement.consulterListeEvent;
 import Forms.Parent.Chat;
 import Forms.Parent.Editprofile;
 import Forms.Parent.SendReclam;
@@ -66,7 +68,12 @@ public class AccueilParent extends BaseForm {
         Button btnchat = new Button("Contacter Jardin");
         btnchat.addActionListener(s -> new Chat(fo).show());
 
-        addAll(b, bs, bse, bts, bt, btnmyrem, btnreclam, btnprofile, btnchat, bss);
+        Button btList = new Button("Liste des événements");
+        btList.addActionListener(s -> new consulterListeEvent(fo).show());
+
+
+
+        addAll(b, bs, bse, bts, bt, btnmyrem, btnreclam, btnprofile, btnchat, bss,btList);
 
 
 
