@@ -11,9 +11,13 @@
     <image name="avatar5.png"  />
     <image name="b.jpg"  />
     <image name="back-command.png" type="multi"  />
+    <image name="background.jpg"  />
+    <image name="background.png"  />
     <image name="bb.jpg"  />
     <image name="bc.jpg"  />
+    <image name="bla.jpg"  />
     <image name="border.png"  />
+    <image name="bridge.jpg"  />
     <image name="Button.borderBottom_3.png" type="multi"  />
     <image name="Button.borderBottomL_3.png" type="multi"  />
     <image name="Button.borderBottomR_3.png" type="multi"  />
@@ -34,6 +38,10 @@
     <image name="Button.press#borderTopR_1.png" type="multi"  />
     <image name="cal_left_arrow.png" type="multi"  />
     <image name="cal_right_arrow.png" type="multi"  />
+    <image name="calendar-background.jpg"  />
+    <image name="calendar-separator.png"  />
+    <image name="card-bottom.png"  />
+    <image name="card.png"  />
     <image name="cc.jpg"  />
     <image name="chat-bubble-left.png"  />
     <image name="chat-bubble-right.png"  />
@@ -43,6 +51,10 @@
     <image name="ComboBox.borderBottom_1.png" type="multi"  />
     <image name="Conciergerie.JPG"  />
     <image name="confirmation-background.jpg"  />
+    <image name="contact-a.png"  />
+    <image name="contact-b.png"  />
+    <image name="contact-c.png"  />
+    <image name="dark-rect.png"  />
     <image name="Dialog.borderBottom_1.png" type="multi"  />
     <image name="Dialog.borderBottomL_1.png" type="multi"  />
     <image name="Dialog.borderBottomR_1.png" type="multi"  />
@@ -57,12 +69,21 @@
     <image name="electricte.JPG"  />
     <image name="fixitnoir.png"  />
     <image name="Grand-m&#xe9;nage.jpg"  />
+    <image name="griffith.jpg"  />
+    <image name="group-first.png"  />
+    <image name="group-last.png"  />
+    <image name="group-only.png"  />
+    <image name="group.png"  />
     <image name="home1.jpg"  />
     <image name="home2.jpg"  />
     <image name="img_bgr_side_bar_title.png"  />
     <image name="img_bgr_tile.png"  />
     <image name="jardinage1.png"  />
     <image name="kgpng.png"  />
+    <image name="label_round-selected.png"  />
+    <image name="label_round.png"  />
+    <image name="learn-codename-one.jpg"  />
+    <image name="logo.png"  />
     <image name="Menu.borderBottom_1.png" type="multi"  />
     <image name="Menu.borderBottomL_1.png" type="multi"  />
     <image name="Menu.borderBottomR_1.png" type="multi"  />
@@ -80,12 +101,18 @@
     <image name="Peinture.jpg"  />
     <image name="Plomberie.JPG"  />
     <image name="profile-background.jpg"  />
+    <image name="profile_image.png"  />
+    <image name="progress.png"  />
     <image name="Radio_btn_Normal.png" type="multi"  />
     <image name="Radio_btn_Press.png" type="multi"  />
     <image name="rounded-border.png"  />
     <image name="rounded-mask.png"  />
+    <image name="selection-in-sidemenu.png"  />
+    <image name="sidemenu-background.jpg"  />
     <image name="signin-background.jpg"  />
     <image name="signup-background.jpg"  />
+    <image name="skate-park.jpg"  />
+    <image name="slide1.png"  />
     <image name="Slider.borderTop_2.png_veryHigh.png" type="multi"  />
     <image name="Slider.borderTop_2.png_veryHigh_FULL.png" type="multi"  />
     <image name="Slider.borderTopL_2.png_veryHigh.png" type="multi"  />
@@ -96,6 +123,7 @@
     <image name="switch_mask.png" type="multi"  />
     <image name="switch_off.png" type="multi"  />
     <image name="switch_on.png" type="multi"  />
+    <image name="test.png"  />
     <image name="TextField.borderBottom_1.png" type="multi"  />
     <image name="TextField.borderBottomL_1.png" type="multi"  />
     <image name="TextField.borderBottomR_1.png" type="multi"  />
@@ -413,6 +441,12 @@
         <val key="DialogTitle.fgColor" value="ffffff" />
         <font key="DialogTitle.font" type="ttf" face="0" style="0" size="0" name="native:MainBold" family="native:MainBold" sizeSettings="3" actualSize="4.0" />
         <val key="DialogTitle.transparency" value="0" />
+        <val key="FloatingActionButtonClose.align" value="4" />
+        <val key="FloatingActionButtonClose.bgColor" value="3c3484" />
+        <gradient key="FloatingActionButtonClose.bgGradient" color1="12072064" color2="3947636" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="FloatingActionButtonClose.bgType" value="6" />
+        <border key="FloatingActionButtonClose.border" type="round" roundBorderColor="3945604" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="110" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="false" />
+        <val key="FloatingActionButtonClose.transparency" value="0" />
         <val key="Form.bgColor" value="ffffff" />
         <val key="Form.bgImage" value="img_bgr_tile.png" />
         <val key="Form.bgType" value="2" />
@@ -541,6 +575,10 @@
         <font key="MultiLine4.sel#font" type="ttf" face="0" style="0" size="8" name="native:ItalicLight" family="native:ItalicLight" sizeSettings="3" actualSize="2.0" />
         <val key="MultiLine4.sel#transparency" value="0" />
         <val key="MultiLine4.transparency" value="0" />
+        <val key="Padding2.align" value="4" />
+        <val key="Padding2.padUnit" value="2,2,2,2" />
+        <val key="Padding2.padding" value="2.0,2.0,2.0,2.0" />
+        <val key="Padding2.transparency" value="0" />
         <val key="PopupContentPane.marUnit" value="0,2,0,2" />
         <val key="PopupContentPane.margin" value="0.0,0.0,1.0,1.0" />
         <val key="PopupContentPane.padUnit" value="2,2,2,2" />
@@ -595,6 +633,18 @@
         <val key="RadioButton.sel#padding" value="1.0,1.0,1.0,1.0" />
         <val key="RadioButton.sel#transparency" value="0" />
         <val key="RadioButton.transparency" value="0" />
+        <val key="RedLabel.fgColor" value="b83480" />
+        <font key="RedLabel.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.0" />
+        <val key="RedLabel.margin" value="0.0,0.0,0.0,0.0" />
+        <val key="RedLabel.padUnit" value="0,2,0,2" />
+        <val key="RedLabel.padding" value="0.0,0.0,1.0,1.0" />
+        <val key="RedLabel.transparency" value="0" />
+        <val key="Separator.bgColor" value="4e606e" />
+        <val key="Separator.fgColor" value="000000" />
+        <val key="Separator.marUnit" value="0,2,0,0" />
+        <val key="Separator.margin" value="0.0,0.0,5.0,0.0" />
+        <val key="Separator.padding" value="1.0,1.0,1.0,1.0" />
+        <val key="Separator.transparency" value="25" />
         <gradient key="SideCommand.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="SideCommand.bgType" value="0" />
         <border key="SideCommand.border" type="empty" />
@@ -692,6 +742,13 @@
         <val key="SliderFull.sel#padding" value="0.0,0.0,4.0,4.0" />
         <val key="SliderFull.sel#transparency" value="0" />
         <val key="SliderFull.transparency" value="0" />
+        <val key="SmallFontLabel.fgColor" value="6c7b8a" />
+        <font key="SmallFontLabel.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="1.5" />
+        <val key="SmallFontLabel.marUnit" value="0,2,0,2" />
+        <val key="SmallFontLabel.margin" value="0.0,0.0,1.0,1.0" />
+        <val key="SmallFontLabel.padUnit" value="2,0,2,0" />
+        <val key="SmallFontLabel.padding" value="1.0,1.0,0.0,0.0" />
+        <val key="SmallFontLabel.transparency" value="0" />
         <val key="Tab.bgColor" value="486666" />
         <border key="Tab.border" type="line" millimeters="false" thickness="1.0" color="16777215" />
         <val key="Tab.fgColor" value="ffffff" />
@@ -812,6 +869,13 @@
         <font key="font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <border key="press#border" type="empty" />
         <border key="sel#border" type="empty" />
+        <val key="theme.res.fgColor" value="6c7b8a" />
+        <font key="theme.res.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="1.5" />
+        <val key="theme.res.marUnit" value="0,2,0,2" />
+        <val key="theme.res.margin" value="0.0,0.0,1.0,1.0" />
+        <val key="theme.res.padUnit" value="2,0,2,0" />
+        <val key="theme.res.padding" value="1.0,1.0,0.0,0.0" />
+        <val key="theme.res.transparency" value="0" />
         <val key="transparency" value="0" />
     </theme>
     <image name="timeline-background.jpg"  />
@@ -824,6 +888,11 @@
     <image name="TitleArea.borderTop_1.png" type="multi"  />
     <image name="TitleArea.borderTopL_1.png" type="multi"  />
     <image name="TitleArea.borderTopR_1.png" type="multi"  />
+    <image name="toolbar-profile-pic.png"  />
     <image name="troc.jpg"  />
+    <image name="walthru-radio-selected.png"  />
+    <image name="walthru-radio-unselected.png"  />
     <image name="welcome-background.jpg"  />
+    <image name="welcome-image-mask.png"  />
+    <image name="welcome-separator.png"  />
 </resource>

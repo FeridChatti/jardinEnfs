@@ -16,7 +16,6 @@ public class ChauffeurService {
     public static ChauffeurService instance=null;
     private ConnectionRequest req;
     private String resultOk;
-    private boolean result;
 
     public ChauffeurService(){
         req=new ConnectionRequest();
@@ -44,16 +43,42 @@ public class ChauffeurService {
 
         return chauffeurs;
     }
-public String modifierChauffeur(Chauffeur chauffeur)
-{
-    return "true";
-}
+
+    public String modifierChauffeur(Chauffeur chauffeur) {
+        String Url="http://127.0.0.1:8000/Sami/api/modifierChauffeur";
+        req.setUrl(Url);
+        req.setPost(false);
+        req.setContentType("application/json");
+        req.addArgument("id",chauffeur.getId()+"");
+        req.addArgument("cin",chauffeur.getCin());
+        req.addArgument("nom",chauffeur.getNom());
+        req.addArgument("email",chauffeur.getEmail());
+        req.addArgument("sexe",chauffeur.getSexe());
+        req.addArgument("tel",chauffeur.getTel());
+        req.addArgument("username",chauffeur.getUsername());
+        req.addArgument("password",chauffeur.getPassword());
+
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk=new String(req.getResponseData());
+
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+
+
+        }
+
     public Chauffeur getChauffeur(int id) {chauffeurs=ListeChauffeursJardin(4+"");
      Chauffeur ch= (Chauffeur) chauffeurs.stream().filter(e->e.getId()==id).collect(Collectors.toList()).get(0);
 
      return ch;
     }
-    public ArrayList<Chauffeur> ParseChauffeurs(String json)  {
+
+    public ArrayList<Chauffeur> ParseChauffeurs(String json) {
         chauffeurs=new ArrayList<>();
         JSONParser j= new JSONParser();
         Map<String,Object> ListTrajetJson= null;
