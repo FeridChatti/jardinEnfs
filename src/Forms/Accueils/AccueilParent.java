@@ -24,8 +24,8 @@ setLayout(BoxLayout.y());
     Button b=new Button("ajouter enfant");
     b.addActionListener(e->new AjouterEnfant(fo).show());
 
-    Button bss= new Button("consulter jardin");
-    bss.addActionListener(s -> new AfficheJArdin(fo).show());
+    Button bljardin= new Button("consulter jardin");
+    bljardin.addActionListener(s -> new AfficheJArdin(fo).show());
 
         Button bs = new Button("ajouter abonnement");
         bs.addActionListener(s -> new AjouterAbonnement(fo).show());
@@ -52,7 +52,7 @@ setLayout(BoxLayout.y());
     Button btnchat = new Button("Contacter Jardin");
     btnchat.addActionListener(s -> new Chat(fo).show());
 
-    addAll(b, bs, bse, bts, bt, btnmyrem,btnreclam,btnprofile,btnchat,bss);
+    addAll(b, bs, bse, bts,bljardin, bt, btnmyrem,btnreclam,btnprofile,btnchat);
 
 }
 
