@@ -33,7 +33,7 @@ public class EvenementService {
     }
 
     public ArrayList<Evenement> ListeEvenementJardin(String idj) {
-        String Url = "http://127.0.0.1:8000/eveapi/Api/listevents/" + idj;
+        String Url = "http://127.0.0.1:8000/eveapi/Api/listeventsJar/" + idj;
         req.setUrl(Url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -72,7 +72,7 @@ public class EvenementService {
             e.setTitre(obj.get("titre").toString());
             e.setDescription(obj.get("description").toString());
             e.setDate(obj.get("date").toString());
-            e.setImage(obj.get("image").toString());
+            //e.setImage(obj.get("image").toString());
 
             evenements.add(e);
         }
