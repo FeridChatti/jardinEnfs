@@ -1,6 +1,7 @@
 package Forms.Enfants;
 
 import Entities.Enfant;
+import Forms.Accueils.AccueilParent;
 import Services.EnfantService;
 import com.codename1.l10n.ParseException;
 import com.codename1.l10n.SimpleDateFormat;
@@ -66,7 +67,7 @@ public class ModifierEnfant extends Form {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
 
-                                Dialog.show("Modifier cet Enfant?",null,"Oui","Non");
+                                Dialog.show("Confirmation","Modifier cet Enfant?","Oui","Non");
 
                                 int idenf=Integer.valueOf(id);
                             if((t.getText().length()==0)||(re.getText().length()==0)){
@@ -85,7 +86,7 @@ public class ModifierEnfant extends Form {
                                     boolean f = EnfantService.getInstance().ModifierEnfant(e);
                                     if (f) {
                                         Dialog.show("Succés", "Enfant modifié avec succés", "Oui", null);
-                                        new ConsulterEnfant(prev).show();
+                                        new ConsulterEnfant(new AccueilParent()).show();
                                     } else {
                                         Dialog.show("Erreur", "Erreur", "Oui", null);
                                     }
@@ -107,7 +108,7 @@ public class ModifierEnfant extends Form {
             public void actionPerformed(ActionEvent evt) {
                 Dialog.show("Alert","Voulez vous supprimer cet enfant?","Oui","Non");
                 EnfantService.getInstance().SupprimerEnfant(id);
-                new ConsulterEnfant(prev).show();
+                new ConsulterEnfant(new AccueilParent()).show();
             }
         });
 

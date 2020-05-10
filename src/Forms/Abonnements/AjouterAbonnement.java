@@ -3,6 +3,7 @@ package Forms.Abonnements;
 import Entities.Abonnement;
 import Entities.Enfant;
 import Entities.Jardin;
+import Forms.Accueils.AccueilParent;
 import Services.AbonnementService;
 import Services.EnfantService;
 import com.codename1.charts.util.ColorUtil;
@@ -21,6 +22,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 
+import static esprit.tn.MyApplication.authenticated;
+
 public class AjouterAbonnement extends Form {
     Form current;
     public AjouterAbonnement(Form prev) {
@@ -38,7 +41,7 @@ public class AjouterAbonnement extends Form {
         Label mont=new Label("Montant:");
         mont.getAllStyles().setFgColor(ColorUtil.GRAY);
         ComboBox<Enfant> enfant = new ComboBox();
-        ArrayList<Enfant> enfan=EnfantService.getInstance().ListEnfants("4");
+        ArrayList<Enfant> enfan=EnfantService.getInstance().ListEnfants(String.valueOf(authenticated.getId()));
         for (int i=0;i< enfan.size();i++){
         enfant.addItem(enfan.get(i));
         }
@@ -79,6 +82,7 @@ public class AjouterAbonnement extends Form {
 
                 if(AbonnementService.getInstance().AjouterAbonnement(abonne)){
                     Dialog.show("Succes","Ajout réussi",new Command("OK"));
+                    new ConsulterAbonnement(new AccueilParent()).show();
                 }
 
             }

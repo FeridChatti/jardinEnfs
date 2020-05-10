@@ -13,11 +13,21 @@ public class Categorie {
 
     private Collection<Evenement> evenements;
 
+
     public Categorie(int id, String libelle) {
         this.id = id;
         this.libelle = libelle;
     }
 
+    public Categorie(int id, String libelle, Collection<Evenement> evenements) {
+        this.id = id;
+        this.libelle = libelle;
+        this.evenements = evenements;
+    }
+
+    public Categorie() {
+
+    }
 
     public int getId() {
         return id;
@@ -51,6 +61,4 @@ public class Categorie {
     public String toString() {
         return libelle;
     }
-
-
 }

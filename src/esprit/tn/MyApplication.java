@@ -5,6 +5,7 @@ import static com.codename1.ui.CN.*;
 
 import Entities.User;
 import Forms.User.Login;
+import Forms.User.SignIn;
 import com.codename1.ui.*;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
@@ -18,6 +19,7 @@ public class MyApplication {
     public MyApplication fo;
     private Form current;
     public static Resources theme;
+
     public static User authenticated=new User();
 
     public void init(Object context) {
@@ -49,7 +51,8 @@ public class MyApplication {
             current.show();
             return;
         }
-    Login login=new Login(fo,theme);
+    SignIn login=new SignIn(theme);
+        login.show();
 
 
       /*  Button consulterClubs=new Button("Consulter Clubs");
