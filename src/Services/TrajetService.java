@@ -39,7 +39,7 @@ public class TrajetService {
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                trajets=ParseTrajet(new String (req.getResponseData()));
+                trajets=ParseTrajet(new String (req.getResponseData()),0);
                 req.removeResponseListener(this);
             }
         });
@@ -56,7 +56,7 @@ public class TrajetService {
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                trajets=ParseTrajet(new String (req.getResponseData()));
+                trajets=ParseTrajet(new String (req.getResponseData()),1);
                 req.removeResponseListener(this);
             }
         });
@@ -105,7 +105,7 @@ public class TrajetService {
         return result;
     }
 
-    public ArrayList<Trajet> ParseTrajet(String json)  {
+    public ArrayList<Trajet> ParseTrajet(String json,int choice)  {
         trajets=new ArrayList<>();
         JSONParser j= new JSONParser();
         Map<String,Object> ListTrajetJson= null;
@@ -121,12 +121,12 @@ public class TrajetService {
             e.setId((int)t);
             e.setHeure(obj.get("heure").toString());
             e.setAdresse(obj.get("adresse").toString());
-            if(obj.get("chauffeur_id").toString()!=null)
+            if(choice==1)
             {
                 Chauffeur chauffeur=ChauffeurService.getInstance().getChauffeur((int)((double)obj.get("chauffeur_id")));
                 e.setChauffeur(chauffeur);
-                trajets.add(e);
         }
+            trajets.add(e);
         }
         return trajets;
     }
