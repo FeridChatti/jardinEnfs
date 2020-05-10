@@ -72,7 +72,7 @@ public class AfficheJardinRespo  extends Form {
         entry.put("Line1", s);
         entry.put("Line2", numtel);
         entry.put("Line3", adresse);
-        entry.put("Line4",String.valueOf(tarif));
+
 
         entry.put("icon",icon2);
         return entry;
