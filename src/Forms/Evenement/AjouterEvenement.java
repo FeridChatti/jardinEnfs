@@ -2,11 +2,9 @@ package Forms.Evenement;
 
 import Entities.*;
 import Forms.Accueils.AccueilResponsable;
-import Forms.Sami.ConsulterTrajet;
-import Services.ChauffeurService;
-import Services.EnfantService;
+
+import Services.CategorieService;
 import Services.EvenementService;
-import Services.TrajetService;
 import com.codename1.components.ImageViewer;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
@@ -24,16 +22,19 @@ public class AjouterEvenement extends Form {
 
     public AjouterEvenement(Form prev) {
 
-        ArrayList<Evenement> le = EvenementService.getInstance().ListeEvenementJardin(2 + "");
+        ArrayList<Categorie> le = CategorieService.getInstance().getAllcategories();
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
         setTitle("Ajouter Evenement");
         setLayout(BoxLayout.y());
         TextField titre = new TextField("", "Titre");
         TextField description = new TextField("", "Description");
         ComboBox<Categorie> c = new ComboBox<>();
+        for (Categorie ca: le){
+          c.addItem(ca);
+        }
         Picker datePicker = new Picker();
         Date lt = Date.from(Instant.now());
-        ImageViewer image = new ImageViewer();
+        //ImageViewer image = new ImageViewer();
         Button aj = new Button("Ajouter");
 
         aj.addActionListener(new ActionListener() {
@@ -44,14 +45,14 @@ public class AjouterEvenement extends Form {
                 }
 
                 else{
-                    if(titre.getText().matches("[a-zA-Z]*")&& description.getText().matches("[a-zA-Z]*")){
+                    if(titre.getText().matches("[a-zA-Z]*")){
                         if(lt.compareTo(datePicker.getDate())<0){
                             Dialog.show("Erreur","Date non valide",new Command("OK"));
                         }
                         else{
-                            String text = datePicker.getValue().toString();
+                            String text = datePicker.getDate().toString();
 
-                            Evenement e=new Evenement(8,text,titre.getText(),description.getText(),c.getSelectedItem());
+                            Evenement e=new Evenement(8,titre.getText(),text ,description.getText(),c.getSelectedItem());
 
                             if(EvenementService.getInstance().AjouterEvenement(e)){
                                 Dialog.show("Succes","Ajout réussi",new Command("OK"));
@@ -63,8 +64,9 @@ public class AjouterEvenement extends Form {
                 }
 
             }
+
         });
-        addAll(titre,description,c,datePicker,aj,image);
+        addAll(titre,description,c,datePicker,aj);
 
 
 
