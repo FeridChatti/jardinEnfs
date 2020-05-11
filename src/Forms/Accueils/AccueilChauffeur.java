@@ -1,5 +1,6 @@
 package Forms.Accueils;
 
+import Forms.Sami.ChauffeurTrajets;
 import Forms.Sami.ConsulterTrajet;
 import Forms.Sami.ProfilChauffeur;
 import com.codename1.ui.Button;
@@ -13,8 +14,8 @@ public class AccueilChauffeur extends Form {
     {fo=this;
         setLayout(BoxLayout.y());
 
-        Button cs=new Button("Consulter les trajets");
-        cs.addActionListener(e->new ConsulterTrajet(fo));
+        Button cs=new Button("Voir mes trajets");
+        cs.addActionListener(e->new ChauffeurTrajets(fo));
 
 
         Button ch=new Button("Consulter Profil");

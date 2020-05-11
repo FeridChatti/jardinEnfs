@@ -5,6 +5,7 @@ import Forms.Abonnements.ConsulterAbonnement;
 import Forms.Enfants.AjouterEnfant;
 import Forms.Enfants.ConsulterEnfant;
 import Forms.Parent.Editprofile;
+import Forms.Parent.JardList;
 import Forms.Remarques.ConsulterRemarques;
 import Forms.raed.AfficheJArdin;
 import com.codename1.components.ScaleImageLabel;
@@ -80,12 +81,14 @@ public class BaseForm extends Form {
         Form fo=this;
 
         tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, s -> new Editprofile(fo).show());
-        tb.addMaterialCommandToSideMenu("ajouter enfant", FontImage.MATERIAL_ADD_SHOPPING_CART,e -> new AjouterEnfant(fo).show());
+        tb.addMaterialCommandToSideMenu("ajouter enfant", FontImage.MATERIAL_CREATE,e -> new AjouterEnfant(fo).show());
         tb.addMaterialCommandToSideMenu("consulter jardin", FontImage.MATERIAL_SHOP,s -> new AfficheJArdin(fo).show());
         tb.addMaterialCommandToSideMenu("ajouter abonnement", FontImage.MATERIAL_SHOP,s -> new AjouterAbonnement(fo).show());
         tb.addMaterialCommandToSideMenu("consulter abonnement", FontImage.MATERIAL_SHOP, s -> new ConsulterAbonnement(fo).show());
          tb.addMaterialCommandToSideMenu("consulter enfants", FontImage.MATERIAL_ADD_TO_QUEUE, s -> new ConsulterEnfant(fo).show());
         tb.addMaterialCommandToSideMenu("remarques des enfants", FontImage.MATERIAL_EXIT_TO_APP, s -> new ConsulterRemarques(fo).show());
+
+
         /*
         Button b = new Button("ajouter enfant");
         b.addActionListener(e -> new AjouterEnfant(fo).show());
@@ -117,6 +120,32 @@ public class BaseForm extends Form {
         btnchat.addActionListener(s -> new Chat(fo).show());
 */
 
+    }
+    public void installSidemenu(Resources res) {
+        Image selection = res.getImage("selection-in-sidemenu.png");
+
+        Image inboxImage = null;
+     inboxImage = selection;
+
+
+
+        Button inboxButton = new Button("Inbox", inboxImage);
+        inboxButton.setUIID("SideCommand");
+        inboxButton.getAllStyles().setPaddingBottom(0);
+        Container inbox = FlowLayout.encloseMiddle(inboxButton,
+                new Label("18", "SideCommandNumber"));
+        inbox.setLeadComponent(inboxButton);
+        inbox.setUIID("SideCommand");
+        inboxButton.addActionListener(e -> new JardList(this).show());
+        getToolbar().addComponentToSideMenu(inbox);
+
+
+
+        // spacer
+        getToolbar().addComponentToSideMenu(new Label(" ", "SideCommand"));
+        getToolbar().addComponentToSideMenu(new Label(res.getImage("profile_image.png"), "Container"));
+        getToolbar().addComponentToSideMenu(new Label("Detra Mcmunn", "SideCommandNoPad"));
+        getToolbar().addComponentToSideMenu(new Label("Long Beach, CA", "SideCommandSmall"));
     }
 
 
