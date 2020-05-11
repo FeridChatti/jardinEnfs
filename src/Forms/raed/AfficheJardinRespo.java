@@ -1,8 +1,12 @@
 package Forms.raed;
 
+import Entities.Enfant;
 import Entities.Jardin;
+import Entities.User;
 import Forms.Enfants.ModifierEnfant;
+import Services.EnfantService;
 import Services.JardinService;
+import Services.UserService;
 import com.codename1.l10n.ParseException;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
@@ -10,6 +14,8 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.list.MultiList;
+import com.codename1.ui.spinner.Picker;
+import esprit.tn.MyApplication;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,51 +38,40 @@ public class AfficheJardinRespo  extends Form {
 
         Image icon2 = URLImage.createToStorage(placeholder, "icon2", "http://www.vippng.com/png/detail/35-352335_baby-boy-icon-png-icone-enfant-png.png");
 
+Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"");
 
 
-        ArrayList<Jardin> jar= JardinService.getInstance().ListJardin();
-        ArrayList<Map<String, Object>> data = new ArrayList<>();
-        for(Jardin jard:jar){
-
-            data.add(createListEntry(jard.getName()+" "+jard.getDescription(),jard.getNumtel(),jard.getAdresse(),jard.getTarif(),icon2));
-
-        }
-
-        DefaultListModel<Map<String, Object>> model = new DefaultListModel<>(data);
-        MultiList ml = new MultiList(model);
-        ml.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                Map<String, Object> t = (HashMap) ml.getSelectedItem();
-                enl=(String)t.get("id");
-                Dialog.show("Modifier cet Jardin?","Veuillez selectionez un choix","Oui","Non");
-
-                try {
-                    new ModifierEnfant(th,enl).show();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+        Label nom = new Label("Nom:");
+        TextField t = new TextField(j.getName());
+        t.setEnabled(false);
+        Label add = new Label("Adresse");
+        TextField re = new TextField(j.getAdresse());
+        re.setEnabled(false);
 
 
-            }
-        });
 
-        add(ml);
+        Label desc = new Label("Description");
+        TextField ree = new TextField(j.getDescription());
+        ree.setEnabled(false);
+
+
+
+        Label nute = new Label("Numero Telephone ");
+        TextField reee = new TextField(j.getNumtel());
+        reee.setEnabled(false);
+
+        Label tari = new Label("Tarif");
+        TextField rse = new TextField((int) j.getTarif());
+        rse.setEnabled(false);
+
+
+
+
+
+
 
     }
 
-
-
-    private Map<String, Object> createListEntry(String s, String numtel, String adresse, float tarif, Image icon2) {
-        Map<String, Object> entry = new HashMap<>();
-        entry.put("Line1", s);
-        entry.put("Line2", numtel);
-        entry.put("Line3", adresse);
-
-
-        entry.put("icon",icon2);
-        return entry;
-    }
 
 
 
