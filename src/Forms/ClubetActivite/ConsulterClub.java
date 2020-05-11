@@ -72,12 +72,12 @@ public class ConsulterClub extends Form {
         fo.show();
 
 
-       /* fo.getToolbar().addComponentToSideMenu(Command.create("My Command", null, (ev) -> {
-            new RatingWidget()
-        }));
+        RatingWidget r = new RatingWidget();
+        fo.add(FlowLayout.encloseCenter(r.createStarRankSlider()));
+      
 
 
-*/
+
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
 
     }

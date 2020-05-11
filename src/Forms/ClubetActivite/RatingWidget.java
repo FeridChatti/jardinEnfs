@@ -96,7 +96,7 @@ public class RatingWidget {
         s.setBgTransparency(0);
     }
 
-    private Slider createStarRankSlider() {
+    public  Slider createStarRankSlider() {
         Slider starRank = new Slider();
         starRank.setEditable(true);
         starRank.setMinValue(0);
