@@ -36,7 +36,7 @@ public class AjouterEnfant extends Form {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 if((nom.getText().length()==0)||(prenom.getText().length()==0)){
-                    Dialog.show("Erreur","Veuillez indiquez les champs",new Command("OK"));
+                    Dialog.show("Erreur","Veuillez indiquer les champs",new Command("OK"));
                 }
 
                 else{

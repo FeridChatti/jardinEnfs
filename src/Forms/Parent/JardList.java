@@ -115,6 +115,8 @@ int i=0;
             cont4.setName("Container_4"+i);
         ((FlowLayout)cont4.getLayout()).setAlign(Component.CENTER);
             cont3.setName("Container_3"+i);
+
+
             label_6.setText("");
             label_6.setUIID("Separator");
             label_6.setName("Label_6");
