@@ -1,31 +1,26 @@
 package Forms.ClubetActivite;
 
 import Entities.Club;
-import Entities.Trajet;
-import Forms.Accueils.AccueilResponsable;
-import Forms.Sami.ConsulterTrajet;
 import Services.ClubService;
-import Services.TrajetService;
 import com.codename1.components.*;
-import com.codename1.components.SpanLabel;
-import com.codename1.io.File;
 import com.codename1.ui.*;
-import com.codename1.ui.events.ActionEvent;
-import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.animations.CommonTransitions;
+import com.codename1.ui.geom.Dimension;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.list.MultiList;
+import com.codename1.ui.plaf.Border;
+import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
-import com.sun.javafx.collections.SetListenerHelper;
-import esprit.tn.MyApplication;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
+import static com.codename1.ui.CN.*;
 import static com.codename1.ui.Image.createImage;
 
 
@@ -33,9 +28,12 @@ public class ConsulterClub extends Form {
     private Resources theme;
 
 
-    public ConsulterClub(Form prev) {
 
+
+
+    public ConsulterClub(Form prev) {
         Form fo = this;
+
         setLayout(BoxLayout.y());
         setTitle("Liste des Clubs");
 
@@ -74,10 +72,18 @@ public class ConsulterClub extends Form {
         fo.show();
 
 
+       /* fo.getToolbar().addComponentToSideMenu(Command.create("My Command", null, (ev) -> {
+            new RatingWidget()
+        }));
 
+
+*/
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
 
     }
+
+
+
 
     private Map<String, Object> createListEntry(String name, String description, String photo) {
         int mm = Display.getInstance().convertToPixels(3);
@@ -90,6 +96,12 @@ public class ConsulterClub extends Form {
         entry.put("icon",icon1);
         return entry;
     }
+
+
+
+
+
+
 
 
 
