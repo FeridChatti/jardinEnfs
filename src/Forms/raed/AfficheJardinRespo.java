@@ -28,7 +28,8 @@ import java.util.Map;
 public class AfficheJardinRespo  extends Form {
     String enl="";
     int count=0;
-    public AfficheJardinRespo  (Form prev ,String id) throws ParseException {
+
+    public AfficheJardinRespo  (Form prev ,int idenf) throws ParseException {
         Form ts=this;
 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
@@ -66,6 +67,9 @@ Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId(
         Label tari = new Label("Tarif");
         TextField rse = new TextField((int) j.getTarif());
         rse.setEnabled(false);
+        TextField etat = new TextField(j.getEtat());
+
+        etat.setVisible(false);
 
         Button md=new Button("Modifier");
 
@@ -93,8 +97,8 @@ ts.show();
 
                             Dialog.show("Confirmation","ete vous sur de modifier votre jardin ? ","Oui","Non");
 
-                            int idenf=Integer.valueOf(id);
-                            if((reee.getText().length()==0)||(t.getText().length()==0)||(re.getText().length()==0)||||(ree.getText().length()==0)){
+
+                            if((reee.getText().length()==0)||(t.getText().length()==0)||(re.getText().length()==0)||(ree.getText().length()==0)){
                                 Dialog.show("Erreur","Veuillez indiquez les champs",new Command("OK"));
                             }
 
@@ -110,7 +114,8 @@ ts.show();
 
                                     else{
 
-                                        Jardin je = new Jardin( idenf ,t.getText(), re.getText(), ree.getText(),reee.getText(),rse.getText());
+                                        Jardin je = new Jardin(   idenf, t.getText(), desc.getText(),
+                                                reee.getText(), Float.parseFloat(rse.getText()), re.getText(), etat.getText());
 
 
 

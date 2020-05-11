@@ -9,9 +9,12 @@ import Forms.ClubetActivite.ListeParticipation;
 import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
 import Forms.raed.AfficheJardinRespo;
+import com.codename1.l10n.ParseException;
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
 import com.codename1.ui.layouts.BoxLayout;
+
+import static esprit.tn.MyApplication.authenticated;
 
 public class AccueilResponsable extends Form {
  public static   Form fo;
@@ -20,7 +23,13 @@ public class AccueilResponsable extends Form {
     {fo=this;
         setLayout(BoxLayout.y());
         Button bj=new Button("Consulter Vos Jardin");
-        bj.addActionListener(e->new AfficheJardinRespo(fo));
+        bj.addActionListener(e-> {
+            try {
+                new AfficheJardinRespo(fo,authenticated.getId());
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+        });
 
         Button cs=new Button("Consulter les trajets");
         cs.addActionListener(e->new ConsulterTrajet(fo));
