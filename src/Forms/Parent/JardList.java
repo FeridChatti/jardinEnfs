@@ -74,22 +74,22 @@ int i=0;
             Container secondcont=new Container(new FlowLayout());
             Container cont3=new Container(new BoxLayout(BoxLayout.Y_AXIS));
             Container cont4=new Container(new FlowLayout());
-            Label label_1=new Label();
+
+
             Label label_4=new Label();
             Label label_2=new Label();
             Label label_3=new Label();
             Label label_6=new Label();
-            TextArea text_area_1=new TextArea();
+
+
 
             add(firstcont);
             firstcont.setName("Container_1"+i);
 
             firstcont.add( BorderLayout.EAST, secondcont);
             secondcont.setName("Container_2"+i);
-            secondcont.add(label_1);
-            label_1.setText("11:31 AM");
-            label_1.setUIID("SmallFontLabel");
-            label_1.setName("Label_1"+i);
+
+
             firstcont.add(BorderLayout.WEST, cont4);
             cont4.setName("Container_4"+i);
         ((FlowLayout)cont4.getLayout()).setAlign(Component.CENTER);
@@ -101,16 +101,15 @@ int i=0;
             cont3.setName("Container_3"+i);
             cont3.addComponent(label_3);
             cont3.addComponent(label_2);
-            cont3.addComponent(text_area_1);
+
+
             label_3.setText(j.getName());
             label_3.setName("Label_3"+i);
-            label_2.setText("Design Updates");
+            label_2.setText(j.getDescription());
             label_2.setUIID("RedLabel");
             label_2.setName("Label_2"+i);
-            text_area_1.setText("Hi Adrian, there is a new announcement for you from Oxford  Learning  Lab. Hello we completly...");
-            text_area_1.setUIID("SmallFontLabel");
-            text_area_1.setName("Text_Area_1"+i);
-            text_area_1.setEditable(false);
+
+
             secondcont.setName("Container_2"+i);
             cont4.setName("Container_4"+i);
         ((FlowLayout)cont4.getLayout()).setAlign(Component.CENTER);
@@ -120,7 +119,16 @@ int i=0;
             label_6.setText("");
             label_6.setUIID("Separator");
             label_6.setName("Label_6");
+
         addComponent(label_6);
+
+
+
+            label_3.addPointerReleasedListener(evt -> {
+                new Chat(this).show();
+            });
+            firstcont.setLeadComponent(label_3);
+            firstcont.setUIID("JardListCont");
 
         i++;
 

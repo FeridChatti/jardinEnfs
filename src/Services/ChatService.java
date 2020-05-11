@@ -84,6 +84,7 @@ public class ChatService {
             float t= Float.parseFloat(obj.get("id").toString());
             e.setId((int)t);
             e.setName(obj.get("name").toString());
+            e.setDescription(obj.get("nom").toString());
 
             jardins.add(e);
 
