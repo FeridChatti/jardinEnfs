@@ -1,7 +1,9 @@
 package Forms.AbonnementRespon;
 
 import Entities.Abonnement;
+import Entities.Jardin;
 import Services.AbonnementService;
+import Services.UserService;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -12,6 +14,8 @@ import com.codename1.ui.list.MultiList;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static esprit.tn.MyApplication.authenticated;
 
 public class ConsulterAbonnement extends Form {
 
@@ -31,7 +35,10 @@ public class ConsulterAbonnement extends Form {
 
 
         //add(detail);
-        ArrayList<Abonnement> abonnem= AbonnementService.getInstance().ListAbonnementResp("2");
+
+        Jardin ja= UserService.getInstance().getJardin(String.valueOf(authenticated.getId()));
+        String idjar=String.valueOf(ja.getId());
+        ArrayList<Abonnement> abonnem= AbonnementService.getInstance().ListAbonnementResp(idjar);
         ArrayList<Map<String, Object>> data = new ArrayList<>();
         for(Abonnement abon:abonnem){
 
@@ -49,7 +56,7 @@ public class ConsulterAbonnement extends Form {
                 nmepre=(String)t.get("Line1");
                 Dialog.show("Modifier cet Enfant?","Veuillez selectionez un choix","Oui","Non");
 
-                new ModifierAbonnement(th,enl,nmepre,(String)t.get("type"),"2").show();
+                new ModifierAbonnement(th,enl,nmepre,(String)t.get("type"),idjar).show();
 
 
 
