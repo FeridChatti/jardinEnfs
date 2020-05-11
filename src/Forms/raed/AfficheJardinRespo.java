@@ -54,7 +54,7 @@ Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId(
         TextField ree = new TextField(j.getDescription());
         ree.setEnabled(false);
 
-
+        setLayout(BoxLayout.y());
 
         Label nute = new Label("Numero Telephone ");
         TextField reee = new TextField(j.getNumtel());
@@ -63,6 +63,10 @@ Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId(
         Label tari = new Label("Tarif");
         TextField rse = new TextField((int) j.getTarif());
         rse.setEnabled(false);
+        add(nom);
+        add(t);
+
+        addAll(add,re,desc,ree,nute,reee,tari,rse);
 
 
 
