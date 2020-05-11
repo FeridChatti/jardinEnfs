@@ -18,7 +18,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AfficheJArdin extends Form {
-    String enl="";
+    String jrid="";
+    String jrn="";
+    String jrad="";
+    String jrd="";
+    String jart="";
     public AfficheJArdin (Form prev){
         Form th=this;
 
@@ -38,24 +42,39 @@ public class AfficheJArdin extends Form {
         ArrayList<Map<String, Object>> data = new ArrayList<>();
         for(Jardin jard:jar){
 
-            data.add(createListEntry(jard.getName()+" "+jard.getDescription(),jard.getNumtel(),jard.getId(),jard.getAdresse(),jard.getTarif(),icon2));
+            data.add(createListEntry(jard.getName(),jard.getId(),jard.getAdresse(),jard.getDescription(),jard.getTarif(),icon2));
 
         }
 
         DefaultListModel<Map<String, Object>> model = new DefaultListModel<>(data);
         MultiList ml = new MultiList(model);
+        ml.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                Map<String, Object> t = (HashMap) ml.getSelectedItem();
+
+                jrn=(String)t.get("Line1");
+                jrad=(String)t.get("Line2");
+                jrd=(String)t.get("description");
+                jart=(String)t.get("tarif");
+
+                 new InfoJArdin(jrn,jrad,jrd,jart,th).show();
+            }
+        });
+
         add(ml);
 
     }
 
-    private Map<String, Object> createListEntry(String s, String numtel, int id, String adresse, float tarif, Image icon2) {
+    private Map<String, Object> createListEntry(String s, int id, String adresse,String description,double tarif, Image icon2) {
         Map<String, Object> entry = new HashMap<>();
         entry.put("Line1", s);
-        entry.put("Line3", numtel);
-        entry.put("Line4",String.valueOf(id));
-        entry.put("Line5", adresse);
-        entry.put("Line6",String.valueOf(tarif));
+        entry.put("id",String.valueOf(id));
+        entry.put("Line2", adresse);
         entry.put("icon",icon2);
+        entry.put("description",description);
+
+        entry.put("tarif",String.valueOf(tarif));
         return entry;
     }
 

@@ -83,6 +83,15 @@
     <image name="label_round-selected.png"  />
     <image name="label_round.png"  />
     <image name="learn-codename-one.jpg"  />
+    <l10n name="Localization (L10N) 1">
+        <lang name="en">
+            <entry key="select" value="Select" />
+            <entry key="ok" value="OK" />
+            <entry key="edit" value="Edit" />
+            <entry key="cancel" value="Cancel" />
+            <entry key="menu" value="Menu" />
+        </lang>
+    </l10n>
     <image name="logo.png"  />
     <image name="Menu.borderBottom_1.png" type="multi"  />
     <image name="Menu.borderBottomL_1.png" type="multi"  />
@@ -376,6 +385,8 @@
         <val key="Container.sel#derive" value="Container" />
         <val key="Container.sel#transparency" value="0" />
         <val key="Container.transparency" value="0" />
+        <gradient key="ContentPane.bgGradient" color1="13882323" color2="13882323" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="ContentPane.bgType" value="0" />
         <gradient key="Dialog.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Dialog.bgType" value="0" />
         <border key="Dialog.border" type="image" i1="Dialog.borderTop_1.png" i2="Dialog.borderBottom_1.png" i3="Dialog.borderLeft_1.png" i4="Dialog.borderRight_1.png" i5="Dialog.borderTopL_1.png" i6="Dialog.borderTopR_1.png" i7="Dialog.borderBottomL_1.png" i8="Dialog.borderBottomR_1.png" i9="Dialog.borderCenter_1.png" />
