@@ -21,6 +21,8 @@ public class Club {
 
     private String photo;
 
+
+    private int rank;
     public Club() {
     }
 
@@ -29,6 +31,22 @@ public class Club {
         this.name = name;
         this.description = description;
         this.photo = photo;
+    }
+
+    public Club(int id, String name, String description, String photo, int rank) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.photo = photo;
+        this.rank = rank;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
     }
 
     public int getId() {
