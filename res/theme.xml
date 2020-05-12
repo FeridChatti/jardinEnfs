@@ -18,78 +18,6 @@
     <image name="bla.jpg"  />
     <image name="border.png"  />
     <image name="bridge.jpg"  />
-    <image name="BubbleMe.borderBottom_1.png" type="multi"  />
-    <image name="BubbleMe.borderBottom_2.png" type="multi"  />
-    <image name="BubbleMe.borderBottom_3.png" type="multi"  />
-    <image name="BubbleMe.borderBottom_4.png" type="multi"  />
-    <image name="BubbleMe.borderBottom_5.png" type="multi"  />
-    <image name="BubbleMe.borderBottom_6.png" type="multi"  />
-    <image name="BubbleMe.borderBottom_7.png" type="multi"  />
-    <image name="BubbleMe.borderBottomL_1.png" type="multi"  />
-    <image name="BubbleMe.borderBottomL_2.png" type="multi"  />
-    <image name="BubbleMe.borderBottomL_3.png" type="multi"  />
-    <image name="BubbleMe.borderBottomL_4.png" type="multi"  />
-    <image name="BubbleMe.borderBottomL_5.png" type="multi"  />
-    <image name="BubbleMe.borderBottomL_6.png" type="multi"  />
-    <image name="BubbleMe.borderBottomL_7.png" type="multi"  />
-    <image name="BubbleMe.borderBottomR_1.png" type="multi"  />
-    <image name="BubbleMe.borderBottomR_2.png" type="multi"  />
-    <image name="BubbleMe.borderBottomR_3.png" type="multi"  />
-    <image name="BubbleMe.borderBottomR_4.png" type="multi"  />
-    <image name="BubbleMe.borderBottomR_5.png" type="multi"  />
-    <image name="BubbleMe.borderBottomR_6.png" type="multi"  />
-    <image name="BubbleMe.borderBottomR_7.png" type="multi"  />
-    <image name="BubbleMe.borderCenter_1.png" type="multi"  />
-    <image name="BubbleMe.borderCenter_2.png" type="multi"  />
-    <image name="BubbleMe.borderCenter_3.png" type="multi"  />
-    <image name="BubbleMe.borderCenter_4.png" type="multi"  />
-    <image name="BubbleMe.borderCenter_5.png" type="multi"  />
-    <image name="BubbleMe.borderCenter_6.png" type="multi"  />
-    <image name="BubbleMe.borderCenter_7.png" type="multi"  />
-    <image name="BubbleMe.borderLeft_1.png" type="multi"  />
-    <image name="BubbleMe.borderLeft_2.png" type="multi"  />
-    <image name="BubbleMe.borderLeft_3.png" type="multi"  />
-    <image name="BubbleMe.borderLeft_4.png" type="multi"  />
-    <image name="BubbleMe.borderLeft_5.png" type="multi"  />
-    <image name="BubbleMe.borderLeft_6.png" type="multi"  />
-    <image name="BubbleMe.borderLeft_7.png" type="multi"  />
-    <image name="BubbleMe.borderRight_1.png" type="multi"  />
-    <image name="BubbleMe.borderRight_2.png" type="multi"  />
-    <image name="BubbleMe.borderRight_3.png" type="multi"  />
-    <image name="BubbleMe.borderRight_4.png" type="multi"  />
-    <image name="BubbleMe.borderRight_5.png" type="multi"  />
-    <image name="BubbleMe.borderRight_6.png" type="multi"  />
-    <image name="BubbleMe.borderRight_7.png" type="multi"  />
-    <image name="BubbleMe.borderTop_1.png" type="multi"  />
-    <image name="BubbleMe.borderTop_2.png" type="multi"  />
-    <image name="BubbleMe.borderTop_3.png" type="multi"  />
-    <image name="BubbleMe.borderTop_4.png" type="multi"  />
-    <image name="BubbleMe.borderTop_5.png" type="multi"  />
-    <image name="BubbleMe.borderTop_6.png" type="multi"  />
-    <image name="BubbleMe.borderTop_7.png" type="multi"  />
-    <image name="BubbleMe.borderTopL_1.png" type="multi"  />
-    <image name="BubbleMe.borderTopL_2.png" type="multi"  />
-    <image name="BubbleMe.borderTopL_3.png" type="multi"  />
-    <image name="BubbleMe.borderTopL_4.png" type="multi"  />
-    <image name="BubbleMe.borderTopL_5.png" type="multi"  />
-    <image name="BubbleMe.borderTopL_6.png" type="multi"  />
-    <image name="BubbleMe.borderTopL_7.png" type="multi"  />
-    <image name="BubbleMe.borderTopR_1.png" type="multi"  />
-    <image name="BubbleMe.borderTopR_2.png" type="multi"  />
-    <image name="BubbleMe.borderTopR_3.png" type="multi"  />
-    <image name="BubbleMe.borderTopR_4.png" type="multi"  />
-    <image name="BubbleMe.borderTopR_5.png" type="multi"  />
-    <image name="BubbleMe.borderTopR_6.png" type="multi"  />
-    <image name="BubbleMe.borderTopR_7.png" type="multi"  />
-    <image name="BubbleThem.borderBottom_1.png" type="multi"  />
-    <image name="BubbleThem.borderBottomL_1.png" type="multi"  />
-    <image name="BubbleThem.borderBottomR_1.png" type="multi"  />
-    <image name="BubbleThem.borderCenter_1.png" type="multi"  />
-    <image name="BubbleThem.borderLeft_1.png" type="multi"  />
-    <image name="BubbleThem.borderRight_1.png" type="multi"  />
-    <image name="BubbleThem.borderTop_1.png" type="multi"  />
-    <image name="BubbleThem.borderTopL_1.png" type="multi"  />
-    <image name="BubbleThem.borderTopR_1.png" type="multi"  />
     <image name="Button.borderBottom_3.png" type="multi"  />
     <image name="Button.borderBottomL_3.png" type="multi"  />
     <image name="Button.borderBottomR_3.png" type="multi"  />
@@ -148,15 +76,6 @@
     <image name="group.png"  />
     <image name="home1.jpg"  />
     <image name="home2.jpg"  />
-    <image name="image.sel#borderBottom_1.png" type="multi"  />
-    <image name="image.sel#borderBottomL_1.png" type="multi"  />
-    <image name="image.sel#borderBottomR_1.png" type="multi"  />
-    <image name="image.sel#borderCenter_1.png" type="multi"  />
-    <image name="image.sel#borderLeft_1.png" type="multi"  />
-    <image name="image.sel#borderRight_1.png" type="multi"  />
-    <image name="image.sel#borderTop_1.png" type="multi"  />
-    <image name="image.sel#borderTopL_1.png" type="multi"  />
-    <image name="image.sel#borderTopR_1.png" type="multi"  />
     <image name="img_bgr_side_bar_title.png"  />
     <image name="img_bgr_tile.png"  />
     <image name="jardinage1.png"  />
@@ -168,8 +87,8 @@
         <lang name="en">
             <entry key="select" value="Select" />
             <entry key="ok" value="OK" />
-            <entry key="cancel" value="Cancel" />
             <entry key="edit" value="Edit" />
+            <entry key="cancel" value="Cancel" />
             <entry key="menu" value="Menu" />
         </lang>
     </l10n>
@@ -260,16 +179,6 @@
         <val key="@switchOffImage" value="switch_off.png" />
         <val key="@switchOnImage" value="switch_on.png" />
         <val key="@tabPlacementInt" value="0" />
-        <border key="BubbleMe.border" type="image" i1="BubbleMe.borderTop_7.png" i2="BubbleMe.borderBottom_7.png" i3="BubbleMe.borderLeft_7.png" i4="BubbleMe.borderRight_7.png" i5="BubbleMe.borderTopL_7.png" i6="BubbleMe.borderTopR_7.png" i7="BubbleMe.borderBottomL_7.png" i8="BubbleMe.borderBottomR_7.png" i9="BubbleMe.borderCenter_7.png" />
-        <val key="BubbleMe.fgColor" value="ffffff" />
-        <val key="BubbleMe.padUnit" value="2,2,2,2" />
-        <val key="BubbleMe.padding" value="1.0,1.0,3.0,1.0" />
-        <val key="BubbleMe.transparency" value="0" />
-        <border key="BubbleThem.border" type="image" i1="BubbleThem.borderTop_1.png" i2="BubbleThem.borderBottom_1.png" i3="BubbleThem.borderLeft_1.png" i4="BubbleThem.borderRight_1.png" i5="BubbleThem.borderTopL_1.png" i6="BubbleThem.borderTopR_1.png" i7="BubbleThem.borderBottomL_1.png" i8="BubbleThem.borderBottomR_1.png" i9="BubbleThem.borderCenter_1.png" />
-        <val key="BubbleThem.fgColor" value="ffffff" />
-        <val key="BubbleThem.padUnit" value="2,2,2,2" />
-        <val key="BubbleThem.padding" value="1.0,1.0,3.0,1.0" />
-        <val key="BubbleThem.transparency" value="0" />
         <val key="Button.align" value="4" />
         <border key="Button.border" type="image" i1="Button.borderTop_3.png" i2="Button.borderBottom_3.png" i3="Button.borderLeft_3.png" i4="Button.borderRight_3.png" i5="Button.borderTopL_3.png" i6="Button.borderTopR_3.png" i7="Button.borderBottomL_3.png" i8="Button.borderBottomR_3.png" i9="Button.borderCenter_3.png" />
         <val key="Button.fgColor" value="0" />
@@ -476,7 +385,7 @@
         <val key="Container.sel#derive" value="Container" />
         <val key="Container.sel#transparency" value="0" />
         <val key="Container.transparency" value="0" />
-        <gradient key="ContentPane.bgGradient" color1="13882323" color2="13882323" posX="0.5" posY="0.5" radius="1.0" />
+        <gradient key="ContentPane.bgGradient" color1="16777215" color2="16777215" posX="0.5" posY="0.5" radius="1.0" />
         <val key="ContentPane.bgType" value="0" />
         <gradient key="Dialog.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Dialog.bgType" value="0" />
