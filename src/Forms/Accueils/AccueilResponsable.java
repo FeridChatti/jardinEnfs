@@ -6,6 +6,7 @@ import Forms.AbonnementRespon.LocalNotificationTest;
 import Forms.ClubetActivite.ListeParticipation;
 import Forms.Evenement.AjouterEvenement;
 import Forms.ClubetActivite.ListeParticipation;
+import Forms.Evenement.consulterListeEvent;
 import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
 import Forms.raed.AfficheJardinRespo;
@@ -43,9 +44,10 @@ public class AccueilResponsable extends Form {
         Button ajev=new Button("Ajouter evenement");
         ajev.addActionListener(e->new AjouterEvenement(fo).show());
 
+        Button list=new Button("Consulter les événement");
+        list.addActionListener(e->new consulterListeEvent(fo).show());
 
-
-        addAll(cs,participer,abonnement,ajev,bj);
+        addAll(cs,participer,abonnement,ajev,list);
 
 
 
