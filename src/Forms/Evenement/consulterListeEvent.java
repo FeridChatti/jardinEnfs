@@ -23,9 +23,6 @@ public class consulterListeEvent extends Form {
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
         setTitle("Consulter Evenements");
         setLayout(BoxLayout.y());
-
-
-
         ArrayList<Evenement> ev= EvenementService.getInstance().ListeEvenementJardin("2");
         ArrayList<Map<String, Object>> data = new ArrayList<>();
         for(Evenement event:ev){
