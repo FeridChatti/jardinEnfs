@@ -135,6 +135,7 @@ public class AbonnementService {
 
             e.setType(obj.get("type").toString());
             e.setEtat(obj.get("etat").toString());
+
             Map<String,Object> m = (Map<String, Object>) obj.get("dateab");
             String str = m.get("date").toString();
             String g = str.substring(0,10);

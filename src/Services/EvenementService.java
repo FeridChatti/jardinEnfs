@@ -48,6 +48,8 @@ public class EvenementService {
         return evenements;
     }
 
+
+
     public Evenement getEvenement(int id) {
         evenements = ListeEvenementJardin(2 + "");
         Evenement ev = evenements.stream().filter(e -> e.getId() == id).collect(Collectors.toList()).get(0);
@@ -71,7 +73,12 @@ public class EvenementService {
             e.setId((int) t);
             e.setTitre(obj.get("titre").toString());
             e.setDescription(obj.get("description").toString());
-            e.setDate(obj.get("date").toString());
+            Map<String,Object> m = (Map<String, Object>) obj.get("date");
+            String str = m.get("date").toString();
+            String g = str.substring(0,10);
+            e.setDate(g);
+
+
             //e.setImage(obj.get("image").toString());
 
             evenements.add(e);
@@ -114,6 +121,29 @@ public class EvenementService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return result;
     }
+
+
+
+
+    public Boolean AfficherEvent(Evenement e) {
+        String url = "http://127.0.0.1:8000/eveapi/Api/event/"+ "/" + e.getTitre() + "/" + e.getDescription() + "/" + e.getDate() + "/" + e.getCategorie().getId();
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                res = req.getResponseCode() == 200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return res;
+
+    }
+
+
+
 
 
 }

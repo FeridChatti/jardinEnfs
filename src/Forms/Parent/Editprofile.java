@@ -20,6 +20,7 @@ public class Editprofile extends Form {
         p = ParentService.getInstance().getparent(authenticated.getId());
 
         Label nomlbl = new Label("Nom");
+      //  nomlbl.getStyle().setFgColor(0xe7e7e7);
         TextField nomtf = new TextField(p.getNom());
 
 

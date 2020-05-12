@@ -101,7 +101,7 @@ public class RemarqueService {
 
             float idab = Float.parseFloat((obj.get("ab_id").toString()));
             String g = str.substring(0, 10);
-            e.setDate(str);
+            e.setDate(g);
             e.setAbid((int) idab);
             e.setDescription(obj.get("description").toString());
             e.setEnfant(obj.get("enfantnom").toString() + " " + obj.get("enfantprenom").toString());
