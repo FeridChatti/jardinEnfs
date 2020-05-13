@@ -1,53 +1,45 @@
-package Forms.Parent;
+package Forms.Responsable;
 
 import Entities.Jardin;
 import Entities.Messages;
+import Entities.Parents;
 import Services.ChatService;
+import Services.UserService;
 import com.codename1.components.FloatingActionButton;
-import com.codename1.components.InfiniteProgress;
-import com.codename1.components.MultiButton;
 import com.codename1.components.SpanLabel;
-import com.codename1.io.Preferences;
 import com.codename1.ui.*;
-import com.codename1.ui.animations.MorphTransition;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
-import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Border;
 import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.plaf.Style;
-import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.util.SwipeBackSupport;
 import com.codename1.ui.util.WeakHashMap;
-import com.codename1.util.CaseInsensitiveOrder;
 import esprit.tn.MyApplication;
 
-import javax.swing.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import static esprit.tn.MyApplication.authenticated;
 
-public class Chat extends Form {
+public class Messagerie  extends Form {
     private final WeakHashMap<String, EncodedImage> roundedImagesOfFriends = new WeakHashMap<>();
     public Resources theme = MyApplication.theme;
     public String parname;
     private Image roundedMeImage;
-    private List<Jardin> contacts;
+    private List<Parents> contacts;
 
 
-    public Chat(Form prev, int idjar, String jarname) {
+    public Messagerie(Form prev, int idpar,String parname) {
 
 
-        Form chatForm = new Form(jarname);
+        Form chatForm = new Form(parname);
 
         // this identifies the person we are chatting with, so an incoming message will know if this is the right person...
-        chatForm.putClientProperty("cid", jarname);
+        chatForm.putClientProperty("cid", parname);
         chatForm.setLayout(new BorderLayout());
         Toolbar tb = new Toolbar();
         final Container chatArea = new Container(new BoxLayout(BoxLayout.Y_AXIS));
@@ -66,9 +58,15 @@ public class Chat extends Form {
         });
         // Gets a rounded version of our friends picture and caches it
 
-       // Container cont = new Container(BoxLayout.y());
+        // Container cont = new Container(BoxLayout.y());
         // load the stored messages and add them to the form
-        List<Messages> messages = ChatService.getInstance().MessparList(String.valueOf(idjar),String.valueOf(authenticated.getId()));
+
+
+        //get the jard id based on authenticated user
+        Jardin jarid= UserService.getInstance().getJardin(String.valueOf(authenticated.getId()));
+
+
+        List<Messages> messages = ChatService.getInstance().MessparList(String.valueOf(idpar),String.valueOf(jarid.getId()));
         if (messages != null) {
             for (Messages m : messages) {
                 parname = m.getSendername();
@@ -80,7 +78,7 @@ public class Chat extends Form {
                     dt.setUIID("SmallFontLabel");
                     chatArea.add(dt);
                     dt.setAlignment(Component.RIGHT);
-                 //  cont.add(respondNoLayout(chatArea, m.getMsg())); cont.add(respondNoLayout(chatArea, m.getMsg())); cont.add(respondNoLayout(chatArea, m.getMsg()));
+                    //  cont.add(respondNoLayout(chatArea, m.getMsg())); cont.add(respondNoLayout(chatArea, m.getMsg())); cont.add(respondNoLayout(chatArea, m.getMsg()));
                     respondNoLayout(chatArea, m.getMsg());
                     //respondNoLayout(chatArea, m.getMsg());respondNoLayout(chatArea, m.getMsg());
                 } else {
@@ -101,7 +99,7 @@ public class Chat extends Form {
 
         }
         TextField write = new TextField(30);
-        write.setHint("Write to " + jarname);
+        write.setHint("Write to " + parname);
 
 
         FloatingActionButton fab = FloatingActionButton.createFAB(FontImage.MATERIAL_SEND);
@@ -109,13 +107,10 @@ public class Chat extends Form {
         fab.setUIID("SendButton");
 
 
-
         Container cnt = BorderLayout.centerEastWest(write, fab, null);
 
 
-
         write.getAllStyles().setBorder(Border.createEmpty());
-
 
 
         Style msgStyle = write.getAllStyles();
@@ -130,22 +125,13 @@ public class Chat extends Form {
         msgStyle.setMargin(Component.BOTTOM, 3);
 
 
-
-
-
-
-
-
-
-
-
         chatForm.addComponent(BorderLayout.CENTER, chatArea);
         chatForm.addComponent(BorderLayout.SOUTH, cnt);
         // the action listener for the text field creates a message object, converts it to JSON and publishes it to the listener queue
         fab.addActionListener((e) -> {
 
             String text = write.getText();
-            if(!text.isEmpty()){
+            if (!text.isEmpty()) {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
                 LocalDateTime now = LocalDateTime.now();
                 Label dt = new Label(dtf.format(now));
@@ -162,15 +148,15 @@ public class Chat extends Form {
                 // JSONObject obj = messageObject.toJSON();
 
 
-                String flag=ChatService.getInstance().sendmsg(text,idjar,authenticated.getId(),authenticated.getId());
+                String flag = ChatService.getInstance().sendmsg(text, jarid.getId(), authenticated.getId(), idpar);
 
-                if(flag.contains("true")) {
+                if (flag.contains("true")) {
 
                     // a message was received, we make it opauqe and add it to the storage
                     t.getUnselectedStyle().setOpacity(255);
                     chatArea.revalidate();
 
-                }else{
+                } else {
                     chatArea.removeComponent(t);
                     chatArea.revalidate();
                     Dialog.show("Error", "Connection error message wasn't sent", "OK", null);
@@ -178,20 +164,10 @@ public class Chat extends Form {
                 }
             }
 
-            });
-
-
-
-
-
-
+        });
 
 
         chatForm.show();
-
-
-
-
 
 
     }
@@ -219,7 +195,7 @@ public class Chat extends Form {
         return t;
     }
 
-    private Component respond(Container chatArea, String text ) {
+    private Component respond(Container chatArea, String text) {
         Component answer = respondNoLayout(chatArea, text);
         answer.setX(chatArea.getWidth());
         answer.setWidth(chatArea.getWidth());
@@ -237,9 +213,8 @@ public class Chat extends Form {
         answer.setTextUIID("BubbleThem");
         answer.setTextBlockAlign(Component.RIGHT);
         answer.setScrollableY(true);
-       chatArea.addComponent(answer);
-       // chatArea.scrollComponentToVisible(answer);
+        chatArea.addComponent(answer);
+        // chatArea.scrollComponentToVisible(answer);
         return answer;
     }
-
 }
