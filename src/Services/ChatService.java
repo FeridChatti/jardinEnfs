@@ -162,4 +162,36 @@ public class ChatService {
 
     }
 
+    public  String sendmsg(String msg,int idjar,int senderid,int parid){
+        String Url = "http://localhost:8000/Api/sendmsg";
+
+        req.setUrl(Url);
+        req.setPost(false);
+        req.addArgument("par", String.valueOf(parid));
+        req.addArgument("jar", String.valueOf(idjar));
+        req.addArgument("sender", String.valueOf(senderid));
+
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+
+
+                JSONParser j = new JSONParser();
+                json = new String(req.getResponseData());
+
+
+
+                //return json;
+
+                req.removeResponseListener(this);
+
+
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return json;
+
+    }
+
+
 }

@@ -18,6 +18,24 @@
     <image name="bla.jpg"  />
     <image name="border.png"  />
     <image name="bridge.jpg"  />
+    <image name="BubbleMe.borderBottom_1.png" type="multi"  />
+    <image name="BubbleMe.borderBottomL_1.png" type="multi"  />
+    <image name="BubbleMe.borderBottomR_1.png" type="multi"  />
+    <image name="BubbleMe.borderCenter_1.png" type="multi"  />
+    <image name="BubbleMe.borderLeft_1.png" type="multi"  />
+    <image name="BubbleMe.borderRight_1.png" type="multi"  />
+    <image name="BubbleMe.borderTop_1.png" type="multi"  />
+    <image name="BubbleMe.borderTopL_1.png" type="multi"  />
+    <image name="BubbleMe.borderTopR_1.png" type="multi"  />
+    <image name="BubbleThem.borderBottom_1.png" type="multi"  />
+    <image name="BubbleThem.borderBottomL_1.png" type="multi"  />
+    <image name="BubbleThem.borderBottomR_1.png" type="multi"  />
+    <image name="BubbleThem.borderCenter_1.png" type="multi"  />
+    <image name="BubbleThem.borderLeft_1.png" type="multi"  />
+    <image name="BubbleThem.borderRight_1.png" type="multi"  />
+    <image name="BubbleThem.borderTop_1.png" type="multi"  />
+    <image name="BubbleThem.borderTopL_1.png" type="multi"  />
+    <image name="BubbleThem.borderTopR_1.png" type="multi"  />
     <image name="Button.borderBottom_3.png" type="multi"  />
     <image name="Button.borderBottomL_3.png" type="multi"  />
     <image name="Button.borderBottomR_3.png" type="multi"  />
@@ -179,6 +197,15 @@
         <val key="@switchOffImage" value="switch_off.png" />
         <val key="@switchOnImage" value="switch_on.png" />
         <val key="@tabPlacementInt" value="0" />
+        <border key="BubbleMe.border" type="image" i1="BubbleMe.borderTop_1.png" i2="BubbleMe.borderBottom_1.png" i3="BubbleMe.borderLeft_1.png" i4="BubbleMe.borderRight_1.png" i5="BubbleMe.borderTopL_1.png" i6="BubbleMe.borderTopR_1.png" i7="BubbleMe.borderBottomL_1.png" i8="BubbleMe.borderBottomR_1.png" i9="BubbleMe.borderCenter_1.png" />
+        <val key="BubbleMe.fgColor" value="000000" />
+        <val key="BubbleMe.padUnit" value="2,2,2,2" />
+        <val key="BubbleMe.padding" value="1.0,1.0,3.0,1.0" />
+        <border key="BubbleThem.border" type="image" i1="BubbleThem.borderTop_1.png" i2="BubbleThem.borderBottom_1.png" i3="BubbleThem.borderLeft_1.png" i4="BubbleThem.borderRight_1.png" i5="BubbleThem.borderTopL_1.png" i6="BubbleThem.borderTopR_1.png" i7="BubbleThem.borderBottomL_1.png" i8="BubbleThem.borderBottomR_1.png" i9="BubbleThem.borderCenter_1.png" />
+        <val key="BubbleThem.fgColor" value="000000" />
+        <val key="BubbleThem.padUnit" value="2,2,2,2" />
+        <val key="BubbleThem.padding" value="1.0,1.0,3.0,1.0" />
+        <val key="BubbleThem.transparency" value="0" />
         <val key="Button.align" value="4" />
         <border key="Button.border" type="image" i1="Button.borderTop_3.png" i2="Button.borderBottom_3.png" i3="Button.borderLeft_3.png" i4="Button.borderRight_3.png" i5="Button.borderTopL_3.png" i6="Button.borderTopR_3.png" i7="Button.borderBottomL_3.png" i8="Button.borderBottomR_3.png" i9="Button.borderCenter_3.png" />
         <val key="Button.fgColor" value="0" />
@@ -380,6 +407,7 @@
         <val key="Container.align" value="4" />
         <gradient key="Container.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Container.bgType" value="0" />
+        <font key="Container.font" type="system" face="0" style="0" size="0" />
         <val key="Container.press#derive" value="Container" />
         <val key="Container.press#transparency" value="0" />
         <val key="Container.sel#derive" value="Container" />
