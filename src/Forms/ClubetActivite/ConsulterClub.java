@@ -88,6 +88,7 @@ public class ConsulterClub extends Form {
                 Container flowLayout = FlowLayout.encloseIn(r.createStarRankSlider());
 
 
+
                 d.add(flowLayout);
 
                 Button sb = new Button("submit");
