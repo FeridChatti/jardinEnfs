@@ -7,6 +7,9 @@ import Services.ChauffeurService;
 import Services.TrajetService;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.validation.LengthConstraint;
+import com.codename1.ui.validation.NumericConstraint;
+import com.codename1.ui.validation.Validator;
 import esprit.tn.MyApplication;
 
 import java.lang.reflect.Array;
@@ -19,8 +22,11 @@ public class AjouterTrajet extends Form {
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
         setTitle("Ajouter Trajet");
         setLayout(BoxLayout.y());
-        TextField adresse= new TextField("","Adresse");
-        TextField heure= new TextField("","Heure");
+        TextComponent adresse = new TextComponent().label("Adresse");
+        TextComponent heure = new TextComponent().label("Heure");
+        Validator val = new Validator();
+        val.addConstraint(adresse, new LengthConstraint(1));
+        val.addConstraint(heure, new LengthConstraint(1));
         Button aj=new Button("Ajouter");
         ComboBox<Chauffeur> cb=new ComboBox<>();
         for(Chauffeur c : lc)
