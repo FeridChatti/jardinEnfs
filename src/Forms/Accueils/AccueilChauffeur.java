@@ -2,6 +2,7 @@ package Forms.Accueils;
 
 import Forms.Sami.ChauffeurTrajets;
 import Forms.Sami.ConsulterTrajet;
+import Forms.Sami.MapsDemo;
 import Forms.Sami.ProfilChauffeur;
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
@@ -15,7 +16,13 @@ public class AccueilChauffeur extends Form {
         setLayout(BoxLayout.y());
 
         Button cs=new Button("Voir mes trajets");
-        cs.addActionListener(e->new ChauffeurTrajets(fo));
+        cs.addActionListener(e-> {
+            try {
+                new ChauffeurTrajets(fo);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        });
 
 
         Button ch=new Button("Consulter Profil");

@@ -678,6 +678,34 @@
         <val key="RedLabel.padUnit" value="0,2,0,2" />
         <val key="RedLabel.padding" value="0.0,0.0,1.0,1.0" />
         <val key="RedLabel.transparency" value="0" />
+        <val key="SendButton.bgColor" value="006AFF" />
+        <val key="SendButton.fgColor" value="ffffff" />
+        <val key="SendButton.marUnit" value="0,0,2,0" />
+        <val key="SendButton.margin" value="0.0,2.0,0.0,0.0" />
+        <val key="SendButton.press#bgColor" value="006AFF" />
+        <val key="SendButton.press#fgColor" value="ffffff" />
+        <val key="SendButton.press#marUnit" value="0,0,2,0" />
+        <val key="SendButton.press#margin" value="0.0,2.0,0.0,0.0" />
+        <val key="SendButton.press#transparency" value="0" />
+        <val key="SendButton.sel#bgColor" value="006AFF" />
+        <val key="SendButton.sel#fgColor" value="ffffff" />
+        <val key="SendButton.sel#marUnit" value="0,0,2,0" />
+        <val key="SendButton.sel#margin" value="0.0,2.0,0.0,0.0" />
+        <val key="SendButtton.align" value="3" />
+        <val key="SendButtton.bgColor" value="006AFF" />
+        <val key="SendButtton.fgColor" value="ffffff" />
+        <val key="SendButtton.marUnit" value="0,0,2,0" />
+        <val key="SendButtton.margin" value="0.0,2.0,0.0,0.0" />
+        <val key="SendButtton.padUnit" value="0,0,0,2" />
+        <val key="SendButtton.padding" value="0.0,0.0,0.0,2.0" />
+        <val key="SendButtton.press#align" value="3" />
+        <val key="SendButtton.press#bgColor" value="006AFF" />
+        <val key="SendButtton.press#fgColor" value="ffffff" />
+        <val key="SendButtton.press#marUnit" value="0,0,2,0" />
+        <val key="SendButtton.press#margin" value="0.0,2.0,0.0,0.0" />
+        <val key="SendButtton.press#padding" value="0.0,0.0,0.0,0.0" />
+        <val key="SendButtton.press#transparency" value="0" />
+        <val key="SendButtton.transparency" value="0" />
         <val key="Separator.bgColor" value="4e606e" />
         <val key="Separator.fgColor" value="000000" />
         <val key="Separator.marUnit" value="0,2,0,0" />
@@ -906,7 +934,14 @@
         <border key="border" type="empty" />
         <val key="fgColor" value="0" />
         <font key="font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
-        <border key="press#border" type="empty" />
+        <val key="press#align" value="3" />
+        <val key="press#bgColor" value="006AFF" />
+        <val key="press#derive" value="Button" />
+        <val key="press#fgColor" value="ffffff" />
+        <val key="press#marUnit" value="0,0,2,0" />
+        <val key="press#margin" value="0.0,2.0,0.0,0.0" />
+        <val key="press#padding" value="0.0,0.0,0.0,0.0" />
+        <val key="press#transparency" value="0" />
         <border key="sel#border" type="empty" />
         <val key="theme.res.fgColor" value="6c7b8a" />
         <font key="theme.res.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="1.5" />

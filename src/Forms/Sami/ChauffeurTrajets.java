@@ -2,6 +2,7 @@ package Forms.Sami;
 
 import Entities.Trajet;
 import Forms.Accueils.AccueilResponsable;
+import Services.MapService;
 import Services.TrajetService;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
@@ -15,23 +16,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChauffeurTrajets {
-    public ChauffeurTrajets(Form prev) {
+public class ChauffeurTrajets extends Form {
+    public ChauffeurTrajets(Form prev) throws Exception {
 
         Form hi = new Form("Liste des trajets", BoxLayout.y());
         hi.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
+        ArrayList<Trajet> trajetList= TrajetService.getInstance().ListeTrajetsParChauffeur(MyApplication.authenticated.getId()+"");
 
         Button btmap=new Button("Voir map");
-        btmap.addActionListener(e-> Dialog.show("Map","stay tuned","can't wait","can wait"));
+        btmap.addActionListener(e->{new MapChauffeur(hi);});
         hi.addAll(btmap,new Label(""));
 
-        ArrayList<Trajet> trajetList= TrajetService.getInstance().ListeTrajetsParChauffeur(MyApplication.authenticated.getId()+"");
         ArrayList<Map<String, Object>> data = new ArrayList<>();
-        for(Trajet tr :trajetList) {
-            data.add(createListEntry(tr.getAdresse(), tr.getHeure(),tr));
-        }
+        for(Trajet tr :trajetList) { data.add(createListEntry(tr.getAdresse(), tr.getHeure(),tr));}
+
         DefaultListModel<Map<String, Object>> model = new DefaultListModel<>(data);
         MultiList ml = new MultiList(model);
+
         hi.add(ml);
         hi.show();
 

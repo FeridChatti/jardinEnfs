@@ -168,16 +168,17 @@ public class ChatService {
         req.setUrl(Url);
         req.setPost(false);
         req.addArgument("par", String.valueOf(parid));
-        req.addArgument("jar", String.valueOf(idjar));
+        req.addArgument("jard", String.valueOf(idjar));
         req.addArgument("sender", String.valueOf(senderid));
+        req.addArgument("msg", msg);
 
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
 
 
-                JSONParser j = new JSONParser();
                 json = new String(req.getResponseData());
+
 
 
 

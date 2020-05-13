@@ -125,7 +125,7 @@ int i=0;
 
 
             label_3.addPointerReleasedListener(evt -> {
-                new Chat(this,j.getId(),j.getName()).show();
+                new Chat(this,j.getId(),j.getName()) ;
             });
             firstcont.setLeadComponent(label_3);
             firstcont.setUIID("JardListCont");
