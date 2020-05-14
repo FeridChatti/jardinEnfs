@@ -6,6 +6,7 @@ import Forms.AbonnementRespon.LocalNotificationTest;
 import Forms.ClubetActivite.ListeParticipation;
 import Forms.Evenement.AjouterEvenement;
 import Forms.ClubetActivite.ListeParticipation;
+import Forms.Responsable.UserList;
 import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
 import Forms.raed.AfficheJardinRespo;
@@ -47,8 +48,11 @@ public class AccueilResponsable extends Form {
         ph.addActionListener(e->new AffichePaiem(fo).show());
 
 
+        Button msg=new Button("Messages");
+        msg.addActionListener(e->new UserList(fo).show());
 
-        addAll(cs,participer,abonnement,ajev,bj,ph);
+
+        addAll(cs,participer,abonnement,ajev,bj,ph,msg);
 
 
 
