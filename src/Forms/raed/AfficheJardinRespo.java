@@ -44,7 +44,7 @@ public class AfficheJardinRespo  extends Form {
 
         Image icon2 = URLImage.createToStorage(placeholder, "icon2", "http://www.vippng.com/png/detail/35-352335_baby-boy-icon-png-icone-enfant-png.png");
 
-Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"");
+        Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"");
 
         setLayout(BoxLayout.y());
         Label nom = new Label("Nom:");
@@ -99,24 +99,25 @@ Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId(
                             }
 
                             else {
-                                if (t.getText().matches("[a-zA-Z]*") && re.getText().matches("[a-zA-Z]*") && ree.getText().matches("[a-zA-Z]*")) {
-                                    if (reee.getText().matches("[a-zA-Z]*")) {
+                                if (!t.getText().matches("[a-zA-Z\\s']*") && !re.getText().matches("[a-zA-Z\\s']*") &&! ree.getText().matches("[a-zA-Z\\s']*")) {
+                                    if (reee.getText().matches("[a-zA-Z\\s']*")) {
                                         Dialog.show("Erreur", "Num tel non valide", new Command("OK"));
                                     }
-                                    if(rse.getText().matches("[a-zA-Z]*"))
-                                    {
+                                    if (rse.getText().matches("[a-zA-Z\\s']*")) {
                                         Dialog.show("Erreur", "Tarif non valide", new Command("OK"));
                                     }
 
-                                    else{
+                                } else{
 
                                         Jardin je = new Jardin(   t.getText(), ree.getText(),
                                                 reee.getText(), Float.parseFloat(rse.getText()), re.getText());
 
 
+                                        je.setId(j.getId());
 
-                                        boolean j = JardinService.getInstance().ModifierJardin(je);
-                                        if (j) {
+
+                                        boolean j1 = JardinService.getInstance().ModifierJardin(je);
+                                        if (j1) {
                                             Dialog.show("Succés", "jardin modifié avec succés", "Oui", null);
                                             try {
                                                 new AfficheJardinRespo(prev,idenf).show();
@@ -131,7 +132,7 @@ Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId(
                                     }
 
 
-                                }}}
+                                }}
                     });
 
                 }

@@ -47,7 +47,7 @@ public class AccueilResponsable extends Form {
         Button list=new Button("Consulter les événement");
         list.addActionListener(e->new consulterListeEvent(fo).show());
 
-        addAll(cs,participer,abonnement,ajev,list);
+        addAll(cs,participer,abonnement,ajev,list,bj);
 
 
 
