@@ -6,11 +6,10 @@ import Forms.AbonnementRespon.LocalNotificationTest;
 import Forms.ClubetActivite.ListeParticipation;
 import Forms.Evenement.AjouterEvenement;
 import Forms.ClubetActivite.ListeParticipation;
-import Forms.Responsable.UserList;
+import Forms.Evenement.consulterListeEvent;
 import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
 import Forms.raed.AfficheJardinRespo;
-import Forms.raed.AffichePaiem;
 import com.codename1.l10n.ParseException;
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
@@ -44,15 +43,11 @@ public class AccueilResponsable extends Form {
 
         Button ajev=new Button("Ajouter evenement");
         ajev.addActionListener(e->new AjouterEvenement(fo).show());
-        Button ph=new Button("Consulter l'historique de vos paiement");
-        ph.addActionListener(e->new AffichePaiem(fo).show());
 
+        Button list=new Button("Consulter les événement");
+        list.addActionListener(e->new consulterListeEvent(fo).show());
 
-        Button msg=new Button("Messages");
-        msg.addActionListener(e->new UserList(fo).show());
-
-
-        addAll(cs,participer,abonnement,ajev,bj,ph,msg);
+        addAll(cs,participer,abonnement,ajev,list);
 
 
 
