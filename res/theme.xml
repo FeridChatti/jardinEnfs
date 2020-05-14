@@ -678,19 +678,6 @@
         <val key="RedLabel.padUnit" value="0,2,0,2" />
         <val key="RedLabel.padding" value="0.0,0.0,1.0,1.0" />
         <val key="RedLabel.transparency" value="0" />
-        <val key="SendButton.bgColor" value="006AFF" />
-        <val key="SendButton.fgColor" value="ffffff" />
-        <val key="SendButton.marUnit" value="0,0,2,0" />
-        <val key="SendButton.margin" value="0.0,2.0,0.0,0.0" />
-        <val key="SendButton.press#bgColor" value="006AFF" />
-        <val key="SendButton.press#fgColor" value="ffffff" />
-        <val key="SendButton.press#marUnit" value="0,0,2,0" />
-        <val key="SendButton.press#margin" value="0.0,2.0,0.0,0.0" />
-        <val key="SendButton.press#transparency" value="0" />
-        <val key="SendButton.sel#bgColor" value="006AFF" />
-        <val key="SendButton.sel#fgColor" value="ffffff" />
-        <val key="SendButton.sel#marUnit" value="0,0,2,0" />
-        <val key="SendButton.sel#margin" value="0.0,2.0,0.0,0.0" />
         <val key="SendButtton.align" value="3" />
         <val key="SendButtton.bgColor" value="006AFF" />
         <val key="SendButtton.fgColor" value="ffffff" />
