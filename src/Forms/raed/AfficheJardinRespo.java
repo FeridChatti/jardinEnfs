@@ -32,7 +32,7 @@ public class AfficheJardinRespo  extends Form {
     int count=0;
 
     public AfficheJardinRespo  (Form prev ,int idenf) throws ParseException {
-        /*Form ts=this;
+        Form ts=this;
 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
         setTitle("Affiche Jardin Responsable");
@@ -145,7 +145,7 @@ Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId(
         addAll(add,re,desc,ree,nute,reee,tari,rse,md);
         ts.show();
 
-*/
+
 
 
     }
