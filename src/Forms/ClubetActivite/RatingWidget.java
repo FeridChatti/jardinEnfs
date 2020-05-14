@@ -106,6 +106,7 @@ public class RatingWidget {
 
     public  Slider createStarRankSlider() {
         Slider starRank = new Slider();
+
         starRank.setEditable(true);
         starRank.setMinValue(0);
         starRank.setMaxValue(10);

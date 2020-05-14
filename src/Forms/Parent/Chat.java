@@ -3,6 +3,7 @@ package Forms.Parent;
 import Entities.Jardin;
 import Entities.Messages;
 import Services.ChatService;
+import com.codename1.components.FloatingActionButton;
 import com.codename1.components.InfiniteProgress;
 import com.codename1.components.MultiButton;
 import com.codename1.components.SpanLabel;
@@ -14,6 +15,7 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Border;
+import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
@@ -22,7 +24,11 @@ import com.codename1.ui.util.WeakHashMap;
 import com.codename1.util.CaseInsensitiveOrder;
 import esprit.tn.MyApplication;
 
+import javax.swing.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import static esprit.tn.MyApplication.authenticated;
@@ -38,49 +44,45 @@ public class Chat extends Form {
     public Chat(Form prev, int idjar, String jarname) {
 
 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
-        Form chatForm = new Form(new BorderLayout());
-
+        Form chatForm = new Form(jarname);
 
         // this identifies the person we are chatting with, so an incoming message will know if this is the right person...
-        chatForm.putClientProperty("cid", authenticated.getId());
-       // chatForm.setLayout();
-        chatForm.setScrollableY(true);
-
+        chatForm.putClientProperty("cid", jarname);
+        chatForm.setLayout(new BorderLayout());
+        Toolbar tb = new Toolbar();
         final Container chatArea = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-
         chatArea.setScrollableY(true);
         chatArea.setName("ChatArea");
+        chatForm.setToolBar(tb);
 
-
-        // Provides the ability to swipe the screen to go back to the previous form
+        chatForm.setBackCommand(new Command("Contacts") {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                prev.getComponentForm().showBack();
+            }
+        });
         SwipeBackSupport.bindBack(chatForm, (args) -> {
             return prev.getComponentForm();
         });
-
         // Gets a rounded version of our friends picture and caches it
 
-        Container cont = new Container(BoxLayout.y());
+       // Container cont = new Container(BoxLayout.y());
         // load the stored messages and add them to the form
-        List<Messages> messages = ChatService.getInstance().MessparList(String.valueOf(idjar));
+        List<Messages> messages = ChatService.getInstance().MessparList(String.valueOf(idjar),String.valueOf(authenticated.getId()));
         if (messages != null) {
             for (Messages m : messages) {
                 parname = m.getSendername();
 
 
                 if (m.getSender().getId() == authenticated.getId()) {
-                  /* Container c=new Container(new BoxLayout(BoxLayout.X_AXIS));
-                   SpanLabel ms=new SpanLabel(BorderLayout.EAST);
-                   ms.setUIID("BubbleThem");
-                   ms.setText(m.getMsg());
-                   c.add(ms);
-                    add(c);*/
+
                     Label dt = new Label(m.getDate());
                     dt.setUIID("SmallFontLabel");
                     chatArea.add(dt);
                     dt.setAlignment(Component.RIGHT);
-                   cont.add(respondNoLayout(chatArea, m.getMsg())); cont.add(respondNoLayout(chatArea, m.getMsg())); cont.add(respondNoLayout(chatArea, m.getMsg()));
-
+                 //  cont.add(respondNoLayout(chatArea, m.getMsg())); cont.add(respondNoLayout(chatArea, m.getMsg())); cont.add(respondNoLayout(chatArea, m.getMsg()));
+                    respondNoLayout(chatArea, m.getMsg());
+                    //respondNoLayout(chatArea, m.getMsg());respondNoLayout(chatArea, m.getMsg());
                 } else {
 
                     Label dt = new Label(m.getDate());
@@ -88,13 +90,9 @@ public class Chat extends Form {
                     dt.setAlignment(Component.LEFT);
 
                     chatArea.add(dt);
-                    cont.add(sayNoLayout(chatArea, m.getMsg())); cont.add(sayNoLayout(chatArea, m.getMsg())); cont.add(sayNoLayout(chatArea, m.getMsg()));
-                  /*  Container c=new Container(new BoxLayout(BoxLayout.X_AXIS));
-                    SpanLabel ms=new SpanLabel(BorderLayout.WEST);
-                    ms.setUIID("BubbleMe");
-                    ms.setText(m.getMsg());
-                    c.add(ms);
-                    add(c);*/
+                    sayNoLayout(chatArea, m.getMsg());
+                    //sayNoLayout(chatArea, m.getMsg()); sayNoLayout(chatArea, m.getMsg());
+
 
                 }
 
@@ -105,39 +103,95 @@ public class Chat extends Form {
         TextField write = new TextField(30);
         write.setHint("Write to " + jarname);
 
-        //chatForm.addComponent(BorderLayout.CENTER, chatArea);
-       // chatForm.addComponent(BorderLayout.SOUTH, write);
+
+        FloatingActionButton fab = FloatingActionButton.createFAB(FontImage.MATERIAL_SEND);
+
+        fab.setUIID("SendButton");
 
 
+
+        Container cnt = BorderLayout.centerEastWest(write, fab, null);
+
+
+
+        write.getAllStyles().setBorder(Border.createEmpty());
+
+
+
+        Style msgStyle = write.getAllStyles();
+        Stroke borderStroke = new Stroke(2, Stroke.CAP_SQUARE, Stroke.JOIN_MITER, 1);
+        msgStyle.setBorder(RoundBorder.create().
+                rectangle(true).
+                color(0xffffff).
+                strokeColor(0).
+                strokeOpacity(120).
+                stroke(borderStroke));
+        msgStyle.setMarginUnit(Style.UNIT_TYPE_DIPS);
+        msgStyle.setMargin(Component.BOTTOM, 3);
+
+
+
+
+
+
+
+
+
+
+
+        chatForm.addComponent(BorderLayout.CENTER, chatArea);
+        chatForm.addComponent(BorderLayout.SOUTH, cnt);
         // the action listener for the text field creates a message object, converts it to JSON and publishes it to the listener queue
-        write.addActionListener((e) -> {
+        fab.addActionListener((e) -> {
+
             String text = write.getText();
-            final Component t = say(chatArea, text);
+            if(!text.isEmpty()){
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                LocalDateTime now = LocalDateTime.now();
+                Label dt = new Label(dtf.format(now));
+                dt.setUIID("SmallFontLabel");
+                dt.setAlignment(Component.RIGHT);
+                chatArea.add(dt);
+                final Component t = respond(chatArea, text);
 
-            // we make outgoing messages translucent to indicate that they weren't received yet
-            t.getUnselectedStyle().setOpacity(120);
+                // we make outgoing messages translucent to indicate that they weren't received yet
+                t.getUnselectedStyle().setOpacity(120);
+                write.setText("");
 
-            write.setText("");
-            String mschat = ChatService.getInstance().sendmsg(text, idjar, authenticated.getId(), authenticated.getId());
-
-        });
-
-       // cont.addComponent(BorderLayout.SOUTH,write);
-
-        chatForm.add( BorderLayout.CENTER,cont);
-        add(chatForm);
-       //addComponent();
-
-
+                //final Message messageObject = new Message(tokenPrefix + uniqueId, tokenPrefix + d.uniqueId, imageURL, fullName, text);
+                // JSONObject obj = messageObject.toJSON();
 
 
+                String flag=ChatService.getInstance().sendmsg(text,idjar,authenticated.getId(),authenticated.getId());
+
+                if(flag.contains("true")) {
+
+                    // a message was received, we make it opauqe and add it to the storage
+                    t.getUnselectedStyle().setOpacity(255);
+                    chatArea.revalidate();
+
+                }else{
+                    chatArea.removeComponent(t);
+                    chatArea.revalidate();
+                    Dialog.show("Error", "Connection error message wasn't sent", "OK", null);
+
+                }
+            }
+
+            });
 
 
 
 
 
-       // chatForm.add(BorderLayout.CENTER, ic);
-        //add( ic);
+
+
+
+        chatForm.show();
+
+
+
+
 
 
     }
@@ -160,12 +214,12 @@ public class Chat extends Form {
         t.setTextBlockAlign(Component.LEFT);
         t.setTextUIID("BubbleMe");
         t.setScrollableY(true);
-      //  chatArea.addComponent(t);
+        chatArea.addComponent(t);
         //chatArea.scrollComponentToVisible(t);
         return t;
     }
 
-    private void respond(Container chatArea, String text, Image roundedHimOrHerImage) {
+    private Component respond(Container chatArea, String text ) {
         Component answer = respondNoLayout(chatArea, text);
         answer.setX(chatArea.getWidth());
         answer.setWidth(chatArea.getWidth());
@@ -173,6 +227,7 @@ public class Chat extends Form {
 
         chatArea.animateLayoutAndWait(300);
         chatArea.scrollComponentToVisible(answer);
+        return answer;
     }
 
     private Component respondNoLayout(Container chatArea, String text) {
@@ -182,7 +237,7 @@ public class Chat extends Form {
         answer.setTextUIID("BubbleThem");
         answer.setTextBlockAlign(Component.RIGHT);
         answer.setScrollableY(true);
-     //   chatArea.addComponent(answer);
+       chatArea.addComponent(answer);
        // chatArea.scrollComponentToVisible(answer);
         return answer;
     }
