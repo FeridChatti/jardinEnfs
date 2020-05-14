@@ -11,6 +11,7 @@ import com.codename1.messaging.Message;
 import com.codename1.ui.*;
 
 import static com.codename1.ui.CN.*;
+import static esprit.tn.MyApplication.authenticated;
 
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -171,7 +172,7 @@ public class RatingWidget {
        sb.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent evt) {
-               ClubService.getInstance().AddRank(Integer.parseInt(idc),a);
+               ClubService.getInstance().AddRank(Integer.parseInt(idc),a,authenticated.getId());
                Dialog.show("Succes","added rank",new Command("OK"));
               // new ConsulterAbonnement(new AccueilParent()).show();
            }
