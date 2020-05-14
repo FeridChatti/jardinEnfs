@@ -1,8 +1,10 @@
 package Forms.ClubetActivite;
 
 import Entities.Club;
+import Entities.Enfant;
 import Forms.Enfants.AjouterEnfant;
 import Services.ClubService;
+import Services.RemarqueService;
 import com.codename1.components.*;
 import com.codename1.ui.*;
 import com.codename1.ui.animations.CommonTransitions;
@@ -26,6 +28,7 @@ import java.util.Map;
 
 import static com.codename1.ui.CN.*;
 import static com.codename1.ui.Image.createImage;
+import static esprit.tn.MyApplication.authenticated;
 
 
 public class ConsulterClub extends Form {
@@ -82,7 +85,9 @@ public class ConsulterClub extends Form {
                 sb.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent evt) {
-                        ClubService.getInstance().AddRank(Integer.parseInt(String.valueOf((String)t.get("id"))),r.a );
+
+
+                        ClubService.getInstance().AddRank(Integer.parseInt(String.valueOf((String)t.get("id"))),r.a ,authenticated.getId());
                         Dialog.show("Succes","added rank",new Command("OK"));
                         // new ConsulterAbonnement(new AccueilParent()).show();
                     }
@@ -135,7 +140,7 @@ public class ConsulterClub extends Form {
         imgv = new ImageViewer(imgs);*/
         entry.put("Line1", name);
         entry.put("Line2", description);
-        entry.put("icon",imgs);
+        entry.put("icon",icon1);
         entry.put("id",id);
         return entry;
     }
