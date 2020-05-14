@@ -19,6 +19,7 @@ import com.codename1.ui.plaf.Border;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,6 +30,12 @@ import static com.codename1.ui.Image.createImage;
 
 public class ConsulterClub extends Form {
     private Resources theme;
+    EncodedImage enc;
+    Image imgs;
+    ImageViewer imgv ;
+    String url="/ClubetActivite/smile3377190300095.jpg";
+
+
 
 
 
@@ -40,27 +47,6 @@ public class ConsulterClub extends Form {
         setTitle("Liste des Clubs");
 
 
-
-
-      /*  Container holder = new Container(BoxLayout.x());
-        add(holder);
-        Container detail = new Container(BoxLayout.y());
-        add(detail);
-
-        ArrayList<Club> l = ClubService.getInstance().getAllclubs();
-        for (int i = 0; i < l.size(); i++) {
-            Label lbName = new Label(l.get(i).getName());
-            Label lbDescription = new Label(l.get(i).getDescription());
-            //    ImageViewer image = new ImageViewer(theme.getImage("17 Transformers 3.jpg"));
-
-
-            //  add(image);
-            //holder.add(image);
-            detail.add(lbName);
-            detail.add(lbDescription);
-
-
-        }*/
 
 
         ArrayList<Club> lc = ClubService.getInstance().getAllclubs();
@@ -75,11 +61,36 @@ public class ConsulterClub extends Form {
         ml.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Map<String, Object> t = (HashMap) ml.getSelectedItem();
+              /*  Map<String, Object> t = (HashMap) ml.getSelectedItem();
 
                 if (Dialog.show("noter ce club", null, "Oui", "Non")) {
                      new RatingWidget().showStarPickingForm(String.valueOf((String)t.get("id")));
-                }
+                }*/
+
+                Map<String, Object> t = (HashMap) ml.getSelectedItem();
+                RatingWidget r = new RatingWidget();
+                Dialog d = new Dialog("Noter ce club");
+
+                d.setLayout(BoxLayout.yCenter());
+                Container flowLayout = FlowLayout.encloseIn(r.createStarRankSlider());
+
+
+
+                d.add(flowLayout);
+
+                Button sb = new Button("submit");
+                sb.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent evt) {
+                        ClubService.getInstance().AddRank(Integer.parseInt(String.valueOf((String)t.get("id"))),r.a );
+                        Dialog.show("Succes","added rank",new Command("OK"));
+                        // new ConsulterAbonnement(new AccueilParent()).show();
+                    }
+                });
+                d.add( sb);
+
+                d.show(fo.getHeight() / 2, 0, 0, 0);
+
             }
         });
 
@@ -107,14 +118,24 @@ public class ConsulterClub extends Form {
 
 
     private Map<String, Object> createListEntry(String name, String description, String photo,String id) {
+
+
         int mm = Display.getInstance().convertToPixels(3);
         EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(mm * 3, mm * 4, 0), false);
         Image icon1 = URLImage.createToStorage(placeholder, "icon1", "photo");
 
+
+
         Map<String, Object> entry = new HashMap<>();
+       /* try {
+            enc = EncodedImage.create(photo);
+        } catch (IOException e) {
+        }
+        imgs = URLImage.createToStorage(enc,url,url,URLImage.RESIZE_SCALE);
+        imgv = new ImageViewer(imgs);*/
         entry.put("Line1", name);
         entry.put("Line2", description);
-        entry.put("icon",icon1);
+        entry.put("icon",imgs);
         entry.put("id",id);
         return entry;
     }

@@ -38,7 +38,7 @@ public class RatingWidget {
     private String appstoreUrl;
     private String supportEmail;
 
-    int a ;
+    static int a ;
 
     public RatingWidget() {
     }
@@ -106,6 +106,7 @@ public class RatingWidget {
 
     public  Slider createStarRankSlider() {
         Slider starRank = new Slider();
+
         starRank.setEditable(true);
         starRank.setMinValue(0);
         starRank.setMaxValue(10);
@@ -122,12 +123,11 @@ public class RatingWidget {
         initStarRankStyle(starRank.getSliderFullUnselectedStyle(), fullStar);
         starRank.setPreferredSize(new Dimension(fullStar.getWidth() * 5, fullStar.getHeight()));
 
-
-
-
         starRank.addActionListener(evt -> { a=  starRank.getProgress();});
 
-System.out.println(a);
+        System.out.println(a);
+
+
         return starRank;
 
     }
@@ -164,6 +164,8 @@ System.out.println(a);
 
    public void showStarPickingForm(String idc) {
         Form hi = new Form("Star Slider", new BoxLayout(BoxLayout.Y_AXIS));
+
+
         hi.add(FlowLayout.encloseCenter(createStarRankSlider()));
        Button sb = new Button("submit");
        sb.addActionListener(new ActionListener() {
@@ -176,5 +178,12 @@ System.out.println(a);
        });
        hi.add(sb);
         hi.show();
+
+     /*  Form hi = new Form("Blur Dialog", new BoxLayout(BoxLayout.Y_AXIS));
+       Dialog.setDefaultBlurBackgroundRadius(8);
+       Button showDialog = new Button("Blur");
+       showDialog.addActionListener((e) -> Dialog.show("Blur", "Is On....", "OK", null));
+       hi.add(showDialog);
+       hi.show();*/
     }
 }

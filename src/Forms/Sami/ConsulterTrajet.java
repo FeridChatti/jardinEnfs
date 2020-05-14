@@ -21,17 +21,18 @@ import java.util.Map;
 public class ConsulterTrajet extends Form {
     public ConsulterTrajet(Form prev) {
 
+        ArrayList<Trajet> trajetList= TrajetService.getInstance().ListeTrajets(UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"").getId() +"");
+
         Form hi = new Form("Liste des trajets", BoxLayout.y());
   hi.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
 
         Button aj=new Button("Ajouter un trajet");
         aj.addActionListener(e->new AjouterTrajet(hi).show());
         Button btmap=new Button("Voir map");
-        btmap.addActionListener(e->Dialog.show("Map","stay tuned","can't wait","can wait"));
+        btmap.addActionListener(e->new MapsDemo(trajetList,hi));
 
         hi.addAll(aj,btmap);
 
-        ArrayList<Trajet> trajetList= TrajetService.getInstance().ListeTrajets(UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"").getId() +"");
         ArrayList<Map<String, Object>> data = new ArrayList<>();
         for(Trajet tr :trajetList) {
             data.add(createListEntry(tr.getAdresse(), tr.getChauffeur().getNom(),tr));

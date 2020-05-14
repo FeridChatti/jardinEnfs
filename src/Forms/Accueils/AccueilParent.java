@@ -11,6 +11,7 @@ import Forms.Enfants.AjouterEnfant;
 import Forms.Enfants.ConsulterEnfant;
 
 import Forms.Evenement.ConsulterEvenement;
+import Forms.Evenement.DetailsEvenement;
 import Forms.Evenement.consulterListeEvent;
 import Forms.Parent.Chat;
 import Forms.Parent.Editprofile;
