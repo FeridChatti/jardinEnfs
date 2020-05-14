@@ -7,6 +7,7 @@ import Forms.ClubetActivite.ListeParticipation;
 import Forms.Evenement.AjouterEvenement;
 import Forms.ClubetActivite.ListeParticipation;
 import Forms.Evenement.consulterListeEvent;
+import Forms.Responsable.UserList;
 import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
 import Forms.raed.AfficheJardinRespo;
@@ -47,7 +48,12 @@ public class AccueilResponsable extends Form {
         Button list=new Button("Consulter les événement");
         list.addActionListener(e->new consulterListeEvent(fo).show());
 
-        addAll(cs,participer,abonnement,ajev,list,bj);
+
+        Button msg=new Button("Messages");
+        msg.addActionListener(e->new UserList(fo).show());
+
+
+        addAll(cs,participer,abonnement,ajev,list,bj,msg);
 
 
 
