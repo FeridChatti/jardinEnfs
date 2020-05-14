@@ -75,11 +75,35 @@ public class ConsulterClub extends Form {
         ml.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Map<String, Object> t = (HashMap) ml.getSelectedItem();
+              /*  Map<String, Object> t = (HashMap) ml.getSelectedItem();
 
                 if (Dialog.show("noter ce club", null, "Oui", "Non")) {
                      new RatingWidget().showStarPickingForm(String.valueOf((String)t.get("id")));
-                }
+                }*/
+
+                Map<String, Object> t = (HashMap) ml.getSelectedItem();
+                RatingWidget r = new RatingWidget();
+                Dialog d = new Dialog("Noter ce club");
+
+                Container flowLayout = FlowLayout.encloseIn(r.createStarRankSlider());
+
+
+
+                d.add(flowLayout);
+
+                Button sb = new Button("submit");
+                sb.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent evt) {
+                        ClubService.getInstance().AddRank(Integer.parseInt(String.valueOf((String)t.get("id"))),r.a );
+                        Dialog.show("Succes","added rank",new Command("OK"));
+                        // new ConsulterAbonnement(new AccueilParent()).show();
+                    }
+                });
+                d.add( sb);
+
+                d.show(fo.getHeight() / 2, 0, 0, 0);
+
             }
         });
 

@@ -1,9 +1,11 @@
 package Services;
 
 import Entities.Chauffeur;
+import Entities.Jardin;
 import Entities.Trajet;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
+import esprit.tn.MyApplication;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -71,8 +73,9 @@ public class ChauffeurService {
 
 
         }
-
-    public Chauffeur getChauffeur(int id) {chauffeurs=ListeChauffeursJardin(4+"");
+Jardin j=UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"");
+    public Chauffeur getChauffeur(int id) {
+        chauffeurs=ListeChauffeursJardin(j.getId()+"");
      Chauffeur ch= (Chauffeur) chauffeurs.stream().filter(e->e.getId()==id).collect(Collectors.toList()).get(0);
 
      return ch;

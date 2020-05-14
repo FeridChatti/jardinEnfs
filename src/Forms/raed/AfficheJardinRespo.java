@@ -2,6 +2,7 @@ package Forms.raed;
 
 import Entities.Enfant;
 import Entities.Jardin;
+import Entities.Paiement;
 import Entities.User;
 import Forms.Accueils.AccueilParent;
 import Forms.Enfants.ConsulterEnfant;
@@ -121,7 +122,7 @@ ts.show();
 
                                         boolean j = JardinService.getInstance().ModifierJardin(je);
                                         if (j) {
-                                            Dialog.show("Succés", "Enfant modifié avec succés", "Oui", null);
+                                            Dialog.show("Succés", "jardin modifié avec succés", "Oui", null);
                                             new ConsulterEnfant(new AccueilParent()).show();
                                         } else {
                                             Dialog.show("Erreur", "Erreur", "Oui", null);
@@ -143,6 +144,7 @@ ts.show();
 
 
 */
+
 
     }
 

@@ -2,6 +2,7 @@ package Services;
 
 import Entities.Enfant;
 import Entities.Jardin;
+import Entities.Paiement;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class JardinService {
+
 
     public static JardinService instance=null;
     private ConnectionRequest req;
@@ -87,6 +89,7 @@ public class JardinService {
         return resultOk;
 
     }
+
 
 
 }
