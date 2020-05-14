@@ -2,12 +2,14 @@ package Forms.Evenement;
 
 import Entities.Evenement;
 import Services.EvenementService;
+import Services.UserService;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.list.MultiList;
+import esprit.tn.MyApplication;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,11 +25,11 @@ public class consulterListeEvent extends Form {
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
         setTitle("Consulter Evenements");
         setLayout(BoxLayout.y());
-        ArrayList<Evenement> ev= EvenementService.getInstance().ListeEvenementJardin("2");
+        ArrayList<Evenement> ev= EvenementService.getInstance().ListeEvenementJardin(UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"").getId()+"");
         ArrayList<Map<String, Object>> data = new ArrayList<>();
         for(Evenement event:ev){
 
-            data.add(createListEntry(event.getTitre(),event.getDescription(),event.getDate()));
+            data.add(createListEntry(event.getTitre(),event.getId()));
 
         }
 
@@ -36,10 +38,10 @@ public class consulterListeEvent extends Form {
         ml.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
+                Evenement et=new Evenement();
                 Map<String, Object> t = (HashMap) ml.getSelectedItem();
-                nmepre=(String)t.get("Line1");
-
-                Dialog.show("Détails de l'événement",t.get("Line1").toString()+t.get("Description")+t.get("Date"),null,"Cancel");
+                et.setId((int) t.get("id"));
+                new ConsulterEvenement(th,et).show();
 
 
             }
@@ -51,11 +53,10 @@ public class consulterListeEvent extends Form {
 
     }
 
-    private Map<String, Object> createListEntry(String titre, String description,String Date ) {
+    private Map<String, Object> createListEntry(String titre, int id ) {
         Map<String, Object> entry = new HashMap<>();
         entry.put("Line1", titre);
-        entry.put("Description",description);
-        entry.put("Date", Date);
+        entry.put("id",id);
 
         return entry;
 
