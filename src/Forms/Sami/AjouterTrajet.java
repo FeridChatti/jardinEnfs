@@ -7,18 +7,20 @@ import Services.ChauffeurService;
 import Services.TrajetService;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.TextModeLayout;
 import com.codename1.ui.validation.LengthConstraint;
 import com.codename1.ui.validation.NumericConstraint;
 import com.codename1.ui.validation.Validator;
 import esprit.tn.MyApplication;
 
+import javax.xml.soap.Text;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class AjouterTrajet extends Form {
 
     public AjouterTrajet(Form prev) {
-        ArrayList<Chauffeur> lc= ChauffeurService.getInstance().ListeChauffeursJardin(4+"");
+       ArrayList<Chauffeur> lc= ChauffeurService.getInstance().ListeChauffeursJardin(4+"");
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
         setTitle("Ajouter Trajet");
         setLayout(BoxLayout.y());
@@ -32,7 +34,11 @@ public class AjouterTrajet extends Form {
         for(Chauffeur c : lc)
         {cb.addItem(c);
         }
-        addAll(adresse,heure,cb,aj);
+
+        add(adresse);
+        add(heure);
+
+        addAll(cb,aj);
 
   aj.addActionListener((event)->{
       Chauffeur ch=cb.getSelectedItem();

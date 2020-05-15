@@ -43,7 +43,6 @@ public class consulterListeEvent extends Form {
                 et.setId((int) t.get("id"));
                 new ConsulterEvenement(th,et).show();
 
-
             }
         });
 
