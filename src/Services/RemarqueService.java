@@ -146,12 +146,13 @@ public class RemarqueService {
         return remarques;
     }
 
-    public Boolean ajouterremarques(int tutid, int abid, String desc) {
+    public Boolean ajouterremarques(int tutid, int abid, String desc,String enfid) {
         String url = "http://127.0.0.1:8000/Api/addrem";
         req.setUrl(url);
         req.addArgument("tut", String.valueOf(tutid));
         req.addArgument("abo", String.valueOf(abid));
         req.addArgument("descr", desc);
+        req.addArgument("enf",enfid);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {

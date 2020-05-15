@@ -55,7 +55,7 @@ public class AjouterRemarques extends Form {
 
                             Enfant e=enfant.getSelectedItem();
 
-                            if(RemarqueService.getInstance().ajouterremarques(authenticated.getId(),e.getIdabo(),descr.getText())){
+                            if(RemarqueService.getInstance().ajouterremarques(authenticated.getId(),e.getIdabo(),descr.getText(),String.valueOf(e.getId()))){
                                 Dialog.show("Succes","Ajout réussi",new Command("OK"));
                                 prev.showBack();
                             }}}
