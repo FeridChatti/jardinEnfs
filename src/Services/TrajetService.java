@@ -49,6 +49,23 @@ public class TrajetService {
         return trajets;
     }
 
+    public ArrayList<Trajet> ListeTrajetsParent(int idp) {
+        String Url="http://127.0.0.1:8000/Sami/api/trajetspar/"+idp;
+        req.setUrl(Url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                trajets=ParseTrajet(new String (req.getResponseData()),0);
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+
+        return trajets;
+    }
+
     public ArrayList<Trajet> ListeTrajets (String idj) {
         String Url="http://127.0.0.1:8000/Sami/api/listtrajets/"+idj;
         req.setUrl(Url);

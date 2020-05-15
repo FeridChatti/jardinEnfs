@@ -20,6 +20,7 @@ import Forms.Parent.JardList;
 import Forms.Parent.SendReclam;
 
 import Forms.Remarques.ConsulterRemarques;
+import Forms.Sami.MapParent;
 import Forms.User.BaseForm;
 import Forms.raed.AfficheJArdin;
 import com.codename1.components.ScaleImageLabel;
@@ -96,10 +97,13 @@ public class AccueilParent extends BaseForm {
 
         Button btList = new Button("Liste des événements");
         btList.addActionListener(s -> new ConsulterListeEventsParent(fo).show());
+        btList.addActionListener(s -> new consulterListeEvent(fo).show());
+        Button trajets = new Button("Les trajets disponibles");
+        trajets.addActionListener(s -> new MapParent(fo));
 
 
 
-        addAll(b, bs, bse, bts, bt, btnmyrem, btnreclam, btnprofile, btnchat, bss,btList);
+        addAll(b, bs, bse, bts, bt, btnmyrem, btnreclam, btnprofile, btnchat, bss,btList,trajets);
 
 
 
