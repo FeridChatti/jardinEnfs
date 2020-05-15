@@ -8,6 +8,7 @@ import Services.TrajetService;
 import com.codename1.charts.compat.Paint;
 import com.codename1.ui.*;
 import com.codename1.ui.geom.Dimension;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import esprit.tn.MyApplication;
 
@@ -15,7 +16,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class ProfilChauffeur extends Form {
-
+Label result=new Label("");
     public Container getCont(Label lb,TextField tf)
     {
         BoxLayout bx=new BoxLayout(BoxLayout.X_AXIS);
@@ -32,19 +33,26 @@ public ProfilChauffeur(Form fo)
     setLayout(BoxLayout.y());
 
     TextField cin_modif=new TextField(ch.getCin(),"CIN");
+    cin_modif.setAlignment(TextField.RIGHT);
     Container cin= getCont(new Label("Cin"),cin_modif);
     TextField nom_modif=new TextField(ch.getNom(),"Nom et prénom");
+    nom_modif.setAlignment(TextField.RIGHT);
     Container nom= getCont(new Label("Nom et prénom"),nom_modif);
     TextField tel_modif=new TextField(ch.getTel(),"Numéro de téléphone");
+    tel_modif.setAlignment(TextField.RIGHT);
     Container tel= getCont(new Label("Numéro de téléphone"),tel_modif);
     TextField email_modif=new TextField(ch.getEmail(),"Email");
+    email_modif.setAlignment(TextField.RIGHT);
     Container email= getCont(new Label("Email"),email_modif);
     TextField username_modif=new TextField(ch.getUsername(),"Username");
+    username_modif.setAlignment(TextField.RIGHT);
     Container username= getCont(new Label("Username"),username_modif);
     TextField password_modif=new TextField("","Mot de passe",20,TextField.PASSWORD);
+    password_modif.setAlignment(TextField.RIGHT);
     Container password= getCont(new Label("Mot de passe"),password_modif);
 
     Label info=new Label("Informations");
+
     Label ident=new Label("Identifiants");
 
     Button aj=new Button("Modifier");
@@ -57,7 +65,9 @@ public ProfilChauffeur(Form fo)
     cb.setSelectedIndex(0);
     else
      cb.setSelectedIndex(1);
-    addAll(info,cin,nom,email,tel,cb,ident,username,password,aj);
+    info.setAlignment(Label.CENTER);
+    ident.setAlignment(Label.CENTER);
+    addAll(info,cin,nom,email,tel,cb,ident,username,password,aj,result);
 
     aj.addActionListener((event)->{
         String nom_mod=nom_modif.getText();

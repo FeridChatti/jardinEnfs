@@ -2,6 +2,7 @@ package Forms.Evenement;
 
 import Entities.Enfant;
 import Entities.Evenement;
+import Forms.Accueils.AccueilParent;
 import Services.EnfantService;
 import Services.EvenementService;
 import com.codename1.components.ToastBar;
@@ -39,7 +40,9 @@ public class Participer extends Form {
             public void actionPerformed(ActionEvent evt) {
 if (EvenementService.getInstance().AddParticiper(lbId.getText(),enfants.getSelectedItem().getId()))
 {
+
     Dialog.show("Succés",enfants.getSelectedItem().getNom()+" va participer à cet événement","ok",null);
+
 }
 
             }

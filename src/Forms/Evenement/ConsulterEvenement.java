@@ -55,7 +55,6 @@ current=this;
                              new ModifierEvenement(current,e);
 
 
-
                                }
                            }
 

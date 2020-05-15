@@ -57,6 +57,8 @@ public class ModifierEvenement extends Form{
                 ev.setId(id);
                 EvenementService.getInstance().modifierEvenement(ev);
                 Dialog.show("Succes","modification réussie!",new Command("OK"));
+                new consulterListeEvent(AccueilResponsable.fo).show();
+
             }
         });
 
