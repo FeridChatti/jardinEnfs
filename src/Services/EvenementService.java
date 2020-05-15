@@ -48,7 +48,11 @@ public class EvenementService {
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                evenements = ParseEvenements(new String(req.getResponseData()));
+                try {
+                    evenements = ParseEvent(new String(req.getResponseData()));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 req.removeResponseListener(this);
             }
         });
@@ -172,13 +176,6 @@ public class EvenementService {
 
 
 
-
-
-
-
-
-
-
     public Evenement AfficherEvent(int e) {
         ArrayList<Evenement> event = ListeEvenementJardin(UserService.getInstance().getJardin(MyApplication.authenticated.getId() + "").getId() + "");
     Evenement ev=event.stream().filter(a->a.getId()==e).collect(Collectors.toList()).get(0);
@@ -251,7 +248,7 @@ return ev;
             Categorie c = new Categorie();
             c.setLibelle(obj.get("libelle").toString());
             e.setCategorie(c);
-            Map<String,Object> m = (Map<String, Object>) obj.get("Date");
+            Map<String,Object> m = (Map<String, Object>) obj.get("date");
             String str = m.get("date").toString();
             String g = str.substring(0,10);
             e.setDate(g);
