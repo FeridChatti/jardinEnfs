@@ -16,7 +16,7 @@ public class EvenementService {
     public static EvenementService instance = null;
     public ArrayList<Evenement> evenements;
     public boolean res;
-    public Evenement ev;
+    public Evenement event;
     private ConnectionRequest req;
     private String resultOk;
     public boolean resultOkk;
@@ -71,13 +71,10 @@ public class EvenementService {
         List<Map<String, Object>> list = (List<Map<String, Object>>) listeventsJson.get("root");
         for (Map<String, Object> obj : list) {
             Evenement e = new Evenement();
-            Categorie c = new Categorie();
-            c.setLibelle(obj.get("libelle").toString());
             float t = Float.parseFloat(obj.get("id").toString());
             e.setId((int) t);
             e.setTitre(obj.get("titre").toString());
             e.setDescription(obj.get("description").toString());
-            e.setCategorie(c);
             Map<String, Object> m = (Map<String, Object>) obj.get("date");
             String str = m.get("date").toString();
             String g = str.substring(0, 10);
@@ -90,6 +87,8 @@ public class EvenementService {
         }
         return evenements;
     }
+
+
 
     public Boolean AjouterEvenement(Evenement e) {
         String url = "http://127.0.0.1:8000/eveapi/Api/ajoutevent/2" + "/" + e.getTitre() + "/" + e.getDescription() + "/" + e.getDate() + "/" + e.getCategorie().getId();
@@ -125,11 +124,41 @@ public class EvenementService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return result;
     }
+//get event
 
-    public Evenement AfficherEvent(Evenement e) {
+    public Evenement getEvent(int id)
+    {
+        String Url = "http://127.0.0.1:8000/eveapi/Api/getevent/"+ id;
+        req.setUrl(Url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
 
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                event = ParseEvenements(new String(req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+        return event;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public Evenement AfficherEvent(int e) {
         ArrayList<Evenement> event = ListeEvenementJardin(UserService.getInstance().getJardin(MyApplication.authenticated.getId() + "").getId() + "");
-    Evenement ev=event.stream().filter(a->a.getId()==e.getId()).collect(Collectors.toList()).get(0);
+    Evenement ev=event.stream().filter(a->a.getId()==e).collect(Collectors.toList()).get(0);
 
 return ev;
 
@@ -137,8 +166,13 @@ return ev;
 
     }
 
+
+
+
+
+
     public ArrayList <Evenement> AfficherEventPar(String idp) {
-        String Url = "http://127.0.0.1:8000/eveapi/Api/event/" + idp;
+        String Url = "http://127.0.0.1:8000/eveapi/Api/event/"+ idp;
         req.setUrl(Url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -158,14 +192,10 @@ return ev;
 
 
     public String modifierEvenement(Evenement e) {
-        String Url="http://127.0.0.1:8000/eveapi/Api/modifierEvenement";
+        String Url="http://127.0.0.1:8000/eveapi/Api/editevent/"+e.getId()+"/"+e.getTitre()+"/"+e.getDescription()+"/"+e.getDate()+"/"+e.getCategorie().getId();
         req.setUrl(Url);
         req.setPost(false);
-        req.setContentType("application/json");
-        req.addArgument("titre",e.getTitre());
-        req.addArgument("description",e.getDescription());
-        req.addArgument("date",e.getDate());
-        req.addArgument("categorie",e.getCategorie().toString());
+
 
 
         req.addResponseListener(new ActionListener<NetworkEvent>() {

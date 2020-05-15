@@ -11,6 +11,7 @@ import Forms.Enfants.AjouterEnfant;
 import Forms.Enfants.ConsulterEnfant;
 
 import Forms.Evenement.ConsulterEvenement;
+import Forms.Evenement.ConsulterListeEventsParent;
 import Forms.Evenement.DetailsEvenement;
 import Forms.Evenement.consulterListeEvent;
 import Forms.Parent.Chat;
@@ -72,7 +73,7 @@ public class AccueilParent extends BaseForm {
         btnchat.addActionListener(s -> new JardList(fo).show());
 
         Button btList = new Button("Liste des événements");
-        btList.addActionListener(s -> new consulterListeEvent(fo).show());
+        btList.addActionListener(s -> new ConsulterListeEventsParent(fo).show());
 
 
 

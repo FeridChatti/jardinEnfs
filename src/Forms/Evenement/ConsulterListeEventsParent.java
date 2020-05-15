@@ -3,29 +3,30 @@ package Forms.Evenement;
 import Entities.Evenement;
 import Services.EvenementService;
 import Services.UserService;
-import com.codename1.ui.*;
+import com.codename1.ui.FontImage;
+import com.codename1.ui.Form;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.list.MultiList;
 import esprit.tn.MyApplication;
+import Forms.Accueils.AccueilResponsable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class consulterListeEvent extends Form {
+public class ConsulterListeEventsParent extends Form {
 
-    String nmepre="";
     Form th;
 
-    public consulterListeEvent(Form prev) {
+    public ConsulterListeEventsParent(Form prev) {
         th = this;
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
-        setTitle("Consulter Evenements");
+        setTitle("Consulter la liste des événements");
         setLayout(BoxLayout.y());
-        ArrayList<Evenement> ev= EvenementService.getInstance().ListeEvenementJardin(UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"").getId()+"");
+        ArrayList<Evenement> ev= EvenementService.getInstance().AfficherEventPar(MyApplication.authenticated.getId()+"");
         ArrayList<Map<String, Object>> data = new ArrayList<>();
         for(Evenement event:ev){
 
@@ -38,10 +39,9 @@ public class consulterListeEvent extends Form {
         ml.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Evenement et=new Evenement();
                 Map<String, Object> t = (HashMap) ml.getSelectedItem();
-                et.setId((int) t.get("id"));
-                new ConsulterEvenement(th,et.getId()).show();
+                int id=(int) t.get("id");
+                new DetailsEvenement(th,id).show();
 
 
             }
@@ -65,5 +65,5 @@ public class consulterListeEvent extends Form {
     }
 
 
-    }
 
+}

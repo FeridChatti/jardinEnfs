@@ -79,13 +79,13 @@ public class Participer extends Form {
 
 
                     if (EvenementService.getInstance().AddParticiper(ida,idep)) {
-                        Dialog.show("Succes", "Ajout réussi", new Command("OK"));
+                        Dialog.show("Succes", "Ajout réussi!", new Command("OK"));
                        // new ConsulterEvenement(fo).show();
                     } else {
                         Dialog.show("Erreur", "Erreur!", new Command("OK"));
                     }
                 }else{
-                    Dialog.show("Erreur", "existe déjà dans la liste!", new Command("OK"));
+                    Dialog.show("Erreur", "L'enfant existe déjà dans la liste!", new Command("OK"));
                 }
             }
 
