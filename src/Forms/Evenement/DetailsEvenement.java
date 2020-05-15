@@ -14,7 +14,7 @@ public class DetailsEvenement extends Form {
     Form current;
 
     public DetailsEvenement(Form prev,int e ) {
-        Evenement ev = EvenementService.getInstance().AfficherEvent(e);
+        Evenement ev = EvenementService.getInstance().getEvent(e);
         setLayout(BoxLayout.y());
         current=this;
 
@@ -28,12 +28,10 @@ public class DetailsEvenement extends Form {
         Label da = new Label("Date");
         Label daa = new Label(ev.getDate());
 
-        Label c = new Label("Catégorie");
-        Label cc = new Label(ev.getCategorie().getLibelle());
 
 
 
-        addAll(t, tt, d, td, da, daa, c, cc);
+        addAll(t, tt, d, td, da, daa);
 
         Button part = new Button("Participer");
         add(part);
@@ -44,7 +42,7 @@ public class DetailsEvenement extends Form {
                                    public void actionPerformed(ActionEvent evt) {
 
 
-                                           new Participer(current,e+"").show();
+                                           new Participer(current,e).show();
 
 
                                        }

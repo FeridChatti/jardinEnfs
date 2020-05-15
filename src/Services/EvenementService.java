@@ -23,6 +23,7 @@ public class EvenementService {
     public ArrayList<Participer> participants;
     public ArrayList<Participer> veriff;
     public ArrayList<Participer> verif;
+    public ArrayList<Evenement> evenementss;
 
     private boolean result;
     public ArrayList<Evenement> evenement;
@@ -135,7 +136,7 @@ public class EvenementService {
 
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                event = ParseEvenements(new String(req.getResponseData()));
+                event = ParseEv(new String(req.getResponseData()));
                 req.removeResponseListener(this);
             }
         });
@@ -145,6 +146,28 @@ public class EvenementService {
     }
 
 
+    public Evenement ParseEv(String json) {
+        evenementss=new ArrayList<>();
+        JSONParser j= new JSONParser();
+        Map<String,Object> ListeEvenementJardinJson= null;
+        try {
+            ListeEvenementJardinJson = j.parseJSON(new CharArrayReader(json.toCharArray()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Evenement e =new Evenement();
+        float t= Float.parseFloat(ListeEvenementJardinJson.get("id").toString());
+        e.setId((int)t);
+        e.setTitre(ListeEvenementJardinJson.get("titre").toString());
+        e.setDescription(ListeEvenementJardinJson.get("description").toString());
+        Map<String, Object> m = (Map<String, Object>) ListeEvenementJardinJson.get("date");
+        String str = m.get("date").toString();
+        String g = str.substring(0, 10);
+        e.setDate(g);
+
+
+        return e;
+    }
 
 
 
@@ -256,7 +279,7 @@ return ev;
         return evenement;
     }
 
-    public Boolean AddParticiper(int ide, int iden){
+    public Boolean AddParticiper(String ide, int iden){
         String url="http://127.0.0.1:8000/eveapi/Api/partEvent/"+ide+"/"+iden;
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
