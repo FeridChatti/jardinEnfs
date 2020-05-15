@@ -68,7 +68,7 @@ public class Chat extends Form {
 
        // Container cont = new Container(BoxLayout.y());
         // load the stored messages and add them to the form
-        List<Messages> messages = ChatService.getInstance().MessparList(String.valueOf(idjar),String.valueOf(authenticated.getId()));
+        List<Messages> messages = ChatService.getInstance().MessparList(String.valueOf(authenticated.getId()),String.valueOf(idjar));
         if (messages != null) {
             for (Messages m : messages) {
                 parname = m.getSendername();

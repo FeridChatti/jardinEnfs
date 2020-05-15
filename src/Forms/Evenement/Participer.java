@@ -44,7 +44,6 @@ public class Participer extends Form {
             lbDescription = new Label( le.get(i).getDescription());
             Label lbde = new Label("Date :");
             date = new Label(le.get(i).getDate());
-
             Label lbc = new Label("Catégorie :");
             categorie = new Label(le.get(i).getCategorie().getLibelle());
             addAll(lbn,lbTitre);

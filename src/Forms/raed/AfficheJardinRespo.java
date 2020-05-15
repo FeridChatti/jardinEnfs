@@ -5,6 +5,7 @@ import Entities.Jardin;
 import Entities.Paiement;
 import Entities.User;
 import Forms.Accueils.AccueilParent;
+import Forms.Accueils.AccueilResponsable;
 import Forms.Enfants.ConsulterEnfant;
 import Forms.Enfants.ModifierEnfant;
 import Services.EnfantService;
@@ -31,7 +32,7 @@ public class AfficheJardinRespo  extends Form {
     int count=0;
 
     public AfficheJardinRespo  (Form prev ,int idenf) throws ParseException {
-        /*Form ts=this;
+        Form ts=this;
 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
         setTitle("Affiche Jardin Responsable");
@@ -43,9 +44,9 @@ public class AfficheJardinRespo  extends Form {
 
         Image icon2 = URLImage.createToStorage(placeholder, "icon2", "http://www.vippng.com/png/detail/35-352335_baby-boy-icon-png-icone-enfant-png.png");
 
-Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"");
+        Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"");
 
-
+        setLayout(BoxLayout.y());
         Label nom = new Label("Nom:");
         TextField t = new TextField(j.getName());
         t.setEnabled(false);
@@ -59,25 +60,19 @@ Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId(
         TextField ree = new TextField(j.getDescription());
         ree.setEnabled(false);
 
-        setLayout(BoxLayout.y());
+
 
         Label nute = new Label("Numero Telephone ");
         TextField reee = new TextField(j.getNumtel());
         reee.setEnabled(false);
 
         Label tari = new Label("Tarif");
-        TextField rse = new TextField((int) j.getTarif());
+        TextField rse = new TextField(String.valueOf(j.getTarif()));
         rse.setEnabled(false);
-        TextField etat = new TextField(j.getEtat());
-
-        etat.setVisible(false);
 
         Button md=new Button("Modifier");
 
-        add(nom);
-        add(t);
-        addAll(add,re,desc,ree,nute,reee,tari,rse,md);
-ts.show();
+
 
 
         md.addActionListener(new ActionListener() {
@@ -85,11 +80,11 @@ ts.show();
             public void actionPerformed(ActionEvent evt) {
 
                 md.setText("valider");
-                nom.setEnabled(true);
-                add.setEnabled(true);
-                desc.setEnabled(true);
-                nute.setEnabled(true);
-                tari.setEnabled(true);
+                t.setEnabled(true);
+                re.setEnabled(true);
+                ree.setEnabled(true);
+                reee.setEnabled(true);
+                rse.setEnabled(true);
                 count=count+1;
                 if (count==1){
                     md.addActionListener(new ActionListener() {
@@ -104,26 +99,31 @@ ts.show();
                             }
 
                             else {
-                                if (t.getText().matches("[a-zA-Z]*") && re.getText().matches("[a-zA-Z]*") && ree.getText().matches("[a-zA-Z]*")) {
-                                    if (reee.getText().matches("[a-zA-Z]*")) {
+                                if (!t.getText().matches("[a-zA-Z\\s']*") && !re.getText().matches("[a-zA-Z\\s']*") &&! ree.getText().matches("[a-zA-Z\\s']*")) {
+                                    if (reee.getText().matches("[a-zA-Z\\s']*")) {
                                         Dialog.show("Erreur", "Num tel non valide", new Command("OK"));
                                     }
-                                    if(rse.getText().matches("[a-zA-Z]*"))
-                                    {
+                                    if (rse.getText().matches("[a-zA-Z\\s']*")) {
                                         Dialog.show("Erreur", "Tarif non valide", new Command("OK"));
                                     }
 
-                                    else{
+                                } else{
 
-                                        Jardin je = new Jardin(   idenf, t.getText(), desc.getText(),
-                                                reee.getText(), Float.parseFloat(rse.getText()), re.getText(), etat.getText());
+                                        Jardin je = new Jardin(   t.getText(), ree.getText(),
+                                                reee.getText(), Float.parseFloat(rse.getText()), re.getText());
 
 
+                                        je.setId(j.getId());
 
-                                        boolean j = JardinService.getInstance().ModifierJardin(je);
-                                        if (j) {
+
+                                        boolean j1 = JardinService.getInstance().ModifierJardin(je);
+                                        if (j1) {
                                             Dialog.show("Succés", "jardin modifié avec succés", "Oui", null);
-                                            new ConsulterEnfant(new AccueilParent()).show();
+                                            try {
+                                                new AfficheJardinRespo(prev,idenf).show();
+                                            } catch (ParseException e) {
+                                                e.printStackTrace();
+                                            }
                                         } else {
                                             Dialog.show("Erreur", "Erreur", "Oui", null);
                                         }
@@ -132,7 +132,7 @@ ts.show();
                                     }
 
 
-                                }}}
+                                }}
                     });
 
                 }
@@ -141,9 +141,12 @@ ts.show();
         });
 
 
+        add(nom);
+        add(t);
+        addAll(add,re,desc,ree,nute,reee,tari,rse,md);
+        ts.show();
 
 
-*/
 
 
     }

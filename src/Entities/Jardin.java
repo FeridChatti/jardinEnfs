@@ -55,6 +55,14 @@ public class Jardin {
 
     private Collection<Chauffeur> chauffeurs;
 
+    public Jardin(String name, String description, String numtel, float tarif, String adresse) {
+        this.name=name;
+        this.description=description;
+        this.numtel=numtel;
+        this.tarif=tarif;
+        this.adresse=adresse;
+    }
+
 
     public int getId() {
         return id;
