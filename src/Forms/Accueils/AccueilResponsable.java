@@ -42,7 +42,7 @@ public class AccueilResponsable extends Form {
         Button abonnement=new Button("Consulter les abonnements");
         abonnement.addActionListener(e->new ConsulterAbonnement(fo).show());
 
-        Button ajev=new Button("Ajouter evenement");
+        Button ajev=new Button("Ajouter un événement");
         ajev.addActionListener(e->new AjouterEvenement(fo).show());
 
         Button list=new Button("Consulter les événement");
