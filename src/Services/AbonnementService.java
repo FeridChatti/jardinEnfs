@@ -3,6 +3,7 @@ package Services;
 import Entities.Abonnement;
 import Entities.Enfant;
 import Entities.Jardin;
+import Entities.Parents;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
 
@@ -59,8 +60,8 @@ public class AbonnementService {
 
 
 
-    public Boolean AjouterAbonnement(Abonnement abo){
-        String url="http://127.0.0.1:8000/webservices/ajoutabo/"+abo.getEnfant().getId()+"/"+"1"+"/"+ abo.getType()+"/"+abo.getEtat()+"/"+abo.getDate()+"/"+abo.getMontant();
+    public Boolean AjouterAbonnement(Abonnement abo,String idj){
+        String url="http://127.0.0.1:8000/webservices/ajoutabo/"+abo.getEnfant().getId()+"/"+idj+"/"+ abo.getType()+"/"+abo.getEtat()+"/"+abo.getDate()+"/"+abo.getMontant();
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -127,7 +128,10 @@ public class AbonnementService {
         for(Map<String,Object> obj:list){
             Abonnement e =new Abonnement();
             Enfant enf=new Enfant();
+            Parents pa=new Parents();
+            pa.setNumtel(obj.get("numtel").toString());
             enf.setNom(obj.get("nom").toString());
+            enf.setParent(pa);
             enf.setPrenom(obj.get("prenom").toString());
             float t= Float.parseFloat(obj.get("id").toString());
             e.setId((int)t);

@@ -21,6 +21,7 @@ public class ConsulterAbonnement extends Form {
 
     String enl="";
     String nmepre="";
+    String numparent="";
     Form th;
     public ConsulterAbonnement(Form prev){
         th=this;
@@ -31,7 +32,7 @@ public class ConsulterAbonnement extends Form {
         EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(mm * 3, mm * 3, 0), false);
         Image icon1 = URLImage.createToStorage(placeholder, "icon1", "http://www.georgerrmartin.com/wp-content/uploads/2013/03/GOTMTI2.jpg");
         // Container detail = new Container(BoxLayout.y());
-        Image icon2 = URLImage.createToStorage(placeholder, "icon2", "http://www.vippng.com/png/detail/35-352335_baby-boy-icon-png-icone-enfant-png.png");
+        Image icon4 = URLImage.createToStorage(placeholder, "icon4", "http://www.nessma.tv/uploads/news/d31715327e0aa9d1256c2a492caf465727.jpg");
 
 
         //add(detail);
@@ -42,7 +43,7 @@ public class ConsulterAbonnement extends Form {
         ArrayList<Map<String, Object>> data = new ArrayList<>();
         for(Abonnement abon:abonnem){
 
-            data.add(createListEntry(abon.getEnfant().getPrenom()+" "+abon.getEnfant().getNom(),abon.getEtat(),abon.getDate(),abon.getId(),icon2,abon.getType()));
+            data.add(createListEntry(abon.getEnfant().getPrenom()+" "+abon.getEnfant().getNom(),abon.getEtat(),abon.getDate(),abon.getId(),icon4,abon.getType(),abon.getEnfant().getParent().getNumtel()));
 
         }
 
@@ -54,11 +55,13 @@ public class ConsulterAbonnement extends Form {
                 Map<String, Object> t = (HashMap) ml.getSelectedItem();
                 enl=(String)t.get("id");
                 nmepre=(String)t.get("Line1");
-                Dialog.show("Modifier cet Enfant?","Veuillez selectionez un choix","Oui","Non");
+                numparent=(String)t.get("numtel");
 
-                new ModifierAbonnement(th,enl,nmepre,(String)t.get("type"),idjar).show();
+               if( Dialog.show("Modifier cet Enfant?","Veuillez selectionez un choix","Oui","Non")) {
 
+                   new ModifierAbonnement(th, enl, nmepre, (String) t.get("type"), idjar, numparent).show();
 
+               }
 
             }
         });
@@ -74,7 +77,7 @@ public class ConsulterAbonnement extends Form {
 
     }
 
-    private Map<String, Object> createListEntry(String nom, String etat,String date,int idi,Image icon1,String type ) {
+    private Map<String, Object> createListEntry(String nom, String etat,String date,int idi,Image icon1,String type,String numtel ) {
         Map<String, Object> entry = new HashMap<>();
         entry.put("Line1", nom);
         entry.put("Line4", type);
@@ -83,6 +86,7 @@ public class ConsulterAbonnement extends Form {
         entry.put("id",String.valueOf(idi));
         entry.put("type",type);
         entry.put("icon",icon1);
+        entry.put("numtel",numtel);
 
         // idenf=String.valueOf(idi);
 
