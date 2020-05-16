@@ -2,10 +2,14 @@ package Forms.User;
 
 import Forms.Abonnements.AjouterAbonnement;
 import Forms.Abonnements.ConsulterAbonnement;
+import Forms.ClubetActivite.ConsulterActivite;
+import Forms.ClubetActivite.ConsulterClub;
 import Forms.Enfants.AjouterEnfant;
 import Forms.Enfants.ConsulterEnfant;
+import Forms.Parent.Chat;
 import Forms.Parent.Editprofile;
 import Forms.Parent.JardList;
+import Forms.Parent.SendReclam;
 import Forms.Remarques.ConsulterRemarques;
 import Forms.raed.AfficheJArdin;
 import com.codename1.components.ScaleImageLabel;
@@ -89,7 +93,7 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("remarques des enfants", FontImage.MATERIAL_EXIT_TO_APP, s -> new ConsulterRemarques(fo).show());
 
 
-        /*
+
         Button b = new Button("ajouter enfant");
         b.addActionListener(e -> new AjouterEnfant(fo).show());
 
@@ -97,7 +101,7 @@ public class BaseForm extends Form {
         bss.addActionListener(s -> new AfficheJArdin(fo).show());
 
         Button bs = new Button("ajouter abonnement");
-        bs.addActionListener(s -> new AjouterAbonnement(fo).show());
+        bs.addActionListener(s -> new AjouterAbonnement(fo,null).show());
         Button ca = new Button("consulter abonnement");
         ca.addActionListener(s -> new ConsulterAbonnement(fo).show());
         Button bse = new Button("consulter enfants");
@@ -117,8 +121,8 @@ public class BaseForm extends Form {
         Button btnprofile = new Button("Modifier profile");
         btnprofile.addActionListener(s -> new Editprofile(fo).show());
         Button btnchat = new Button("Contacter Jardin");
-        btnchat.addActionListener(s -> new Chat(fo).show());
-*/
+        btnchat.addActionListener(s -> new Chat(fo,0,null).show());
+
 
     }
     public void installSidemenu(Resources res) {

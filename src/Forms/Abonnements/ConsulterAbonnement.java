@@ -38,14 +38,21 @@ public ConsulterAbonnement(Form prev){
     //add(detail);
     ArrayList<Abonnement> abonnem= AbonnementService.getInstance().ListAbonnement(String.valueOf(authenticated.getId()));
     ArrayList<Map<String, Object>> data = new ArrayList<>();
-    for(Abonnement abon:abonnem){
+    Label label_6=new Label();
 
-        data.add(createListEntry(abon.getEnfant().getPrenom()+" "+abon.getEnfant().getNom(),abon.getJardin().getName(),abon.getEtat(),abon.getDate(),abon.getId(),icon3,abon.getType(),abon.getJardin().getId()));
+    for(Abonnement abon:abonnem){
+        label_6.setText(" ");
+        label_6.setUIID("Separator");
+        label_6.setName("Label_6");
+        label_6.setPreferredH(5);
+
+        data.add(createListEntry(abon.getEnfant().getPrenom()+" "+abon.getEnfant().getNom(),abon.getJardin().getName(),abon.getEtat(),abon.getDate(),abon.getId(),icon3,abon.getType(),abon.getJardin().getId(),label_6));
 
     }
 
     DefaultListModel<Map<String, Object>> model = new DefaultListModel<>(data);
     MultiList ml = new MultiList(model);
+    ml.addItem(label_6);
     ml.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent evt) {
@@ -72,7 +79,7 @@ public ConsulterAbonnement(Form prev){
 
 }
 
-    private Map<String, Object> createListEntry(String nom,String jardin, String etat,String date,int idi,Image icon1,String type,int jid ) {
+    private Map<String, Object> createListEntry(String nom,String jardin, String etat,String date,int idi,Image icon1,String type,int jid,Label lab ) {
         Map<String, Object> entry = new HashMap<>();
         entry.put("Line1", nom);
         entry.put("Line4", jardin);
@@ -82,6 +89,7 @@ public ConsulterAbonnement(Form prev){
         entry.put("type",type);
         entry.put("icon",icon1);
         entry.put("jid",String.valueOf(jid));
+        entry.put("label",lab);
         // idenf=String.valueOf(idi);
 
         return entry;

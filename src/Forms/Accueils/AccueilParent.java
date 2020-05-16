@@ -46,15 +46,15 @@ public class AccueilParent extends BaseForm {
 
         fo = this;
         setLayout(BoxLayout.y());
-    //    Toolbar tb = new Toolbar(true);
-      //  setToolbar(tb);
+      Toolbar tb = new Toolbar(true);
+        setToolbar(tb);
         getTitleArea().setUIID("Container");
         setTitle("Parent");
 
 
         getContentPane().setScrollVisible(false);
 
-       /* Tabs swipe = new Tabs();
+       Tabs swipe = new Tabs();
 
         Label spacer1 = new Label();
         Label spacer2 = new Label();
@@ -63,9 +63,9 @@ public class AccueilParent extends BaseForm {
         swipe.getContentPane().setUIID("Container");
         swipe.hideTabs();
 
-        add(swipe);*/
+        add(swipe);
 
-       // super.addSideMenu();
+        super.addSideMenu();
 
         Button b = new Button("ajouter enfant");
         b.addActionListener(e -> new AjouterEnfant(fo).show());
