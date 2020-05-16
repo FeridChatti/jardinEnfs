@@ -79,6 +79,9 @@ public class ConsulterClub extends Form {
 
 
 
+                TextArea txtC = new TextField("ajouter un commentaire ...");
+                d.add(txtC);
+
                 d.add(flowLayout);
 
                 Button sb = new Button("submit");
