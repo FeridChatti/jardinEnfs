@@ -1,5 +1,9 @@
 package Forms.ClubetActivite;
 
+import Forms.Abonnements.ConsulterAbonnement;
+import Forms.Accueils.AccueilParent;
+import Services.AbonnementService;
+import Services.ClubService;
 import com.codename1.components.InteractionDialog;
 import com.codename1.io.Preferences;
 import com.codename1.io.Util;
@@ -7,7 +11,10 @@ import com.codename1.messaging.Message;
 import com.codename1.ui.*;
 
 import static com.codename1.ui.CN.*;
+import static esprit.tn.MyApplication.authenticated;
 
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
@@ -31,6 +38,8 @@ public class RatingWidget {
 
     private String appstoreUrl;
     private String supportEmail;
+
+    static int a ;
 
     public RatingWidget() {
     }
@@ -96,8 +105,9 @@ public class RatingWidget {
         s.setBgTransparency(0);
     }
 
-    private Slider createStarRankSlider() {
+    public  Slider createStarRankSlider() {
         Slider starRank = new Slider();
+
         starRank.setEditable(true);
         starRank.setMinValue(0);
         starRank.setMaxValue(10);
@@ -113,7 +123,14 @@ public class RatingWidget {
         initStarRankStyle(starRank.getSliderFullSelectedStyle(), fullStar);
         initStarRankStyle(starRank.getSliderFullUnselectedStyle(), fullStar);
         starRank.setPreferredSize(new Dimension(fullStar.getWidth() * 5, fullStar.getHeight()));
+
+        starRank.addActionListener(evt -> { a=  starRank.getProgress();});
+
+        System.out.println(a);
+
+
         return starRank;
+
     }
 
     /**
@@ -146,9 +163,28 @@ public class RatingWidget {
         }
     }
 
-    private void showStarPickingForm() {
+   public void showStarPickingForm(String idc) {
         Form hi = new Form("Star Slider", new BoxLayout(BoxLayout.Y_AXIS));
+
+
         hi.add(FlowLayout.encloseCenter(createStarRankSlider()));
+       Button sb = new Button("submit");
+       sb.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent evt) {
+               ClubService.getInstance().AddRank(Integer.parseInt(idc),a,authenticated.getId());
+               Dialog.show("Succes","added rank",new Command("OK"));
+              // new ConsulterAbonnement(new AccueilParent()).show();
+           }
+       });
+       hi.add(sb);
         hi.show();
+
+     /*  Form hi = new Form("Blur Dialog", new BoxLayout(BoxLayout.Y_AXIS));
+       Dialog.setDefaultBlurBackgroundRadius(8);
+       Button showDialog = new Button("Blur");
+       showDialog.addActionListener((e) -> Dialog.show("Blur", "Is On....", "OK", null));
+       hi.add(showDialog);
+       hi.show();*/
     }
 }

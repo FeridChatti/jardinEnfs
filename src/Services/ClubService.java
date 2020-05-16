@@ -65,4 +65,19 @@ public class ClubService {
         NetworkManager.getInstance().addToQueueAndWait(req);
 return clubs;
     }
+
+    public Boolean AddRank(int id,int rank, int idp){
+        String url="http://127.0.0.1:8000/dorra/webS/addrank/"+id+"/"+rank+"/"+idp;
+        req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk=req.getResponseCode()==200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+
+    }
 }

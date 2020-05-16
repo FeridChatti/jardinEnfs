@@ -5,20 +5,28 @@
  */
 package Entities;
 
+import com.codename1.io.Externalizable;
+import com.codename1.io.Util;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.sql.Date;
 
 /**
  * @author karim
  */
-public class Messages {
+public class Messages implements Externalizable {
     private int id;
 
 
-    private Date date;
+    private String date;
 
 
     private String msg;
     private String jarname;
+
+    private String sendername;
 
 
     private Jardin jardin;
@@ -30,7 +38,16 @@ public class Messages {
     public Messages() {
     }
 
-    public Messages(int id, Date date, String msg, Jardin jardin, Parents parent, User sender) {
+
+    public String getSendername() {
+        return sendername;
+    }
+
+    public void setSendername(String sendername) {
+        this.sendername = sendername;
+    }
+
+    public Messages(int id, String date, String msg, Jardin jardin, Parents parent, User sender) {
         this.id = id;
         this.date = date;
         this.msg = msg;
@@ -55,11 +72,11 @@ public class Messages {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -93,5 +110,31 @@ public class Messages {
 
     public void setSender(User sender) {
         this.sender = sender;
+    }
+
+    @Override
+    public int getVersion() {
+        return 0;
+    }
+
+    @Override
+    public void externalize(DataOutputStream out) throws IOException {
+        out.writeLong(Long.parseLong(date.toString()));
+        Util.writeUTF(sendername, out);
+        Util.writeUTF(String.valueOf(sender.getId()), out);
+
+        Util.writeUTF(jarname, out);
+        Util.writeUTF(msg, out);
+
+    }
+
+    @Override
+    public void internalize(int version, DataInputStream in) throws IOException {
+
+    }
+
+    @Override
+    public String getObjectId() {
+        return null;
     }
 }

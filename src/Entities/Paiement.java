@@ -6,15 +6,16 @@
 package Entities;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  * @author karim
  */
-public class Paiement {
+public class Paiement extends ArrayList<Paiement> {
 
     private int id;
 
-    private Date date;
+    private String date;
 
 
     private float montant;
@@ -36,14 +37,21 @@ public class Paiement {
     public Paiement() {
     }
 
-    public Paiement(Date date, float montant, int jardin) {
+    public Paiement(String date, float montant, int jardin) {
 
         this.date = date;
         this.montant = montant;
         this.jardin = jardin;
     }
+    public Paiement(int id, float montant, String date) {
 
-    public Paiement(Date date, float montant, String jard) {
+        this.date = date;
+        this.montant = montant;
+        this.id = id;
+    }
+
+
+    public Paiement(String date, float montant, String jard) {
 
         this.date = date;
         this.montant = montant;
@@ -58,11 +66,11 @@ public class Paiement {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

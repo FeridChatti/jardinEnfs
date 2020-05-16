@@ -2,6 +2,7 @@ package Services;
 
 import Entities.Enfant;
 import Entities.Jardin;
+import Entities.Paiement;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
 
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class JardinService {
+
 
     public static JardinService instance=null;
     private ConnectionRequest req;
@@ -74,8 +76,18 @@ public class JardinService {
         return jardin;
     }
     public Boolean ModifierJardin(Jardin j){
-        String url="http://127.0.0.1:8000/Apijar/modifjardin/"+j.getId()+"/"+j.getDescription()+"/"+j.getAdresse()+"/"+j.getTarif()+"/"+j.getNumtel()+"/"+j.getName();
+
+        String url="http://127.0.0.1:8000/Apijar/modifjardin";
         req.setUrl(url);
+        req.addArgument("id",String.valueOf(j.getId()));
+        req.addArgument("name",j.getName());
+        req.addArgument("description",j.getDescription());
+        req.addArgument("numtel",j.getNumtel());
+
+        req.addArgument("tarif",String.valueOf(j.getTarif()));
+        req.addArgument("adresse",j.getAdresse());
+
+
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -87,6 +99,7 @@ public class JardinService {
         return resultOk;
 
     }
+
 
 
 }
