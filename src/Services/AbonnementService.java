@@ -60,6 +60,7 @@ public class AbonnementService {
 
 
 
+
     public Boolean AjouterAbonnement(Abonnement abo,String idj){
         String url="http://127.0.0.1:8000/webservices/ajoutabo/"+abo.getEnfant().getId()+"/"+idj+"/"+ abo.getType()+"/"+abo.getEtat()+"/"+abo.getDate()+"/"+abo.getMontant();
         req.setUrl(url);
