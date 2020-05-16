@@ -92,7 +92,7 @@ public class AccueilParent extends BaseForm {
         btnreclam.addActionListener(s -> new SendReclam(fo).show());
 
         Button btnprofile = new Button("Modifier profile");
-        btnprofile.addActionListener(s -> new Editprofile(fo).show());
+        btnprofile.addActionListener(s -> new Editprofile(fo));
         Button btnchat = new Button("Contacter Jardin");
         btnchat.addActionListener(s -> new JardList(fo).show());
 
