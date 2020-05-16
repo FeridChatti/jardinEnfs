@@ -6,6 +6,7 @@ import Services.RemarqueService;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.spinner.Picker;
 
@@ -19,12 +20,19 @@ public class AjouterRemarques extends Form {
 
     public AjouterRemarques(Form prev){
 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
-        setTitle("Ajouter Remarques");
-        setLayout(BoxLayout.y());
-        TextField descr= new TextField("","Votre remarque");
 
-        ComboBox<Enfant> enfant = new ComboBox();
+
+        Form form=new Form();
+
+        form.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
+        form.setTitle("Ajouter Remarques");
+        form.setLayout(new BorderLayout());
+        Container cont=new Container(new BoxLayout(BoxLayout.Y_AXIS));
+        TextArea descr= new TextArea();
+        descr.setHint("Votre remarque");
+        descr.setRows(2);
+
+        ComboBox<Enfant> enfant = new ComboBox<Enfant>();
 
 
         ArrayList<Enfant> enflist=RemarqueService.getInstance().ListEnfants(authenticated.getId());
@@ -65,8 +73,17 @@ public class AjouterRemarques extends Form {
 
             }
         );
-        addAll(descr,enfant,aj);
 
+
+
+form.getContentPane().setUIID("BackgroundForm");
+
+        cont.add(descr);
+         cont.add(enfant);
+          cont.add(aj);
+        form.add(BorderLayout.CENTER,cont);
+
+        form.show();
 
     }
 

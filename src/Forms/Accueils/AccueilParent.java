@@ -22,6 +22,7 @@ import Forms.Parent.SendReclam;
 import Forms.Remarques.ConsulterRemarques;
 import Forms.Sami.MapParent;
 import Forms.User.BaseForm;
+import Forms.User.SignIn;
 import Forms.raed.AfficheJArdin;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
@@ -102,8 +103,11 @@ public class AccueilParent extends BaseForm {
         trajets.addActionListener(s -> new MapParent(fo));
 
 
+        Button logout = new Button("Se déconnecter");
+        logout.addActionListener(s ->new SignIn(MyApplication.theme).show());
 
-        addAll(b, bs, bse, bts, bt, btnmyrem, btnreclam, btnprofile, btnchat, bss,btList,trajets);
+
+        addAll(b, bs, bse, bts, bt, btnmyrem, btnreclam, btnprofile, btnchat, bss,btList,trajets,logout);
 
 
 
