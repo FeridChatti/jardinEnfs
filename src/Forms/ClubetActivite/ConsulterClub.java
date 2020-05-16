@@ -89,7 +89,7 @@ public class ConsulterClub extends Form {
 
                         ClubService.getInstance().AddRank(Integer.parseInt(String.valueOf((String)t.get("id"))),r.a ,authenticated.getId());
                         Dialog.show("Succes","added rank",new Command("OK"));
-                        // new ConsulterAbonnement(new AccueilParent()).show();
+                         new ConsulterClub(fo).show();
                     }
                 });
                 d.add( sb);

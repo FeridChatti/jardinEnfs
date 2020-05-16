@@ -34,6 +34,7 @@ public class JardList extends BaseForm {
 
         getToolbar().addCommandToRightBar("", theme.getImage("toolbar-profile-pic.png"), e -> {});
 
+        cnt0.setPreferredH(this.getContentPane().getHeight());
 
         add(cnt0);
 
@@ -227,9 +228,10 @@ private void initGuiBuilderComponents(Resources resourceObjectInstance) {
         cont3.setName("Container_3"+i);
 
 
-        label_6.setText("");
+        label_6.setText(" ");
         label_6.setUIID("Separator");
-        label_6.setName("Label_6");
+        label_6.setName("Label_6"+i);
+        label_6.setPreferredH(10);
 
         cnt0.addComponent(label_6);
 

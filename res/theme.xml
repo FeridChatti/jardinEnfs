@@ -717,7 +717,7 @@
         <val key="Separator.bgColor" value="e77c6e" />
         <val key="Separator.fgColor" value="000000" />
         <val key="Separator.marUnit" value="0,2,0,0" />
-        <val key="Separator.margin" value="0.0,0.0,5.0,0.0" />
+        <val key="Separator.margin" value="0.0,0.0,1.0,0.0" />
         <val key="Separator.padding" value="1.0,1.0,1.0,1.0" />
         <val key="Separator.transparency" value="25" />
         <gradient key="SideCommand.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
