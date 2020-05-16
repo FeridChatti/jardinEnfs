@@ -83,7 +83,7 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, s -> new Editprofile(fo).show());
         tb.addMaterialCommandToSideMenu("ajouter enfant", FontImage.MATERIAL_CREATE,e -> new AjouterEnfant(fo).show());
         tb.addMaterialCommandToSideMenu("consulter jardin", FontImage.MATERIAL_SHOP,s -> new AfficheJArdin(fo).show());
-        tb.addMaterialCommandToSideMenu("ajouter abonnement", FontImage.MATERIAL_SHOP,s -> new AjouterAbonnement(fo).show());
+        tb.addMaterialCommandToSideMenu("ajouter abonnement", FontImage.MATERIAL_SHOP,s -> new AjouterAbonnement(fo,"2").show());
         tb.addMaterialCommandToSideMenu("consulter abonnement", FontImage.MATERIAL_SHOP, s -> new ConsulterAbonnement(fo).show());
          tb.addMaterialCommandToSideMenu("consulter enfants", FontImage.MATERIAL_ADD_TO_QUEUE, s -> new ConsulterEnfant(fo).show());
         tb.addMaterialCommandToSideMenu("remarques des enfants", FontImage.MATERIAL_EXIT_TO_APP, s -> new ConsulterRemarques(fo).show());

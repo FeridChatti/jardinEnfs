@@ -26,7 +26,7 @@ import static esprit.tn.MyApplication.authenticated;
 
 public class AjouterAbonnement extends Form {
     Form current;
-    public AjouterAbonnement(Form prev) {
+    public AjouterAbonnement(Form prev,String idj) {
         current=this;
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
      /*   Button b=new Button("ajouter enfant");
@@ -50,7 +50,7 @@ public class AjouterAbonnement extends Form {
         types.addItem("normal");
         types.addItem("bus");
         TextField montant= new TextField("","Montant");
-        ArrayList<Jardin> jar=EnfantService.getInstance().Montant("1");
+        ArrayList<Jardin> jar=EnfantService.getInstance().Montant(idj);
         for (int i=0;i< jar.size();i++){
             montant.setText(String.valueOf(jar.get(0).getTarif()));}
 
@@ -80,7 +80,7 @@ public class AjouterAbonnement extends Form {
 
                 Abonnement abonne=new Abonnement(text,se,"attente",montant.getText(),enfant.getSelectedItem());
 
-                if(AbonnementService.getInstance().AjouterAbonnement(abonne)){
+                if(AbonnementService.getInstance().AjouterAbonnement(abonne,idj)){
                     Dialog.show("Succes","Ajout réussi",new Command("OK"));
                     new ConsulterAbonnement(new AccueilParent()).show();
                 }

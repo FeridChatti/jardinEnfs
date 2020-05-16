@@ -74,7 +74,7 @@ public class AccueilParent extends BaseForm {
         bss.addActionListener(s -> new AfficheJArdin(fo).show());
 
         Button bs = new Button("ajouter abonnement");
-        bs.addActionListener(s -> new AjouterAbonnement(fo).show());
+        bs.addActionListener(s -> new AjouterAbonnement(fo,"2").show());
         Button ca = new Button("consulter abonnement");
         ca.addActionListener(s -> new ConsulterAbonnement(fo).show());
         Button bse = new Button("consulter enfants");
