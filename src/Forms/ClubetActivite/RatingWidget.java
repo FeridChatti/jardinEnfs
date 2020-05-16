@@ -168,7 +168,7 @@ public class RatingWidget {
 
 
         hi.add(FlowLayout.encloseCenter(createStarRankSlider()));
-       Button sb = new Button("submit");
+     /*  Button sb = new Button("submit");
        sb.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent evt) {
@@ -177,7 +177,7 @@ public class RatingWidget {
               // new ConsulterAbonnement(new AccueilParent()).show();
            }
        });
-       hi.add(sb);
+       hi.add(sb);*/
         hi.show();
 
      /*  Form hi = new Form("Blur Dialog", new BoxLayout(BoxLayout.Y_AXIS));
