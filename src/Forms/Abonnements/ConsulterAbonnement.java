@@ -29,10 +29,10 @@ public ConsulterAbonnement(Form prev){
     setTitle("Consulter Abonnements");
     setLayout(BoxLayout.y());
     int mm = Display.getInstance().convertToPixels(3);
-    EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(mm * 3, mm * 3, 0), false);
+    EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(mm * 3, mm * 9, 0), false);
     Image icon1 = URLImage.createToStorage(placeholder, "icon1", "http://www.georgerrmartin.com/wp-content/uploads/2013/03/GOTMTI2.jpg");
     // Container detail = new Container(BoxLayout.y());
-    Image icon2 = URLImage.createToStorage(placeholder, "icon2", "http://www.vippng.com/png/detail/35-352335_baby-boy-icon-png-icone-enfant-png.png");
+    Image icon3 = URLImage.createToStorage(placeholder, "icon3", "http://i.f1g.fr/media/madame/300x300_crop/sites/default/files/img/2020/03/confinement-enfants-activites.jpg");
 
 
     //add(detail);
@@ -40,7 +40,7 @@ public ConsulterAbonnement(Form prev){
     ArrayList<Map<String, Object>> data = new ArrayList<>();
     for(Abonnement abon:abonnem){
 
-        data.add(createListEntry(abon.getEnfant().getPrenom()+" "+abon.getEnfant().getNom(),abon.getJardin().getName(),abon.getEtat(),abon.getDate(),abon.getId(),icon2,abon.getType(),abon.getJardin().getId()));
+        data.add(createListEntry(abon.getEnfant().getPrenom()+" "+abon.getEnfant().getNom(),abon.getJardin().getName(),abon.getEtat(),abon.getDate(),abon.getId(),icon3,abon.getType(),abon.getJardin().getId()));
 
     }
 
@@ -52,12 +52,12 @@ public ConsulterAbonnement(Form prev){
             Map<String, Object> t = (HashMap) ml.getSelectedItem();
             enl=(String)t.get("id");
             nmepre=(String)t.get("Line1");
-            Dialog.show("Modifier cet Enfant?","Veuillez selectionez un choix","Oui","Non");
+           if (Dialog.show("Modifier cet Enfant?","Veuillez selectionez un choix","Oui","Non")) {
 
-                new ModifierAbonnement(th,enl,nmepre,(String)t.get("type"),(String)t.get("jid")).show();
+               new ModifierAbonnement(th, enl, nmepre, (String) t.get("type"), (String) t.get("jid")).show();
 
 
-
+           }
         }
     });
 

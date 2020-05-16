@@ -1,13 +1,9 @@
 package Forms.Evenement;
 
 import Entities.Categorie;
-import Entities.Chauffeur;
 import Entities.Evenement;
-import Forms.Abonnements.ConsulterAbonnement;
-import Forms.Accueils.AccueilParent;
 import Forms.Accueils.AccueilResponsable;
 import Services.CategorieService;
-import Services.ChauffeurService;
 import Services.EvenementService;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
@@ -20,24 +16,28 @@ import java.util.Date;
 
 import static com.codename1.push.PushContent.setTitle;
 
-public class ModifierEvenement {
+public class ModifierEvenement extends Form{
 
-    public ModifierEvenement(Form prev, String id, String titre, String description, String date,String libelle){
+    public ModifierEvenement(Form prev, int id){
 
         ArrayList<Categorie> lc = CategorieService.getInstance().getAllcategories();
-       // Evenement e= EvenementService.getInstance().AfficherEvent(MyApplication.authenticated.getId());
+       Evenement e= EvenementService.getInstance().AfficherEvent(id);
 
-        //getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
-        //setLayout(BoxLayout.y());
+       getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, et -> prev.showBack());
+        setLayout(BoxLayout.y());
         setTitle("Modifier événement");
 
 
-        TextArea tit=new TextArea(titre);
-        tit.setAlignment(TextArea.CENTER);
-        tit.setEnabled(false);
-        TextArea desc=new TextArea(description);
+        Label t = new Label("Titre");
+        TextField tit=new TextField(e.getTitre());
+        Label d = new Label("Description");
+        TextArea desc=new TextArea(e.getDescription());
+        Label da = new Label("Date");
+
         PickerComponent dateE = PickerComponent.createDate(new Date()).label("Date");
+
         Label tp=new Label("catégorie:");
+
         ComboBox<Categorie> c = new ComboBox<>();
         for (Categorie ca: lc) {
             c.addItem(ca);
@@ -48,25 +48,24 @@ public class ModifierEvenement {
         mod.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-               // EvenementService.getInstance().modifierEvenement();
-                Dialog.show("Succes","modification réussie",new Command("OK"));
-                new ConsulterAbonnement(new AccueilParent()).show();
+                Evenement ev=new Evenement();
+                ev.setTitre(tit.getText());
+
+                ev.setDescription(desc.getText());
+                ev.setDate("16-05-2020");
+                ev.setCategorie(c.getSelectedItem());
+                ev.setId(id);
+                EvenementService.getInstance().modifierEvenement(ev);
+                Dialog.show("Succes","modification réussie!",new Command("OK"));
+                new consulterListeEvent(AccueilResponsable.fo).show();
+
             }
         });
-        Button supp=new Button("Supprimer");
-        supp.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                System.out.println(id);
-                EvenementService.getInstance().supprimerEvenement(id);
-                Dialog.show("Succes","Suppression réussie!",new Command("OK"));
-                new consulterListeEvent(new AccueilResponsable()).show();
-            }
-        });
 
 
-        prev.addAll(tit,desc,dateE,c,mod,supp);
 
+        addAll(t,tit,d,desc,da,dateE,tp,c,mod);
+show();
 
 
 

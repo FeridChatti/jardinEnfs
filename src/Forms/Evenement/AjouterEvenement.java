@@ -41,13 +41,13 @@ public class AjouterEvenement extends Form {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 if((titre.getText().length()==0)||(description.getText().length()==0)){
-                    Dialog.show("Erreur","Veuillez indiquez les champs",new Command("OK"));
+                    Dialog.show("Erreur","Veuillez indiquez les champs!!!",new Command("OK"));
                 }
 
                 else{
                     if(titre.getText().matches("[a-zA-Z]*")){
                         if(lt.compareTo(datePicker.getDate())<0){
-                            Dialog.show("Erreur","Date non valide",new Command("OK"));
+                            Dialog.show("Erreur","Date non valide!",new Command("OK"));
                         }
                         else{
                             String text = datePicker.getDate().toString();
@@ -55,7 +55,9 @@ public class AjouterEvenement extends Form {
                             Evenement e=new Evenement(8,titre.getText(),text ,description.getText(),c.getSelectedItem());
 
                             if(EvenementService.getInstance().AjouterEvenement(e)){
-                                Dialog.show("Succes","Ajout réussi",new Command("OK"));
+                                Dialog.show("Succes","Ajout réussi!",new Command("OK"));
+                                new consulterListeEvent(AccueilResponsable.fo).show();
+
                             }}}
 
                     else{
