@@ -110,7 +110,7 @@ public class Chat extends Form {
 
 
 
-        Container cnt = BorderLayout.centerEastWest(write, fab, null);
+
 
 
 
@@ -119,7 +119,7 @@ public class Chat extends Form {
 
 
         Style msgStyle = write.getAllStyles();
-        Stroke borderStroke = new Stroke(2, Stroke.CAP_SQUARE, Stroke.JOIN_MITER, 1);
+        Stroke borderStroke = new Stroke(1, Stroke.CAP_SQUARE, Stroke.JOIN_MITER, 1);
         msgStyle.setBorder(RoundBorder.create().
                 rectangle(true).
                 color(0xffffff).
@@ -130,6 +130,9 @@ public class Chat extends Form {
         msgStyle.setMargin(Component.BOTTOM, 3);
 
 
+
+
+        Container cnt = BorderLayout.centerEastWest(write, fab, null);
 
 
 
@@ -187,6 +190,7 @@ public class Chat extends Form {
 
 
 
+        chatForm.setUIID("BackgroundForm");
         chatForm.show();
 
 
