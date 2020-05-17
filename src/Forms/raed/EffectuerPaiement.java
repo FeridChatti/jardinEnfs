@@ -104,6 +104,7 @@ public class EffectuerPaiement extends Form {
                     });
 
 
+                Dialog.show("Succés", "paiement effectuer avec succés", "Oui", null);
 
 
 
