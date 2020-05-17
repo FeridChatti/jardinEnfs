@@ -3,7 +3,11 @@ package Forms.raed;
 import Entities.Jardin;
 import Entities.Paiement;
 import Services.UserService;
+import com.codename1.io.ConnectionRequest;
+import com.codename1.io.NetworkEvent;
+import com.codename1.io.NetworkManager;
 import com.codename1.l10n.DateFormatPatterns;
+import com.codename1.l10n.ParseException;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -16,6 +20,11 @@ import java.time.Instant;
 import java.util.Date;
 
 public class EffectuerPaiement extends Form {
+    private ConnectionRequest req;
+    public boolean resultOk;
+
+
+
     public  EffectuerPaiement(Form prev)
     {
 
@@ -32,6 +41,7 @@ public class EffectuerPaiement extends Form {
 
         Image icon2 = URLImage.createToStorage(placeholder, "icon2", "http://www.vippng.com/png/detail/35-352335_baby-boy-icon-png-icone-enfant-png.png");
         Jardin j= UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"");
+        int id1 = j.getId();
         setLayout(BoxLayout.y());
         Label nom = new Label("Nom:");
         TextField t = new TextField(j.getName());
@@ -45,7 +55,6 @@ public class EffectuerPaiement extends Form {
         Label nute = new Label("Numero Telephone ");
         TextField reee = new TextField(j.getNumtel());
         reee.setEnabled(false);
-        Paiement paiement=new Paiement();
         Label Mont=new Label("montant a payer");
        float m= (float) 250.0;
         TextField rr= new TextField();
@@ -64,39 +73,45 @@ public class EffectuerPaiement extends Form {
         Label da=new Label("Date expiration");
         Picker datePicke= new Picker();
         Button md=new Button("Effectuer");
-        Date dA= datePicker.getDate();
-        Date dE= datePicke.getDate();
-        String de=String.valueOf(dA);
+
+
         md.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 Dialog.show("Confirmation","est ce que tous les informations sont juste ","Oui","Non");
-                String num=String.valueOf(nume);
-                String num1=String.valueOf(code);
-                if (dE.compareTo(dA)<=0)
-                {
-                    Dialog.show("Erreur","Carte expiré",new Command("OK"));
+
+
+                    req=new ConnectionRequest();
+                    String Url="http://127.0.0.1:8000/Apijar/paiement1";
+
+                    req.setUrl(Url);
+                    req.setPost(false);
+                    req.addArgument("id", String.valueOf(id1));
+                    req.addResponseListener(new ActionListener<NetworkEvent>() {
+                        @Override
+                        public void actionPerformed(NetworkEvent evt) {
+                          if (  req.getResponseData().equals(true)){
+
+                              Dialog.show("Succés", "paiement effectuer avec succés", "Oui", null);
+
+                          }
+                          else
+                          {
+                              Dialog.show("Erreur", "Erreur", "Oui", null);
+                          }
+
+                        }
+                    });
+
+
+
+
+
                 }
-                else
-
-                if(num.length()<16| num.matches("[a-zA-Z\\s']*"))
-                {
-                    Dialog.show("Erreur","Num carte invalide",new Command("OK"));
-                }
-             else
-                if(num1.length()<4| num.matches("[a-zA-Z\\s']*"))
-                {
-                    Dialog.show("Erreur","code invalide",new Command("OK"));
-                }
-                else {
-
-
-                    Paiement p= new Paiement(de,m,j.getId());
-                }
 
 
 
-            }
+
             });
 
         add(nom);
