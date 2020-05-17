@@ -67,7 +67,7 @@ public class ModifierEnfant extends Form {
                         @Override
                         public void actionPerformed(ActionEvent evt) {
 
-                                Dialog.show("Confirmation","Modifier cet Enfant?","Oui","Non");
+                                if(Dialog.show("Confirmation","Modifier cet Enfant?","Oui","Non")){
 
                                 int idenf=Integer.valueOf(id);
                             if((t.getText().length()==0)||(re.getText().length()==0)){
@@ -85,10 +85,10 @@ public class ModifierEnfant extends Form {
 
                                     boolean f = EnfantService.getInstance().ModifierEnfant(e);
                                     if (f) {
-                                        Dialog.show("Succés", "Enfant modifié avec succés", "Oui", null);
+                                        Dialog.show("Succés", "Enfant modifié avec succés", new Command("OK"));
                                         new ConsulterEnfant(new AccueilParent()).show();
                                     } else {
-                                        Dialog.show("Erreur", "Erreur", "Oui", null);
+                                        Dialog.show("Erreur", "Erreur", new Command("OK"));
                                     }
 
 
@@ -96,6 +96,10 @@ public class ModifierEnfant extends Form {
 
 
                             }}}
+
+
+
+                        }
                     });
 
                     }

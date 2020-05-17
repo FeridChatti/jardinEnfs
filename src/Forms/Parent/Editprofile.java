@@ -11,10 +11,12 @@ public class Editprofile extends Form {
     Parents p = new Parents();
     Boolean fl = true;
 
+
     public Editprofile(Form prev) {
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
-        setTitle("Modifier Votre Profile");
-        setLayout(BoxLayout.y());
+        Form form=new Form();
+        form.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
+        form.setTitle("Modifier Votre Profile");
+        form.setLayout(BoxLayout.y());
 
 
         p = ParentService.getInstance().getparent(authenticated.getId());
@@ -163,8 +165,9 @@ public class Editprofile extends Form {
         });
 
 
-        addAll(nomlbl, nomtf, prenomlbl, prenomtf, usernamelbl, usernametf, emaillbl, emailtf, numtellbl, numteltf, adresselbl, adressetf, passwordlbl, passwordtf, modifier);
-
+       form.addAll(nomlbl, nomtf, prenomlbl, prenomtf, usernamelbl, usernametf, emaillbl, emailtf, numtellbl, numteltf, adresselbl, adressetf, passwordlbl, passwordtf, modifier);
+        form.getContentPane().setUIID("BackgroundForm");
+        form.show();
 
     }
 

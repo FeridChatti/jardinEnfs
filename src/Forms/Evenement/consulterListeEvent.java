@@ -41,8 +41,7 @@ public class consulterListeEvent extends Form {
                 Evenement et=new Evenement();
                 Map<String, Object> t = (HashMap) ml.getSelectedItem();
                 et.setId((int) t.get("id"));
-                new ConsulterEvenement(th,et).show();
-
+                new ConsulterEvenement(th,et.getId()).show();
 
             }
         });

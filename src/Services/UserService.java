@@ -1,19 +1,19 @@
 package Services;
 
 
-import Entities.Enfant;
-import Entities.Jardin;
-import Entities.User;
+import Entities.*;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import static esprit.tn.MyApplication.authenticated;
+import static esprit.tn.MyApplication.theme;
 
 
 public class UserService {
@@ -76,6 +76,32 @@ public class UserService {
     }
 
 
+    public boolean modifierTuteur(Tuteur tuteur) {
+        String Url="http://127.0.0.1:8000/Sami/api/modifierTuteur";
+        req.setUrl(Url);
+        req.setPost(false);
+        req.setContentType("application/json");
+        req.addArgument("id",tuteur.getId()+"");
+        req.addArgument("nom",tuteur.getNom());
+        req.addArgument("prenom",tuteur.getPrenom());
+        req.addArgument("email",tuteur.getEmail());
+        req.addArgument("sexe",tuteur.getSexe());
+        req.addArgument("username",tuteur.getUsername());
+        req.addArgument("password",tuteur.getPassword());
+
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk=new String(req.getResponseData()).equals("true");
+
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+
+
+    }
 
 
     public String login(String username,String password){
@@ -83,8 +109,6 @@ public class UserService {
 
         req.setUrl(Url);
         req.setPost(false);
-
-
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -177,6 +201,45 @@ public class UserService {
         return e;
 
 
+    }
+    Tuteur tuteur=new Tuteur();
+
+    public Tuteur getTuteur(int id) {
+        String Url="http://127.0.0.1:8000/Sami/api/gettuteur/"+id;
+        req.setUrl(Url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                tuteur=ParseTuteur(new String (req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+
+        return tuteur;
+    }
+
+    public Tuteur ParseTuteur(String json) {
+        JSONParser j= new JSONParser();
+        Map<String,Object> ListTrajetJson= null;
+        try {
+            ListTrajetJson = j.parseJSON(new CharArrayReader(json.toCharArray()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Tuteur e =new Tuteur();
+        float t= Float.parseFloat(ListTrajetJson.get("id").toString());
+        e.setId((int)t);
+        e.setPrenom(ListTrajetJson.get("prenom").toString());
+        e.setNom(ListTrajetJson.get("nom").toString());
+        e.setSexe(ListTrajetJson.get("sexe").toString());
+        e.setEmail(ListTrajetJson.get("email").toString());
+        e.setUsername(ListTrajetJson.get("username").toString());
+
+
+        return e;
     }
 
 }

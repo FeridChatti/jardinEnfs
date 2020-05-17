@@ -7,14 +7,16 @@ import Forms.ClubetActivite.ListeParticipation;
 import Forms.Evenement.AjouterEvenement;
 import Forms.ClubetActivite.ListeParticipation;
 import Forms.Evenement.consulterListeEvent;
+import Forms.Responsable.UserList;
 import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
+import Forms.User.SignIn;
 import Forms.raed.AfficheJardinRespo;
-import Forms.raed.EffectuerPaiement;
 import com.codename1.l10n.ParseException;
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
 import com.codename1.ui.layouts.BoxLayout;
+import esprit.tn.MyApplication;
 
 import static esprit.tn.MyApplication.authenticated;
 
@@ -42,15 +44,21 @@ public class AccueilResponsable extends Form {
         Button abonnement=new Button("Consulter les abonnements");
         abonnement.addActionListener(e->new ConsulterAbonnement(fo).show());
 
-        Button ajev=new Button("Ajouter evenement");
+        Button ajev=new Button("Ajouter un événement");
         ajev.addActionListener(e->new AjouterEvenement(fo).show());
 
         Button list=new Button("Consulter les événement");
         list.addActionListener(e->new consulterListeEvent(fo).show());
-        Button plate=new Button("Payer Platforme");
-        plate.addActionListener(e->new EffectuerPaiement(fo).show());
 
-        addAll(cs,participer,abonnement,ajev,list,bj,plate);
+
+        Button msg=new Button("Messages");
+        msg.addActionListener(e->new UserList(fo).show());
+
+        Button logout = new Button("Se déconnecter");
+        logout.addActionListener(s ->new SignIn(MyApplication.theme).show());
+
+
+        addAll(cs,participer,abonnement,ajev,list,bj,msg,logout);
 
 
 

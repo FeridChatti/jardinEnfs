@@ -14,6 +14,7 @@ public class SendReclam extends Form {
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
         setTitle("Envoyer une reclamation");
         Form form = this;
+        form.getContentPane().setUIID("BackgroundForm");
 
         setLayout(BoxLayout.y());
 
@@ -23,7 +24,7 @@ public class SendReclam extends Form {
         TextArea descr=new TextArea();
         Button aj=new Button("Envoyer");
 
-        addAll(titlbl,titre,desclbl,descr,aj);
+        form.addAll(titlbl,titre,desclbl,descr,aj);
 
         aj.addActionListener(e->{
             if((descr.getText().length()==0)||(titre.getText().length()==0)){
@@ -47,5 +48,6 @@ public class SendReclam extends Form {
 
         });
 
+        form.show();
     }
 }

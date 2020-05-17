@@ -57,8 +57,9 @@ public class AfficheJArdin extends Form {
                 jrad=(String)t.get("Line2");
                 jrd=(String)t.get("description");
                 jart=(String)t.get("tarif");
+                String idj=(String)t.get("id");
 
-                 new InfoJArdin(jrn,jrad,jrd,jart,th).show();
+                 new InfoJArdin(jrn,jrad,jrd,jart,th,idj).show();
             }
         });
 

@@ -29,6 +29,7 @@ public class ChauffeurService {
         return instance;
     }
 
+
     public ArrayList<Chauffeur> ListeChauffeursJardin (String idj) {
         String Url="http://127.0.0.1:8000/Sami/api/chauffeurs/"+idj;
         req.setUrl(Url);
@@ -73,12 +74,23 @@ public class ChauffeurService {
 
 
         }
-Jardin j=UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"");
+    Chauffeur chauffeur=new Chauffeur();
     public Chauffeur getChauffeur(int id) {
-        chauffeurs=ListeChauffeursJardin(j.getId()+"");
-     Chauffeur ch= (Chauffeur) chauffeurs.stream().filter(e->e.getId()==id).collect(Collectors.toList()).get(0);
 
-     return ch;
+        String Url="http://127.0.0.1:8000/Sami/api/getchauffeur/"+id;
+        req.setUrl(Url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                chauffeur=ParseChauffeur(new String (req.getResponseData()));
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+
+
+        return chauffeur;
     }
 
     public ArrayList<Chauffeur> ParseChauffeurs(String json) {
@@ -105,6 +117,28 @@ Jardin j=UserService.getInstance().getJardin(MyApplication.authenticated.getId()
             chauffeurs.add(e);
         }
         return chauffeurs;
+    }
+    public Chauffeur ParseChauffeur(String json) {
+        chauffeurs=new ArrayList<>();
+        JSONParser j= new JSONParser();
+        Map<String,Object> ListTrajetJson= null;
+        try {
+            ListTrajetJson = j.parseJSON(new CharArrayReader(json.toCharArray()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+            Chauffeur e =new Chauffeur();
+            float t= Float.parseFloat(ListTrajetJson.get("id").toString());
+            e.setId((int)t);
+            e.setCin(ListTrajetJson.get("cin").toString());
+            e.setNom(ListTrajetJson.get("nom").toString());
+            e.setSexe(ListTrajetJson.get("sexe").toString());
+            e.setTel(ListTrajetJson.get("tel").toString());
+            e.setEmail(ListTrajetJson.get("email").toString());
+            e.setUsername(ListTrajetJson.get("username").toString());
+
+
+        return e;
     }
 
 }
