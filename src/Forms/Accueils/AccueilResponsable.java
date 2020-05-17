@@ -10,6 +10,7 @@ import Forms.Evenement.consulterListeEvent;
 import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
 import Forms.raed.AfficheJardinRespo;
+import Forms.raed.EffectuerPaiement;
 import com.codename1.l10n.ParseException;
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
@@ -46,8 +47,10 @@ public class AccueilResponsable extends Form {
 
         Button list=new Button("Consulter les événement");
         list.addActionListener(e->new consulterListeEvent(fo).show());
+        Button plate=new Button("Payer Platforme");
+        plate.addActionListener(e->new EffectuerPaiement(fo).show());
 
-        addAll(cs,participer,abonnement,ajev,list,bj);
+        addAll(cs,participer,abonnement,ajev,list,bj,plate);
 
 
 
