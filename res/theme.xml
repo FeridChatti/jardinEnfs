@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<resource majorVersion="1" minorVersion="10" useXmlUI="false">
+<resource majorVersion="1" minorVersion="11" useXmlUI="false">
     <image name="a.jpg"  />
     <image name="aa.jpg"  />
     <image name="aaa.jpg"  />
@@ -242,11 +242,6 @@
         <val key="Button.sel#padding" value="1.0,1.0,1.0,1.0" />
         <val key="Button.sel#transparency" value="0" />
         <val key="Button.transparency" value="0" />
-        <val key="ButtonAbonnement.align" value="4" />
-        <border key="ButtonAbonnement.border" type="round" roundBorderColor="16499581" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="1.0" shadowY="1.0" shadowBlur="10.0" shadowMM="false" rectangle="true" />
-        <val key="ButtonAbonnement.fgColor" value="ffffff" />
-        <val key="ButtonAbonnement.press#align" value="4" />
-        <border key="ButtonAbonnement.press#border" type="round" roundBorderColor="16499581" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="CalendarDate.bgColor" value="486666" />
         <val key="CalendarDate.fgColor" value="0" />
         <val key="CalendarDate.margin" value="0.0,0.0,0.0,0.0" />
@@ -414,6 +409,8 @@
         <val key="CommandList.sel#padding" value="0.0,0.0,0.0,0.0" />
         <val key="CommandList.sel#transparency" value="0" />
         <val key="CommandList.transparency" value="0" />
+        <gradient key="Container.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="Container.bgType" value="0" />
         <font key="Container.font" type="system" face="0" style="0" size="0" />
         <val key="Container.press#derive" value="Container" />
         <val key="Container.press#transparency" value="0" />
@@ -495,6 +492,8 @@
         <border key="FloatingActionButtonClose.border" type="round" roundBorderColor="3945604" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="110" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="false" />
         <val key="FloatingActionButtonClose.transparency" value="0" />
         <val key="Form.bgColor" value="ffffff" />
+        <val key="Form.bgImage" value="Button.press#borderBottom_1.png" />
+        <val key="Form.bgType" value="1" />
         <val key="Form.transparency" value="255" />
         <val key="ImageOverlay.bgColor" value="14134b" />
         <val key="ImageOverlay.transparency" value="60" />
@@ -889,7 +888,6 @@
         <border key="TextField.border" type="image" i1="TextField.borderTop_1.png" i2="TextField.borderBottom_1.png" i3="TextField.borderLeft_1.png" i4="TextField.borderRight_1.png" i5="TextField.borderTopL_1.png" i6="TextField.borderTopR_1.png" i7="TextField.borderBottomL_1.png" i8="TextField.borderBottomR_1.png" i9="TextField.borderCenter_1.png" />
         <val key="TextField.fgColor" value="0" />
         <font key="TextField.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
-        <val key="TextField.marUlSize="3.0" />
         <val key="TextField.marUnit" value="2,2,2,2" />
         <val key="TextField.margin" value="1.0,1.0,1.0,1.0" />
         <gradient key="TextField.press#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
@@ -917,7 +915,6 @@
         <val key="Title.transparency" value="0" />
         <val key="TitleArea.bgColor" value="3c4074" />
         <border key="TitleArea.border" type="empty" />
-        <val key="TitleArea.margin" value="0.0,0.0,0.0,0.0" />
         <val key="TitleArea.transparency" value="255" />
         <gradient key="TitleCommand.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="TitleCommand.bgType" value="0" />
