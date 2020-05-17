@@ -1,6 +1,7 @@
 package Forms.Accueils;
 
 import Forms.ClubetActivite.AjouterActivite;
+
 import Forms.ClubetActivite.ListeParticipation;
 import Forms.AbonnementRespon.ConsulterAbonnement;
 import Forms.AbonnementRespon.LocalNotificationTest;
@@ -13,6 +14,7 @@ import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
 import Forms.User.SignIn;
 import Forms.raed.AfficheJardinRespo;
+import Forms.raed.EffectuerPaiement;
 import com.codename1.l10n.ParseException;
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
@@ -57,12 +59,15 @@ public class AccueilResponsable extends Form {
 
         Button msg=new Button("Messages");
         msg.addActionListener(e->new UserList(fo).show());
+        Button Paiement=new Button("Paiement");
+        Paiement.addActionListener(e->new EffectuerPaiement(fo).show());
 
         Button logout = new Button("Se déconnecter");
         logout.addActionListener(s ->new SignIn(MyApplication.theme).show());
 
 
         addAll(cs,participer,ajouterAct,abonnement,ajev,list,bj,msg,logout);
+        addAll(cs,participer,abonnement,ajev,list,bj,msg,Paiement,logout);
 
 
 
