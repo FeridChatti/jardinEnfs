@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<resource majorVersion="1" minorVersion="11" useXmlUI="false">
+<resource majorVersion="1" minorVersion="10" useXmlUI="false">
     <image name="a.jpg"  />
     <image name="aa.jpg"  />
     <image name="aaa.jpg"  />
@@ -108,8 +108,8 @@
         <lang name="en">
             <entry key="select" value="Select" />
             <entry key="ok" value="OK" />
-            <entry key="edit" value="Edit" />
             <entry key="cancel" value="Cancel" />
+            <entry key="edit" value="Edit" />
             <entry key="menu" value="Menu" />
         </lang>
     </l10n>
@@ -200,7 +200,7 @@
         <val key="@switchOffImage" value="switch_off.png" />
         <val key="@switchOnImage" value="switch_on.png" />
         <val key="@tabPlacementInt" value="0" />
-        <gradient key="BackgroundForm.bgGradient" color1="16777215" color2="14935011" posX="0.5" posY="0.5" radius="1.0" />
+        <gradient key="BackgroundForm.bgGradient" color1="14935024" color2="14935011" posX="0.5" posY="0.5" radius="1.0" />
         <val key="BackgroundForm.bgType" value="7" />
         <border key="BubbleMe.border" type="image" i1="BubbleMe.borderTop_1.png" i2="BubbleMe.borderBottom_1.png" i3="BubbleMe.borderLeft_1.png" i4="BubbleMe.borderRight_1.png" i5="BubbleMe.borderTopL_1.png" i6="BubbleMe.borderTopR_1.png" i7="BubbleMe.borderBottomL_1.png" i8="BubbleMe.borderBottomR_1.png" i9="BubbleMe.borderCenter_1.png" />
         <val key="BubbleMe.fgColor" value="0" />
@@ -409,6 +409,16 @@
         <val key="CommandList.sel#padding" value="0.0,0.0,0.0,0.0" />
         <val key="CommandList.sel#transparency" value="0" />
         <val key="CommandList.transparency" value="0" />
+        <val key="Confirmbtn.align" value="4" />
+        <border key="Confirmbtn.border" type="round" roundBorderColor="8014245" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <val key="Confirmbtn.fgColor" value="ffffff" />
+        <val key="Confirmbtn.marUnit" value="2,0,0,0" />
+        <val key="Confirmbtn.margin" value="2.0,0.0,0.0,0.0" />
+        <val key="Confirmbtn.press#align" value="4" />
+        <border key="Confirmbtn.press#border" type="round" roundBorderColor="8014245" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <val key="Confirmbtn.press#fgColor" value="ffffff" />
+        <val key="Confirmbtn.press#marUnit" value="2,0,0,0" />
+        <val key="Confirmbtn.press#margin" value="2.0,0.0,0.0,0.0" />
         <gradient key="Container.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Container.bgType" value="0" />
         <font key="Container.font" type="system" face="0" style="0" size="0" />

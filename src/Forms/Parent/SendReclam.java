@@ -23,7 +23,9 @@ public class SendReclam extends Form {
         Label desclbl=new Label("Explication");
         TextArea descr=new TextArea();
         Button aj=new Button("Envoyer");
+        descr.setRows(3);
 
+        aj.setUIID("Confirmbtn");
         form.addAll(titlbl,titre,desclbl,descr,aj);
 
         aj.addActionListener(e->{
