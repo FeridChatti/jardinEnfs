@@ -1,16 +1,22 @@
 package Forms.ClubetActivite;
 
 import Entities.PartActivite;
+import Forms.Accueils.AccueilParent;
 import Services.ActiviteService;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.list.MultiList;
+import com.codename1.ui.plaf.Style;
+import com.codename1.ui.plaf.UIManager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ListeParticipation extends Form {
+
+
 
     public ListeParticipation(Form prev){
         Form fo = this;
