@@ -5,6 +5,7 @@ import Entities.Evenement;
 import Forms.Accueils.AccueilResponsable;
 import Services.CategorieService;
 import Services.EvenementService;
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -29,14 +30,21 @@ public class ModifierEvenement extends Form{
 
 
         Label t = new Label("Titre");
+        t.getAllStyles().setFgColor(ColorUtil.MAGENTA);
+
         TextField tit=new TextField(e.getTitre());
+
         Label d = new Label("Description");
+        d.getAllStyles().setFgColor(ColorUtil.MAGENTA);
+
         TextArea desc=new TextArea(e.getDescription());
         Label da = new Label("Date");
+        da.getAllStyles().setFgColor(ColorUtil.MAGENTA);
 
         PickerComponent dateE = PickerComponent.createDate(new Date()).label("Date");
 
         Label tp=new Label("catégorie:");
+        tp.getAllStyles().setFgColor(ColorUtil.MAGENTA);
 
         ComboBox<Categorie> c = new ComboBox<>();
         for (Categorie ca: lc) {
@@ -44,6 +52,7 @@ public class ModifierEvenement extends Form{
         }
 
         Button mod=new Button("Modifier");
+        mod.getAllStyles().setFgColor(ColorUtil.BLACK);
 
         mod.addActionListener(new ActionListener() {
             @Override

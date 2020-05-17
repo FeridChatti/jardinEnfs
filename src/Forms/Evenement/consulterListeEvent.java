@@ -25,11 +25,25 @@ public class consulterListeEvent extends Form {
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
         setTitle("Consulter Evenements");
         setLayout(BoxLayout.y());
+
+
+        int mm = Display.getInstance().convertToPixels(3);
+        EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(mm * 3, mm * 3, 0), false);
+
+        Image icon = URLImage.createToStorage(placeholder, "icon5", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRQFYzEsFF8QVbZKX_SgBX5kKmY9EZSuxr6e81HESCl2fnVcPTX&usqp=CAU");
+
+
+
+
+
+
+
+
         ArrayList<Evenement> ev= EvenementService.getInstance().ListeEvenementJardin(UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"").getId()+"");
         ArrayList<Map<String, Object>> data = new ArrayList<>();
         for(Evenement event:ev){
 
-            data.add(createListEntry(event.getTitre(),event.getId()));
+            data.add(createListEntry(event.getTitre(),event.getId(),event.getDate(),icon));
 
         }
 
@@ -52,10 +66,13 @@ public class consulterListeEvent extends Form {
 
     }
 
-    private Map<String, Object> createListEntry(String titre, int id ) {
+    private Map<String, Object> createListEntry(String titre, int id,String date,Image icon ) {
         Map<String, Object> entry = new HashMap<>();
         entry.put("Line1", titre);
+        entry.put("Line2", date);
+
         entry.put("id",id);
+        entry.put("icon",icon);
 
         return entry;
 

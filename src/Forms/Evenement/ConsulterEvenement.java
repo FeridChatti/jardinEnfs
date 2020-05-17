@@ -2,6 +2,7 @@ package Forms.Evenement;
 import Entities.Evenement;
 import Forms.Accueils.AccueilResponsable;
 import Services.EvenementService;
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
@@ -17,14 +18,22 @@ current=this;
     getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, b -> prev.showBack());
 
     Label t = new Label("Titre");
+    t.getAllStyles().setFgColor(ColorUtil.MAGENTA);
+
     Label tt = new Label(ev.getTitre());
     Label d = new Label("Description");
+    d.getAllStyles().setFgColor(ColorUtil.MAGENTA);
+
     Label td = new Label(ev.getDescription());
 
     Label da = new Label("Date");
+    da.getAllStyles().setFgColor(ColorUtil.MAGENTA);
+
     Label daa = new Label(ev.getDate());
 
     Label c = new Label("Catégorie");
+    c.getAllStyles().setFgColor(ColorUtil.MAGENTA);
+
     Label cc = new Label(ev.getCategorie().getLibelle());
 
     addAll(t, tt, d, td, da, daa, c, cc);
