@@ -248,6 +248,8 @@ private void initGuiBuilderComponents(Resources resourceObjectInstance) {
 
     } cnt0.setUIID("BackgroundForm");
 
+    cnt0.setPreferredH(this.getContentPane().getHeight());
+
 
 
 

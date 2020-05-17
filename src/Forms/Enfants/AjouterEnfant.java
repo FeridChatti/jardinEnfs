@@ -35,8 +35,7 @@ public class AjouterEnfant extends Form {
         swipe.getContentPane().setUIID("Container");
         swipe.hideTabs();
         add(swipe);
-        getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK,e->prev.showBack());
-        setTitle("Ajouter Enfant");
+
         setLayout(BoxLayout.y());
         TextField nom= new TextField("","Nom");
         TextField prenom= new TextField("","Prenom");
@@ -47,7 +46,7 @@ public class AjouterEnfant extends Form {
         Picker datePicker = new Picker();
         Date lt = Date.from(Instant.now());
         Button aj=new Button("Ajouter");
-        aj.setUIID("ButtonAbonnement");
+        //aj.setUIID("ButtonAbonnement");
         aj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {

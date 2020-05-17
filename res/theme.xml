@@ -87,10 +87,7 @@
     <image name="dog.jpg"  />
     <image name="down-arrow.png"  />
     <image name="electricte.JPG"  />
-    <image name="enfants-sports-1687x700.jpg"  />
     <image name="enfants.png"  />
-    <image name="event-1.jpg"  />
-    <image name="event-2.jpg"  />
     <image name="fixitnoir.png"  />
     <image name="Grand-m&#xe9;nage.jpg"  />
     <image name="griffith.jpg"  />
@@ -102,7 +99,6 @@
     <image name="home2.jpg"  />
     <image name="img_bgr_side_bar_title.png"  />
     <image name="img_bgr_tile.png"  />
-    <image name="jard.jpg"  />
     <image name="jardinage1.png"  />
     <image name="kgpng.png"  />
     <image name="label_round-selected.png"  />
@@ -112,13 +108,12 @@
         <lang name="en">
             <entry key="select" value="Select" />
             <entry key="ok" value="OK" />
-            <entry key="cancel" value="Cancel" />
             <entry key="edit" value="Edit" />
+            <entry key="cancel" value="Cancel" />
             <entry key="menu" value="Menu" />
         </lang>
     </l10n>
     <image name="logo.png"  />
-    <image name="mains.png"  />
     <image name="Menu.borderBottom_1.png" type="multi"  />
     <image name="Menu.borderBottomL_1.png" type="multi"  />
     <image name="Menu.borderBottomR_1.png" type="multi"  />
@@ -247,11 +242,6 @@
         <val key="Button.sel#padding" value="1.0,1.0,1.0,1.0" />
         <val key="Button.sel#transparency" value="0" />
         <val key="Button.transparency" value="0" />
-        <val key="ButtonAbonnement.align" value="4" />
-        <border key="ButtonAbonnement.border" type="round" roundBorderColor="16499581" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="1.0" shadowY="1.0" shadowBlur="10.0" shadowMM="false" rectangle="true" />
-        <val key="ButtonAbonnement.fgColor" value="ffffff" />
-        <val key="ButtonAbonnement.press#align" value="4" />
-        <border key="ButtonAbonnement.press#border" type="round" roundBorderColor="16499581" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="CalendarDate.bgColor" value="486666" />
         <val key="CalendarDate.fgColor" value="0" />
         <val key="CalendarDate.margin" value="0.0,0.0,0.0,0.0" />
@@ -419,6 +409,8 @@
         <val key="CommandList.sel#padding" value="0.0,0.0,0.0,0.0" />
         <val key="CommandList.sel#transparency" value="0" />
         <val key="CommandList.transparency" value="0" />
+        <gradient key="Container.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="Container.bgType" value="0" />
         <font key="Container.font" type="system" face="0" style="0" size="0" />
         <val key="Container.press#derive" value="Container" />
         <val key="Container.press#transparency" value="0" />
@@ -500,6 +492,8 @@
         <border key="FloatingActionButtonClose.border" type="round" roundBorderColor="3945604" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="110" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="false" />
         <val key="FloatingActionButtonClose.transparency" value="0" />
         <val key="Form.bgColor" value="ffffff" />
+        <val key="Form.bgImage" value="BubbleMe.borderTop_1.png" />
+        <val key="Form.bgType" value="1" />
         <val key="Form.transparency" value="255" />
         <val key="ImageOverlay.bgColor" value="14134b" />
         <val key="ImageOverlay.transparency" value="60" />
@@ -842,7 +836,7 @@
         <val key="SmallFontLabel.padUnit" value="2,0,2,0" />
         <val key="SmallFontLabel.padding" value="1.0,1.0,0.0,0.0" />
         <val key="SmallFontLabel.transparency" value="0" />
-        <val key="Tab.bgColor" value="486666" />
+        <val key="Tab.bgColor" value="3c4074" />
         <border key="Tab.border" type="line" millimeters="false" thickness="1.0" color="16777215" />
         <val key="Tab.fgColor" value="ffffff" />
         <font key="Tab.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
@@ -958,6 +952,10 @@
         <val key="UserImage.transparency" value="0" />
         <val key="UserListCont.align" value="4" />
         <val key="UserListCont.margin" value="0.0,0.0,0.0,0.0" />
+        <val key="bgColor" value="ffffff" />
+        <border key="border" type="empty" />
+        <val key="fgColor" value="0" />
+        <font key="font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="paddingright.padUnit" value="0,0,0,2" />
         <val key="paddingright.padding" value="0.0,0.0,0.0,4.0" />
         <val key="press#align" value="3" />
@@ -976,6 +974,7 @@
         <val key="theme.res.padUnit" value="2,0,2,0" />
         <val key="theme.res.padding" value="1.0,1.0,0.0,0.0" />
         <val key="theme.res.transparency" value="0" />
+        <val key="transparency" value="0" />
     </theme>
     <image name="timeline-background.jpg"  />
     <image name="TitleArea.borderBottom_1.png" type="multi"  />
