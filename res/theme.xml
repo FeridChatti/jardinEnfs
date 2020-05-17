@@ -507,6 +507,7 @@
         <val key="LINK.fgColor" value="ffffff" />
         <font key="LINK.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.5" />
         <val key="LINK.transparency" value="0" />
+        <val key="Label.dis#align" value="4" />
         <val key="Label.fgColor" value="0" />
         <font key="Label.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="Label.press#fgColor" value="0" />

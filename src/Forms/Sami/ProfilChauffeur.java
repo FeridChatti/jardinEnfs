@@ -10,6 +10,8 @@ import com.codename1.ui.*;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.validation.LengthConstraint;
+import com.codename1.ui.validation.Validator;
 import esprit.tn.MyApplication;
 
 import javax.swing.*;
@@ -19,10 +21,10 @@ public class ProfilChauffeur extends Form {
 Label result=new Label("");
     public Container getCont(Label lb,TextField tf)
     {
-        BoxLayout bx=new BoxLayout(BoxLayout.X_AXIS);
+        BoxLayout bx=new BoxLayout(BoxLayout.Y_AXIS);
         Container cn=new Container();
         cn.setLayout(bx);
-        cn.addAll(lb,tf);
+        cn.addAll(tf);
  return  cn;
     }
 public ProfilChauffeur(Form fo)
@@ -33,30 +35,22 @@ public ProfilChauffeur(Form fo)
     setLayout(BoxLayout.y());
 
     TextField cin_modif=new TextField(ch.getCin(),"CIN");
-    cin_modif.setAlignment(TextField.RIGHT);
     Container cin= getCont(new Label("Cin"),cin_modif);
-    TextField nom_modif=new TextField(ch.getNom(),"Nom et prénom");
-    nom_modif.setAlignment(TextField.RIGHT);
+    TextField nom_modif=new TextField(ch.getNom(),"Nom et prenom");
     Container nom= getCont(new Label("Nom et prénom"),nom_modif);
     TextField tel_modif=new TextField(ch.getTel(),"Numéro de téléphone");
-    tel_modif.setAlignment(TextField.RIGHT);
     Container tel= getCont(new Label("Numéro de téléphone"),tel_modif);
     TextField email_modif=new TextField(ch.getEmail(),"Email");
-    email_modif.setAlignment(TextField.RIGHT);
     Container email= getCont(new Label("Email"),email_modif);
     TextField username_modif=new TextField(ch.getUsername(),"Username");
-    username_modif.setAlignment(TextField.RIGHT);
     Container username= getCont(new Label("Username"),username_modif);
-    TextField password_modif=new TextField("","Mot de passe",20,TextField.PASSWORD);
-    password_modif.setAlignment(TextField.RIGHT);
+    TextField password_modif=new TextField(null,"Mot de passe",20,TextField.PASSWORD);
     Container password= getCont(new Label("Mot de passe"),password_modif);
 
     Label info=new Label("Informations");
-
     Label ident=new Label("Identifiants");
-
     Button aj=new Button("Modifier");
-
+aj.setUIID("ButtonSami");
     ComboBox<String> cb=new ComboBox<>();
     cb.addItem("Homme");
     cb.addItem("Femme");
