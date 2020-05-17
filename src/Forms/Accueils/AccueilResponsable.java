@@ -6,6 +6,7 @@ import Forms.AbonnementRespon.LocalNotificationTest;
 import Forms.ClubetActivite.ListeParticipation;
 import Forms.Evenement.AjouterEvenement;
 import Forms.ClubetActivite.ListeParticipation;
+import Forms.Evenement.ChartDemo;
 import Forms.Evenement.consulterListeEvent;
 import Forms.Responsable.UserList;
 import Forms.Sami.AjouterTrajet;
@@ -24,7 +25,7 @@ public class AccueilResponsable extends Form {
  public static   Form fo;
 
     public AccueilResponsable()
-    {fo=this;
+    { fo=this;
         setLayout(BoxLayout.y());
         Button bj=new Button("Consulter Vos Jardin");
         bj.addActionListener(e-> {
@@ -54,11 +55,14 @@ public class AccueilResponsable extends Form {
         Button msg=new Button("Messages");
         msg.addActionListener(e->new UserList(fo).show());
 
+        Button stat = new Button("Statistiques");
+        stat.addActionListener(e ->new ChartDemo().show());
+
         Button logout = new Button("Se déconnecter");
         logout.addActionListener(s ->new SignIn(MyApplication.theme).show());
 
 
-        addAll(cs,participer,abonnement,ajev,list,bj,msg,logout);
+        addAll(cs,participer,abonnement,ajev,list,bj,msg,stat,logout);
 
 
 

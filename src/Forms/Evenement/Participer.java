@@ -55,6 +55,8 @@ public class Participer extends Form {
         for(Enfant f:af)
             enfants.addItem(f);
         Button part=new Button("Participer");
+        part.setUIID("ButtonAbonnement");
+
         part.getAllStyles().setBgColor(ColorUtil.MAGENTA);
 
         part.addActionListener(new ActionListener() {
