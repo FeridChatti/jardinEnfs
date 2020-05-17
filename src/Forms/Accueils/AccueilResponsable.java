@@ -1,6 +1,5 @@
 package Forms.Accueils;
 
-import Forms.AbonnementRespon.Test;
 import Forms.ClubetActivite.ListeParticipation;
 import Forms.AbonnementRespon.ConsulterAbonnement;
 import Forms.AbonnementRespon.LocalNotificationTest;
@@ -39,8 +38,6 @@ public class AccueilResponsable extends Form {
         Button cs=new Button("Consulter les trajets");
         cs.addActionListener(e->new ConsulterTrajet(fo));
 
-        Button test=new Button("test");
-        test.addActionListener(e->new Test());
 
         Button participer=new Button("Consulter les participations");
         participer.addActionListener(e->new ListeParticipation(fo));
@@ -62,7 +59,7 @@ public class AccueilResponsable extends Form {
         logout.addActionListener(s ->new SignIn(MyApplication.theme).show());
 
 
-        addAll(cs,participer,abonnement,ajev,list,bj,msg,logout,test);
+        addAll(cs,participer,abonnement,ajev,list,bj,msg,logout);
 
 
 

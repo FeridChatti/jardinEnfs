@@ -14,6 +14,7 @@ import com.codename1.ui.list.MultiList;
 import esprit.tn.MyApplication;
 
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,16 +28,18 @@ public class ConsulterTrajet extends Form {
   hi.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
 
         Button aj=new Button("Ajouter un trajet");
+        aj.setUIID("ButtonSami");
         aj.addActionListener(e->new AjouterTrajet(hi).show());
         Button btmap=new Button("Voir map");
+        btmap.setUIID("ButtonSami");
         btmap.addActionListener(e->new MapsDemo(trajetList,hi));
-
         hi.addAll(aj,btmap);
 
         ArrayList<Map<String, Object>> data = new ArrayList<>();
         for(Trajet tr :trajetList) {
             data.add(createListEntry(tr.getAdresse(), tr.getChauffeur().getNom(),tr));
         }
+
         DefaultListModel<Map<String, Object>> model = new DefaultListModel<>(data);
         MultiList ml = new MultiList(model);
         hi.add(ml);
