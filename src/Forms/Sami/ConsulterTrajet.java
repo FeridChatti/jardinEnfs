@@ -28,10 +28,10 @@ public class ConsulterTrajet extends Form {
   hi.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
 
         Button aj=new Button("Ajouter un trajet");
-        aj.setUIID("ButtonSami");
+        aj.setUIID("Confirmbtn");
         aj.addActionListener(e->new AjouterTrajet(hi).show());
         Button btmap=new Button("Voir map");
-        btmap.setUIID("ButtonSami");
+        btmap.setUIID("Confirmbtn");
         btmap.addActionListener(e->new MapsDemo(trajetList,hi));
         hi.addAll(aj,btmap);
 
