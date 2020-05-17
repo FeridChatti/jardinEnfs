@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<resource majorVersion="1" minorVersion="11" useXmlUI="false">
+<resource majorVersion="1" minorVersion="10" useXmlUI="false">
     <image name="a.jpg"  />
     <image name="aa.jpg"  />
     <image name="aaa.jpg"  />
@@ -889,6 +889,7 @@
         <border key="TextField.border" type="image" i1="TextField.borderTop_1.png" i2="TextField.borderBottom_1.png" i3="TextField.borderLeft_1.png" i4="TextField.borderRight_1.png" i5="TextField.borderTopL_1.png" i6="TextField.borderTopR_1.png" i7="TextField.borderBottomL_1.png" i8="TextField.borderBottomR_1.png" i9="TextField.borderCenter_1.png" />
         <val key="TextField.fgColor" value="0" />
         <font key="TextField.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
+        <val key="TextField.marUlSize="3.0" />
         <val key="TextField.marUnit" value="2,2,2,2" />
         <val key="TextField.margin" value="1.0,1.0,1.0,1.0" />
         <gradient key="TextField.press#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
@@ -916,6 +917,7 @@
         <val key="Title.transparency" value="0" />
         <val key="TitleArea.bgColor" value="3c4074" />
         <border key="TitleArea.border" type="empty" />
+        <val key="TitleArea.margin" value="0.0,0.0,0.0,0.0" />
         <val key="TitleArea.transparency" value="255" />
         <gradient key="TitleCommand.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="TitleCommand.bgType" value="0" />

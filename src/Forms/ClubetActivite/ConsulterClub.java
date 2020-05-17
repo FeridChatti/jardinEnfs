@@ -79,7 +79,12 @@ public class ConsulterClub extends Form {
 
 
 
+                TextArea txtC = new TextArea();
+                txtC.setHint("ajouter un commentaire ...");
+
+
                 d.add(flowLayout);
+                d.add(txtC);
 
                 Button sb = new Button("submit");
                 sb.addActionListener(new ActionListener() {
@@ -87,7 +92,7 @@ public class ConsulterClub extends Form {
                     public void actionPerformed(ActionEvent evt) {
 
 
-                        ClubService.getInstance().AddRank(Integer.parseInt(String.valueOf((String)t.get("id"))),r.a ,authenticated.getId());
+                        ClubService.getInstance().AddRank(Integer.parseInt(String.valueOf((String)t.get("id"))),r.a ,authenticated.getId(), txtC.getText());
                         Dialog.show("Succes","added rank",new Command("OK"));
                          new ConsulterClub(fo).show();
                     }
