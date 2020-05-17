@@ -10,6 +10,7 @@ import Forms.Abonnements.ConsulterAbonnement;
 import Forms.Enfants.AjouterEnfant;
 import Forms.Enfants.ConsulterEnfant;
 
+import Forms.Enfants.GestionEnfant;
 import Forms.Evenement.ConsulterEvenement;
 import Forms.Evenement.ConsulterListeEventsParent;
 import Forms.Evenement.DetailsEvenement;
@@ -69,6 +70,8 @@ public class AccueilParent extends BaseForm {
 
         Button b = new Button("ajouter enfant");
         b.addActionListener(e -> new AjouterEnfant(fo).show());
+        Button gestion = new Button("ajouter enfant");
+        gestion.addActionListener(e -> new GestionEnfant(fo).show());
 
         Button bss = new Button("consulter jardin");
         bss.addActionListener(s -> new AfficheJArdin(fo).show());
@@ -107,7 +110,7 @@ public class AccueilParent extends BaseForm {
         logout.addActionListener(s ->new SignIn(MyApplication.theme).show());
 
 
-        addAll(b, bs, bse, bts, bt, btnmyrem, btnreclam, btnprofile, btnchat, bss,btList,trajets,logout);
+        addAll(b, bs, bse, bts, bt, btnmyrem, btnreclam, btnprofile, btnchat, bss,btList,trajets,logout,gestion);
 
 
 
