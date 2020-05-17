@@ -1,5 +1,6 @@
 package Forms.Accueils;
 
+
 import Forms.ClubetActivite.ListeParticipation;
 import Forms.AbonnementRespon.ConsulterAbonnement;
 import Forms.AbonnementRespon.LocalNotificationTest;
@@ -38,6 +39,8 @@ public class AccueilResponsable extends Form {
 
         Button cs=new Button("Consulter les trajets");
         cs.addActionListener(e->new ConsulterTrajet(fo));
+
+
 
         Button participer=new Button("Consulter les participations");
         participer.addActionListener(e->new ListeParticipation(fo));

@@ -5,6 +5,7 @@ import Entities.Evenement;
 import Forms.Accueils.AccueilParent;
 import Services.EnfantService;
 import Services.EvenementService;
+import com.codename1.charts.util.ColorUtil;
 import com.codename1.components.ToastBar;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
@@ -27,14 +28,35 @@ public class Participer extends Form {
         Label lbId = new Label(id+"");
         lbId.setHidden(true);
         Evenement ev=EvenementService.getInstance().getEvent(id);
-        Label lbNom=new Label(ev.getTitre());
-        Label lbDesc=new Label(ev.getDescription());
-        Label lbDate=new Label(ev.getDate());
+
+
+        Label t = new Label("Titre");
+        t.getAllStyles().setFgColor(ColorUtil.MAGENTA);
+
+        Label tt = new Label(ev.getTitre());
+        Label d = new Label("Description");
+        d.getAllStyles().setFgColor(ColorUtil.MAGENTA);
+
+        Label td = new Label(ev.getDescription());
+
+        Label da = new Label("Date");
+        da.getAllStyles().setFgColor(ColorUtil.MAGENTA);
+
+        Label daa = new Label(ev.getDate());
+
+        Label daaa = new Label("Veuillez sélectionner un enfant ");
+        daaa.getAllStyles().setFgColor(ColorUtil.MAGENTA);
+
+
+        addAll(t, tt, d, td, da, daa,daaa);
+
         ArrayList<Enfant> af=EnfantService.getInstance().ListEnfants(MyApplication.authenticated.getId()+"");
         ComboBox<Enfant> enfants =new ComboBox<>();
         for(Enfant f:af)
             enfants.addItem(f);
         Button part=new Button("Participer");
+        part.getAllStyles().setBgColor(ColorUtil.MAGENTA);
+
         part.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -48,7 +70,7 @@ if (EvenementService.getInstance().AddParticiper(lbId.getText(),enfants.getSelec
             }
         });
 
-        addAll(lbId,lbNom,lbDesc,lbDate,enfants,part);
+        addAll(lbId,enfants,part);
 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
 
