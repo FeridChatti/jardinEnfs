@@ -2,6 +2,9 @@ package Forms.Enfants;
 
 import Entities.Enfant;
 import Entities.Trajet;
+import Forms.AbonnementRespon.ConsulterAbonnement;
+import Forms.Accueils.AccueilParent;
+import Forms.Accueils.AccueilResponsable;
 import Services.EnfantService;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
@@ -16,6 +19,7 @@ import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.list.DefaultListModel;
 import com.codename1.ui.list.MultiList;
 import com.codename1.ui.plaf.Style;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import esprit.tn.MyApplication;
 
@@ -42,9 +46,9 @@ public class ConsulterEnfant extends Form {
         swipe.hideTabs();
        add(swipe);
 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
-        setTitle("Consulter enfants");
+
         setLayout(BoxLayout.y());
+
 
         int mm = Display.getInstance().convertToPixels(3);
         EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(mm * 3, mm * 3, 0), false);
@@ -63,6 +67,7 @@ public class ConsulterEnfant extends Form {
 
         DefaultListModel<Map<String, Object>> model = new DefaultListModel<>(data);
         MultiList ml = new MultiList(model);
+
         ml.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -71,7 +76,7 @@ public class ConsulterEnfant extends Form {
 
                 if(Dialog.show("Modifier cet Enfant?","Veuillez selectionez un choix","Oui","Non")){
                 try {
-                    new ModifierEnfant(th,enl).show();
+                    new ModifierEnfant(new GestionEnfant(new AccueilParent()),enl).show();
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }}
@@ -81,6 +86,7 @@ public class ConsulterEnfant extends Form {
         });
 
         add(ml);
+
 
     }
     private Map<String, Object> createListEntry(String nom, String date,int idi,Image icon1 ) {
@@ -95,6 +101,7 @@ public class ConsulterEnfant extends Form {
     }
 
     private void addTab(Tabs swipe, Image img, Label spacer, String likesStr, String commentsStr, String text) {
+
         int size = Math.min(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight());
         if(img.getHeight() < size) {
             img = img.scaledHeight(size);

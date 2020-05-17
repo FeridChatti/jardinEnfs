@@ -6,6 +6,8 @@
     <image name="aaa.jpg"  />
     <image name="about-img-1.jpg"  />
     <image name="activation-background.jpg"  />
+    <image name="ajouterabonnement.jpg"  />
+    <image name="ajouterenfant.jpg"  />
     <image name="alexandra.jpg"  />
     <image name="ann.jpg"  />
     <image name="avatar5.png"  />
@@ -85,6 +87,7 @@
     <image name="dog.jpg"  />
     <image name="down-arrow.png"  />
     <image name="electricte.JPG"  />
+    <image name="enfants.png"  />
     <image name="fixitnoir.png"  />
     <image name="Grand-m&#xe9;nage.jpg"  />
     <image name="griffith.jpg"  />
@@ -105,8 +108,8 @@
         <lang name="en">
             <entry key="select" value="Select" />
             <entry key="ok" value="OK" />
-            <entry key="cancel" value="Cancel" />
             <entry key="edit" value="Edit" />
+            <entry key="cancel" value="Cancel" />
             <entry key="menu" value="Menu" />
         </lang>
     </l10n>
@@ -239,15 +242,6 @@
         <val key="Button.sel#padding" value="1.0,1.0,1.0,1.0" />
         <val key="Button.sel#transparency" value="0" />
         <val key="Button.transparency" value="0" />
-        <val key="ButtonSami.align" value="4" />
-        <border key="ButtonSami.border" type="round" roundBorderColor="11338399" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
-        <val key="ButtonSami.fgColor" value="ffffff" />
-        <val key="ButtonSami.press#align" value="4" />
-        <border key="ButtonSami.press#border" type="round" roundBorderColor="11338399" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
-        <val key="ButtonSami.press#fgColor" value="ffffff" />
-        <val key="ButtonSami.sel#align" value="4" />
-        <border key="ButtonSami.sel#border" type="round" roundBorderColor="11338399" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
-        <val key="ButtonSami.sel#fgColor" value="ffffff" />
         <val key="CalendarDate.bgColor" value="486666" />
         <val key="CalendarDate.fgColor" value="0" />
         <val key="CalendarDate.margin" value="0.0,0.0,0.0,0.0" />
@@ -415,7 +409,6 @@
         <val key="CommandList.sel#padding" value="0.0,0.0,0.0,0.0" />
         <val key="CommandList.sel#transparency" value="0" />
         <val key="CommandList.transparency" value="0" />
-        <val key="Container.align" value="4" />
         <gradient key="Container.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Container.bgType" value="0" />
         <font key="Container.font" type="system" face="0" style="0" size="0" />
@@ -499,6 +492,8 @@
         <border key="FloatingActionButtonClose.border" type="round" roundBorderColor="3945604" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="110" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="false" />
         <val key="FloatingActionButtonClose.transparency" value="0" />
         <val key="Form.bgColor" value="ffffff" />
+        <val key="Form.bgImage" value="BubbleMe.borderTop_1.png" />
+        <val key="Form.bgType" value="1" />
         <val key="Form.transparency" value="255" />
         <val key="ImageOverlay.bgColor" value="14134b" />
         <val key="ImageOverlay.transparency" value="60" />
@@ -507,7 +502,6 @@
         <val key="LINK.fgColor" value="ffffff" />
         <font key="LINK.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.5" />
         <val key="LINK.transparency" value="0" />
-        <val key="Label.dis#align" value="4" />
         <val key="Label.fgColor" value="0" />
         <font key="Label.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="Label.press#fgColor" value="0" />
@@ -520,6 +514,7 @@
         <font key="LargeIconFont.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="4.0" />
         <val key="LargeIconFont.transparency" value="255" />
         <val key="List.bgColor" value="ffffff" />
+        <border key="List.border" type="empty" />
         <val key="List.margin" value="0.0,0.0,0.0,0.0" />
         <val key="List.padding" value="0.0,0.0,0.0,0.0" />
         <val key="List.press#bgColor" value="ffffff" />
@@ -591,7 +586,7 @@
         <val key="MultiButton.sel#transparency" value="0" />
         <val key="MultiButton.transparency" value="255" />
         <val key="MultiLine1.fgColor" value="0" />
-        <font key="MultiLine1.font" type="ttf" face="0" style="1" size="16" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="4.0" />
+        <font key="MultiLine1.font" type="ttf" face="0" style="1" size="16" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="4.0" />
         <val key="MultiLine1.press#fgColor" value="0" />
         <font key="MultiLine1.press#font" type="ttf" face="0" style="1" size="16" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="4.0" />
         <val key="MultiLine1.press#transparency" value="0" />
@@ -727,7 +722,7 @@
         <val key="Separator.bgColor" value="e77c6e" />
         <val key="Separator.fgColor" value="0" />
         <val key="Separator.marUnit" value="0,2,0,0" />
-        <val key="Separator.margin" value="0.0,0.0,5.0,0.0" />
+        <val key="Separator.margin" value="0.0,0.0,1.0,0.0" />
         <val key="Separator.padding" value="1.0,1.0,1.0,1.0" />
         <val key="Separator.transparency" value="25" />
         <gradient key="SideCommand.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
@@ -841,7 +836,7 @@
         <val key="SmallFontLabel.padUnit" value="2,0,2,0" />
         <val key="SmallFontLabel.padding" value="1.0,1.0,0.0,0.0" />
         <val key="SmallFontLabel.transparency" value="0" />
-        <val key="Tab.bgColor" value="486666" />
+        <val key="Tab.bgColor" value="3c4074" />
         <border key="Tab.border" type="line" millimeters="false" thickness="1.0" color="16777215" />
         <val key="Tab.fgColor" value="ffffff" />
         <font key="Tab.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
@@ -870,7 +865,7 @@
         <val key="TextArea.fgColor" value="0" />
         <font key="TextArea.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="TextArea.marUnit" value="2,2,2,2" />
-        <val key="TextArea.margin" value="1.0,1.0,1.0,1.0" />
+        <val key="TextArea.margin" value="0.0,0.0,0.0,0.0" />
         <gradient key="TextArea.press#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="TextArea.press#bgType" value="0" />
         <border key="TextArea.press#border" type="image" i1="TextField.borderTop_1.png" i2="TextField.borderBottom_1.png" i3="TextField.borderLeft_1.png" i4="TextField.borderRight_1.png" i5="TextField.borderTopL_1.png" i6="TextField.borderTopR_1.png" i7="TextField.borderBottomL_1.png" i8="TextField.borderBottomR_1.png" i9="TextField.borderCenter_1.png" />
@@ -955,10 +950,14 @@
         <val key="UserImage.bgImage" value="rounded-border.png" />
         <val key="UserImage.bgType" value="34" />
         <val key="UserImage.transparency" value="0" />
+        <val key="UserListCont.align" value="4" />
+        <val key="UserListCont.margin" value="0.0,0.0,0.0,0.0" />
         <val key="bgColor" value="ffffff" />
         <border key="border" type="empty" />
         <val key="fgColor" value="0" />
         <font key="font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
+        <val key="paddingright.padUnit" value="0,0,0,2" />
+        <val key="paddingright.padding" value="0.0,0.0,0.0,4.0" />
         <val key="press#align" value="3" />
         <val key="press#bgColor" value="6aff" />
         <val key="press#derive" value="Button" />
