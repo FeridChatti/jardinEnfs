@@ -383,5 +383,30 @@ return ev;
             return verif;
 
         }
+
+
+
+    public ArrayList<Participer> ListeParticipantEvenement(){
+        String url="http://127.0.0.1:8000/eveapi/Api/EventParticipants";
+        req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                try {
+                    participants = ParseParticiperEvent(new String(req.getResponseData()));
+                    req.removeResponseListener(this);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return participants;
+    }
+
+
+
     }
 
