@@ -1,7 +1,9 @@
 package Forms.Accueils;
 
+import Forms.ClubetActivite.AjouterActivite;
 
 import Forms.ClubetActivite.ListeParticipation;
+
 import Forms.AbonnementRespon.ConsulterAbonnement;
 import Forms.AbonnementRespon.LocalNotificationTest;
 import Forms.ClubetActivite.ListeParticipation;
@@ -13,6 +15,7 @@ import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
 import Forms.User.SignIn;
 import Forms.raed.AfficheJardinRespo;
+import Forms.raed.EffectuerPaiement;
 import com.codename1.l10n.ParseException;
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
@@ -39,10 +42,11 @@ public class AccueilResponsable extends Form {
         Button cs=new Button("Consulter les trajets");
         cs.addActionListener(e->new ConsulterTrajet(fo));
 
-
-
         Button participer=new Button("Consulter les participations");
-        participer.addActionListener(e->new ListeParticipation(fo));
+        participer.addActionListener(e->new ListeParticipation(fo).show());
+
+        Button ajouterAct=new Button("Ajouter une activité");
+        ajouterAct.addActionListener(e->new AjouterActivite(fo).show());
 
         Button abonnement=new Button("Consulter les abonnements");
         abonnement.addActionListener(e->new ConsulterAbonnement(fo).show());
@@ -56,12 +60,15 @@ public class AccueilResponsable extends Form {
 
         Button msg=new Button("Messages");
         msg.addActionListener(e->new UserList(fo).show());
+        Button Paiement=new Button("Paiement");
+        Paiement.addActionListener(e->new EffectuerPaiement(fo).show());
 
         Button logout = new Button("Se déconnecter");
         logout.addActionListener(s ->new SignIn(MyApplication.theme).show());
 
 
-        addAll(cs,participer,abonnement,ajev,list,bj,msg,logout);
+        addAll(cs,participer,ajouterAct,abonnement,ajev,list,bj,msg,logout);
+        addAll(cs,participer,abonnement,ajev,list,bj,msg,Paiement,logout);
 
 
 
