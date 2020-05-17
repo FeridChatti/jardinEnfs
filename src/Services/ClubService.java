@@ -66,8 +66,8 @@ public class ClubService {
 return clubs;
     }
 
-    public Boolean AddRank(int id,int rank, int idp){
-        String url="http://127.0.0.1:8000/dorra/webS/addrank/"+id+"/"+rank+"/"+idp;
+    public Boolean AddRank(int id,int rank, int idp, String comment){
+        String url="http://127.0.0.1:8000/dorra/webS/addrank/"+id+"/"+rank+"/"+idp+"/"+comment;
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override

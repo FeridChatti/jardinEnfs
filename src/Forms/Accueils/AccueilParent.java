@@ -22,6 +22,7 @@ import Forms.Parent.SendReclam;
 import Forms.Remarques.ConsulterRemarques;
 import Forms.Sami.MapParent;
 import Forms.User.BaseForm;
+import Forms.User.SignIn;
 import Forms.raed.AfficheJArdin;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
@@ -45,15 +46,15 @@ public class AccueilParent extends BaseForm {
 
         fo = this;
         setLayout(BoxLayout.y());
-    //    Toolbar tb = new Toolbar(true);
-      //  setToolbar(tb);
+      Toolbar tb = new Toolbar(true);
+        setToolbar(tb);
         getTitleArea().setUIID("Container");
         setTitle("Parent");
 
 
         getContentPane().setScrollVisible(false);
 
-       /* Tabs swipe = new Tabs();
+       Tabs swipe = new Tabs();
 
         Label spacer1 = new Label();
         Label spacer2 = new Label();
@@ -62,9 +63,9 @@ public class AccueilParent extends BaseForm {
         swipe.getContentPane().setUIID("Container");
         swipe.hideTabs();
 
-        add(swipe);*/
+        add(swipe);
 
-       // super.addSideMenu();
+        super.addSideMenu();
 
         Button b = new Button("ajouter enfant");
         b.addActionListener(e -> new AjouterEnfant(fo).show());
@@ -73,7 +74,7 @@ public class AccueilParent extends BaseForm {
         bss.addActionListener(s -> new AfficheJArdin(fo).show());
 
         Button bs = new Button("ajouter abonnement");
-        bs.addActionListener(s -> new AjouterAbonnement(fo).show());
+        bs.addActionListener(s -> new AjouterAbonnement(fo,"2").show());
         Button ca = new Button("consulter abonnement");
         ca.addActionListener(s -> new ConsulterAbonnement(fo).show());
         Button bse = new Button("consulter enfants");
@@ -88,10 +89,10 @@ public class AccueilParent extends BaseForm {
 
 
         Button btnreclam = new Button("Envoyer une réclamation");
-        btnreclam.addActionListener(s -> new SendReclam(fo).show());
+        btnreclam.addActionListener(s -> new SendReclam(fo));
 
         Button btnprofile = new Button("Modifier profile");
-        btnprofile.addActionListener(s -> new Editprofile(fo).show());
+        btnprofile.addActionListener(s -> new Editprofile(fo));
         Button btnchat = new Button("Contacter Jardin");
         btnchat.addActionListener(s -> new JardList(fo).show());
 
@@ -102,8 +103,11 @@ public class AccueilParent extends BaseForm {
         trajets.addActionListener(s -> new MapParent(fo));
 
 
+        Button logout = new Button("Se déconnecter");
+        logout.addActionListener(s ->new SignIn(MyApplication.theme).show());
 
-        addAll(b, bs, bse, bts, bt, btnmyrem, btnreclam, btnprofile, btnchat, bss,btList,trajets);
+
+        addAll(b, bs, bse, bts, bt, btnmyrem, btnreclam, btnprofile, btnchat, bss,btList,trajets,logout);
 
 
 

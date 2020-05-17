@@ -13,29 +13,35 @@ import com.codename1.ui.list.MultiList;
 import com.codename1.ui.util.Resources;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import static esprit.tn.MyApplication.theme;
 
 public class TuteurRemarques extends Form {
-
+    Container form = new Container();
     public TuteurRemarques (Form prev){
-        setTitle("La Liste des remarques");
-        Form form = this;
-        initGuiBuilderComponents(theme);
 
+
+        initGuiBuilderComponents(theme);
+        //form.setTitle("La Liste des remarques");
 
        // Container detail = new Container(BoxLayout.y());
         //add(detail);
 
-        setLayout(BoxLayout.y());
-        ArrayList<Remarque> rmk= RemarqueService.getInstance().tutremarques();
+      //  form.setLayout(BoxLayout.y());
+       // ArrayList<Remarque> rmk= RemarqueService.getInstance().tutremarques();
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
 
+        setTitle("Remarques des enfant");
 
+        form.setUIID("BackgroundForm");
+        //form.show();
+        //form.getToolbar().setUIID("Container");
 
-
+        add(form);
+        show();
 
 
 
@@ -47,12 +53,13 @@ public class TuteurRemarques extends Form {
     private void initGuiBuilderComponents(Resources resourceObjectInstance) {
 
 
-        setLayout(new BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
-        setTitle("Remarques de vos enfant");
-        setName("remarques");
+        form.setLayout(new BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
+
+        //form.setName("remarques");
 
 
         ArrayList<Remarque> rmk= RemarqueService.getInstance().tutremarques();
+        Collections.reverse(rmk);
 
 
         int i = 0;
@@ -78,7 +85,7 @@ public class TuteurRemarques extends Form {
             text_area.setEditable(false);
 
 
-            add(firstcont);
+            form.add(firstcont);
             firstcont.setName("Container_1" + i);
 
             firstcont.add(BorderLayout.EAST, secondcont);
@@ -91,7 +98,7 @@ public class TuteurRemarques extends Form {
             cont4.add(label_4);
             label_4.setUIID("Padding2");
             label_4.setName("Label_4" + i);
-            label_4.setIcon(resourceObjectInstance.getImage("label_round.png"));
+            label_4.setIcon(resourceObjectInstance.getImage("label_round-selected.png"));
             firstcont.addComponent(BorderLayout.CENTER, cont3);
             cont3.setName("Container_3" + i);
             cont3.addComponent(label_3);
@@ -121,7 +128,7 @@ public class TuteurRemarques extends Form {
             label_6.setUIID("Separator");
             label_6.setName("Label_6");
 
-            addComponent(label_6);
+            form. addComponent(label_6);
 
 
             firstcont.setUIID("UserListCont");

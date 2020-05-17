@@ -19,9 +19,8 @@ import static esprit.tn.MyApplication.authenticated;
 import static esprit.tn.MyApplication.theme;
 
 public class UserList extends  BaseForm {
-        Image imgg;
-        EncodedImage enc ;
-        Container cnt = new Container();
+
+
         Container cnt0 = new Container();
 
         Resources res= MyApplication.theme;
@@ -31,11 +30,13 @@ public class UserList extends  BaseForm {
             initGuiBuilderComponents(theme);
             getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
 
-
+            //setTitle("InboxForm");
 
 
             getToolbar().addCommandToRightBar("", theme.getImage("toolbar-profile-pic.png"), e -> {});
 
+
+            add(cnt0);
 
 
 
@@ -48,19 +49,19 @@ public class UserList extends  BaseForm {
 
 
 
-            setLayout(new BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
-            setTitle("InboxForm");
-            setName("InboxForm");
+            cnt0.setLayout(new BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
+
+           // setName("InboxForm");
 
             Jardin jardid= UserService.getInstance().getJardin(String .valueOf(authenticated.getId()));
             List<Parents> parlist= ChatService.getInstance().userlist(jardid.getId());
+
             getToolbar().setTitleComponent(
                     FlowLayout.encloseCenterMiddle(
                             new Label("Inbox", "Title"),
                             new Label(String.valueOf(parlist.size()), "InboxNumber")
                     )
             );
-
             int i=0;
             for(Parents j:parlist){
 
@@ -80,7 +81,7 @@ public class UserList extends  BaseForm {
                 Label label_1=new Label();
 
 
-                add(firstcont);
+                cnt0.add(firstcont);
                 firstcont.setName("Container_1"+i);
 
                 firstcont.add( BorderLayout.EAST, secondcont);
@@ -93,7 +94,7 @@ public class UserList extends  BaseForm {
                 cont4.add(label_4);
                 label_4.setUIID("Padding2");
                 label_4.setName("Label_4"+i);
-                label_4.setIcon(resourceObjectInstance.getImage("label_round.png"));
+                label_4.setIcon(resourceObjectInstance.getImage("toolbar-profile-pic.png"));
                 firstcont.addComponent(BorderLayout.CENTER, cont3);
                 cont3.setName("Container_3"+i);
                 cont3.addComponent(label_3);
@@ -109,9 +110,11 @@ public class UserList extends  BaseForm {
 
                 secondcont.setName("Container_2"+i);
                 secondcont.add(label_1);
+
                 label_1.setText(j.getNumtel());
                 label_1.setUIID("SmallFontLabel");
                 label_1.setName("Label_1"+i);
+
                 cont4.setName("Container_4"+i);
                 ((FlowLayout)cont4.getLayout()).setAlign(Component.CENTER);
                 cont3.setName("Container_3"+i);
@@ -121,7 +124,7 @@ public class UserList extends  BaseForm {
                 label_6.setUIID("Separator");
                 label_6.setName("Label_6");
 
-                addComponent(label_6);
+                cnt0.addComponent(label_6);
 
 
 
@@ -134,7 +137,7 @@ public class UserList extends  BaseForm {
                 i++;
 
 
-            }
+            } cnt0.setUIID("BackgroundForm");
 
 
 

@@ -10,11 +10,13 @@ import Forms.Evenement.consulterListeEvent;
 import Forms.Responsable.UserList;
 import Forms.Sami.AjouterTrajet;
 import Forms.Sami.ConsulterTrajet;
+import Forms.User.SignIn;
 import Forms.raed.AfficheJardinRespo;
 import com.codename1.l10n.ParseException;
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
 import com.codename1.ui.layouts.BoxLayout;
+import esprit.tn.MyApplication;
 
 import static esprit.tn.MyApplication.authenticated;
 
@@ -52,8 +54,11 @@ public class AccueilResponsable extends Form {
         Button msg=new Button("Messages");
         msg.addActionListener(e->new UserList(fo).show());
 
+        Button logout = new Button("Se déconnecter");
+        logout.addActionListener(s ->new SignIn(MyApplication.theme).show());
 
-        addAll(cs,participer,abonnement,ajev,list,bj,msg);
+
+        addAll(cs,participer,abonnement,ajev,list,bj,msg,logout);
 
 
 

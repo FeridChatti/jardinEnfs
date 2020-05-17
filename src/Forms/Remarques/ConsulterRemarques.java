@@ -17,6 +17,7 @@ import com.codename1.ui.util.Resources;
 import esprit.tn.MyApplication;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static esprit.tn.MyApplication.authenticated;
@@ -24,19 +25,18 @@ import static esprit.tn.MyApplication.theme;
 
 public class ConsulterRemarques extends Form {
     Resources res = MyApplication.theme;
-
+    Container form = new Container();
     public ConsulterRemarques(Form prev) {
         setTitle("La Liste des remarques");
-        Form form = this;
 
 
-        Container detail = new Container(BoxLayout.y());
-        add(detail);
+        form.setUIID("BackgroundForm");
 
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
 
         initGuiBuilderComponents(theme);
-
+        add(form);
+        show();
 
     }
 
@@ -44,12 +44,12 @@ public class ConsulterRemarques extends Form {
     private void initGuiBuilderComponents(Resources resourceObjectInstance) {
 
 
-        setLayout(new BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
-        setTitle("Remarques de vos enfant");
-        setName("remarques");
+        form.setLayout(new BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
+
 
 
         ArrayList<Remarque> rmk = RemarqueService.getInstance().mesremarques();
+        Collections.reverse(rmk);
 
 
         int i = 0;
@@ -75,7 +75,7 @@ public class ConsulterRemarques extends Form {
             text_area.setEditable(false);
 
 
-            add(firstcont);
+            form.add(firstcont);
             firstcont.setName("Container_1" + i);
 
             firstcont.add(BorderLayout.EAST, secondcont);
@@ -88,7 +88,7 @@ public class ConsulterRemarques extends Form {
             cont4.add(label_4);
             label_4.setUIID("Padding2");
             label_4.setName("Label_4" + i);
-            label_4.setIcon(resourceObjectInstance.getImage("label_round.png"));
+            label_4.setIcon(resourceObjectInstance.getImage("label_round-selected.png"));
             firstcont.addComponent(BorderLayout.CENTER, cont3);
             cont3.setName("Container_3" + i);
             cont3.addComponent(label_3);
@@ -118,7 +118,7 @@ public class ConsulterRemarques extends Form {
             label_6.setUIID("Separator");
             label_6.setName("Label_6");
 
-            addComponent(label_6);
+            firstcont. addComponent(BorderLayout.SOUTH,label_6);
 
 
             firstcont.setUIID("UserListCont");
