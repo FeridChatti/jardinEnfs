@@ -6,6 +6,8 @@
     <image name="aaa.jpg"  />
     <image name="about-img-1.jpg"  />
     <image name="activation-background.jpg"  />
+    <image name="ajouterabonnement.jpg"  />
+    <image name="ajouterenfant.jpg"  />
     <image name="alexandra.jpg"  />
     <image name="ann.jpg"  />
     <image name="avatar5.png"  />
@@ -106,8 +108,8 @@
         <lang name="en">
             <entry key="select" value="Select" />
             <entry key="ok" value="OK" />
-            <entry key="cancel" value="Cancel" />
             <entry key="edit" value="Edit" />
+            <entry key="cancel" value="Cancel" />
             <entry key="menu" value="Menu" />
         </lang>
     </l10n>
@@ -240,6 +242,11 @@
         <val key="Button.sel#padding" value="1.0,1.0,1.0,1.0" />
         <val key="Button.sel#transparency" value="0" />
         <val key="Button.transparency" value="0" />
+        <val key="ButtonAbonnement.align" value="4" />
+        <border key="ButtonAbonnement.border" type="round" roundBorderColor="16499581" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="1.0" shadowY="1.0" shadowBlur="10.0" shadowMM="false" rectangle="true" />
+        <val key="ButtonAbonnement.fgColor" value="ffffff" />
+        <val key="ButtonAbonnement.press#align" value="4" />
+        <border key="ButtonAbonnement.press#border" type="round" roundBorderColor="16499581" opacity="255" strokeColor="0" strokeOpacity="255" strokeThickness="0.0" strokeMM="false" shadowSpread="10" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" shadowMM="false" rectangle="true" />
         <val key="CalendarDate.bgColor" value="486666" />
         <val key="CalendarDate.fgColor" value="0" />
         <val key="CalendarDate.margin" value="0.0,0.0,0.0,0.0" />
@@ -407,8 +414,6 @@
         <val key="CommandList.sel#padding" value="0.0,0.0,0.0,0.0" />
         <val key="CommandList.sel#transparency" value="0" />
         <val key="CommandList.transparency" value="0" />
-        <gradient key="Container.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
-        <val key="Container.bgType" value="0" />
         <font key="Container.font" type="system" face="0" style="0" size="0" />
         <val key="Container.press#derive" value="Container" />
         <val key="Container.press#transparency" value="0" />
@@ -510,6 +515,7 @@
         <font key="LargeIconFont.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="4.0" />
         <val key="LargeIconFont.transparency" value="255" />
         <val key="List.bgColor" value="ffffff" />
+        <border key="List.border" type="empty" />
         <val key="List.margin" value="0.0,0.0,0.0,0.0" />
         <val key="List.padding" value="0.0,0.0,0.0,0.0" />
         <val key="List.press#bgColor" value="ffffff" />

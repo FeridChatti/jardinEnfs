@@ -3,13 +3,18 @@ package Forms.Enfants;
 import Entities.Enfant;
 import Forms.Accueils.AccueilParent;
 import Services.EnfantService;
+import com.codename1.components.ScaleImageLabel;
+import com.codename1.components.SpanLabel;
 import com.codename1.l10n.DateFormat;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.LayeredLayout;
+import com.codename1.ui.plaf.Style;
 import com.codename1.ui.spinner.Picker;
+import com.codename1.ui.util.Resources;
 import esprit.tn.MyApplication;
 
 import java.time.Instant;
@@ -17,9 +22,19 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class AjouterEnfant extends Form {
-
+    public Resources theme = MyApplication.theme;
     public AjouterEnfant(Form prev){
+        Tabs swipe = new Tabs();
 
+        Label spacer1 = new Label();
+        Label spacer2 = new Label();
+        addTab(swipe, theme.getImage("ajouterenfant.jpg"), spacer1, "  ", "", " ");
+        addTab(swipe, theme.getImage("home2.jpg"), spacer2, " ", "", "");
+
+        swipe.setUIID("Container");
+        swipe.getContentPane().setUIID("Container");
+        swipe.hideTabs();
+        add(swipe);
         getToolbar().addMaterialCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK,e->prev.showBack());
         setTitle("Ajouter Enfant");
         setLayout(BoxLayout.y());
@@ -32,6 +47,7 @@ public class AjouterEnfant extends Form {
         Picker datePicker = new Picker();
         Date lt = Date.from(Instant.now());
         Button aj=new Button("Ajouter");
+        aj.setUIID("ButtonAbonnement");
         aj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -67,7 +83,43 @@ public class AjouterEnfant extends Form {
 
 
     }
+    private void addTab(Tabs swipe, Image img, Label spacer, String likesStr, String commentsStr, String text) {
+        int size = Math.min(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayHeight());
+        if(img.getHeight() < size) {
+            img = img.scaledHeight(size);
+        }
+        Label likes = new Label(likesStr);
+        Style heartStyle = new Style(likes.getUnselectedStyle());
+        heartStyle.setFgColor(0xff2d55);
+        FontImage heartImage = FontImage.createMaterial(FontImage.MATERIAL_FAVORITE, heartStyle);
+        likes.setIcon(heartImage);
+        likes.setTextPosition(RIGHT);
 
+        Label comments = new Label(commentsStr);
+        FontImage.setMaterialIcon(comments, FontImage.MATERIAL_CHAT);
+        if(img.getHeight() > Display.getInstance().getDisplayHeight() / 2) {
+            img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 2);
+        }
+        ScaleImageLabel image = new ScaleImageLabel(img);
+        image.setUIID("Container");
+        image.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
+        Label overlay = new Label(" ", "ImageOverlay");
+
+        Container page1 =
+                LayeredLayout.encloseIn(
+                        image,
+                        overlay,
+                        com.codename1.ui.layouts.BorderLayout.south(
+                                BoxLayout.encloseY(
+                                        new SpanLabel(text, "LargeWhiteText"),
+                                        // FlowLayout.encloseIn(likes, comments),
+                                        spacer
+                                )
+                        )
+                );
+
+        swipe.addTab("", page1);
+    }
 
 
     public AjouterEnfant() {
