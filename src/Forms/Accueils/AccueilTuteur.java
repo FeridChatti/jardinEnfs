@@ -37,7 +37,7 @@ public class AccueilTuteur extends Form {
 
         // getToolbar().hideToolbar();
 
-        setTitle("Espace Parent");
+        setTitle("Espace Tuteur");
 
 
         getContentPane().setScrollVisible(false);

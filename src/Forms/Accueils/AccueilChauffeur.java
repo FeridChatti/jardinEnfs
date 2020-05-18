@@ -41,7 +41,7 @@ public class AccueilChauffeur extends Form {
 
         // getToolbar().hideToolbar();
 
-        setTitle("Espace Parent");
+        setTitle("Espace Chauffeur");
 
 
         getContentPane().setScrollVisible(false);
