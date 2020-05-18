@@ -137,8 +137,9 @@ public class UserList extends  BaseForm {
                 i++;
 
 
-            } cnt0.setUIID("BackgroundForm");
+            }  cnt0.setUIID("BackgroundForm");
 
+            cnt0.setPreferredH(this.getContentPane().getHeight());
 
 
 

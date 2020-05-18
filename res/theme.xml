@@ -88,6 +88,8 @@
     <image name="down-arrow.png"  />
     <image name="electricte.JPG"  />
     <image name="enfants.png"  />
+    <image name="event-1.jpg"  />
+    <image name="event-2.jpg"  />
     <image name="fixitnoir.png"  />
     <image name="Grand-m&#xe9;nage.jpg"  />
     <image name="griffith.jpg"  />
@@ -108,8 +110,8 @@
         <lang name="en">
             <entry key="select" value="Select" />
             <entry key="ok" value="OK" />
-            <entry key="cancel" value="Cancel" />
             <entry key="edit" value="Edit" />
+            <entry key="cancel" value="Cancel" />
             <entry key="menu" value="Menu" />
         </lang>
     </l10n>
@@ -139,6 +141,7 @@
     <image name="rounded-mask.png"  />
     <image name="selection-in-sidemenu.png"  />
     <image name="sidemenu-background.jpg"  />
+    <image name="sidemenu.jpg"  />
     <image name="signin-background.jpg"  />
     <image name="signup-background.jpg"  />
     <image name="skate-park.jpg"  />
@@ -150,6 +153,7 @@
     <image name="Slider.borderTopR_2.png_veryHigh.png" type="multi"  />
     <image name="Slider.borderTopR_2.png_veryHigh_FULL.png" type="multi"  />
     <image name="social-chat-tutorial-image-top.jpg"  />
+    <image name="swipe menu.jpg"  />
     <image name="switch_mask.png" type="multi"  />
     <image name="switch_off.png" type="multi"  />
     <image name="switch_on.png" type="multi"  />
@@ -738,8 +742,8 @@
         <gradient key="SideCommand.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="SideCommand.bgType" value="0" />
         <border key="SideCommand.border" type="empty" />
-        <val key="SideCommand.fgColor" value="ffffff" />
-        <font key="SideCommand.font" type="ttf" face="0" style="1" size="16" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
+        <val key="SideCommand.fgColor" value="000000" />
+        <font key="SideCommand.font" type="ttf" face="0" style="0" size="16" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="3.0" />
         <val key="SideCommand.marUnit" value="2,2,2,2" />
         <val key="SideCommand.margin" value="1.0,0.0,1.0,1.0" />
         <val key="SideCommand.padUnit" value="2,0,2,0" />
@@ -767,10 +771,7 @@
         <val key="SideCommand.sel#textDecoration" value="0" />
         <val key="SideCommand.sel#transparency" value="0" />
         <val key="SideCommand.textDecoration" value="0" />
-        <val key="SideCommand.transparency" value="0" />
-        <val key="SideNavigationPanel.bgColor" value="2f97c7" />
-        <val key="SideNavigationPanel.bgImage" value="img_bgr_side_bar_title.png" />
-        <val key="SideNavigationPanel.bgType" value="2" />
+        <val key="SideNavigationPanel.bgColor" value="e3e3e3" />
         <val key="SideNavigationPanel.margin" value="0.0,0.0,0.0,0.0" />
         <val key="SideNavigationPanel.padding" value="0.0,0.0,0.0,0.0" />
         <val key="SideNavigationPanel.transparency" value="255" />
@@ -953,6 +954,9 @@
         <val key="TitleCommand.sel#padding" value="1.0,1.0,1.0,1.0" />
         <val key="TitleCommand.sel#transparency" value="0" />
         <val key="TitleCommand.transparency" value="0" />
+        <val key="TitleLabel.align" value="4" />
+        <val key="TitleLabel.fgColor" value="393d72" />
+        <font key="TitleLabel.font" type="ttf" face="0" style="1" size="16" name="FredokaOne-Regular.ttf" family="FredokaOne-Regular" sizeSettings="2" actualSize="12.0" />
         <val key="ToastBarMessage.fgColor" value="ffffff" />
         <font key="ToastBarMessage.font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="ToastBarMessage.padUnit" value="2,2,2,2" />
@@ -976,6 +980,11 @@
         <val key="press#margin" value="0.0,2.0,0.0,0.0" />
         <val key="press#padding" value="0.0,0.0,0.0,0.0" />
         <val key="press#transparency" value="0" />
+        <val key="schoolbell.align" value="4" />
+        <val key="schoolbell.fgColor" value="ff4880" />
+        <font key="schoolbell.font" type="ttf" face="0" style="0" size="0" name="Schoolbell.ttf" family="Schoolbell" sizeSettings="1" actualSize="12.0" />
+        <val key="schoolbell.padUnit" value="2,2,0,2" />
+        <val key="schoolbell.padding" value="0.0,0.0,12.5,0.0" />
         <border key="sel#border" type="empty" />
         <val key="theme.res.fgColor" value="6c7b8a" />
         <font key="theme.res.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="1.5" />
@@ -985,6 +994,9 @@
         <val key="theme.res.padding" value="1.0,1.0,0.0,0.0" />
         <val key="theme.res.transparency" value="0" />
         <val key="transparency" value="0" />
+        <val key="txtlbl.align" value="4" />
+        <val key="txtlbl.fgColor" value="888888" />
+        <font key="txtlbl.font" type="ttf" face="0" style="0" size="16" name="native:MainLight" family="native:MainLight" sizeSettings="1" actualSize="12.0" />
     </theme>
     <image name="timeline-background.jpg"  />
     <image name="TitleArea.borderBottom_1.png" type="multi"  />

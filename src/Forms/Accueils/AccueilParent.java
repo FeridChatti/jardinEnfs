@@ -44,13 +44,14 @@ public class AccueilParent extends BaseForm {
     public AccueilParent() {
 
 
+        Container form=new Container();
 
         fo = this;
         setLayout(BoxLayout.y());
-      Toolbar tb = new Toolbar(true);
-        setToolbar(tb);
-        getTitleArea().setUIID("Container");
-        setTitle("Parent");
+
+       // getToolbar().hideToolbar();
+
+        setTitle("Espace Parent");
 
 
         getContentPane().setScrollVisible(false);
@@ -59,14 +60,39 @@ public class AccueilParent extends BaseForm {
 
         Label spacer1 = new Label();
         Label spacer2 = new Label();
-        addTab(swipe, theme.getImage("profile-background.jpg"), spacer1, "  ", "", " ");
+        addTab(swipe, theme.getImage("swipe menu.jpg"), spacer1, "  ", "", " ");
         swipe.setUIID("Container");
         swipe.getContentPane().setUIID("Container");
         swipe.hideTabs();
 
-        add(swipe);
+        form.add(swipe);
 
+
+        Label schoolbellabel=new Label("\nKinderG Introduction","schoolbell");
+        form.add(schoolbellabel);
+
+
+        SpanLabel titlelavel=new SpanLabel();
+        titlelavel.setText("Welcome to Kindergarten's Guides");
+        titlelavel.setTextUIID("TitleLabel");
+        form.add(titlelavel);
+
+        SpanLabel contentlbl=new SpanLabel();
+        contentlbl.setText("KinderG vous permet de trouver le jardin ideal pour votre enfant.\n" +
+                "trouver le jardin d'enfants le plus proche depend a vos besoins sans aucun effort.");
+        contentlbl.setTextUIID("txtlbl");
+        form. add(contentlbl);
         super.addSideMenu();
+
+        form.setUIID("BackgroundForm");
+        form.setPreferredH(getPreferredH());
+        form.setPreferredW(getPreferredW());
+
+        add(form);
+
+
+
+/*
 
         Button b = new Button("ajouter enfant");
         b.addActionListener(e -> new AjouterEnfant(fo).show());
@@ -101,7 +127,8 @@ public class AccueilParent extends BaseForm {
 
         Button btList = new Button("Liste des événements");
         btList.addActionListener(s -> new ConsulterListeEventsParent(fo).show());
-        btList.addActionListener(s -> new consulterListeEvent(fo).show());
+
+
         Button trajets = new Button("Les trajets disponibles");
         trajets.addActionListener(s -> new MapParent(fo));
 
@@ -111,7 +138,7 @@ public class AccueilParent extends BaseForm {
 
 
         addAll(b, bs, bse, bts, bt, btnmyrem, btnreclam, btnprofile, btnchat, bss,btList,trajets,logout,gestion);
-
+*/
 
 
     }
@@ -150,7 +177,7 @@ public class AccueilParent extends BaseForm {
                         BorderLayout.south(
                                 BoxLayout.encloseY(
                                         new SpanLabel(text, "LargeWhiteText"),
-                                        FlowLayout.encloseIn(likes, comments),
+
                                         spacer
                                 )
                         )

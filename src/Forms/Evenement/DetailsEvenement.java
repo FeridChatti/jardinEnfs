@@ -72,6 +72,7 @@ public class DetailsEvenement extends Form {
 
         Button part = new Button("Participer");
 
+        part.setUIID("Confirmbtn");
         add(part);
 
 
