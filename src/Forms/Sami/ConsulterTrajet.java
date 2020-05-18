@@ -57,12 +57,14 @@ public class ConsulterTrajet extends Form {
             public void actionPerformed(ActionEvent evt) {
                 Map<String, Object> t = (HashMap) ml.getSelectedItem();
                 Trajet tr = (Trajet) t.get("Line3");
-           //     new MapsDemo(trajetList, prev).showOne(hi, tr.getId());
+
                 if (evt.isLongEvent()) {
-                    if (Dialog.show("Attention!", "Voulez vous vraiment supprimer ce trajet ?", "Oui", "Non")) {
+                    if (Dialog.show("", "Choisissez ce que vous voulez faire", "Supprimer ce trajet", "Ouvrir dans maps")) {
                         TrajetService.getInstance().supprimerTrajet(tr.getId() + "");
                         new ConsulterTrajet(AccueilResponsable.fo);
-                    }
+                    }else
+                        new MapsDemo(trajetList, prev).showOne(hi, tr.getId());
+
                 }
 
             }
