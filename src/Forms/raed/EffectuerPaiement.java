@@ -64,9 +64,6 @@ public class EffectuerPaiement extends Form {
         TextField id= new TextField(j.getId());
         id.setVisible(false);
         id.setEnabled(false);
-        Label dat=new Label("date de paiment");
-        Picker datePicker = new Picker();
-        datePicker.setEnabled(false);
         Label num=new Label("Num carte");
         TextField nume= new TextField();
         Label cod=new Label("Code VV2");
@@ -119,7 +116,7 @@ public class EffectuerPaiement extends Form {
 
         add(nom);
         add(t);
-        addAll(add,re,desc,ree,nute,reee,Mont,rr,dat,datePicker,num,nume,cod,code,da,datePicke,md);
+        addAll(add,re,desc,ree,nute,reee,Mont,rr,num,nume,cod,code,da,datePicke,md);
         th.show();
 
 
