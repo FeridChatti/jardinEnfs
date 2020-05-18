@@ -31,7 +31,7 @@ public class AjouterTrajet extends Form {
         val.addConstraint(adresse, new LengthConstraint(1));
         val.addConstraint(heure, new LengthConstraint(1));
         Button aj=new Button("Ajouter");
-       aj.setUIID("ButtonSami");
+       aj.setUIID("Confirmbtn");
         ComboBox<Chauffeur> cb=new ComboBox<>();
         for(Chauffeur c : lc)
         {cb.addItem(c);

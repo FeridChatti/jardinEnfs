@@ -15,6 +15,7 @@ public class GestionEnfant extends Form {
         setTitle("Gestion Enfant");
         setLayout(BoxLayout.y());
         Tabs tabs= new Tabs();
+
         Style s = UIManager.getInstance().getComponentStyle("Tab");
         FontImage fo=FontImage.createMaterial(FontImage.MATERIAL_NATURE,s);
         FontImage fon=FontImage.createMaterial(FontImage.MATERIAL_ADD,s);

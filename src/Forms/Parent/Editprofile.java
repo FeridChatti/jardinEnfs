@@ -51,6 +51,9 @@ public class Editprofile extends Form {
         passwordtf.setConstraint(TextField.PASSWORD);
         Button modifier = new Button("Modifier");
 
+
+        modifier.setUIID("Confirmbtn");
+
         modifier.addActionListener(e -> {
 
         while (true){

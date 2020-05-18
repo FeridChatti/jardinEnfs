@@ -45,6 +45,7 @@ public class ConsulterEnfant extends Form {
         swipe.getContentPane().setUIID("Container");
         swipe.hideTabs();
        add(swipe);
+        getToolbar().hideToolbar();
 
 
         setLayout(BoxLayout.y());
@@ -109,12 +110,9 @@ public class ConsulterEnfant extends Form {
         Label likes = new Label(likesStr);
         Style heartStyle = new Style(likes.getUnselectedStyle());
         heartStyle.setFgColor(0xff2d55);
-        FontImage heartImage = FontImage.createMaterial(FontImage.MATERIAL_FAVORITE, heartStyle);
-        likes.setIcon(heartImage);
-        likes.setTextPosition(RIGHT);
 
-        Label comments = new Label(commentsStr);
-        FontImage.setMaterialIcon(comments, FontImage.MATERIAL_CHAT);
+
+
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 2) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 2);
         }
@@ -130,7 +128,7 @@ public class ConsulterEnfant extends Form {
                         BorderLayout.south(
                                 BoxLayout.encloseY(
                                         new SpanLabel(text, "LargeWhiteText"),
-                                        FlowLayout.encloseIn(likes, comments),
+
                                         spacer
                                 )
                         )

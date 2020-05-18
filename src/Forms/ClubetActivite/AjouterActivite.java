@@ -69,11 +69,12 @@ public class AjouterActivite extends Form {
                     Dialog.show("Erreur", "entrer nom/description ", new Command("OK"));
                 }
                 else {
-                    if (Tnom.getText().matches("[a-zA-Z]*") && Tdet.getText().matches("[a-zA-Z]*")) {
+                    if (Tnom.getText().matches("[a-zA-Z\\s]*") && Tdet.getText().matches("[a-zA-Z\\s]*")) {
                         if (lt.compareTo(datePicker.getDate()) >= 0) {
                             Dialog.show("Erreur", "Date non valide", new Command("OK"));
                         }
                         else {
+                         
                             if (ActiviteService.getInstance().AjouterAct(Integer.parseInt(ide), Tnom.getText(), Tdet.getText(), text)) {
                                 Dialog.show("Succes", "Activité ajouté", new Command("OK"));
                                 //new ConsulterActivite(current).show();

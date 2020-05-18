@@ -25,14 +25,27 @@ public class ChauffeurTrajets extends Form {
 
         Button btmap=new Button("Voir map");
         btmap.addActionListener(e->{new MapChauffeur(hi);});
+btmap.setUIID("Confirmbtn");
         hi.addAll(btmap,new Label(""));
+        int mm = Display.getInstance().convertToPixels(3);
+        EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(mm * 3, mm * 4, 0), true);
+        Image urlImage = URLImage.createToStorage(placeholder, "urlImage", "https://image.maps.ls.hereapi.com/mia/1.6/mapview?apiKey=CxxCHigH6e2itFdUuYEJdiNCKYOFT2wwtIF2QxxIjiw&co=tunisie&ci=tunis");
+        urlImage.scaled(10,10);
 
         ArrayList<Map<String, Object>> data = new ArrayList<>();
-        for(Trajet tr :trajetList) { data.add(createListEntry(tr.getAdresse(), tr.getHeure(),tr));}
+        for(Trajet tr :trajetList) { data.add(createListEntry(tr.getAdresse(), tr.getHeure(),tr,urlImage));}
 
         DefaultListModel<Map<String, Object>> model = new DefaultListModel<>(data);
         MultiList ml = new MultiList(model);
 
+        ml.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                Map<String, Object> t = (HashMap) ml.getSelectedItem();
+                Trajet tr = (Trajet) t.get("Line3");
+                new MapChauffeur(hi).showOne(hi,tr.getId());
+            }
+        });
         hi.add(ml);
         hi.show();
 
@@ -40,11 +53,14 @@ public class ChauffeurTrajets extends Form {
 
     }
 
-    private Map<String, Object> createListEntry(String adresse, String heure,Trajet trajet) {
+    private Map<String, Object> createListEntry(String adresse, String heure,Trajet trajet,Image urlImage) {
+
         Map<String, Object> entry = new HashMap<>();
         entry.put("Line1", "Adresse : "+adresse);
         entry.put("Line2", "Départ à "+heure);
         entry.put("Line3",trajet);
+        entry.put("icon",urlImage);
+
         return entry;
     }
 

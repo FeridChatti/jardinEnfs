@@ -166,7 +166,7 @@ public class Messagerie  extends Form {
 
         });
 
-
+        chatForm.setUIID("BackgroundForm");
         chatForm.show();
 
 
