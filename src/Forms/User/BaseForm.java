@@ -82,8 +82,8 @@ public class BaseForm extends Form {
         tb.addMaterialCommandToSideMenu("consulter jardins", FontImage.MATERIAL_SHOP,s -> new AfficheJArdin(fo).show());
         tb.addMaterialCommandToSideMenu("Consulter abonnements", FontImage.MATERIAL_LIST,s -> new ConsulterAbonnement(fo).show());
         tb.addMaterialCommandToSideMenu("Messages", FontImage.MATERIAL_CHAT, s -> new JardList(fo).show());
-        tb.addMaterialCommandToSideMenu("Clubs", FontImage.MATERIAL_GAMES, s -> new ConsulterEnfant(fo).show());
-        tb.addMaterialCommandToSideMenu("Activités", FontImage.MATERIAL_LOCAL_ACTIVITY, s -> new ConsulterRemarques(fo).show());
+        tb.addMaterialCommandToSideMenu("Clubs", FontImage.MATERIAL_GAMES, s -> new ConsulterClub(fo).show());
+        tb.addMaterialCommandToSideMenu("Activités", FontImage.MATERIAL_LOCAL_ACTIVITY, s -> new ConsulterActivite(fo).show());
 
 
         tb.addMaterialCommandToSideMenu("Remarques", FontImage.MATERIAL_NOTE, s -> new ConsulterRemarques(fo).show());

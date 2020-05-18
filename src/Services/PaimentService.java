@@ -3,6 +3,7 @@ package Services;
 import Entities.Jardin;
 import Entities.Paiement;
 import com.codename1.io.*;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.events.ActionListener;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ public class PaimentService {
  public ArrayList<Paiement> paim;
     public static PaimentService instance=null;
     private ConnectionRequest req;
+    public String json;
 
     public boolean resultOk;
 
@@ -78,6 +80,23 @@ public class PaimentService {
         return paim;
     }
 
+
+
+
+    public Boolean effectuerpaim(String id){
+        String Url="http://127.0.0.1:8000/Apijar/paiement1";
+
+        req.setUrl(Url);
+        req.setPost(false);
+        req.addArgument("id", String.valueOf(id));
+
+        req.addResponseListener(evt ->
+                json=new String(req.getResponseData())
+        );
+
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return json.contains("true");
+    }
 
 
     }

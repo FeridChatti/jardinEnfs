@@ -26,6 +26,7 @@ import Forms.Sami.MapParent;
 import Forms.User.SignIn;
 import Forms.raed.AfficheJArdin;
 import Forms.raed.AfficheJardinRespo;
+import Forms.raed.AffichePaiem;
 import Forms.raed.EffectuerPaiement;
 import Services.EvenementService;
 import com.codename1.charts.ChartComponent;
@@ -160,7 +161,9 @@ public class AccueilResponsable extends Form {
 
 
 
-        tb.addMaterialCommandToSideMenu("Paiement", FontImage.MATERIAL_WALLET_GIFTCARD, e -> new EffectuerPaiement(fo).show());
+        tb.addMaterialCommandToSideMenu("Effectuer Paiement", FontImage.MATERIAL_WALLET_GIFTCARD, e -> new EffectuerPaiement(fo).show());
+
+        tb.addMaterialCommandToSideMenu("Paiements", FontImage.MATERIAL_WALLET_MEMBERSHIP, e -> new AffichePaiem(fo).show());
 
 
         tb.addMaterialCommandToSideMenu("Se deconnecter", FontImage.MATERIAL_LOGOUT, s ->new SignIn(MyApplication.theme).show());
