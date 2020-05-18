@@ -74,6 +74,7 @@ public class AjouterActivite extends Form {
                             Dialog.show("Erreur", "Date non valide", new Command("OK"));
                         }
                         else {
+                         
                             if (ActiviteService.getInstance().AjouterAct(Integer.parseInt(ide), Tnom.getText(), Tdet.getText(), text)) {
                                 Dialog.show("Succes", "Activité ajouté", new Command("OK"));
                                 //new ConsulterActivite(current).show();
