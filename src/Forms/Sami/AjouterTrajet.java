@@ -29,7 +29,7 @@ public class AjouterTrajet extends Form {
         TextComponent adresse = new TextComponent().label("Adresse");
         TextComponent heure = new TextComponent().label("Heure");
         Validator val = new Validator();
-        val.addConstraint(adresse, new LengthConstraint(1,"*"),new RegexConstraint("^[a-zA-Z ]+$","*"));
+        val.addConstraint(adresse, new LengthConstraint(1,"*"),new RegexConstraint("^[a-zA-Z ,]+$","*"));
         val.addConstraint(heure, new LengthConstraint(1,"*"),new RegexConstraint("[0-2][0-9]h[0-6][0-9]","*"));
 
         Button aj=new Button("Ajouter");

@@ -34,7 +34,7 @@ private Validator saisie(TextField nom,TextField cin,TextField tel,TextField ema
     Validator v=new Validator();
   v.addConstraint(nom,new LengthConstraint(1,"*"),new RegexConstraint("^[a-zA-Z ]+$","*"));
  v.addConstraint(cin,new LengthConstraint(8,"*"),new RegexConstraint("^[0-9]+$","*"));
-    v.addConstraint(cin,new LengthConstraint(8,"*"),new RegexConstraint("^[0-9]+$","*"));
+    v.addConstraint(tel,new LengthConstraint(8,"*"),new RegexConstraint("^[0-9]+$","*"));
 
     return  v;
 }
