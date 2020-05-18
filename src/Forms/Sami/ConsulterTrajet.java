@@ -36,8 +36,14 @@ public class ConsulterTrajet extends Form {
         hi.addAll(aj,btmap);
 
         ArrayList<Map<String, Object>> data = new ArrayList<>();
+        int mm = Display.getInstance().convertToPixels(3);
+        EncodedImage placeholder = EncodedImage.createFromImage(Image.createImage(mm * 3, mm * 4, 0), true);
+        Image urlImage = URLImage.createToStorage(placeholder, "urlImage", "https://image.maps.ls.hereapi.com/mia/1.6/mapview?apiKey=CxxCHigH6e2itFdUuYEJdiNCKYOFT2wwtIF2QxxIjiw&co=tunisie&ci=tunis");
+        urlImage.scaled(10,10);
+
+
         for(Trajet tr :trajetList) {
-            data.add(createListEntry(tr.getAdresse(), tr.getChauffeur().getNom(),tr));
+            data.add(createListEntry(tr.getAdresse(), tr.getChauffeur().getNom(),tr,urlImage));
         }
 
         DefaultListModel<Map<String, Object>> model = new DefaultListModel<>(data);
@@ -59,11 +65,12 @@ new ConsulterTrajet(AccueilResponsable.fo);
 
     }
 
-    private Map<String, Object> createListEntry(String adresse, String chauffeur,Trajet trajet) {
+    private Map<String, Object> createListEntry(String adresse, String chauffeur,Trajet trajet,Image im) {
         Map<String, Object> entry = new HashMap<>();
         entry.put("Line1", adresse);
         entry.put("Line2", chauffeur);
         entry.put("Line3",trajet);
+        entry.put("icon",im);
         return entry;
     }
 
