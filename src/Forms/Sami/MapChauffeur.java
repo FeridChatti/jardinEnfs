@@ -20,6 +20,7 @@ import esprit.tn.MyApplication;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MapChauffeur {
 
@@ -93,5 +94,45 @@ public class MapChauffeur {
 
     }
 
+    public void showOne(Form fo,int id) {
+        Form map = new Form("Map Trajets");
+        map.setLayout(new BorderLayout());
+        map.setScrollable(false);
+        final MapComponent mc = new MapComponent();
+        map.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> fo.showBack());
+        putOne(mc,id);
+        mc.zoomToLayers();
+        map.addComponent(BorderLayout.CENTER, mc);
+        map.show();
+    }
+    private void putOne(MapComponent map,int id) {
+        ArrayList<Trajet> tr= TrajetService.getInstance().ListeTrajetsParChauffeur(MyApplication.authenticated.getId()+"");
+         Trajet tt=tr.stream().filter(e->e.getId()==id).collect(Collectors.toList()).get(0);
+            Emplacement em=MapService.getInstance().getEmplacements(tt);
+
+          try{
+                String description="Adresse : "+em.getTrajet().getAdresse()+"\n\nHeure départ : "+em.getTrajet().getHeure()+"\n";
+                lastLocation = new Coord(em.getLatitude(), em.getLongitude());
+                Image i = Image.createImage("/pin.png");
+
+                PointsLayer pointsLayer = new PointsLayer();
+                PointLayer pL = new PointLayer(lastLocation, description, i);
+
+                pL.setDisplayName(false);
+                pointsLayer.addPoint(pL);
+                pointsLayer.addActionListener(new ActionListener() {
+
+                    public void actionPerformed(ActionEvent evt) {
+                        PointLayer p = (PointLayer) evt.getSource();
+                        Dialog.show("Details", p.getName(), "Ok", null);
+                    }
+                });
+
+                map.addLayer(pointsLayer);
+            } catch(IOException ex){
+                ex.printStackTrace();
+            }
+
+    }
 
 }

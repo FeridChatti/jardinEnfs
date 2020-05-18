@@ -50,6 +50,7 @@ public class AjouterRemarques extends Form {
 
 
         Button aj=new Button("Ajouter");
+        aj.setUIID("Confirmbtn");
         aj.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {

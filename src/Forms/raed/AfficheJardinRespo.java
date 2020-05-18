@@ -72,6 +72,7 @@ public class AfficheJardinRespo  extends Form {
 
         Button md=new Button("Modifier");
 
+        md.setUIID("Confirmbtn");
 
 
 

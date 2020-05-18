@@ -6,11 +6,15 @@ import Forms.ClubetActivite.ConsulterActivite;
 import Forms.ClubetActivite.ConsulterClub;
 import Forms.Enfants.AjouterEnfant;
 import Forms.Enfants.ConsulterEnfant;
+import Forms.Enfants.GestionEnfant;
+import Forms.Evenement.ConsulterListeEventsParent;
+import Forms.Evenement.consulterListeEvent;
 import Forms.Parent.Chat;
 import Forms.Parent.Editprofile;
 import Forms.Parent.JardList;
 import Forms.Parent.SendReclam;
 import Forms.Remarques.ConsulterRemarques;
+import Forms.Sami.MapParent;
 import Forms.raed.AfficheJArdin;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.ui.*;
@@ -41,19 +45,7 @@ public class BaseForm extends Form {
     }
 
 
-    public Component createLineSeparator() {
-        Label separator = new Label("", "WhiteSeparator");
-        separator.setShowEvenIfBlank(true);
-        return separator;
-    }
 
-    public Component createLineSeparator(int color) {
-        Label separator = new Label("", "WhiteSeparator");
-        separator.getUnselectedStyle().setBgColor(color);
-        separator.getUnselectedStyle().setBgTransparency(255);
-        separator.setShowEvenIfBlank(true);
-        return separator;
-    }
     public Resources res= MyApplication.theme;
 
 
@@ -68,7 +60,7 @@ public class BaseForm extends Form {
 
 
         Toolbar tb = getToolbar();
-        Image img = res.getImage("home2.jpg");
+        Image img = res.getImage("sidemenu.jpg");
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
         }
@@ -85,71 +77,48 @@ public class BaseForm extends Form {
         Form fo=this;
 
         tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, s -> new Editprofile(fo).show());
-        tb.addMaterialCommandToSideMenu("ajouter enfant", FontImage.MATERIAL_CREATE,e -> new AjouterEnfant(fo).show());
-        tb.addMaterialCommandToSideMenu("consulter jardin", FontImage.MATERIAL_SHOP,s -> new AfficheJArdin(fo).show());
-        tb.addMaterialCommandToSideMenu("ajouter abonnement", FontImage.MATERIAL_SHOP,s -> new AjouterAbonnement(fo,"2").show());
-        tb.addMaterialCommandToSideMenu("consulter abonnement", FontImage.MATERIAL_SHOP, s -> new ConsulterAbonnement(fo).show());
-         tb.addMaterialCommandToSideMenu("consulter enfants", FontImage.MATERIAL_ADD_TO_QUEUE, s -> new ConsulterEnfant(fo).show());
-        tb.addMaterialCommandToSideMenu("remarques des enfants", FontImage.MATERIAL_EXIT_TO_APP, s -> new ConsulterRemarques(fo).show());
+
+        tb.addMaterialCommandToSideMenu("Gerer enfants", FontImage.MATERIAL_CREATE,e -> new GestionEnfant(fo).show());
+        tb.addMaterialCommandToSideMenu("consulter jardins", FontImage.MATERIAL_SHOP,s -> new AfficheJArdin(fo).show());
+        tb.addMaterialCommandToSideMenu("Consulter abonnements", FontImage.MATERIAL_LIST,s -> new ConsulterAbonnement(fo).show());
+        tb.addMaterialCommandToSideMenu("Messages", FontImage.MATERIAL_CHAT, s -> new JardList(fo).show());
+        tb.addMaterialCommandToSideMenu("Clubs", FontImage.MATERIAL_GAMES, s -> new ConsulterEnfant(fo).show());
+        tb.addMaterialCommandToSideMenu("Activités", FontImage.MATERIAL_LOCAL_ACTIVITY, s -> new ConsulterRemarques(fo).show());
+
+
+        tb.addMaterialCommandToSideMenu("Remarques", FontImage.MATERIAL_NOTE, s -> new ConsulterRemarques(fo).show());
+        tb.addMaterialCommandToSideMenu("Envoyer une réclamation", FontImage.MATERIAL_WARNING, s -> new SendReclam(fo));
+        tb.addMaterialCommandToSideMenu("Evénements", FontImage.MATERIAL_EVENT, s -> new ConsulterListeEventsParent(fo).show());
+        tb.addMaterialCommandToSideMenu("Trajets", FontImage.MATERIAL_LOCATION_SEARCHING, s -> new MapParent(fo));
+
+        tb.addMaterialCommandToSideMenu("Se deconnecter", FontImage.MATERIAL_LOGOUT, s ->new SignIn(MyApplication.theme).show());
 
 
 
-        Button b = new Button("ajouter enfant");
-        b.addActionListener(e -> new AjouterEnfant(fo).show());
-
-        Button bss = new Button("consulter jardin");
-        bss.addActionListener(s -> new AfficheJArdin(fo).show());
-
-        Button bs = new Button("ajouter abonnement");
-        bs.addActionListener(s -> new AjouterAbonnement(fo,null).show());
-        Button ca = new Button("consulter abonnement");
-        ca.addActionListener(s -> new ConsulterAbonnement(fo).show());
-        Button bse = new Button("consulter enfants");
-        bse.addActionListener(s -> new ConsulterEnfant(fo).show());
-
-        Button bts = new Button("Consulter Les Clubs");
-        bts.addActionListener(s -> new ConsulterClub(fo).show());
-        Button bt = new Button("Consulter Activité");
-        bt.addActionListener(s -> new ConsulterActivite(fo).show());
+        /*
         Button btnmyrem = new Button("remarques des enfants");
         btnmyrem.addActionListener(s -> new ConsulterRemarques(fo).show());
 
 
         Button btnreclam = new Button("Envoyer une réclamation");
-        btnreclam.addActionListener(s -> new SendReclam(fo).show());
+        btnreclam.addActionListener(s -> new SendReclam(fo));
 
         Button btnprofile = new Button("Modifier profile");
-        btnprofile.addActionListener(s -> new Editprofile(fo).show());
+        btnprofile.addActionListener(s -> new Editprofile(fo));
         Button btnchat = new Button("Contacter Jardin");
-        btnchat.addActionListener(s -> new Chat(fo,0,null).show());
-
-
-    }
-    public void installSidemenu(Resources res) {
-        Image selection = res.getImage("selection-in-sidemenu.png");
-
-        Image inboxImage = null;
-     inboxImage = selection;
+        btnchat.addActionListener(s -> new JardList(fo).show());
 
 
 
-        Button inboxButton = new Button("Inbox", inboxImage);
-        inboxButton.setUIID("SideCommand");
-        inboxButton.getAllStyles().setPaddingBottom(0);
-        Container inbox = FlowLayout.encloseMiddle(inboxButton,
-                new Label("18", "SideCommandNumber"));
-        inbox.setLeadComponent(inboxButton);
-        inbox.setUIID("SideCommand");
-        inboxButton.addActionListener(e -> new JardList(this).show());
-        getToolbar().addComponentToSideMenu(inbox);
+        Button btList = new Button("Liste des événements");
+        btList.addActionListener(s -> new ConsulterListeEventsParent(fo).show());
+        btList.addActionListener(s -> new consulterListeEvent(fo).show());
+        Button trajets = new Button("Les trajets disponibles");
+        trajets.addActionListener(s -> new MapParent(fo));
+*/
 
 
 
-        // spacer
-        getToolbar().addComponentToSideMenu(new Label(" ", "SideCommand"));
-        getToolbar().addComponentToSideMenu(new Label(res.getImage("profile_image.png"), "Container"));
-        getToolbar().addComponentToSideMenu(new Label("Detra Mcmunn", "SideCommandNoPad"));
-        getToolbar().addComponentToSideMenu(new Label("Long Beach, CA", "SideCommandSmall"));
     }
 
 

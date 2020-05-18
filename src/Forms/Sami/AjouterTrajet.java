@@ -5,6 +5,7 @@ import Entities.Trajet;
 import Forms.Accueils.AccueilResponsable;
 import Services.ChauffeurService;
 import Services.TrajetService;
+import Services.UserService;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.TextModeLayout;
@@ -20,9 +21,9 @@ import java.util.ArrayList;
 public class AjouterTrajet extends Form {
 
     public AjouterTrajet(Form prev) {
-       ArrayList<Chauffeur> lc= ChauffeurService.getInstance().ListeChauffeursJardin(4+"");
+       ArrayList<Chauffeur> lc= ChauffeurService.getInstance().ListeChauffeursJardin(UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"").getId()+"");
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
-        setTitle("Ajouter Trajet");
+        setTitle("Ajouter un trajet");
         setLayout(BoxLayout.y());
         TextComponent adresse = new TextComponent().label("Adresse");
         TextComponent heure = new TextComponent().label("Heure");
@@ -30,6 +31,7 @@ public class AjouterTrajet extends Form {
         val.addConstraint(adresse, new LengthConstraint(1));
         val.addConstraint(heure, new LengthConstraint(1));
         Button aj=new Button("Ajouter");
+       aj.setUIID("Confirmbtn");
         ComboBox<Chauffeur> cb=new ComboBox<>();
         for(Chauffeur c : lc)
         {cb.addItem(c);

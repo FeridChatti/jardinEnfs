@@ -65,9 +65,9 @@ public class SignIn extends BaseForm {
         ////////////
         Container content = BoxLayout.encloseY(
                 new FloatingHint(username),
-                createLineSeparator(),
+               // createLineSeparator(),
                 new FloatingHint(pass),
-                createLineSeparator(),
+               // createLineSeparator(),
                 signIn
         );
 

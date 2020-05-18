@@ -52,7 +52,7 @@ public class ModifierEvenement extends Form{
         }
 
         Button mod=new Button("Modifier");
-        mod.getAllStyles().setFgColor(ColorUtil.BLACK);
+        mod.setUIID("Confirmbtn");
 
         mod.addActionListener(new ActionListener() {
             @Override

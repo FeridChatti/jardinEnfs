@@ -134,6 +134,21 @@ public class ActiviteService {
 
     }
 
+    public Boolean AjouterAct(int idc, String type, String det,String date){
+        String url="http://127.0.0.1:8000/dorra/webS/addact/"+idc+"/"+type+"/"+det+"/"+date;
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOk=req.getResponseCode()==200;
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOk;
+    }
+
 
     public ArrayList<PartActivite> ParsePArt(String jsontext) throws IOException {
         participants = new ArrayList<PartActivite>();
