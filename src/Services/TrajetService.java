@@ -7,6 +7,7 @@ import Entities.Trajet;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
 
+import esprit.tn.MyApplication;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
@@ -83,14 +84,14 @@ public class TrajetService {
         return trajets;
     }
 
-    public String AjouterTrajet(Trajet trajet,String idc){
+    public String AjouterTrajet(Trajet trajet){
 //String json=JSONParser.mapToJson(data);
 
         String url="http://127.0.0.1:8000/Sami/api/addTrajet";
         req.setUrl(url);
         req.setPost(false);
         req.setContentType("application/json");
-        req.addArgument("id",idc);
+        req.addArgument("id",trajet.getId()+"");
         req.addArgument("adresse",trajet.getAdresse());
         req.addArgument("heure",trajet.getHeure());
         req.addResponseListener(new ActionListener<NetworkEvent>() {
