@@ -6,10 +6,21 @@ import Services.ChauffeurService;
 import Services.UserService;
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.validation.LengthConstraint;
+import com.codename1.ui.validation.RegexConstraint;
+import com.codename1.ui.validation.Validator;
 import esprit.tn.MyApplication;
 
 public class ModifierTuteur extends Form {
 
+    private Validator saisie(TextField nom, TextField cin,TextField ps)
+    {
+        Validator v=new Validator();
+        v.addConstraint(nom,new LengthConstraint(1,"*"),new RegexConstraint("^[a-zA-Z ]+$","*"));
+        v.addConstraint(cin,new LengthConstraint(1,"*"),new RegexConstraint("[a-zA-Z ]+$","*"));
+v.addConstraint(ps,new LengthConstraint(1,"*"));
+        return  v;
+    }
     public Container getCont(Label lb, TextField tf)
     {
         BoxLayout bx=new BoxLayout(BoxLayout.X_AXIS);
@@ -52,7 +63,9 @@ public class ModifierTuteur extends Form {
         addAll(info,prenom,nom,email,cb,ident,username,password,aj);
 
         aj.addActionListener((event)->{
-            String nom_mod=nom_modif.getText();
+            if(saisie(nom_modif,prenom_modif,password_modif).isValid()){
+
+                String nom_mod=nom_modif.getText();
             String prenom_mod=prenom_modif.getText().toString();
             String email_mod=email_modif.getText();
             String username_mod=username_modif.getText();
@@ -68,7 +81,7 @@ public class ModifierTuteur extends Form {
             boolean response= UserService.getInstance().modifierTuteur(tuteur);
             if(response) {
                 Dialog.show("Ajout éffectué", "Modifications enregistrées ", new Command("OK"));
-            }
+            }}
         });
 
     }
