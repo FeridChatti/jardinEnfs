@@ -11,6 +11,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.TextModeLayout;
 import com.codename1.ui.validation.LengthConstraint;
 import com.codename1.ui.validation.NumericConstraint;
+import com.codename1.ui.validation.RegexConstraint;
 import com.codename1.ui.validation.Validator;
 import esprit.tn.MyApplication;
 
@@ -28,8 +29,9 @@ public class AjouterTrajet extends Form {
         TextComponent adresse = new TextComponent().label("Adresse");
         TextComponent heure = new TextComponent().label("Heure");
         Validator val = new Validator();
-        val.addConstraint(adresse, new LengthConstraint(1));
-        val.addConstraint(heure, new LengthConstraint(1));
+        val.addConstraint(adresse, new LengthConstraint(1,"*"),new RegexConstraint("^[a-zA-Z ]+$","*"));
+        val.addConstraint(heure, new LengthConstraint(1,"*"),new RegexConstraint("[0-2][0-9]h[0-6][0-9]","*"));
+
         Button aj=new Button("Ajouter");
        aj.setUIID("Confirmbtn");
         ComboBox<Chauffeur> cb=new ComboBox<>();
@@ -48,11 +50,14 @@ public class AjouterTrajet extends Form {
       String hr=heure.getText().toString();
       Trajet tr=new Trajet(ch.getId(),ad,hr);
 
-      String response=TrajetService.getInstance().AjouterTrajet(tr);
-if(response.trim().equals("true")) {
+      if((val.isValid()))
+      {      String response=TrajetService.getInstance().AjouterTrajet(tr);
+if(response.trim().equals("true"))
+ {
     Dialog.show("Ajout éffectué", "Vous avez ajouter un trajet pour le chauffeur : " + ch.getNom(), new Command("OK"));
      new ConsulterTrajet(AccueilResponsable.fo);
-}
+                                   }
+      }
   });
     }
 }
