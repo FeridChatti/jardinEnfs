@@ -21,8 +21,8 @@ import java.util.ArrayList;
 public class AjouterTrajet extends Form {
 
     public AjouterTrajet(Form prev) {
-       ArrayList<Chauffeur> lc= ChauffeurService.getInstance().ListeChauffeursJardin(UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"").getId()+"");
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->prev.showBack());
+        ArrayList<Chauffeur> lc = ChauffeurService.getInstance().ListeChauffeursJardin(UserService.getInstance().getJardin(MyApplication.authenticated.getId() + "").getId() + "");
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> prev.showBack());
         setTitle("Ajouter un trajet");
         setLayout(BoxLayout.y());
         TextComponent adresse = new TextComponent().label("Adresse");
@@ -30,29 +30,29 @@ public class AjouterTrajet extends Form {
         Validator val = new Validator();
         val.addConstraint(adresse, new LengthConstraint(1));
         val.addConstraint(heure, new LengthConstraint(1));
-        Button aj=new Button("Ajouter");
-       aj.setUIID("Confirmbtn");
-        ComboBox<Chauffeur> cb=new ComboBox<>();
-        for(Chauffeur c : lc)
-        {cb.addItem(c);
+        Button aj = new Button("Ajouter");
+        aj.setUIID("Confirmbtn");
+        ComboBox<Chauffeur> cb = new ComboBox<>();
+        for (Chauffeur c : lc) {
+            cb.addItem(c);
         }
 
         add(adresse);
         add(heure);
 
-        addAll(cb,aj);
+        addAll(cb, aj);
 
-  aj.addActionListener((event)->{
-      Chauffeur ch=cb.getSelectedItem();
-      String ad=adresse.getText().toString();
-      String hr=heure.getText().toString();
-      Trajet tr=new Trajet(ch.getId(),ad,hr);
+        aj.addActionListener((event) -> {
+            Chauffeur ch = cb.getSelectedItem();
+            String ad = adresse.getText();
+            String hr = heure.getText();
+            Trajet tr = new Trajet(ch.getId(), ad, hr);
 
-      String response=TrajetService.getInstance().AjouterTrajet(tr);
-if(response.trim().equals("true")) {
-    Dialog.show("Ajout éffectué", "Vous avez ajouter un trajet pour le chauffeur : " + ch.getNom(), new Command("OK"));
-     new ConsulterTrajet(AccueilResponsable.fo);
-}
-  });
+            String response = TrajetService.getInstance().AjouterTrajet(tr,String.valueOf(ch.getId()));
+            if (response.trim().equals("true")) {
+                Dialog.show("Ajout éffectué", "Vous avez ajouter un trajet pour le chauffeur : " + ch.getNom(), new Command("OK"));
+                new ConsulterTrajet(AccueilResponsable.fo);
+            }
+        });
     }
 }
