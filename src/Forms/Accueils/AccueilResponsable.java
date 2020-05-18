@@ -9,6 +9,7 @@ import Forms.AbonnementRespon.LocalNotificationTest;
 import Forms.ClubetActivite.ListeParticipation;
 import Forms.Evenement.AjouterEvenement;
 import Forms.ClubetActivite.ListeParticipation;
+import Forms.Evenement.ChartDemo;
 import Forms.Evenement.consulterListeEvent;
 import Forms.Responsable.UserList;
 import Forms.Sami.AjouterTrajet;
@@ -39,6 +40,9 @@ public class AccueilResponsable extends Form {
             }
         });
 
+        Button xx=new Button("Consulter");
+        xx.addActionListener(e->new ChartDemo());
+
         Button cs=new Button("Consulter les trajets");
         cs.addActionListener(e->new ConsulterTrajet(fo));
 
@@ -67,8 +71,7 @@ public class AccueilResponsable extends Form {
         logout.addActionListener(s ->new SignIn(MyApplication.theme).show());
 
 
-        addAll(cs,participer,ajouterAct,abonnement,ajev,list,bj,msg,logout);
-        addAll(cs,participer,abonnement,ajev,list,bj,msg,Paiement,logout);
+        addAll(xx,cs,participer,ajouterAct,abonnement,ajev,list,bj,msg,logout);
 
 
 
