@@ -61,14 +61,14 @@ public class AccueilTuteur extends Form {
 
         Form fo=this;
 
-        tb.addMaterialCommandToSideMenu("Profil", FontImage.MATERIAL_RADIO_BUTTON_CHECKED,e ->         new ModifierTuteur(fo).show());
+        tb.addMaterialCommandToSideMenu("Profil", FontImage.MATERIAL_SETTINGS,e ->         new ModifierTuteur(fo).show());
 
-        tb.addMaterialCommandToSideMenu("Ajouter une remarque", FontImage.MATERIAL_ADD_LOCATION,e -> {
+        tb.addMaterialCommandToSideMenu("Ajouter une remarque", FontImage.MATERIAL_ADD ,e -> {
 
                 new AjouterRemarques(fo)         ;
         });
 
-        tb.addMaterialCommandToSideMenu("Remarques des enfants", FontImage.MATERIAL_RADIO_BUTTON_CHECKED,e -> new TuteurRemarques(fo));
+        tb.addMaterialCommandToSideMenu("Remarques des enfants", FontImage.MATERIAL_LIST ,e-> new TuteurRemarques(fo));
 
 
         tb.addMaterialCommandToSideMenu("Se déconnecter", FontImage.MATERIAL_LOGOUT, s ->new SignIn(MyApplication.theme).show());

@@ -86,7 +86,7 @@ public class ModifierEnfant extends Form {
                                     boolean f = EnfantService.getInstance().ModifierEnfant(e);
                                     if (f) {
                                         Dialog.show("Succés", "Enfant modifié avec succés", new Command("OK"));
-                                        new ConsulterEnfant(new AccueilParent()).show();
+                                        new GestionEnfant(new AccueilParent()).show();
                                     } else {
                                         Dialog.show("Erreur", "Erreur", new Command("OK"));
                                     }
@@ -112,7 +112,7 @@ public class ModifierEnfant extends Form {
             public void actionPerformed(ActionEvent evt) {
                 Dialog.show("Alert","Voulez vous supprimer cet enfant?","Oui","Non");
                 EnfantService.getInstance().SupprimerEnfant(id);
-                new ConsulterEnfant(new AccueilParent()).show();
+                new GestionEnfant(new AccueilParent()).show();
             }
         });
 
