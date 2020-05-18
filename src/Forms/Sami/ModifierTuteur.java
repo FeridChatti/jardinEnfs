@@ -13,12 +13,12 @@ import esprit.tn.MyApplication;
 
 public class ModifierTuteur extends Form {
 
-    private Validator saisie(TextField nom, TextField cin)
+    private Validator saisie(TextField nom, TextField cin,TextField ps)
     {
         Validator v=new Validator();
         v.addConstraint(nom,new LengthConstraint(1,"*"),new RegexConstraint("^[a-zA-Z ]+$","*"));
         v.addConstraint(cin,new LengthConstraint(1,"*"),new RegexConstraint("[a-zA-Z ]+$","*"));
-
+v.addConstraint(ps,new LengthConstraint(1,"*"));
         return  v;
     }
     public Container getCont(Label lb, TextField tf)
@@ -63,7 +63,7 @@ public class ModifierTuteur extends Form {
         addAll(info,prenom,nom,email,cb,ident,username,password,aj);
 
         aj.addActionListener((event)->{
-            if(saisie(nom_modif,prenom_modif).isValid()){
+            if(saisie(nom_modif,prenom_modif,password_modif).isValid()){
 
                 String nom_mod=nom_modif.getText();
             String prenom_mod=prenom_modif.getText().toString();
