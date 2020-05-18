@@ -69,7 +69,7 @@ public class AjouterEvenement extends Form {
 
                 else{
                     if(titre.getText().matches("[a-zA-Z]*")){
-                        if(lt.compareTo(datePicker.getDate())<0){
+                        if(lt.compareTo(datePicker.getDate())>0){
                             Dialog.show("Erreur","Date non valide!",new Command("OK"));
                         }
                         else{

@@ -89,7 +89,7 @@ public class AccueilChauffeur extends Form {
             }
         });
 
-        tb.addMaterialCommandToSideMenu("Consulter Profil", FontImage.MATERIAL_RADIO_BUTTON_CHECKED,e -> new ProfilChauffeur(fo).show());
+        tb.addMaterialCommandToSideMenu("Consulter Profil", FontImage.MATERIAL_SETTINGS,e -> new ProfilChauffeur(fo).show());
 
 
         tb.addMaterialCommandToSideMenu("Se deconnecter", FontImage.MATERIAL_LOGOUT, s ->new SignIn(MyApplication.theme).show());

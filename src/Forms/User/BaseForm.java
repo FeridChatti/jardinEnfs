@@ -76,7 +76,7 @@ public class BaseForm extends Form {
 
         Form fo=this;
 
-        tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, s -> new Editprofile(fo).show());
+        tb.addMaterialCommandToSideMenu("Profile", FontImage.MATERIAL_SETTINGS, s -> new Editprofile(fo));
 
         tb.addMaterialCommandToSideMenu("Gerer enfants", FontImage.MATERIAL_CREATE,e -> new GestionEnfant(fo).show());
         tb.addMaterialCommandToSideMenu("consulter jardins", FontImage.MATERIAL_SHOP,s -> new AfficheJArdin(fo).show());
