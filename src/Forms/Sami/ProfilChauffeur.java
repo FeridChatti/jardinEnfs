@@ -32,6 +32,9 @@ Label result=new Label("");
 private Validator saisie(TextField nom,TextField cin,TextField tel,TextField email)
 {
     Validator v=new Validator();
+  v.addConstraint(nom,new LengthConstraint(1,"*"),new RegexConstraint("^[a-zA-Z ]+$","*"));
+ v.addConstraint(cin,new LengthConstraint(8,"*"),new RegexConstraint("^[0-9]+$","*"));
+    v.addConstraint(tel,new LengthConstraint(8,"*"),new RegexConstraint("^[0-9]+$","*"));
 
     return  v;
 }
@@ -72,6 +75,8 @@ aj.setUIID("SignInBtn");
     addAll(info,cin,nom,email,tel,cb,ident,username,password,aj,result);
 
     aj.addActionListener((event)->{
+
+        if(saisie(nom_modif,cin_modif,tel_modif,email_modif).isValid()){
         String nom_mod=nom_modif.getText();
         String cin_mod=cin_modif.getText().toString();
        String tel_mod=tel_modif.getText();
@@ -90,6 +95,7 @@ aj.setUIID("SignInBtn");
         String response= ChauffeurService.getInstance().modifierChauffeur(chauffeur);
         if(response.trim().equals("true")) {
             Dialog.show("Ajout éffectué", "Modifications enregistrées ", new Command("OK"));
+        }
         }
     });
 
