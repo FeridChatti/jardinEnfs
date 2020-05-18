@@ -103,6 +103,7 @@ public class AccueilResponsable extends Form {
         addAll(cs, participer, ajouterAct, abonnement, ajev, list, bj, msg, logout, Paiement);
 */
         addSideMenu();
+        setUIID("statbg");
         add(createPieChartForm());
     }
 
@@ -209,6 +210,7 @@ public class AccueilResponsable extends Form {
         Form f = new Form(  new BorderLayout());
         f.getToolbar().hideToolbar();
         f.add(BorderLayout.CENTER, c);
+        f.setUIID("statbg");
         return f;
 
     }
