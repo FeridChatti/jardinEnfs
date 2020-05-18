@@ -1,5 +1,7 @@
 package Forms.Accueils;
 
+import Entities.ChartModel;
+import Entities.Evenement;
 import Forms.ClubetActivite.AjouterActivite;
 
 import Forms.ClubetActivite.ListeParticipation;
@@ -25,15 +27,25 @@ import Forms.User.SignIn;
 import Forms.raed.AfficheJArdin;
 import Forms.raed.AfficheJardinRespo;
 import Forms.raed.EffectuerPaiement;
+import Services.EvenementService;
+import com.codename1.charts.ChartComponent;
+import com.codename1.charts.models.CategorySeries;
+import com.codename1.charts.renderers.DefaultRenderer;
+import com.codename1.charts.renderers.SimpleSeriesRenderer;
+import com.codename1.charts.util.ColorUtil;
+import com.codename1.charts.views.PieChart;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.l10n.ParseException;
 import com.codename1.ui.*;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
 import esprit.tn.MyApplication;
+
+import java.util.ArrayList;
 
 import static esprit.tn.MyApplication.authenticated;
 
@@ -44,6 +56,12 @@ public class AccueilResponsable extends Form {
     public AccueilResponsable() {
         fo = this;
         setLayout(BoxLayout.y());
+
+
+
+
+
+        /*
         Button bj = new Button("Consulter Vos Jardin");
 
         bj.addActionListener(e -> {
@@ -83,8 +101,9 @@ public class AccueilResponsable extends Form {
 
 
         addAll(cs, participer, ajouterAct, abonnement, ajev, list, bj, msg, logout, Paiement);
-
+*/
         addSideMenu();
+        add(createPieChartForm());
     }
 
 
@@ -159,4 +178,63 @@ public class AccueilResponsable extends Form {
 
     }
 
+    public Form createPieChartForm() {
+
+
+        ArrayList<ChartModel> chm= EvenementService.getInstance().ListeParticipantEvenement();
+
+        // Generate the values
+
+        // Set up the renderer
+        int[] colors = new int[]{ColorUtil.BLUE, ColorUtil.GREEN, ColorUtil.MAGENTA, ColorUtil.YELLOW, ColorUtil.CYAN};
+        DefaultRenderer renderer = buildCategoryRenderer(colors);
+        renderer.setZoomButtonsVisible(true);
+        renderer.setZoomEnabled(true);
+        renderer.setChartTitleTextSize(200);
+        renderer.setDisplayValues(true);
+        renderer.setShowLabels(true);
+        SimpleSeriesRenderer r = renderer.getSeriesRendererAt(0);
+        r.setGradientEnabled(true);
+        r.setGradientStart(0, ColorUtil.BLUE);
+        r.setGradientStop(4, ColorUtil.GREEN);
+        r.setHighlighted(true);
+
+        // Create the chart ... pass the values and renderer to the chart object.
+        PieChart chart = new PieChart(buildCategoryDataset("Participations au evenements", chm), renderer);
+
+        // Wrap the chart in a Component so we can add it to a form
+        ChartComponent c = new ChartComponent(chart);
+
+        // Create a form and show it.
+        Form f = new Form(  new BorderLayout());
+        f.getToolbar().hideToolbar();
+        f.add(BorderLayout.CENTER, c);
+        return f;
+
+    }
+
+    protected CategorySeries buildCategoryDataset(String title, ArrayList<ChartModel>  values) {
+        CategorySeries series = new CategorySeries(title);
+
+        for (ChartModel value : values) {
+            Evenement e=EvenementService.getInstance().getEvent(value.getId());
+
+            series.add("Evenement : "+ e.getTitre()+" ", value.getNb());
+        }
+
+        return series;
+    }
+
+    private DefaultRenderer buildCategoryRenderer(int[] colors) {
+        DefaultRenderer renderer = new DefaultRenderer();
+        renderer.setLabelsTextSize(35);
+        renderer.setLegendTextSize(35);
+        renderer.setMargins(new int[]{});
+        for (int color : colors) {
+            SimpleSeriesRenderer r = new SimpleSeriesRenderer();
+            r.setColor(color);
+            renderer.addSeriesRenderer(r);
+        }
+        return renderer;
+    }
 }
