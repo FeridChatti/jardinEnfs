@@ -36,6 +36,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * This is a simple demo that demonstrates how to use the MapComponent and how
@@ -124,6 +126,50 @@ public class MapsDemo {
 
     }
 
+
+    public void showOne(Form fo,int id) {
+        Form map = new Form("Map Trajets");
+        map.setLayout(new BorderLayout());
+        map.setScrollable(false);
+        final MapComponent mc = new MapComponent();
+        map.getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> fo.showBack());
+
+        putOne(mc,id);
+        mc.zoomToLayers();
+
+        map.addComponent(BorderLayout.CENTER, mc);
+        map.show();
+    }
+
+    private void putOne(MapComponent map,int id) {
+        ArrayList<Trajet> tr= TrajetService.getInstance().ListeTrajets(UserService.getInstance().getJardin(MyApplication.authenticated.getId()+"").getId()+"");
+      Trajet trajet=tr.stream().filter(e->e.getId()==id).collect(Collectors.toList()).get(0);
+
+           Emplacement em=MapService.getInstance().getEmplacements(trajet);
+
+            try{
+                String description="Adresse : "+em.getTrajet().getAdresse()+"\nHeure départ : "+em.getTrajet().getHeure()+"\nChauffeur affecté : "+em.getTrajet().getChauffeur().getNom();
+                lastLocation = new Coord(em.getLatitude(), em.getLongitude());
+                Image i = Image.createImage("/pin.png");
+
+                PointsLayer pointsLayer = new PointsLayer();
+                PointLayer pL = new PointLayer(lastLocation, description, i);
+
+                pL.setDisplayName(false);
+                pointsLayer.addPoint(pL);
+                pointsLayer.addActionListener(new ActionListener() {
+
+                    public void actionPerformed(ActionEvent evt) {
+                        PointLayer p = (PointLayer) evt.getSource();
+                        Dialog.show("Details", p.getName(), "Ok", null);
+                    }
+                });
+
+                map.addLayer(pointsLayer);
+            } catch(IOException ex){
+                ex.printStackTrace();
+            }
+    }
 
 
 }
