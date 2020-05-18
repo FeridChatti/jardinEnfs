@@ -110,8 +110,8 @@
         <lang name="en">
             <entry key="select" value="Select" />
             <entry key="ok" value="OK" />
-            <entry key="edit" value="Edit" />
             <entry key="cancel" value="Cancel" />
+            <entry key="edit" value="Edit" />
             <entry key="menu" value="Menu" />
         </lang>
     </l10n>
@@ -986,6 +986,9 @@
         <val key="schoolbell.padUnit" value="2,2,0,2" />
         <val key="schoolbell.padding" value="0.0,0.0,12.5,0.0" />
         <border key="sel#border" type="empty" />
+        <val key="statbg.bgColor" value="303030" />
+        <gradient key="statbg.bgGradient" color1="3158064" color2="3158064" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="statbg.bgType" value="8" />
         <val key="theme.res.fgColor" value="6c7b8a" />
         <font key="theme.res.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="1.5" />
         <val key="theme.res.marUnit" value="0,2,0,2" />

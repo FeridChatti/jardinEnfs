@@ -73,6 +73,7 @@ public class EffectuerPaiement extends Form {
         Label da=new Label("Date expiration");
         Picker datePicke= new Picker();
         Button md=new Button("Effectuer");
+        md.setUIID("Confirmbtn");
 
 
         md.addActionListener(new ActionListener() {
@@ -106,7 +107,7 @@ public class EffectuerPaiement extends Form {
                     });
 
 
-                Dialog.show("Succés", "paiement effectuer avec succés", "Oui", null);
+
 
 
 
