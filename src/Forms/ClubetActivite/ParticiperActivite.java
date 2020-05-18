@@ -1,6 +1,7 @@
 package Forms.ClubetActivite;
 
 import Entities.Activite;
+import Entities.Enfant;
 import Entities.PartActivite;
 import Forms.ClubetActivite.ConsulterActivite;
 import Services.ActiviteService;
@@ -68,16 +69,22 @@ public class ParticiperActivite extends Form {
         Label lbe = new Label("L'enfant qui va participer :");
 
         lbe.getAllStyles().setFgColor(ColorUtil.MAGENTA);
-        for(int i = 0; i< EnfantService.getInstance().ListEnfants("1").size(); i++) {
 
-            ComboBox<String> lbenfant = new ComboBox<String>(EnfantService.getInstance().ListEnfants("1").get(i).getNom());
+        ArrayList<Enfant> enfl=EnfantService.getInstance().ListEnfants(authenticated.getId()+"");
 
-            addAll(lbe,lbenfant);
-            ide = String.valueOf(EnfantService.getInstance().ListEnfants(authenticated.getId()+"").get(i).getId());
+        ComboBox<Enfant> lbenfant = new ComboBox<>();
+
+        for(int i = 0; i< enfl.size(); i++) {
+
+           lbenfant.addItem(enfl.get(i));
+
+
+           // ide = String.valueOf(enfl.get(i).getId());
 
             lbenfant.addActionListener(e -> ToastBar.showMessage("You picked " + lbenfant.getSelectedItem(), FontImage.MATERIAL_INFO));
 
         }
+        add(lbenfant);
 
         Button participer=new Button("Participer");
 
@@ -87,12 +94,12 @@ public class ParticiperActivite extends Form {
             @Override
             public void actionPerformed(ActionEvent evt) {
 
-               ArrayList<PartActivite> v = ActiviteService.getInstance().verification(ide,id);
+               ArrayList<PartActivite> v = ActiviteService.getInstance().verification(lbenfant.getSelectedItem().getId()+"",id);
 
                 if(v.isEmpty()){
 
                 ida=Integer.parseInt(lbId.getText()) ;
-                int idep = Integer.parseInt(ide);
+                int idep = lbenfant.getSelectedItem().getId();
 
                 String datea = date.getText();
 
