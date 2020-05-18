@@ -88,7 +88,7 @@ public class PaimentService {
 
         req.setUrl(Url);
         req.setPost(false);
-        req.addArgument("id", String.valueOf(id));
+        req.addArgument("id1", String.valueOf(id));
 
         req.addResponseListener(evt ->
                 json=new String(req.getResponseData())
