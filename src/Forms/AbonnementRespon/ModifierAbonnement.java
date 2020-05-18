@@ -122,7 +122,15 @@ public class ModifierAbonnement extends Form {
                 con.addAll(envoy,close);
 
                 con.setLayout(BoxLayout.y());
-                close.addActionListener((ee) -> dlg.dispose());
+                close.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent evt) {
+
+                        dlg.dispose();
+                        new ModifierAbonnement(new ConsulterAbonnement(new AccueilResponsable()),id,name,typ,idj,numparent).show();
+
+                    }
+                } );
                 envoy.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent evt) {

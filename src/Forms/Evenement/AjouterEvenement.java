@@ -57,6 +57,8 @@ public class AjouterEvenement extends Form {
         Date lt = Date.from(Instant.now());
         //ImageViewer image = new ImageViewer();
         Button aj = new Button("Ajouter");
+        aj.setUIID("Confirmbtn");
+
 
         aj.addActionListener(new ActionListener() {
             @Override

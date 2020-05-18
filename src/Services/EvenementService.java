@@ -383,5 +383,50 @@ return ev;
             return verif;
 
         }
+
+
+
+    public ArrayList<ChartModel> ListeParticipantEvenement(){
+        String url="http://127.0.0.1:8000/eveapi/Api/EventParticipants";
+        req.setUrl(url);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                try {
+                    chartModd = chartParse(new String(req.getResponseData()));
+                    req.removeResponseListener(this);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return chartModd;
+    }
+
+    private ArrayList<ChartModel> chartModd;
+    public ArrayList<ChartModel> chartParse(String jsontext) throws IOException {
+
+       ArrayList<ChartModel> chartMod = new ArrayList<ChartModel>();
+        JSONParser j = new JSONParser();
+        Map<String,Object> actListJson = j.parseJSON(new CharArrayReader(jsontext.toCharArray()));
+        List<Map<String,Object>> list = (List<Map<String, Object>>)actListJson.get("root");
+
+        for (Map<String,Object> obj : list){
+ChartModel cm=new ChartModel();
+cm.setId((int)((double)obj.get("id")));
+cm.setNb(Integer.parseInt(obj.get("nb_part").toString()));
+
+            chartMod.add(cm);
+
+        }
+
+        return chartMod;
+
+    }
+
+
     }
 
