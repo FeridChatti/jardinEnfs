@@ -39,10 +39,10 @@ current=this;
     addAll(t, tt, d, td, da, daa, c, cc);
 
     Button mod = new Button("Modifier");
-    mod.setUIID("ButtonAbonnement");
+    mod.setUIID("Confirmbtn");
 
     Button supp = new Button("Supprimer");
-    supp.setUIID("ButtonAbonnement");
+    supp.setUIID("Confirmbtn");
 
     addAll(mod, supp);
 
