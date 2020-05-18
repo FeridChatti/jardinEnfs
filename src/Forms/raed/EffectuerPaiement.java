@@ -2,6 +2,7 @@ package Forms.raed;
 
 import Entities.Jardin;
 import Entities.Paiement;
+import Services.PaimentService;
 import Services.UserService;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.NetworkEvent;
@@ -79,44 +80,29 @@ public class EffectuerPaiement extends Form {
         md.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Dialog.show("Confirmation","est ce que tous les informations sont juste ","Oui","Non");
+                Dialog.show("Confirmation", "est ce que tous les informations sont juste ", "Oui", "Non");
 
+                if (PaimentService.getInstance().effectuerpaim(String.valueOf(id1))) {
 
-                    req=new ConnectionRequest();
-                    String Url="http://127.0.0.1:8000/Apijar/paiement1";
+                    Dialog.show("Succés", "paiement effectuer avec succés", "Oui", null);
 
-                    req.setUrl(Url);
-                    req.setPost(false);
-                    req.addArgument("id", String.valueOf(id1));
-                    req.addResponseListener(new ActionListener<NetworkEvent>() {
-                        @Override
-                        public void actionPerformed(NetworkEvent evt) {
-                          if (  req.getResponseData().equals(true)){
-
-                              Dialog.show("Succés", "paiement effectuer avec succés", "Oui", null);
-
-                          }
-                          else
-                          {
-                              Dialog.show("Erreur", "Erreur", "Oui", null);
-                          }
-
-                        }
-
-
-                    });
-
-
-                Dialog.show("Succés", "paiement effectuer avec succés", "Oui", null);
-
-
-
+                } else {
+                    Dialog.show("Erreur", "Erreur", "Oui", null);
                 }
 
+            }
+
+
+        });
 
 
 
-            });
+
+
+
+
+
+
 
         add(nom);
         add(t);

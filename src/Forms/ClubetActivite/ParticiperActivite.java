@@ -15,6 +15,8 @@ import com.codename1.ui.layouts.BoxLayout;
 
 import java.util.ArrayList;
 
+import static esprit.tn.MyApplication.authenticated;
+
 public class ParticiperActivite extends Form {
 
     String ide ;
@@ -71,13 +73,16 @@ public class ParticiperActivite extends Form {
             ComboBox<String> lbenfant = new ComboBox<String>(EnfantService.getInstance().ListEnfants("1").get(i).getNom());
 
             addAll(lbe,lbenfant);
-            ide = String.valueOf(EnfantService.getInstance().ListEnfants("1").get(i).getId());
+            ide = String.valueOf(EnfantService.getInstance().ListEnfants(authenticated.getId()+"").get(i).getId());
 
             lbenfant.addActionListener(e -> ToastBar.showMessage("You picked " + lbenfant.getSelectedItem(), FontImage.MATERIAL_INFO));
 
         }
 
         Button participer=new Button("Participer");
+
+        participer.setUIID("Confirmbtn");
+
         participer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {

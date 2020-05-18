@@ -58,6 +58,7 @@ public class AjouterActivite extends Form {
         add(c);
 
         Button ajouter=new Button("Ajouter");
+        ajouter.setUIID("Confirmbtn");
         add(ajouter);
         ajouter.addActionListener(new ActionListener() {
             @Override
