@@ -7,6 +7,7 @@ import Entities.Trajet;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
 
+import esprit.tn.MyApplication;
 import org.json.simple.JSONObject;
 
 import java.io.IOException;
@@ -90,7 +91,7 @@ public class TrajetService {
         req.setUrl(url);
         req.setPost(false);
         req.setContentType("application/json");
-        req.addArgument("id",14+"");
+        req.addArgument("id",trajet.getId()+"");
         req.addArgument("adresse",trajet.getAdresse());
         req.addArgument("heure",trajet.getHeure());
         req.addResponseListener(new ActionListener<NetworkEvent>() {

@@ -105,6 +105,7 @@ public class MapChauffeur {
         map.addComponent(BorderLayout.CENTER, mc);
         map.show();
     }
+
     private void putOne(MapComponent map,int id) {
         ArrayList<Trajet> tr= TrajetService.getInstance().ListeTrajetsParChauffeur(MyApplication.authenticated.getId()+"");
          Trajet tt=tr.stream().filter(e->e.getId()==id).collect(Collectors.toList()).get(0);

@@ -11,10 +11,12 @@ import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.validation.LengthConstraint;
+import com.codename1.ui.validation.RegexConstraint;
 import com.codename1.ui.validation.Validator;
 import esprit.tn.MyApplication;
 
 import javax.swing.*;
+import javax.xml.soap.Text;
 import java.util.ArrayList;
 
 public class ProfilChauffeur extends Form {
@@ -27,7 +29,13 @@ Label result=new Label("");
         cn.addAll(tf);
  return  cn;
     }
-public ProfilChauffeur(Form fo)
+private Validator saisie(TextField nom,TextField cin,TextField tel,TextField email)
+{
+    Validator v=new Validator();
+
+    return  v;
+}
+    public ProfilChauffeur(Form fo)
 {
     Chauffeur ch= ChauffeurService.getInstance().getChauffeur(MyApplication.authenticated.getId());
     getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e->fo.showBack());
@@ -40,7 +48,7 @@ public ProfilChauffeur(Form fo)
     Container nom= getCont(new Label("Nom et prénom"),nom_modif);
     TextField tel_modif=new TextField(ch.getTel(),"Numéro de téléphone");
     Container tel= getCont(new Label("Numéro de téléphone"),tel_modif);
-    TextField email_modif=new TextField(ch.getEmail(),"Email");
+    TextField email_modif=new TextField(ch.getEmail(),"Email",40, TextField.EMAILADDR);
     Container email= getCont(new Label("Email"),email_modif);
     TextField username_modif=new TextField(ch.getUsername(),"Username");
     Container username= getCont(new Label("Username"),username_modif);
