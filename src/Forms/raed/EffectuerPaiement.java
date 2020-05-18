@@ -71,6 +71,8 @@ public class EffectuerPaiement extends Form {
         TextField nume= new TextField();
         Label cod=new Label("Code VV2");
         TextField code= new TextField();
+        code.setHint("Password");
+        code.setConstraint(TextField.PASSWORD);
         Label da=new Label("Date expiration");
         Picker datePicke= new Picker();
         Button md=new Button("Effectuer");
@@ -81,15 +83,26 @@ public class EffectuerPaiement extends Form {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 Dialog.show("Confirmation", "est ce que tous les informations sont juste ", "Oui", "Non");
+                String t = String.valueOf(code.getText());
+                String tt = String.valueOf(nume.getText());
+                if (tt.length() != 14) {
+                    Dialog.show("Erreur", "Veuillez verifier votre numero de carte ", new Command("OK"));
 
-                if (PaimentService.getInstance().effectuerpaim(String.valueOf(id1))) {
+                } else if (t.length() != 4) {
+                    Dialog.show("Erreur", "Veuillez verifier votre password ", new Command("OK"));
 
-                    Dialog.show("Succés", "paiement effectuer avec succés", "Oui", null);
-
-                } else {
-                    Dialog.show("Erreur", "Erreur", "Oui", null);
                 }
+                else {
 
+                    if (PaimentService.getInstance().effectuerpaim(String.valueOf(id1))) {
+
+                        Dialog.show("Succés", "paiement effectuer avec succés", "Oui", null);
+
+                    } else {
+                        Dialog.show("Erreur", "Erreur", "Oui", null);
+                    }
+
+                }
             }
 
 
