@@ -38,6 +38,14 @@ btmap.setUIID("Confirmbtn");
         DefaultListModel<Map<String, Object>> model = new DefaultListModel<>(data);
         MultiList ml = new MultiList(model);
 
+        ml.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                Map<String, Object> t = (HashMap) ml.getSelectedItem();
+                Trajet tr = (Trajet) t.get("Line3");
+                new MapChauffeur(hi).showOne(hi,tr.getId());
+            }
+        });
         hi.add(ml);
         hi.show();
 
