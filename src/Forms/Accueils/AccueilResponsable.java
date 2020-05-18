@@ -154,7 +154,7 @@ public class AccueilResponsable extends Form {
 
         tb.addMaterialCommandToSideMenu("Consulter les événement", FontImage.MATERIAL_EVENT, e -> new consulterListeEvent(fo).show());
 
-
+        tb.addMaterialCommandToSideMenu("Ajouter événement", FontImage.MATERIAL_ADD_TO_QUEUE, e -> new AjouterEvenement(fo).show());
 
         tb.addMaterialCommandToSideMenu("Messages", FontImage.MATERIAL_CHAT, e -> new UserList(fo).show());
 

@@ -67,7 +67,7 @@ public class AjouterEnfant extends Form {
 
                 if(EnfantService.getInstance().AjouterEnfant(e)){
                     Dialog.show("Succes","Ajout réussi",new Command("OK"));
-                    new ConsulterEnfant(new AccueilParent()).show();
+                    new GestionEnfant(new AccueilParent()).show();
                 }}}
 
                 else{
