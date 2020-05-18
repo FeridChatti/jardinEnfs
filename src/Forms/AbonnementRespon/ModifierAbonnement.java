@@ -125,12 +125,11 @@ public class ModifierAbonnement extends Form {
                 close.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent evt) {
-
-                        dlg.dispose();
                         new ModifierAbonnement(new ConsulterAbonnement(new AccueilResponsable()),id,name,typ,idj,numparent).show();
+                        dlg.dispose();
 
                     }
-                } );
+                });
                 envoy.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent evt) {
