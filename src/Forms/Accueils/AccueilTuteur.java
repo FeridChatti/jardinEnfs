@@ -41,13 +41,8 @@ public class AccueilTuteur extends Form {
     }
     protected void addSideMenu() {
 
-
-
-
-
         //String url2="http://localhost/fixitweb1/web/upload/aucun.png";
         img1=res.getImage("profile-pic.jpg");
-
 
         Toolbar tb = getToolbar();
         Image img = res.getImage("sidemenu.jpg");
